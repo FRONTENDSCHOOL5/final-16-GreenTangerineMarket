@@ -1,31 +1,32 @@
 .msmallButton {
   color: #fff;
-  width: 166px;
-  height: 54px;
+  width: 16.6rem;
+  height: 5.4rem;
   background: #21bf48;
-  border-radius: 10px;
-  padding: 7px;
-  font-size: 14px;
+  border-radius: 1rem;
+  padding: 0.7rem;
+  font-size: 1.4rem;
   align-items: center;
 }
 .msmallButtonDisabled {
   color: #fff;
-  width: 166px;
-  height: 54px;
+  width: 16.6rem;
+  height: 5.4rem;
   background: #c4c4c4;
-  border-radius: 10px;
-  padding: 7px;
-  font-size: 14px;
+  border-radius: 1rem;
+  padding: 0.7rem;
+  font-size: 1.4rem;
   align-items: center;
 }
 
 .msmallWhiteButton {
-  color: #767676;
-  width: 166px;
-  height: 54px;
+  color: #000;
+  border: 1px solid #767676;
+  width: 16.6rem;
+  height: 5.4rem;
   background: #fff;
-  border-radius: 10px;
-  padding: 7px;
-  font-size: 14px;
+  border-radius: 1rem;
+  padding: 0.7rem;
+  font-size: 1.4rem;
   align-items: center;
 }
