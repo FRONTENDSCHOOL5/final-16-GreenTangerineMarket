@@ -1,8 +1,10 @@
+@import 'styles/global.scss';
+
 .smallButton {
   color: #fff;
   width: 8rem;
   height: 4rem;
-  background: #21bf48;
+  background: $color-21bf48;
   border-radius: 1rem;
   padding: 0.7rem;
   font-size: 1.2rem;
@@ -10,7 +12,7 @@
 }
 .smallButtonDisabled {
   color: #767676;
-  border: 0.1rem solid #c4c4c4;
+  border: 0.1rem solid $color-c4c4c4;
   width: 8rem;
   height: 4rem;
   background: #fff;
@@ -22,7 +24,7 @@
 
 .smallWhiteButton {
   color: #000;
-  border: 0.1rem solid #767676;
+  border: 0.1rem solid $color-767676;
   width: 8rem;
   height: 4rem;
   background: #fff;
