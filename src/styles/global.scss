@@ -1,16 +1,3 @@
 $color-main: #21bf48;
 $color-767676: #767676;
 $color-c4c4c4: #c4c4c4;
-
-.a11y-hidden {
-  overflow: hidden;
-  position: absolute;
-  clip: rect(0, 0, 0, 0);
-  clip-path: circle(0);
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0;
-  white-space: nowrap;
-}
