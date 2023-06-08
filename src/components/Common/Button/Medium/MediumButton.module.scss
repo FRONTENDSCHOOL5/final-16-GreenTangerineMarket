@@ -1,45 +1,27 @@
 @import 'styles/global.scss';
+@import '../ButtonMixin.scss';
 
 .mediumButton {
+  @include mediumButtonCS;
   color: #fff;
-  width: 48rem;
-  height: 6rem;
-  background: $color-21bf48;
-  border-radius: 1rem;
-  padding: 0.8rem;
-  font-size: 1.4rem;
-  align-items: center;
+  background: $color-main;
 }
+
 .mediumButtonDisabled {
+  @include mediumButtonCS;
   color: #fff;
-  width: 48rem;
-  height: 6rem;
   background: $color-c4c4c4;
-  border-radius: 1rem;
-  padding: 0.8rem;
-  font-size: 1.4rem;
-  align-items: center;
 }
 
 .mediumDarkButton {
+  @include mediumButtonCS;
   color: #fff;
-  width: 48rem;
-  height: 6rem;
   background: $color-767676;
-  border-radius: 1rem;
-  padding: 0.8rem;
-  font-size: 1.4rem;
-  align-items: center;
 }
 
 .mediumWhiteButton {
+  @include mediumButtonCS;
   color: $color-767676;
   border: 1px solid #0a0a0a;
-  width: 48rem;
-  height: 6rem;
   background: #fff;
-  border-radius: 1rem;
-  padding: 0.8rem;
-  font-size: 1.4rem;
-  align-items: center;
 }

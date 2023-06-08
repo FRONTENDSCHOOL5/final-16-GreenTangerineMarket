@@ -1,34 +1,20 @@
 @import 'styles/global.scss';
+@import '../ButtonMixin.scss';
 
 .msmallButton {
+  @include msmallButtonCS;
   color: #fff;
-  width: 16.6rem;
-  height: 5.4rem;
-  background: $color-21bf48;
-  border-radius: 1rem;
-  padding: 0.7rem;
-  font-size: 1.4rem;
-  align-items: center;
+  background: $color-main;
 }
 .msmallButtonDisabled {
+  @include msmallButtonCS;
   color: #fff;
-  width: 16.6rem;
-  height: 5.4rem;
   background: $color-c4c4c4;
-  border-radius: 1rem;
-  padding: 0.7rem;
-  font-size: 1.4rem;
-  align-items: center;
 }
 
 .msmallWhiteButton {
+  @include msmallButtonCS;
   color: #000;
   border: 1px solid $color-767676;
-  width: 16.6rem;
-  height: 5.4rem;
   background: #fff;
-  border-radius: 1rem;
-  padding: 0.7rem;
-  font-size: 1.4rem;
-  align-items: center;
 }

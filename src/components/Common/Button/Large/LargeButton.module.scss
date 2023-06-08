@@ -1,23 +1,14 @@
 @import 'styles/global.scss';
+@import '../ButtonMixin.scss';
 
 .largeButton {
+  @include largeButtonCS;
   color: #fff;
-  width: 22rem;
-  height: 6.8rem;
-  background: $color-21bf48;
-  border-radius: 1rem;
-  padding: 1.3rem;
-  font-size: 1.4rem;
-  align-items: center;
+  background: $color-main;
 }
 
 .largeButtonDisabled {
+  @include largeButtonCS;
   color: #fff;
-  width: 22rem;
-  height: 6.8rem;
   background: $color-c4c4c4;
-  border-radius: 1rem;
-  padding: 1.3rem;
-  font-size: 1.4rem;
-  align-items: center;
 }
