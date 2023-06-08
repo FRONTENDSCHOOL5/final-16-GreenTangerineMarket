@@ -6,30 +6,28 @@ import { Link } from 'react-router-dom'
 
 const Header = () => {
   return (
-    <header>
-      <div className={s.headerWrapper}>
-        <Link to='/'>
-          <h1>
-            <img className={s.logoimg} src={logoimg} alt='GreenColored main Logo img of GreenTangerin Market' />
-          </h1>
-        </Link>
-        <nav>
-          <ul className={s.container}>
-            <li>
-              <Link to='/'>
-                <img className={s.search} src={search} alt='a black Magnifier Icon for search ID' />
-                <p>계정검색</p>
-              </Link>
-            </li>
-            <li>
-              <Link to='/'>
-                <img src={user} alt='a human body simbol Icon for Link to Mypage' />
-                <p>마이페이지</p>
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      </div>
+    <header className={s.header}>
+      <Link to='/'>
+        <h1>
+          <img className={s.logoimg} src={logoimg} alt='GreenColored main Logo img of GreenTangerin Market' />
+        </h1>
+      </Link>
+      <nav>
+        <ul className={s.container}>
+          <li>
+            <Link to='/'>
+              <img className={s.search} src={search} alt='a black Magnifier Icon for search ID' />
+              <p>계정검색</p>
+            </Link>
+          </li>
+          <li>
+            <Link to='/'>
+              <img src={user} alt='a human body simbol Icon for Link to Mypage' />
+              <p>마이페이지</p>
+            </Link>
+          </li>
+        </ul>
+      </nav>
     </header>
   )
 }
