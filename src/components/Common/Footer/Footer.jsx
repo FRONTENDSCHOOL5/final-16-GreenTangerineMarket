@@ -18,17 +18,17 @@ const Footer = () => {
         <ul className={s.footerSns}>
           <li>
             <a target='_blank'>
-              <img src={insta} alt='a gray colored camera logo link to Instagram' />
+              <img src={insta} alt='인스타그램으로 이동하는 회색 인스타그램 로고입니다.' />
             </a>
           </li>
           <li>
             <a target='_blank'>
-              <img src={fb} alt='a gray colored F logo link to FaceBook' />
+              <img src={fb} alt='페이스북으로 이동하는 회색 페이스북 로고입니다.' />
             </a>
           </li>
           <li>
             <a target='_blank'>
-              <img src={yt} alt='a gray colored play button logo link to Youtube' />
+              <img src={yt} alt='유튜브로 이동하는 회색 유튜브 로고입니다.' />
             </a>
           </li>
         </ul>
