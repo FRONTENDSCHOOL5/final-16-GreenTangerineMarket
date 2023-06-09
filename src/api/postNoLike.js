@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const postNoLike = async id => {
+const postNoLike = async id => {
   try {
     const response = await axios({
       method: 'DELETE',
@@ -17,3 +17,4 @@ export const postNoLike = async id => {
     return null
   }
 }
+export default postNoLike

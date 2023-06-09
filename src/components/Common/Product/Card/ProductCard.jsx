@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
-import NoImage from 'assets/img/no-image.png'
+
 import s from './ProductCard.module.scss'
-import { formatUpdateTime } from 'utils/formatUpdateTime'
-import { formatNumberWithComma } from 'utils/formatNumberWithComma'
+import NoImage from 'assets/img/no-image.png'
+import formatUpdateTime from 'utils/formatUpdateTime'
+import formatNumberWithComma from 'utils/formatNumberWithComma'
 
 const ProductCard = ({ id, image, name, price, time }) => {
   price = formatNumberWithComma(price)

@@ -1,12 +1,13 @@
-import { useAxios } from 'hooks/useAxios'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+
 import s from './FeedAction.module.scss'
-import heartImg from 'assets/img/icon-heart.svg'
-import fillHeartImg from 'assets/img/icon-heart-fill.svg'
+import useAxios from 'hooks/useAxios'
 import commentImg from 'assets/img/icon-message-circle.svg'
-import { postLike } from 'api/postLike'
-import { postNoLike } from 'api/postNoLike'
+import fillHeartImg from 'assets/img/icon-heart-fill.svg'
+import heartImg from 'assets/img/icon-heart.svg'
+import postLike from 'api/postLike'
+import postNoLike from 'api/postNoLike'
 
 const FeedAction = ({ id }) => {
   const { response } = useAxios({

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const postLike = async id => {
+const postLike = async id => {
   try {
     const response = await axios({
       method: 'POST',
@@ -18,3 +18,4 @@ export const postLike = async id => {
     return null
   }
 }
+export default postLike

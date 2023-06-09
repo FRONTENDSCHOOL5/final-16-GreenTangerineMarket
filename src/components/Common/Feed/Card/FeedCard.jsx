@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom'
-import { formatUpdateTime } from 'utils/formatUpdateTime'
 import { useState } from 'react'
+
 import s from './FeedCard.module.scss'
 import defaultProfile from 'assets/img/default-profile.svg'
+import formatUpdateTime from 'utils/formatUpdateTime'
 import noImage from 'assets/img/no-image.png'
 import imageLayers from 'assets/img/icon-img-layers.svg'
 import FeedAction from '../Action/FeedAction'
