@@ -1,0 +1,19 @@
+@import 'styles/global.scss';
+
+.form {
+  border: 0.1rem solid $color-c4c4c4;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 4rem 0;
+  align-items: center;
+  margin-top: 6rem;
+  width: 55rem;
+  .link {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: $color-767676;
+    text-align: center;
+  }
+}
