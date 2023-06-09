@@ -1,0 +1,27 @@
+@import 'styles/global.scss';
+@import '../ButtonMixin.scss';
+
+.mediumButton {
+  @include mediumButtonCS;
+  color: #fff;
+  background: $color-main;
+}
+
+.mediumButtonDisabled {
+  @include mediumButtonCS;
+  color: #fff;
+  background: $color-c4c4c4;
+}
+
+.mediumDarkButton {
+  @include mediumButtonCS;
+  color: #fff;
+  background: $color-767676;
+}
+
+.mediumWhiteButton {
+  @include mediumButtonCS;
+  color: $color-767676;
+  border: 1px solid #0a0a0a;
+  background: #fff;
+}

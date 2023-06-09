@@ -1,0 +1,14 @@
+@import 'styles/global.scss';
+@import '../ButtonMixin.scss';
+
+.largeButton {
+  @include largeButtonCS;
+  color: #fff;
+  background: $color-main;
+}
+
+.largeButtonDisabled {
+  @include largeButtonCS;
+  color: #fff;
+  background: $color-c4c4c4;
+}
