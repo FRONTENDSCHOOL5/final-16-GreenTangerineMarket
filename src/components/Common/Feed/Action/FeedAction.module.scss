@@ -1,0 +1,18 @@
+@import 'styles/global.scss';
+.wrap {
+  display: flex;
+  flex-direction: row;
+  .button {
+    display: flex;
+    align-items: center;
+  }
+  .image {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+  .text {
+    font-size: 1.4rem;
+    color: $color-767676;
+    margin-left: 0.4rem;
+  }
+}
