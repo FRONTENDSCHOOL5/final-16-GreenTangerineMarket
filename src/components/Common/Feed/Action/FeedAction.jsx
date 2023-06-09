@@ -2,40 +2,33 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import s from './FeedAction.module.scss'
-import useAxios from 'hooks/useAxios'
-import commentImg from 'assets/img/icon-message-circle.svg'
-import fillHeartImg from 'assets/img/icon-heart-fill.svg'
+
 import heartImg from 'assets/img/icon-heart.svg'
-import postLike from 'api/postLike'
-import postNoLike from 'api/postNoLike'
+import fillHeartImg from 'assets/img/icon-heart-fill.svg'
+import commentImg from 'assets/img/icon-message-circle.svg'
+import { getFeedInfoAPI } from 'api/feed'
+import { dislikeAPI, likeAPI } from 'api/like'
 
 const FeedAction = ({ id }) => {
-  const { response } = useAxios({
-    method: 'GET',
-    url: `/post/${id}`,
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem('token')}`,
-      'Content-type': 'application/json',
-    },
-  })
+  const res = getFeedInfoAPI(id)
   const [isLike, setIsLike] = useState(false)
-  const [likeCount, setLikeCount] = useState(0)
+  const [likeCount, setLikeCount] = useState('')
   const [commentCount, setCommentCount] = useState('')
   const handleClick = async e => {
-    const cnt = isLike ? await postNoLike(id) : await postLike(id)
+    const cnt = isLike ? await dislikeAPI(id) : await likeAPI(id)
     setLikeCount(cnt)
     setIsLike(!isLike)
   }
   useEffect(() => {
-    if (response) {
-      setIsLike(response.post.hearted)
-      setLikeCount(response.post.heartCount)
-      setCommentCount(response.post.comments.length)
+    if (res) {
+      setIsLike(res.post.hearted)
+      setLikeCount(res.post.heartCount)
+      setCommentCount(res.post.comments.length)
     }
-  }, [response])
+  }, [res])
 
   return (
-    <div className={s.wrap}>
+    <div className={s.container}>
       <button type='button' onClick={handleClick} className={s.button}>
         {<img src={isLike ? fillHeartImg : heartImg} alt='' className={s.image}></img>}
         <span className={s.text}>{likeCount}</span>
