@@ -1,0 +1,87 @@
+@import 'styles/global.scss';
+
+.card {
+  width: 48rem;
+  min-width: 48rem;
+  height: 52rem;
+  background-color: #fff;
+  overflow: hidden;
+  .header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    .profile {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      .profileImg {
+        width: 4.2rem;
+        height: 4.2rem;
+        margin-right: 1rem;
+        border-radius: 50%;
+        border: 1px solid $color-c4c4c4;
+      }
+      .author {
+        max-width: 30rem;
+        .user {
+          font-size: 1.6rem;
+          font-weight: 700;
+          line-height: 1.5;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .account {
+          font-size: 1.2rem;
+          line-height: 1.5;
+          color: $color-767676;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+    .time {
+      font-size: 1.4rem;
+      color: $color-767676;
+    }
+  }
+  .link {
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    margin-bottom: 1rem;
+    .image {
+      width: 100%;
+      height: 32rem;
+      object-fit: cover;
+      border: 1px solid $color-c4c4c4;
+      border-radius: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .layers {
+      width: 4rem;
+      height: 4rem;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+    .content {
+      font-size: 1.6rem;
+      line-height: 1.5;
+      word-break: break-all;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+    }
+    .action {
+      display: flex;
+      flex-direction: row;
+      align-items: ce;
+    }
+  }
+}
