@@ -42,7 +42,7 @@ const SignInForm = () => {
       handleSetPasswordError(true, '비밀번호를 입력해주세요')
       EMAIL_REGEX.test(email) ? handleSetEmailError(false) : handleSetEmailError(true, '이메일을 형식이 맞지 않습니다')
     } // email vaildtaion fail
-    else if (email !== '' && !EMAIL_REGEX.test(email)) {
+    else if (!EMAIL_REGEX.test(email)) {
       handleSetEmailError(true, '이메일을 형식이 맞지 않습니다')
       password === '' ? handleSetPasswordError(true, '비밀번호를 입력해주세요') : handleSetPasswordError(false)
     } // email validation success
