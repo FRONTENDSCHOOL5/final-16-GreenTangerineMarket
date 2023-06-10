@@ -12,7 +12,7 @@ export const likeAPI = async id => {
 
 export const dislikeAPI = async id => {
   try {
-    const res = await instance.post(`/post/${id}/unheart`)
+    const res = await instance.delete(`/post/${id}/unheart`)
     return res.data.post.heartCount
   } catch (e) {
     console.error(e)

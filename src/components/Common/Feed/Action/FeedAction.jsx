@@ -10,22 +10,31 @@ import { getFeedInfoAPI } from 'api/feed'
 import { dislikeAPI, likeAPI } from 'api/like'
 
 const FeedAction = ({ id }) => {
-  const res = getFeedInfoAPI(id)
   const [isLike, setIsLike] = useState(false)
-  const [likeCount, setLikeCount] = useState('')
-  const [commentCount, setCommentCount] = useState('')
+  const [likeCount, setLikeCount] = useState(0)
+  const [commentCount, setCommentCount] = useState(0)
   const handleClick = async e => {
-    const cnt = isLike ? await dislikeAPI(id) : await likeAPI(id)
-    setLikeCount(cnt)
-    setIsLike(!isLike)
+    try {
+      const res = isLike ? await dislikeAPI(id) : await likeAPI(id)
+      setLikeCount(res)
+      setIsLike(!isLike)
+    } catch (e) {
+      console.error(e)
+    }
   }
   useEffect(() => {
-    if (res) {
-      setIsLike(res.post.hearted)
-      setLikeCount(res.post.heartCount)
-      setCommentCount(res.post.comments.length)
+    const getFeedInfo = async () => {
+      try {
+        const res = await getFeedInfoAPI(id)
+        setIsLike(res.data.post.hearted)
+        setLikeCount(res.data.post.heartCount)
+        setCommentCount(res.data.post.comments.length)
+      } catch (e) {
+        console.error(e)
+      }
     }
-  }, [res])
+    getFeedInfo()
+  }, [])
 
   return (
     <div className={s.container}>
