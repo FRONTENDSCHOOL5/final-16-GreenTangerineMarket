@@ -24,8 +24,8 @@ const ProductCard = ({ id, image, name, price, time }) => {
           <span className={s.price}>{price}</span>
           <span className={s.won}>원</span>
         </div>
+        <p className={s.time}>{updateTime}</p>
       </Link>
-      <p className={s.time}>{updateTime}</p>
     </article>
   )
 }

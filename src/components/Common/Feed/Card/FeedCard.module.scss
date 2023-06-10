@@ -6,7 +6,7 @@
   height: 52rem;
   background-color: #fff;
   overflow: hidden;
-  .header {
+  header {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -43,10 +43,6 @@
         }
       }
     }
-    .time {
-      font-size: 1.4rem;
-      color: $color-767676;
-    }
   }
   .link {
     display: inline-block;
@@ -78,10 +74,19 @@
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 3;
     }
+  }
+  footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     .action {
       display: flex;
       flex-direction: row;
       align-items: center;
+    }
+    .time {
+      font-size: 1.4rem;
+      color: $color-767676;
     }
   }
 }
