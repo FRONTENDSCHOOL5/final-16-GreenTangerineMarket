@@ -15,17 +15,18 @@ const FeedCard = ({ id, author, content, image, time }) => {
   const updateTime = formatUpdateTime(time)
   const [imageError, setImageError] = useState(false)
 
-  const handleError = e => {
+  const handleLoadImageError = e => {
     setImageError(true)
   }
+  const handleMoreButtonClick = () => {}
   return (
     <article className={s.card}>
-      <header className={s.header}>
+      <header>
         <Link to={`/profile/${author.accountname}`} className={s.profile}>
           {
             <img
               src={!imageError ? author.image : defaultProfile}
-              onError={handleError}
+              onError={handleLoadImageError}
               alt={`${author.accountname} 프로필 이미지`}
               className={s.profileImg}
             />
@@ -35,14 +36,21 @@ const FeedCard = ({ id, author, content, image, time }) => {
             <p className={s.account}>@{author.accountname}</p>
           </div>
         </Link>
-        <p className={s.time}>{updateTime}</p>
+        <button type='button' onClick={handleMoreButtonClick} className={s.more}>
+          <span>더보기 버튼</span>
+        </button>
       </header>
       <Link to={`/FeedDetail/${id}`} className={s.link}>
-        {<img src={image ? mainImage : noImage} alt='피드 이미지' className={s.image} />}
-        {isMultiImage && <img src={imageLayers} alt='여러장' className={s.layers} />}
+        <div className={s.wrapper}>
+          {<img src={image ? mainImage : noImage} alt='피드 이미지' className={s.image} />}
+          {isMultiImage && <img src={imageLayers} alt='여러장' className={s.layers} />}
+        </div>
         <p className={s.content}>{content}</p>
       </Link>
-      <FeedAction id={id} />
+      <footer>
+        <FeedAction id={id} />
+        <p className={s.time}>{updateTime}</p>
+      </footer>
     </article>
   )
 }

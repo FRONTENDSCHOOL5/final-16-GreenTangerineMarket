@@ -6,14 +6,17 @@
     display: flex;
     align-items: center;
     padding-left: 0;
-  }
-  .image {
-    width: 2.4rem;
-    height: 2.4rem;
-  }
-  .text {
-    font-size: 1.4rem;
-    color: $color-767676;
-    margin-left: 0.4rem;
+    &:hover {
+      opacity: 0.5;
+    }
+    .image {
+      width: 2.4rem;
+      height: 2.4rem;
+    }
+    .text {
+      font-size: 1.4rem;
+      color: $color-767676;
+      margin-left: 0.4rem;
+    }
   }
 }
