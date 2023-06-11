@@ -1,63 +1,18 @@
-import { Link } from 'react-router-dom'
-import { useState } from 'react'
-
 import s from './FeedCard.module.scss'
 
-import defaultProfile from 'assets/img/default-profile.svg'
-import noImage from 'assets/img/no-image.png'
 import formatUpdateTime from 'utils/formatUpdateTime'
-import imageLayers from 'assets/img/icon-img-layers.svg'
 import FeedAction from '../Action/FeedAction'
+import FeedProfile from '../Profile/FeedProfile'
+import FeedContent from '../Content/FeedContent'
 
 const FeedCard = ({ id, author, content, image, time }) => {
-  const mainImage = image.split(',', 1)
-  const isMultiImage = image.indexOf(',') !== -1
   const updateTime = formatUpdateTime(time)
-  const [profileImageError, setProfileImageError] = useState(false)
-  const [imageError, setImageError] = useState(false)
-
-  const handleProfileImageError = e => {
-    setProfileImageError(true)
-  }
-  const handleImageError = e => {
-    setImageError(true)
-  }
-  const handleMoreButtonClick = () => {}
   return (
     <article className={s.card}>
       <header>
-        <Link to={`/profile/${author.accountname}`} className={s.profile}>
-          {
-            <img
-              src={!profileImageError ? author.image : defaultProfile}
-              onError={handleProfileImageError}
-              alt={`${author.accountname} 프로필 이미지`}
-              className={s.profileImg}
-            />
-          }
-          <div className={s.author}>
-            <p className={s.user}>{author.username}</p>
-            <p className={s.account}>@{author.accountname}</p>
-          </div>
-        </Link>
-        <button type='button' onClick={handleMoreButtonClick} className={s.more}>
-          <span>더보기 버튼</span>
-        </button>
+        <FeedProfile author={author} />
       </header>
-      <Link to={`/FeedDetail/${id}`} className={s.link}>
-        <div className={s.wrapper}>
-          {
-            <img
-              src={image && !imageError ? mainImage : noImage}
-              onError={handleImageError}
-              alt='피드 이미지'
-              className={s.image}
-            />
-          }
-          {isMultiImage && <img src={imageLayers} alt='여러장' className={s.layers} />}
-        </div>
-        <p className={s.content}>{content}</p>
-      </Link>
+      <FeedContent id={id} image={image} content={content} />
       <footer>
         <FeedAction id={id} />
         <p className={s.time}>{updateTime}</p>

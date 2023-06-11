@@ -1,0 +1,34 @@
+@import 'styles/global.scss';
+
+.profile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  &:hover {
+    opacity: 0.5;
+  }
+  .profileImg {
+    width: 4.2rem;
+    height: 4.2rem;
+    margin-right: 1rem;
+    border-radius: 50%;
+    border: 1px solid $color-c4c4c4;
+  }
+  .author {
+    max-width: 30rem;
+    .user {
+      font-size: 1.6rem;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .account {
+      font-size: 1.2rem;
+      color: $color-767676;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
