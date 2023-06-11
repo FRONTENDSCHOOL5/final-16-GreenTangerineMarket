@@ -1,19 +1,35 @@
 import s from './MediumButton.module.scss'
 
-const MediumButton = () => {
-  return <button className={s.mediumButton}>버튼</button>
+const MediumButton = ({ children, onClickEvent }) => {
+  return (
+    <button type='button' className={s.mediumButton} onClick={onClickEvent}>
+      {children}
+    </button>
+  )
 }
 
-const MediumButtonDisabled = () => {
-  return <button className={s.mediumButtonDisabled}>버튼</button>
+const MediumButtonDisabled = ({ text, onClickEvent }) => {
+  return (
+    <button type='button' className={s.mediumButtonDisabled} onClick={onClickEvent}>
+      {text}
+    </button>
+  )
 }
 
-const MediumDarkButton = () => {
-  return <button className={s.mediumDarkButton}>버튼</button>
+const MediumDarkButton = ({ text, onClickEvent }) => {
+  return (
+    <button type='button' className={s.mediumDarkButton} onClick={onClickEvent}>
+      {text}
+    </button>
+  )
 }
 
-const MediumWhiteButton = () => {
-  return <button className={s.mediumWhiteButton}>버튼</button>
+const MediumWhiteButton = ({ text, onClickEvent }) => {
+  return (
+    <button type='button' className={s.mediumWhiteButton} onClick={onClickEvent}>
+      {text}
+    </button>
+  )
 }
 
 export { MediumButton, MediumButtonDisabled, MediumDarkButton, MediumWhiteButton }

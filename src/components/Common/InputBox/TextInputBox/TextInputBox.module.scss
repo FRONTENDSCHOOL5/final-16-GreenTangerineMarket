@@ -1,20 +1,25 @@
 @import 'styles/global.scss';
 
-.wrapper {
+.container {
   display: flex;
   flex-direction: column;
-  width: 48rem;
   gap: 1rem;
-  font-size: 1.6rem;
-  font-weight: 400;
-}
-
-.text {
-  color: $color-767676;
-}
-
-.input {
-  border: 0.1rem solid $color-c4c4c4;
-  border-radius: 0.5rem;
-  padding: 1.7rem 1.6rem;
+  .label {
+    display: flex;
+    flex-direction: column;
+    width: 48rem;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: $color-767676;
+    .input {
+      border-bottom: 0.1rem solid $color-c4c4c4;
+      padding: 1rem 0;
+    }
+  }
+  .errorMesaage {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #eb5757;
+    height: 1.2rem;
+  }
 }
