@@ -13,9 +13,13 @@ const FeedCard = ({ id, author, content, image, time }) => {
   const mainImage = image.split(',', 1)
   const isMultiImage = image.indexOf(',') !== -1
   const updateTime = formatUpdateTime(time)
+  const [profileImageError, setProfileImageError] = useState(false)
   const [imageError, setImageError] = useState(false)
 
-  const handleLoadImageError = e => {
+  const handleProfileImageError = e => {
+    setProfileImageError(true)
+  }
+  const handleImageError = e => {
     setImageError(true)
   }
   const handleMoreButtonClick = () => {}
@@ -25,8 +29,8 @@ const FeedCard = ({ id, author, content, image, time }) => {
         <Link to={`/profile/${author.accountname}`} className={s.profile}>
           {
             <img
-              src={!imageError ? author.image : defaultProfile}
-              onError={handleLoadImageError}
+              src={!profileImageError ? author.image : defaultProfile}
+              onError={handleProfileImageError}
               alt={`${author.accountname} 프로필 이미지`}
               className={s.profileImg}
             />
@@ -42,7 +46,14 @@ const FeedCard = ({ id, author, content, image, time }) => {
       </header>
       <Link to={`/FeedDetail/${id}`} className={s.link}>
         <div className={s.wrapper}>
-          {<img src={image ? mainImage : noImage} alt='피드 이미지' className={s.image} />}
+          {
+            <img
+              src={image && !imageError ? mainImage : noImage}
+              onError={handleImageError}
+              alt='피드 이미지'
+              className={s.image}
+            />
+          }
           {isMultiImage && <img src={imageLayers} alt='여러장' className={s.layers} />}
         </div>
         <p className={s.content}>{content}</p>
