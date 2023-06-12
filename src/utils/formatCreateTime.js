@@ -1,4 +1,4 @@
-const formatUpdateTime = time => {
+const formatCreateTime = time => {
   const startTime = new Date(time)
   const endTime = new Date()
   const timeDiff = Math.abs(endTime - startTime)
@@ -21,4 +21,4 @@ const formatUpdateTime = time => {
   }
   return '1분미만 전'
 }
-export default formatUpdateTime
+export default formatCreateTime

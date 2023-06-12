@@ -4,12 +4,12 @@ import { useState } from 'react'
 import s from './ProductCard.module.scss'
 
 import NoImage from 'assets/img/no-image.png'
-import formatUpdateTime from 'utils/formatUpdateTime'
+import formatCreateTime from 'utils/formatCreateTime'
 import formatNumberWithComma from 'utils/formatNumberWithComma'
 
 const ProductCard = ({ id, image, name, price, time }) => {
   price = formatNumberWithComma(price)
-  const updateTime = formatUpdateTime(time)
+  const createTime = formatCreateTime(time)
   const [imageError, setImageError] = useState(false)
 
   const handleError = e => {
@@ -26,7 +26,7 @@ const ProductCard = ({ id, image, name, price, time }) => {
           <span className={s.price}>{price}</span>
           <span className={s.won}>원</span>
         </div>
-        <p className={s.time}>{updateTime}</p>
+        <p className={s.time}>{createTime}</p>
       </Link>
     </article>
   )

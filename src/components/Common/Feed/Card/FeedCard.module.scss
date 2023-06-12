@@ -12,64 +12,6 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 1.5rem;
-    .more {
-      width: 3.2rem;
-      height: 3.2rem;
-      padding: 2rem;
-      border-radius: 50%;
-      background: url('/assets/img/icon-more.svg') center/ 3rem 3rem no-repeat;
-      &:hover {
-        opacity: 0.5;
-      }
-    }
-  }
-  .link {
-    display: inline-block;
-    width: 100%;
-    position: relative;
-    margin-bottom: 1rem;
-    &:hover {
-      .wrapper {
-        .image {
-          transform: scale(1.05);
-        }
-      }
-      .content {
-        opacity: 0.5;
-      }
-    }
-    .wrapper {
-      width: 100%;
-      height: 32rem;
-      border: 1px solid $color-c4c4c4;
-      border-radius: 1rem;
-      margin-bottom: 1.5rem;
-      overflow: hidden;
-      .image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transform: scale(1);
-        transition: transform 0.3s;
-      }
-    }
-    .layers {
-      width: 4rem;
-      height: 4rem;
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-    }
-    .content {
-      font-size: 1.6rem;
-      line-height: 1.5;
-      word-break: break-all;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 3;
-    }
   }
   footer {
     display: flex;
