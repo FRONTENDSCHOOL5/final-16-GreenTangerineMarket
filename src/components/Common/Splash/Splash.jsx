@@ -1,7 +1,7 @@
 import s from './Splash.module.scss'
 
 import logo from 'assets/img/logo.svg'
-import charLogo from 'assets/img/logo_char.png'
+import charLogo from 'assets/img/logo_char.svg'
 
 const Splash = () => {
   return (
