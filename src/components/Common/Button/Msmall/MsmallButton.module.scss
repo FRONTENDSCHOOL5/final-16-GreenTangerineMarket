@@ -6,13 +6,14 @@
   color: #fff;
   background: $color-main;
 }
-.msmallButtonDisabled {
+.msmallWhiteButton {
   @include msmallButtonCS;
-  color: #fff;
-  background: $color-c4c4c4;
+  color: $color-767676;
+  border: 1px solid $color-c4c4c4;
+  background: #fff;
 }
 
-.msmallWhiteButton {
+.msmallWhiteButtonHover {
   @include msmallButtonCS;
   color: #000;
   border: 1px solid $color-767676;

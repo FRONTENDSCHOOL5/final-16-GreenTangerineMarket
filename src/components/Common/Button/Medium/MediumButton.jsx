@@ -8,26 +8,26 @@ const MediumButton = ({ children, onClickEvent }) => {
   )
 }
 
-const MediumButtonDisabled = ({ text, onClickEvent }) => {
+const MediumButtonDisabled = ({ children, onClickEvent }) => {
   return (
     <button type='button' className={s.mediumButtonDisabled} onClick={onClickEvent}>
-      {text}
+      {children}
     </button>
   )
 }
 
-const MediumDarkButton = ({ text, onClickEvent }) => {
+const MediumDarkButton = ({ children, onClickEvent }) => {
   return (
     <button type='button' className={s.mediumDarkButton} onClick={onClickEvent}>
-      {text}
+      {children}
     </button>
   )
 }
 
-const MediumWhiteButton = ({ text, onClickEvent }) => {
+const MediumWhiteButton = ({ children, onClickEvent }) => {
   return (
     <button type='button' className={s.mediumWhiteButton} onClick={onClickEvent}>
-      {text}
+      {children}
     </button>
   )
 }
