@@ -7,8 +7,8 @@ import noImage from 'assets/img/no-image.png'
 import imageLayers from 'assets/img/icon-img-layers.svg'
 
 const FeedContent = ({ id, image, content }) => {
-  const mainImage = image.split(',', 1)
-  const isMultiImage = image.indexOf(',') !== -1
+  const mainImage = image ? image.split(',', 1) : noImage
+  const isMultiImage = image ? image.indexOf(',') !== -1 : false
   const [imageError, setImageError] = useState(false)
   const handleImageError = e => {
     setImageError(true)
