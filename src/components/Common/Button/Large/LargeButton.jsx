@@ -1,11 +1,19 @@
 import s from './LargeButton.module.scss'
 
-const LargeButton = () => {
-  return <button className={s.largeButton}>버튼</button>
+const LargeButton = ({ children, onClickEvent }) => {
+  return (
+    <button type='button' className={s.largeButton} onClick={onClickEvent}>
+      {children}
+    </button>
+  )
 }
 
-const LargeButtonDisabled = () => {
-  return <button className={s.largeButtonDisabled}>버튼</button>
+const LargeButtonDisabled = ({ children, onClickEvent }) => {
+  return (
+    <button type='button' className={s.largeButtonDisabled} onClick={onClickEvent}>
+      {children}
+    </button>
+  )
 }
 
 export { LargeButton, LargeButtonDisabled }

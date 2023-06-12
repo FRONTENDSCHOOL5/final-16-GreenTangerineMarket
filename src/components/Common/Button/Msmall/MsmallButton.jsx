@@ -1,15 +1,27 @@
 import s from './MsmallButton.module.scss'
 
-const MsmallButton = () => {
-  return <button className={s.msmallButton}>버튼</button>
+const MsmallButton = ({ children, onClickEvent }) => {
+  return (
+    <button type='button' className={s.msmallButton} onClick={onClickEvent}>
+      {children}
+    </button>
+  )
 }
 
-const MsmallWhiteButton = () => {
-  return <button className={s.msmallWhiteButton}>버튼</button>
+const MsmallWhiteButton = ({ children, onClickEvent }) => {
+  return (
+    <button type='button' className={s.msmallWhiteButton} onClick={onClickEvent}>
+      {children}
+    </button>
+  )
 }
 
-const MsmallWhiteButtonHover = () => {
-  return <button className={s.msmallWhiteButtonHover}>버튼</button>
+const MsmallWhiteButtonHover = ({ children, onClickEvent }) => {
+  return (
+    <button type='button' className={s.msmallWhiteButtonHover} onClick={onClickEvent}>
+      {children}
+    </button>
+  )
 }
 
 export { MsmallButton, MsmallWhiteButton, MsmallWhiteButtonHover }
