@@ -14,24 +14,16 @@ const FeedAction = ({ id }) => {
   const [likeCount, setLikeCount] = useState(0)
   const [commentCount, setCommentCount] = useState(0)
   const handleClick = async e => {
-    try {
-      const res = isLike ? await dislikeAPI(id) : await likeAPI(id)
-      setLikeCount(res)
-      setIsLike(!isLike)
-    } catch (e) {
-      console.error(e)
-    }
+    const res = isLike ? await dislikeAPI(id) : await likeAPI(id)
+    setLikeCount(res)
+    setIsLike(!isLike)
   }
   useEffect(() => {
     const getFeedInfo = async () => {
-      try {
-        const res = await getFeedInfoAPI(id)
-        setIsLike(res.data.post.hearted)
-        setLikeCount(res.data.post.heartCount)
-        setCommentCount(res.data.post.comments.length)
-      } catch (e) {
-        console.error(e)
-      }
+      const res = await getFeedInfoAPI(id)
+      setIsLike(res.data.post.hearted)
+      setLikeCount(res.data.post.heartCount)
+      setCommentCount(res.data.post.comments.length)
     }
     getFeedInfo()
   }, [])

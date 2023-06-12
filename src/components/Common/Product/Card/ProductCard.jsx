@@ -19,7 +19,7 @@ const ProductCard = ({ id, image, name, price, time }) => {
     <article className={s.card}>
       <Link to={`/product/detail/${id}`} className={s.link}>
         <div className={s.wrapper}>
-          {<img onError={handleError} src={!imageError ? image : NoImage} alt='상품이미지' className={s.image} />}
+          <img onError={handleError} src={!imageError ? image : NoImage} alt='상품이미지' className={s.image} />
         </div>
         <p className={s.name}>{name}</p>
         <div className={s.container}>
