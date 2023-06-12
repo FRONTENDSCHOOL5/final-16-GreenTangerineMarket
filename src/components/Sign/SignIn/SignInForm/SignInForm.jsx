@@ -58,7 +58,6 @@ const SignInForm = () => {
         const { _id, email, username, accountname, intro, token, refreshToken, image } = res.data.user
         setUserInfo({ _id, email, username, accountname, intro, image })
         setLoginCookie(token, { path: '/' })
-        setInstanceHeaders(token)
         navigate('/')
       }
     }

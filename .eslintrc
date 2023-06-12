@@ -1,13 +1,11 @@
 {
   "root": true,
-  "plugins": ["@typescript-eslint"],
   "extends": ["react-app", "eslint:recommended", "prettier"],
-  "parser": "@typescript-eslint/parser",
   "rules": {
     "require-await": "error",
     "eqeqeq": "error",
     "no-var": "error",
     "no-unused-vars": "off",
-    "no-multiple-empty-lines": "error" // 여러 줄 공백 금지
+    "no-multiple-empty-lines": "error"
   }
 }
