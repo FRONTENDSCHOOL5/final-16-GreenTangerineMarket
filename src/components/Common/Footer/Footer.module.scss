@@ -1,18 +1,17 @@
 @import 'styles/global.scss';
 
-footer {
+.footer {
   background-color: #f2f2f2;
   font-size: 14px;
   width: 100%;
-  margin: 2rem auto;
+  padding: 2rem 32rem;
 
   .footerCase {
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 0.1rem solid $color-c4c4c4;
-    margin: 0 32rem 0 32rem;
-    padding: 2.2rem 0;
+    padding-bottom: 2.2rem;
     color: black;
     line-height: 1.7rem;
   }
@@ -59,7 +58,6 @@ footer {
 
   .footerText {
     margin: 3rem 0;
-    padding: 2.2rem 0 6.3rem 32rem;
     line-height: 2.4rem;
     color: $color-767676;
   }

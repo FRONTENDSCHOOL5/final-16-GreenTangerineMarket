@@ -5,7 +5,7 @@ import yt from 'assets/img/icon-yt.svg'
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className={s.footer}>
       <div className={s.footerCase}>
         <ul className={s.footerLink}>
           <li>청귤마켓 소개</li>
