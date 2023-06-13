@@ -132,7 +132,7 @@ html {
 }
 
 body {
-  line-height: 1;
+  line-height: 1.5;
 }
 
 a {
@@ -150,6 +150,7 @@ input {
 }
 
 button {
+  font: inherit;
   border: none;
   background-color: white;
   cursor: pointer;

@@ -3,7 +3,7 @@
   height: 6.8rem;
   border-radius: 1rem;
   padding: 1.3rem;
-  font-size: 1.4rem;
+  font-size: 2.4rem;
   align-items: center;
 }
 
@@ -12,14 +12,14 @@
   height: 6rem;
   border-radius: 1rem;
   padding: 0.8rem;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   align-items: center;
 }
 
 @mixin msmallButtonCS {
   width: 16.6rem;
   height: 5.4rem;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   align-items: center;
   border-radius: 1rem;
   padding: 0.7rem;
@@ -28,7 +28,7 @@
 @mixin smallButtonCS {
   width: 8rem;
   height: 4rem;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   align-items: center;
   border-radius: 1rem;
   padding: 0.7rem;

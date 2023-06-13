@@ -1,0 +1,28 @@
+@import 'styles/global.scss';
+
+.card {
+  width: 48rem;
+  min-width: 48rem;
+  height: 52rem;
+  background-color: #fff;
+  overflow: hidden;
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+  }
+  footer {
+    display: flex;
+    justify-content: space-between;
+    .action {
+      display: flex;
+      align-items: center;
+    }
+    .time {
+      font-size: 1.4rem;
+      color: $color-767676;
+      cursor: default;
+    }
+  }
+}

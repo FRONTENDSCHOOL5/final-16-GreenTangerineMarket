@@ -9,7 +9,6 @@ import { loginAPI } from 'api/user'
 import { EMAIL_REGEX } from 'constants/REGEX'
 import { userInfoAtom } from 'recoil/atom/user'
 import { setLoginCookie } from 'utils/loginCookie'
-import { setInstanceHeaders } from 'utils/setInstanceHeaders'
 import { MediumButton } from 'components/Common/Button/Medium/MediumButton'
 
 const SignInForm = () => {
