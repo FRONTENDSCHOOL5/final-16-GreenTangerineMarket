@@ -4,10 +4,8 @@ import { instance } from 'api'
 export const signUpAPI = async ({ username, email, password, accountname, intro, image }) => {
   try {
     const res = await instance.post('/user', { user: { username, email, password, accountname, intro, image } })
-    console.log(res)
     return res
   } catch (err) {
-    console.error(err)
     return err
   }
 }
@@ -16,10 +14,8 @@ export const signUpAPI = async ({ username, email, password, accountname, intro,
 export const loginAPI = async ({ email, password }) => {
   try {
     const res = await instance.post('/user/login', { user: { email, password } })
-    console.log(res)
     return res
   } catch (err) {
-    console.error(err)
     return err
   }
 }
@@ -28,7 +24,6 @@ export const loginAPI = async ({ email, password }) => {
 export const verifyEmailAPI = async ({ email }) => {
   try {
     const res = await instance.post('/user/emailvalid', { user: { email } })
-    console.log(res)
     return res
   } catch (err) {
     console.error(err)
@@ -40,10 +35,8 @@ export const verifyEmailAPI = async ({ email }) => {
 export const verifyAccountNameAPI = async ({ accountname }) => {
   try {
     const res = await instance.post('/user/accountnamevalid', { user: { accountname } })
-    console.log(res)
     return res
   } catch (err) {
-    console.error(err)
     return err
   }
 }
