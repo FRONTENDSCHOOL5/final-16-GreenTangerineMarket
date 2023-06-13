@@ -20,23 +20,15 @@ import ProfileImageInputBox from 'components/Common/InputBox/ProfileImageInputBo
 
 const SignUpForm = () => {
   const formRef = useRef()
-
   const [profileImage, setProfileImage] = useState(basicProfileImg)
   const [emailError, setEmailError] = useRecoilState(signUpEmailErroAtom)
   const [passwordError, setPasswordError] = useRecoilState(signUpPassWordErroAtom)
   const [accountNameError, setAccountNameError] = useRecoilState(signUpAccountNameErroAtom)
   const [userNameError, setUserNameError] = useRecoilState(signUpUserNameErroAtom)
   const [introError, setIntroError] = useRecoilState(signUpIntroErroAtom)
-
   const [btnFlag, setBtnFlag] = useState(false)
 
   const navigate = useNavigate()
-
-  useEffect(() => {
-    if (!emailError.isError && !passwordError.isError && !accountNameError.isError && !userNameError.isError)
-      setBtnFlag(true)
-    else setBtnFlag(false)
-  }, [emailError, passwordError, accountNameError, userNameError])
 
   const handleSignUpRequest = async () => {
     const { email, password, username, accountname, intro } = formRef.current.elements
@@ -60,6 +52,12 @@ const SignUpForm = () => {
       }
     }
   }
+
+  useEffect(() => {
+    if (!emailError.isError && !passwordError.isError && !accountNameError.isError && !userNameError.isError)
+      setBtnFlag(true)
+    else setBtnFlag(false)
+  }, [emailError, passwordError, accountNameError, userNameError])
 
   return (
     <form className={s.form} ref={formRef}>

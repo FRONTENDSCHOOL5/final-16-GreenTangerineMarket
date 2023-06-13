@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { useRecoilState, useSetRecoilState } from 'recoil'
+import { useRecoilState } from 'recoil'
 
 import s from './SignInForm.module.scss'
 
 import { loginAPI } from 'api/user'
 import { PASSWORD_REGEX } from 'constants/REGEX'
-import { userInfoAtom } from 'recoil/atom/user'
 import { setLoginCookie } from 'utils/loginCookie'
 import { MediumButton, MediumButtonDisabled } from 'components/Common/Button/Medium/MediumButton'
 import SignInput from 'components/Sign/common/SignInput/SignInput'
@@ -15,31 +14,28 @@ import { signInEmailErroAtom, signInPassWordErroAtom } from 'recoil/atom/signin'
 const SignInForm = () => {
   const navigate = useNavigate()
   const formRef = useRef()
-  const setUserInfo = useSetRecoilState(userInfoAtom)
 
   const [emailError, setEmailError] = useRecoilState(signInEmailErroAtom)
   const [passwordError, setPasswordError] = useRecoilState(signInPassWordErroAtom)
   const [btnFlag, setBtnFlag] = useState(false)
 
-  useEffect(() => {
-    if (!emailError.isError && !passwordError.isError) setBtnFlag(true)
-    else setBtnFlag(false)
-  }, [emailError, passwordError])
-
   const handleSignInRequest = async () => {
     const { email, password } = formRef.current.elements
 
     const res = await loginAPI({ email: email.value, password: password.value })
-    console.log(res)
     if (res.data.status === 422)
       setPasswordError({ isError: true, errorMessage: '이메일 또는 비밀번호가 일치하지 않습니다.' })
     else {
       const { _id, email, username, accountname, intro, token, refreshToken, image } = res.data.user
-      setUserInfo({ _id, email, username, accountname, intro, image })
       setLoginCookie(token, { path: '/' })
       navigate('/')
     }
   }
+
+  useEffect(() => {
+    if (!emailError.isError && !passwordError.isError) setBtnFlag(true)
+    else setBtnFlag(false)
+  }, [emailError, passwordError])
 
   return (
     <form className={s.form} ref={formRef}>
