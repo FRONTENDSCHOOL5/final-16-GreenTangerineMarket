@@ -7,7 +7,6 @@ import SignUpForm from 'components/Sign/SignUp/SignUpForm/SignUpForm'
 const SignUp = () => {
   return (
     <main className={s.container}>
-      <Header />
       <SignMainLogo />
       <SignUpForm link='signin' linkText='로그인' />
     </main>
