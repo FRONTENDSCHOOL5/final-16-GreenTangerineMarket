@@ -1,0 +1,24 @@
+@import 'styles/global.scss';
+
+.profileImage {
+  position: relative;
+  width: 11rem;
+  height: 11rem;
+  cursor: pointer;
+  border-radius: 50%;
+  .basicProfileImg {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+  }
+  .uploadImg {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 3.6rem;
+    height: 3.6rem;
+  }
+  > input {
+    display: none;
+  }
+}
