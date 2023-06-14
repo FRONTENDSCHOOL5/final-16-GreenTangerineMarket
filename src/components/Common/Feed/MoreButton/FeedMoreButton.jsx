@@ -1,26 +1,33 @@
 import { useRecoilValue } from 'recoil'
 import s from './FeedMoreButton.module.scss'
-import { userInfoAtom } from 'recoil/atom/user'
+import { myInfoAtom } from 'recoil/atom/user'
 import { useEffect, useRef, useState } from 'react'
 
 const FeedMoreButton = ({ id, author }) => {
   const [showMenu, setShowMenu] = useState(false)
   const menuRef = useRef(null)
   const moreButtonRef = useRef(null)
-  const userInfo = useRecoilValue(userInfoAtom)
+  const userInfo = useRecoilValue(myInfoAtom)
   const isMyFeed = author._id === userInfo._id
   useEffect(() => {
     const handleOutsideClick = e => {
-      console.log(e, menuRef, moreButtonRef)
       if (!menuRef.current && moreButtonRef.current.contains(e.target)) {
         setShowMenu(true)
       } else if (showMenu && menuRef.current && !menuRef.current.contains(e.target)) {
         setShowMenu(false)
       }
     }
+    const handleEscapeKeyDown = e => {
+      if (e.keyCode === 27) {
+        setShowMenu(false)
+        moreButtonRef.current.blur()
+      }
+    }
+    document.addEventListener('keydown', handleEscapeKeyDown)
     document.addEventListener('click', handleOutsideClick)
     return () => {
       document.removeEventListener('click', handleOutsideClick)
+      document.removeEventListener('keydown', handleEscapeKeyDown)
     }
   })
   return (
