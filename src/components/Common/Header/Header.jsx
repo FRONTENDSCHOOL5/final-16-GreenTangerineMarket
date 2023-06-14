@@ -12,7 +12,7 @@ const Header = () => {
       <div className={s.hContainer}>
         <Link to='/'>
           <h1>
-            <img className={s.logoimg} src={logoimg} alt='초록색의 청귤마켓 로고 이미지입니다.' />
+            <img className={s.logoImg} src={logoImg} alt='초록색의 청귤마켓 로고 이미지입니다.' />
           </h1>
         </Link>
         <nav>
