@@ -1,6 +1,6 @@
 import s from './SignMainLogo.module.scss'
 
-import logo from 'assets/img/logo_char.png'
+import logo from 'assets/img/logo_char.svg'
 
 const SignMainLogo = () => {
   return (

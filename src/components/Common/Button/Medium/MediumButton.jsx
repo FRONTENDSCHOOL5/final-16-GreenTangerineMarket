@@ -8,9 +8,9 @@ const MediumButton = ({ children, onClickEvent }) => {
   )
 }
 
-const MediumButtonDisabled = ({ children, onClickEvent }) => {
+const MediumButtonDisabled = ({ children }) => {
   return (
-    <button type='button' className={s.mediumButtonDisabled} onClick={onClickEvent}>
+    <button type='button' className={s.mediumButtonDisabled} disabled>
       {children}
     </button>
   )
