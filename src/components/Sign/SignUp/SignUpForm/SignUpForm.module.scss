@@ -5,11 +5,14 @@
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
-  padding: 4rem 0;
   align-items: center;
+  gap: 3rem;
+  padding: 4rem;
   margin-top: 6rem;
-  width: 55rem;
+  .uploadIcon {
+    width: 3.6rem;
+    height: 3.6rem;
+  }
   .link {
     font-size: 1.6rem;
     font-weight: 400;
