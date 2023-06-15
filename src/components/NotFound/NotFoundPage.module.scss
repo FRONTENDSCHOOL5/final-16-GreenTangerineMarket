@@ -1,4 +1,6 @@
-.NotFoundWrapper {
+@import 'styles/global.scss';
+
+.notFoundWrapper {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,11 +10,12 @@
     width: 27.6rem;
     height: 23.6rem;
   }
-}
-.notFoundText {
-  font-family: 'Spoqa Han Sans Neo';
-  margin-left: 5rem;
-  color: #767676;
+
+  .notFoundText {
+    font-family: 'Spoqa Han Sans Neo';
+    margin-left: 5rem;
+    color: $color-767676;
+  }
   .notFoundHeader {
     font-style: normal;
     font-weight: 700;
