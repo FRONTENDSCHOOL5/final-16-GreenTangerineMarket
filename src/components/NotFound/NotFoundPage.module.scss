@@ -1,0 +1,30 @@
+@import 'styles/global.scss';
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  .img {
+    display: block;
+    width: 27.6rem;
+    height: 23.6rem;
+  }
+
+  .text {
+    margin-left: 5rem;
+    color: $color-767676;
+  }
+  .header {
+    font-size: 3.6rem;
+    padding-bottom: 2rem;
+  }
+  .check {
+    font-size: 1.6rem;
+    padding-bottom: 3.5rem;
+  }
+  .mainButton {
+    display: flex;
+    gap: 1.4rem;
+  }
+}

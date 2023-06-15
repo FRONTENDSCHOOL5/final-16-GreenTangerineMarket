@@ -10,7 +10,7 @@ const LargeButton = ({ children, onClickEvent }) => {
 
 const LargeButtonDisabled = ({ children, onClickEvent }) => {
   return (
-    <button type='button' className={s.largeButtonDisabled} onClick={onClickEvent}>
+    <button type='button' className={s.largeButtonDisabled} onClick={onClickEvent} disabled>
       {children}
     </button>
   )
