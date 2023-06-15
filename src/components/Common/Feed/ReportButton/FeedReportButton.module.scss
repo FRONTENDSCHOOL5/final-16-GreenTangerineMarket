@@ -1,0 +1,27 @@
+@import 'styles/global.scss';
+.modal {
+  border: none;
+  border-radius: 1rem;
+  padding: 0;
+  &::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  .container {
+    padding: 5rem;
+    p {
+      font-size: 2rem;
+      margin-bottom: 3rem;
+      strong {
+        font-size: 2.1rem;
+        font-weight: 900;
+        color: $color-main;
+        text-decoration: underline;
+      }
+    }
+    .button {
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+  }
+}

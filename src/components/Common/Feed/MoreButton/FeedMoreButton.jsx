@@ -1,14 +1,21 @@
 import { useRecoilValue } from 'recoil'
-import s from './FeedMoreButton.module.scss'
-import { myInfoAtom } from 'recoil/atom/user'
 import { useEffect, useRef, useState } from 'react'
+
+import s from './FeedMoreButton.module.scss'
+
+import { myInfoAtom } from 'recoil/atom/user'
+import FeedReportButton from '../ReportButton/FeedReportButton'
 
 const FeedMoreButton = ({ id, author }) => {
   const [showMenu, setShowMenu] = useState(false)
   const menuRef = useRef(null)
   const moreButtonRef = useRef(null)
   const userInfo = useRecoilValue(myInfoAtom)
-  const isMyFeed = author._id === userInfo._id
+  const isMyFeed = author._id === userInfo.accountname
+  const handleMenuClick = () => {
+    setShowMenu(false)
+  }
+
   useEffect(() => {
     const handleOutsideClick = e => {
       if (!menuRef.current && moreButtonRef.current.contains(e.target)) {
@@ -48,7 +55,7 @@ const FeedMoreButton = ({ id, author }) => {
         ) : (
           <ul className={s.menu} ref={menuRef}>
             <li>
-              <button type='button'>신고</button>
+              <FeedReportButton id={id} closeMenu={handleMenuClick} />
             </li>
           </ul>
         ))}
