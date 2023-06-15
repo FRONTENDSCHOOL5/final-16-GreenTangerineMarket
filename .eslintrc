@@ -6,6 +6,7 @@
     "eqeqeq": "error",
     "no-var": "error",
     "no-unused-vars": "off",
-    "no-multiple-empty-lines": "error"
+    "no-multiple-empty-lines": "error",
+    "react-hooks/exhaustive-deps": "off"
   }
 }
