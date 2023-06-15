@@ -6,6 +6,6 @@ export const getFeedInfoAPI = async id => {
     return res
   } catch (e) {
     console.error(e)
-    return null
+    return e
   }
 }

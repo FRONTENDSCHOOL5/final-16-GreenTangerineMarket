@@ -21,9 +21,11 @@ const FeedAction = ({ id }) => {
   useEffect(() => {
     const getFeedInfo = async () => {
       const res = await getFeedInfoAPI(id)
-      setIsLike(res.data.post.hearted)
-      setLikeCount(res.data.post.heartCount)
-      setCommentCount(res.data.post.comments.length)
+      if (res.status === 200) {
+        setIsLike(res.data.post.hearted)
+        setLikeCount(res.data.post.heartCount)
+        setCommentCount(res.data.post.comments.length)
+      }
     }
     getFeedInfo()
   }, [])
@@ -31,7 +33,7 @@ const FeedAction = ({ id }) => {
   return (
     <div className={s.container}>
       <button type='button' onClick={handleClick} className={s.button}>
-        {<img src={isLike ? fillHeartImg : heartImg} alt='' className={s.image}></img>}
+        <img src={isLike ? fillHeartImg : heartImg} alt='' className={s.image}></img>
         <span className={s.text}>{likeCount}</span>
       </button>
       <Link to={`/feedDetail/${id}`} className={s.button}>

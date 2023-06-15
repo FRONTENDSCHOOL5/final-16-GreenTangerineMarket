@@ -6,7 +6,7 @@ export const likeAPI = async id => {
     return res.data.post.heartCount
   } catch (e) {
     console.error(e)
-    return null
+    return e
   }
 }
 
@@ -16,6 +16,6 @@ export const dislikeAPI = async id => {
     return res.data.post.heartCount
   } catch (e) {
     console.error(e)
-    return null
+    return e
   }
 }
