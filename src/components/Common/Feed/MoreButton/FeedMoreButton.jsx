@@ -10,8 +10,8 @@ const FeedMoreButton = ({ id, author }) => {
   const [showMenu, setShowMenu] = useState(false)
   const menuRef = useRef(null)
   const moreButtonRef = useRef(null)
-  const userInfo = useRecoilValue(myInfoAtom)
-  const isMyFeed = author._id === userInfo.accountname
+  const myInfo = useRecoilValue(myInfoAtom)
+  const isMyFeed = author.accountname === myInfo.accountname
   const handleMenuClick = () => {
     setShowMenu(false)
   }

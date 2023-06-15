@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useSetRecoilState } from 'recoil'
 
 import s from './SignInForm.module.scss'
 
@@ -10,6 +10,7 @@ import { setLoginCookie } from 'utils/loginCookie'
 import { MediumButton, MediumButtonDisabled } from 'components/Common/Button/Medium/MediumButton'
 import SignInput from 'components/Sign/common/SignInput/SignInput'
 import { signInEmailErroAtom, signInPassWordErroAtom } from 'recoil/atom/signin'
+import { myInfoAtom } from 'recoil/atom/user'
 
 const SignInForm = () => {
   const navigate = useNavigate()
@@ -18,6 +19,7 @@ const SignInForm = () => {
   const [emailError, setEmailError] = useRecoilState(signInEmailErroAtom)
   const [passwordError, setPasswordError] = useRecoilState(signInPassWordErroAtom)
   const [btnFlag, setBtnFlag] = useState(false)
+  const setMyInfoAtom = useSetRecoilState(myInfoAtom)
 
   const handleSignInRequest = async () => {
     const { email, password } = formRef.current.elements
@@ -27,6 +29,7 @@ const SignInForm = () => {
       setPasswordError({ isError: true, errorMessage: '이메일 또는 비밀번호가 일치하지 않습니다.' })
     else {
       const { _id, email, username, accountname, intro, token, refreshToken, image } = res.data.user
+      setMyInfoAtom({ accountname })
       setLoginCookie(token, { path: '/' })
       navigate('/')
     }
