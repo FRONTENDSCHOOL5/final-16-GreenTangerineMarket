@@ -5,6 +5,7 @@ import s from './FeedMoreButton.module.scss'
 
 import { myInfoAtom } from 'recoil/atom/user'
 import FeedReportButton from '../ReportButton/FeedReportButton'
+import FeedEditButton from '../EditButton/FeedEditButton'
 
 const FeedMoreButton = ({ id, author }) => {
   const [showMenu, setShowMenu] = useState(false)
@@ -46,10 +47,7 @@ const FeedMoreButton = ({ id, author }) => {
         (isMyFeed ? (
           <ul className={s.menu} ref={menuRef}>
             <li>
-              <button type='button'>수정</button>
-            </li>
-            <li>
-              <button type='button'>삭제</button>
+              <FeedEditButton id={id} />
             </li>
           </ul>
         ) : (
