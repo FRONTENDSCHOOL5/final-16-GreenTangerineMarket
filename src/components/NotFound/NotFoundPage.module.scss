@@ -1,31 +1,32 @@
-.notFoundImg {
-  display: block;
-  width: 27.6rem;
-  height: 23.6rem;
-}
 .NotFoundWrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  .notFoundImg {
+    display: block;
+    width: 27.6rem;
+    height: 23.6rem;
+  }
 }
 .notFoundText {
   font-family: 'Spoqa Han Sans Neo';
   margin-left: 5rem;
   color: #767676;
-}
-.notFoundHeader {
-  font-style: normal;
-  font-weight: 700;
-  font-size: 3.6rem;
-  padding-bottom: 2rem;
-}
-.notFoundCheck {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 1.6rem;
-  padding-bottom: 3.5rem;
-}
-.mainHomeClick {
-  padding: 1.4rem;
+  .notFoundHeader {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 3.6rem;
+    padding-bottom: 2rem;
+  }
+  .notFoundCheck {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.6rem;
+    padding-bottom: 3.5rem;
+  }
+  .notFoundMainButton {
+    display: flex;
+    gap: 1.4rem;
+  }
 }

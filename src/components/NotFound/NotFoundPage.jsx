@@ -12,10 +12,8 @@ const NotFoundPage = () => {
     navigate(-1)
   }
   return (
-    <div className={s.NotFoundWrapper}>
-      <section>
-        <img className={s.notFoundImg} src={notFoundImg} alt='페이지를 찾을 수 없습니다' />
-      </section>
+    <main className={s.NotFoundWrapper}>
+      <img className={s.notFoundImg} src={notFoundImg} alt='페이지를 찾을 수 없습니다' />
       <section className={s.notFoundText}>
         <h1 className={s.notFoundHeader}>페이지를 찾을 수 없습니다</h1>
         <p className={s.notFoundCheck}>
@@ -23,12 +21,12 @@ const NotFoundPage = () => {
           <br />
           웹주소가 올바른지 확인하세요
         </p>
-        <LargeButton className={s.mainHomeClick} onClickEvent={mainHomeClick}>
-          메인으로
-        </LargeButton>
-        <LargeButtonDisabled onClickEvent={backPageClick}>이전페이지</LargeButtonDisabled>
+        <div className={s.notFoundMainButton}>
+          <LargeButton onClickEvent={mainHomeClick}>메인으로</LargeButton>
+          <LargeButtonDisabled onClickEvent={backPageClick}>이전페이지</LargeButtonDisabled>
+        </div>
       </section>
-    </div>
+    </main>
   )
 }
 
