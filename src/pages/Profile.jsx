@@ -1,5 +1,19 @@
+import Footer from 'components/Common/Footer/Footer'
+import Header from 'components/Common/Header/Header'
+import ProfileInfo from 'components/Profile/Info/ProfileInfo'
+import ProfileItemList from 'components/Profile/ItemList/ProfileItemList'
+
 const Profile = () => {
-  return <div></div>
+  return (
+    <>
+      <Header />
+      <main>
+        <ProfileInfo />
+        <ProfileItemList />
+      </main>
+      <Footer />
+    </>
+  )
 }
 
 export default Profile
