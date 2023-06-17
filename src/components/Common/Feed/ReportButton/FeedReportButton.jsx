@@ -1,10 +1,11 @@
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
+import { toast } from 'react-hot-toast'
 
 import s from './FeedReportButton.module.scss'
 
 import { MsmallButton, MsmallWhiteButton } from 'components/Common/Button/Msmall/MsmallButton'
 import { reportFeedAPI } from 'api/feed'
-import { Toaster, toast } from 'react-hot-toast'
+import getToastStyle from 'utils/getToastStyle'
 
 const FeedReportButton = ({ id, closeMenu }) => {
   const modalRef = useRef()
@@ -24,15 +25,8 @@ const FeedReportButton = ({ id, closeMenu }) => {
   const reportFeed = async () => {
     const res = await reportFeedAPI(id)
     if (res.status === 200) {
-      toast('해당 피드가 신고되었습니다!', {
-        style: {
-          borderRadius: '10px',
-          background: '#333',
-          color: '#fff',
-          fontSize: '2rem',
-          padding: '1rem',
-          marginBottom: '2rem',
-        },
+      toast('해당 피드가 신고되었습니다', {
+        style: getToastStyle(),
       })
     }
     modalRef.current.close()
@@ -54,7 +48,6 @@ const FeedReportButton = ({ id, closeMenu }) => {
           </div>
         </div>
       </dialog>
-      <Toaster position='bottom-center' />
     </>
   )
 }
