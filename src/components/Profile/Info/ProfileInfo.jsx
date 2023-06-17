@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react'
-import s from './ProfileInfo.module.scss'
 import { useRecoilValue } from 'recoil'
 import { myInfoAtom } from 'recoil/atom/user'
 import { useParams } from 'react-router'
-import { followProfileAPI, getProfileInfoAPI, unfollowProfileAPI } from 'api/profile'
+
+import s from './ProfileInfo.module.scss'
+
+import { getProfileInfoAPI } from 'api/profile'
 import ProfileImage from 'components/Common/Feed/ProfileImage/ProfileImage'
-import { MsmallButton, MsmallWhiteButton } from 'components/Common/Button/Msmall/MsmallButton'
-import { toast } from 'react-hot-toast'
-import getToastStyle from 'utils/getToastStyle'
+import { MsmallButton } from 'components/Common/Button/Msmall/MsmallButton'
+import FollowButton from '../Follow/FollowButton'
+import UnfollowButton from '../Follow/UnfollowButton'
 
 const ProfileInfo = () => {
   const [isMyProfile, setIsMyProfile] = useState(false)
@@ -26,27 +28,9 @@ const ProfileInfo = () => {
     getProfileData()
   }, [])
   const handleProfileEditClick = () => {}
-  const handleUnfollowClick = async () => {
-    const res = await unfollowProfileAPI(profileData.accountname)
-    if (res.status === 200) {
-      console.log(res)
-      setProfileData(res.data.profile)
-      setIsFollow(!isFollow)
-      toast('팔로우취소했습니다', {
-        style: getToastStyle(),
-      })
-    }
-  }
-  const handleFollowClick = async () => {
-    const res = await followProfileAPI(profileData.accountname)
-    if (res.status === 200) {
-      console.log(res)
-      setProfileData(res.data.profile)
-      setIsFollow(!isFollow)
-      toast('팔로우했습니다', {
-        style: getToastStyle(),
-      })
-    }
+  const updateProfileData = data => {
+    setProfileData(data)
+    setIsFollow(!isFollow)
   }
 
   return (
@@ -62,9 +46,9 @@ const ProfileInfo = () => {
           {isMyProfile ? (
             <MsmallButton onClickEvent={handleProfileEditClick}>프로필 수정</MsmallButton>
           ) : isFollow ? (
-            <MsmallWhiteButton onClickEvent={handleUnfollowClick}>팔로우 취소</MsmallWhiteButton>
+            <UnfollowButton accountname={profileData.accountname} updateProfileData={updateProfileData} />
           ) : (
-            <MsmallButton onClickEvent={handleFollowClick}>팔로우</MsmallButton>
+            <FollowButton accountname={profileData.accountname} updateProfileData={updateProfileData} />
           )}
         </section>
       ) : null}
