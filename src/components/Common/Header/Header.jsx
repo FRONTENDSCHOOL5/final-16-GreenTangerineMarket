@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 import s from './Header.module.scss'
 
-import logoimg from 'assets/img/logo_char.svg'
+import logoImg from 'assets/img/logo_char.svg'
 import user from 'assets/img/icon-user.svg'
 import search from 'assets/img/icon-search.svg'
 
