@@ -57,7 +57,6 @@ const SignUpForm = () => {
         name='email'
         text='이메일'
         type='email'
-        initialValue=''
         error={emailError}
         setError={setEmailError}
         required={true}
@@ -66,7 +65,6 @@ const SignUpForm = () => {
         name='password'
         text='비밀번호'
         type='password'
-        initialValue=''
         error={passwordError}
         setError={setPasswordError}
         pattern={PASSWORD_REGEX}
@@ -76,7 +74,6 @@ const SignUpForm = () => {
         name='accountname'
         text='계정 ID'
         type='text'
-        initialValue=''
         error={accountNameError}
         setError={setAccountNameError}
         pattern={ACCOUNTNAME_REGEX}
@@ -86,19 +83,11 @@ const SignUpForm = () => {
         name='username'
         text='사용자 이름'
         type='text'
-        initialValue=''
         error={userNameError}
         setError={setUserNameError}
         required={true}
       />
-      <TextInputBox
-        name='intro'
-        text='소개 [선택]'
-        type='text'
-        initialValue=''
-        error={introError}
-        setError={setIntroError}
-      />
+      <TextInputBox name='intro' text='소개 [선택]' type='text' error={introError} setError={setIntroError} />
       {btnFlag ? (
         <MediumButton onClickEvent={handleSignUpRequest}>회원가입</MediumButton>
       ) : (

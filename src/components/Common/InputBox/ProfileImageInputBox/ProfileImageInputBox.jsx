@@ -7,22 +7,20 @@ import { PROFILE_IMAGE_ONLY_UPLOAD_IMAGE } from 'constants/SIGN_ERROR'
 import basicProfileImg from 'assets/img/basic-profile-img.svg'
 import uploadImg from 'assets/img/upload.svg'
 
-const ProfileImageInputBox = ({ setImage }) => {
-  const [profileImage, setProfileImage] = useState(basicProfileImg)
+const ProfileImageInputBox = ({ initialImage = basicProfileImg, setImage }) => {
+  const [profileImage, setProfileImage] = useState(initialImage)
 
   const handleProfileImageUpload = async e => {
     const file = e.target.files[0]
     const formData = new FormData()
-    const reader = new FileReader()
     formData.append('image', file)
     const res = await uploadImage(formData)
 
     if (res.data.message === PROFILE_IMAGE_ONLY_UPLOAD_IMAGE) {
       alert(PROFILE_IMAGE_ONLY_UPLOAD_IMAGE)
     } else {
-      reader.onloadend = () => setProfileImage(reader.result)
-      file && reader.readAsDataURL(file)
-      setImage(res.data.filename)
+      setProfileImage(`https://api.mandarin.weniv.co.kr/${res.data.filename}`)
+      setImage(`https://api.mandarin.weniv.co.kr/${res.data.filename}`)
     }
   }
 
@@ -30,7 +28,7 @@ const ProfileImageInputBox = ({ setImage }) => {
     <label className={s.profileImage} onChange={handleProfileImageUpload}>
       <img src={profileImage} alt='프로필 이미지 선택' className={s.basicProfileImg} />
       <img src={uploadImg} alt='프로필 이미지 선택' className={s.uploadImg} />
-      <input type='file' />
+      <input type='file' name='image' accept='image/jpg, image/gif, image/png, image/bmp, image/tif, image/heic' />
     </label>
   )
 }

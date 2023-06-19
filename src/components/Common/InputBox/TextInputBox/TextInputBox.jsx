@@ -3,7 +3,7 @@ import useFormInput from 'hooks/useFormInput'
 import s from './TextInputBox.module.scss'
 import useCheckValidation from 'hooks/useCheckValidation'
 
-const TextInputBox = ({ initialValue, name, type, text, required, pattern, error, setError }) => {
+const TextInputBox = ({ initialValue = '', name, type, text, required, pattern, error, setError }) => {
   const [value, handleChangeValue] = useFormInput(initialValue, name, setError)
   const { isError, errorMessage } = error
   const handleOnBlurEvent = useCheckValidation().handleOnBlurEvent
