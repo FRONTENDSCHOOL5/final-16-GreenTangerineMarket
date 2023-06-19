@@ -5,6 +5,7 @@ import App from './App'
 
 import './styles/reset.scss'
 import { CookiesProvider } from 'react-cookie'
+import { Toaster } from 'react-hot-toast'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
@@ -12,6 +13,7 @@ root.render(
     <RecoilRoot>
       <CookiesProvider>
         <App />
+        <Toaster position='bottom-center' />
       </CookiesProvider>
     </RecoilRoot>
   </React.StrictMode>,
