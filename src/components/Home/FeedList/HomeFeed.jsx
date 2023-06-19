@@ -16,14 +16,14 @@ const HomeFeed = () => {
     getFeedList()
   }, [])
   return (
-    <>
+    <section>
       <div className={s.card}>
         <h2 className={s.title}>최신 피드</h2>
         <Link className={s.link} to='/feed'>
           더보기
         </Link>
       </div>
-      <section className={s.section}>
+      <div className={s.feedBox}>
         {feeds.map(feed => {
           return (
             <FeedCard
@@ -36,8 +36,8 @@ const HomeFeed = () => {
             />
           )
         })}
-      </section>
-    </>
+      </div>
+    </section>
   )
 }
 

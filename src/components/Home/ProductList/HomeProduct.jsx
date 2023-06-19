@@ -11,20 +11,19 @@ const HomeProduct = () => {
   useEffect(() => {
     const getPorductList = async () => {
       const res = await getProductListAPI()
-      console.log(res)
       setProducts(res.data.product)
     }
     getPorductList()
   }, [])
   return (
-    <>
+    <section>
       <div className={s.card}>
         <h2 className={s.title}>최신 상품</h2>
         <Link className={s.link} to='/product'>
           더보기
         </Link>
       </div>
-      <section className={s.section}>
+      <div className={s.productBox}>
         {products.map(product => {
           return (
             <ProductCard
@@ -37,8 +36,8 @@ const HomeProduct = () => {
             />
           )
         })}
-      </section>
-    </>
+      </div>
+    </section>
   )
 }
 
