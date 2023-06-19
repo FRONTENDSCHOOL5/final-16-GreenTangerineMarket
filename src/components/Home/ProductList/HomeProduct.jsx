@@ -32,7 +32,7 @@ const HomeProduct = () => {
               id={product._id}
               image={product.itemImage}
               name={product.itemName}
-              createTime={product.createdAt}
+              time={product.createdAt}
               price={product.price}
             />
           )
