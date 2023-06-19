@@ -15,12 +15,11 @@ import { MediumButton, MediumButtonDisabled } from 'components/Common/Button/Med
 import ProfileImageInputBox from 'components/Common/InputBox/ProfileImageInputBox/ProfileImageInputBox'
 import TextInputBox from 'components/Common/InputBox/TextInputBox/TextInputBox'
 import { PASSWORD_REGEX, ACCOUNTNAME_REGEX } from 'constants/REGEX'
-import basicProfileImg from 'assets/img/basic-profile-img.svg'
 import { signUpAPI } from 'api/user'
 
 const SignUpForm = () => {
   const formRef = useRef()
-  const [profileImage, setProfileImage] = useState(basicProfileImg)
+  const [image, setImage] = useState('')
   const [emailError, setEmailError] = useRecoilState(signUpEmailErroAtom)
   const [passwordError, setPasswordError] = useRecoilState(signUpPassWordErroAtom)
   const [accountNameError, setAccountNameError] = useRecoilState(signUpAccountNameErroAtom)
@@ -38,7 +37,7 @@ const SignUpForm = () => {
       password: password.value,
       accountname: accountname.value,
       intro: intro.value,
-      image: profileImage,
+      image: image,
     })
 
     if (res.status === 200) navigate('/signin')
@@ -52,7 +51,7 @@ const SignUpForm = () => {
 
   return (
     <form className={s.form} ref={formRef}>
-      <ProfileImageInputBox image={profileImage} setImage={setProfileImage} />
+      <ProfileImageInputBox setImage={setImage} />
       <TextInputBox
         name='email'
         text='이메일'
