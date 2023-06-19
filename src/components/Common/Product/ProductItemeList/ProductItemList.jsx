@@ -14,7 +14,6 @@ const ProductItemList = () => {
 
   const handleGetNextProduct = async () => {
     const res = await getNextProductAPI(page * 10)
-    console.log(res.data.product)
     setProducts([...products, ...res.data.product])
   }
 
@@ -25,11 +24,11 @@ const ProductItemList = () => {
     }
   }, 1000)
 
-  const _handleScroll = React.useCallback(handleScroll)
+  const handleScrollEvent = React.useCallback(handleScroll)
   useEffect(() => {
-    window.addEventListener('scroll', _handleScroll)
+    window.addEventListener('scroll', handleScrollEvent)
     return () => {
-      window.removeEventListener('scroll', _handleScroll)
+      window.removeEventListener('scroll', handleScrollEvent)
     }
   }, [])
 
