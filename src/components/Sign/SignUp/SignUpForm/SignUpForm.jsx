@@ -16,6 +16,7 @@ import ProfileImageInputBox from 'components/Common/InputBox/ProfileImageInputBo
 import TextInputBox from 'components/Common/InputBox/TextInputBox/TextInputBox'
 import { PASSWORD_REGEX, ACCOUNTNAME_REGEX } from 'constants/REGEX'
 import { signUpAPI } from 'api/user'
+import { handlePressEnterKey } from 'utils/handlePressEnterKey'
 
 const SignUpForm = () => {
   const formRef = useRef()
@@ -50,7 +51,7 @@ const SignUpForm = () => {
   }, [emailError, passwordError, accountNameError, userNameError])
 
   return (
-    <form className={s.form} ref={formRef}>
+    <form className={s.form} ref={formRef} onKeyDown={e => btnFlag && handlePressEnterKey(e, handleSignUpRequest)}>
       <ProfileImageInputBox setImage={setImage} />
       <TextInputBox
         name='email'
