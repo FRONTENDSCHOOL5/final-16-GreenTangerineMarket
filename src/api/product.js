@@ -16,6 +16,6 @@ export const getNextProductAPI = async num => {
     return res
   } catch (e) {
     console.error(e)
-    throw e
+    return e
   }
 }

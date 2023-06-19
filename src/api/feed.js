@@ -6,7 +6,7 @@ export const getFeedInfoAPI = async id => {
     return res
   } catch (e) {
     console.error(e)
-    throw e
+    return e
   }
 }
 
@@ -16,7 +16,7 @@ export const getFeedListAPI = async () => {
     return res
   } catch (e) {
     console.error(e)
-    throw e
+    return e
   }
 }
 
@@ -26,13 +26,23 @@ export const getNextFeedAPI = async num => {
     return res
   } catch (e) {
     console.error(e)
-    throw e
+    return e
   }
 }
 
 export const reportFeedAPI = async id => {
   try {
     const res = await instance.delete(`/post/${id}/report`)
+    return res
+  } catch (e) {
+    console.error(e)
+    return e
+  }
+}
+
+export const postFeedAPI = async () => {
+  try {
+    const res = await instance.post(`/post`)
     return res
   } catch (e) {
     console.error(e)
