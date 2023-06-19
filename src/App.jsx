@@ -7,7 +7,12 @@ import ProfileEdit from 'pages/ProfileEdit'
 import SignIn from 'pages/SignIn'
 import SignUp from 'pages/SignUp'
 import NotFound from 'pages/NotFound'
+import Home from 'pages/Home'
 import { getLoginCookie } from 'utils/loginCookie'
+import ProductList from 'pages/ProductList'
+import ProductCreate from 'pages/ProductCreate'
+import ProductDetail from 'pages/ProductDetail'
+import FeedCreate from 'pages/FeedCreate'
 
 const App = () => {
   const PublicRoutes = () => {
@@ -28,8 +33,13 @@ const App = () => {
         </Route>
         {/* Private Route */}
         <Route element={<PrivateRoutes />}>
-          <Route path='/' element={<FeedList />} />
-          <Route path='/detail' element={<FeedDetail />} />
+          <Route path='/' element={<Home />} />
+          <Route path='/product' element={<ProductList />} />
+          <Route path='/product/edit' element={<ProductCreate />} />
+          <Route path='/product/detail/:id' element={<ProductDetail />} />
+          <Route path='/feed' element={<FeedList />} />
+          <Route path='/feed/edit' element={<FeedCreate />} />
+          <Route path='/feed/detail/:id' element={<FeedDetail />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/profile/edit' element={<ProfileEdit />} />
         </Route>
