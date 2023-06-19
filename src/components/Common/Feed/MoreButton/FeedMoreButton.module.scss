@@ -1,10 +1,45 @@
+@import 'styles/global.scss';
 .more {
   width: 3.2rem;
   height: 3.2rem;
-  padding: 2rem;
-  border-radius: 50%;
   background: url('/assets/img/icon-more.svg') center/ 3rem 3rem no-repeat;
   &:hover {
     opacity: 0.5;
+  }
+}
+.menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: #fff;
+  right: 0;
+  top: 3.2rem;
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  overflow: hidden;
+  z-index: 500;
+  animation: fadeIn 0.5s forwards;
+  transition: opacity 0.1s;
+  li {
+    &:not(:last-child) {
+      border-bottom: 1px solid $color-c4c4c4;
+    }
+  }
+  li > button {
+    width: 10rem;
+    font-size: 1.4rem;
+    padding: 1rem;
+    text-align: center;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

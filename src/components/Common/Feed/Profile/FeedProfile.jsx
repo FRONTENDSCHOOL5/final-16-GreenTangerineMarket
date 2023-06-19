@@ -11,14 +11,12 @@ const FeedProfile = ({ author }) => {
   }
   return (
     <Link to={`/profile/${author.accountname}`} className={s.profile}>
-      {
-        <img
-          src={!profileImageError ? author.image : defaultProfile}
-          onError={handleProfileImageError}
-          alt={`${author.accountname} 프로필 이미지`}
-          className={s.profileImg}
-        />
-      }
+      <img
+        src={author.image && !profileImageError ? author.image : defaultProfile}
+        onError={handleProfileImageError}
+        alt={`${author.accountname} 프로필 이미지`}
+        className={s.profileImg}
+      />
       <div className={s.author}>
         <p className={s.user}>{author.username}</p>
         <p className={s.account}>@{author.accountname}</p>

@@ -6,6 +6,6 @@ export const getProductListAPI = async () => {
     return res
   } catch (e) {
     console.error(e)
-    return null
+    return e
   }
 }

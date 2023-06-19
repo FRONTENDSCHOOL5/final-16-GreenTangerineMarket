@@ -6,6 +6,15 @@ export const getFeedInfoAPI = async id => {
     return res
   } catch (e) {
     console.error(e)
-    return null
+    return e
+  }
+}
+export const reportFeedAPI = async id => {
+  try {
+    const res = await instance.delete(`/post/${id}/report`)
+    return res
+  } catch (e) {
+    console.error(e)
+    return e
   }
 }
