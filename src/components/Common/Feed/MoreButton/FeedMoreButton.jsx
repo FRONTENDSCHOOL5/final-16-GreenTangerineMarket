@@ -19,11 +19,8 @@ const FeedMoreButton = ({ id, author }) => {
 
   useEffect(() => {
     const handleOutsideClick = e => {
-      if (!menuRef.current && moreButtonRef.current.contains(e.target)) {
-        setShowMenu(true)
-      } else if (showMenu && menuRef.current && !menuRef.current.contains(e.target)) {
-        setShowMenu(false)
-      }
+      if (!menuRef.current && moreButtonRef.current.contains(e.target)) setShowMenu(true)
+      else if (showMenu && menuRef.current && !menuRef.current.contains(e.target)) setShowMenu(false)
     }
     const handleEscapeKeyDown = e => {
       if (e.keyCode === 27) {

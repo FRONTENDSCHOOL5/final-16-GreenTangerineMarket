@@ -1,6 +1,7 @@
 @import 'styles/global.scss';
 .container {
   display: flex;
+  position: relative;
   .button {
     display: flex;
     align-items: center;
