@@ -1,0 +1,15 @@
+.up {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 99;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  .icon {
+    position: absolute;
+    top: -1rem;
+    left: -0.8rem;
+  }
+}
