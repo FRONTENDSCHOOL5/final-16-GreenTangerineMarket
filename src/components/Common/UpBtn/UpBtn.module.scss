@@ -1,4 +1,4 @@
-.up {
+.upDisplay {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
@@ -7,9 +7,13 @@
   outline: none;
   cursor: pointer;
 
-  .icon {
+  .imageUp {
     position: absolute;
     top: -1rem;
     left: -0.8rem;
   }
+}
+
+.upNonDiplay {
+  display: none;
 }
