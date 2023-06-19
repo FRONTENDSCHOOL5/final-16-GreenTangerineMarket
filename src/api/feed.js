@@ -20,9 +20,9 @@ export const getFeedListAPI = async () => {
   }
 }
 
-export const getNextFeedAPI = async num => {
+export const getNextFeedAPI = async () => {
   try {
-    const res = await instance.get(`/post/?limit=10&skip=${num}`)
+    const res = await instance.get('/post/?limit=10&skip=20')
     return res
   } catch (e) {
     console.error(e)
