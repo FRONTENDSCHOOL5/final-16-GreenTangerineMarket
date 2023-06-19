@@ -42,11 +42,20 @@ const SignInForm = () => {
 
   return (
     <form className={s.form} ref={formRef}>
-      <SignInput name='email' text='이메일' type='email' error={emailError} setError={setEmailError} required={true} />
+      <SignInput
+        name='email'
+        text='이메일'
+        type='email'
+        initialValue=''
+        error={emailError}
+        setError={setEmailError}
+        required={true}
+      />
       <SignInput
         name='password'
         text='비밀번호'
         type='password'
+        initialValue=''
         pattern={PASSWORD_REGEX}
         error={passwordError}
         setError={setPasswordError}

@@ -11,12 +11,12 @@ import {
   signUpPassWordErroAtom,
   signUpUserNameErroAtom,
 } from 'recoil/atom/signup'
-import basicProfileImg from 'assets/img/basic-profile-img.svg'
-import SignInput from 'components/Sign/common/SignInput/SignInput'
 import { MediumButton, MediumButtonDisabled } from 'components/Common/Button/Medium/MediumButton'
-import { signUpAPI } from 'api/user'
-import { PASSWORD_REGEX, USERNAME_REGEX } from 'constants/REGEX'
+import SignInput from 'components/Sign/common/SignInput/SignInput'
 import ProfileImageInputBox from 'components/Common/InputBox/ProfileImageInputBox/ProfileImageInputBox'
+import { PASSWORD_REGEX, ACCOUNTNAME_REGEX } from 'constants/REGEX'
+import basicProfileImg from 'assets/img/basic-profile-img.svg'
+import { signUpAPI } from 'api/user'
 
 const SignUpForm = () => {
   const formRef = useRef()
@@ -32,25 +32,16 @@ const SignUpForm = () => {
 
   const handleSignUpRequest = async () => {
     const { email, password, username, accountname, intro } = formRef.current.elements
-    if (!emailError.isError && !passwordError.isError && !accountNameError.isError && !userNameError.isError) {
-      const res = await signUpAPI({
-        username: username.value,
-        email: email.value,
-        password: password.value,
-        accountname: accountname.value,
-        intro: intro.value,
-        image: profileImage,
-      })
+    const res = await signUpAPI({
+      username: username.value,
+      email: email.value,
+      password: password.value,
+      accountname: accountname.value,
+      intro: intro.value,
+      image: profileImage,
+    })
 
-      if (res.response.status === 200) navigate('/signin')
-      else {
-        email.focus()
-        password.focus()
-        accountname.focus()
-        username.focus()
-        username.blur()
-      }
-    }
+    if (res.status === 200) navigate('/signin')
   }
 
   useEffect(() => {
@@ -62,11 +53,20 @@ const SignUpForm = () => {
   return (
     <form className={s.form} ref={formRef}>
       <ProfileImageInputBox image={profileImage} setImage={setProfileImage} />
-      <SignInput name='email' text='이메일' type='email' error={emailError} setError={setEmailError} required={true} />
+      <SignInput
+        name='email'
+        text='이메일'
+        type='email'
+        initialValue=''
+        error={emailError}
+        setError={setEmailError}
+        required={true}
+      />
       <SignInput
         name='password'
         text='비밀번호'
         type='password'
+        initialValue=''
         error={passwordError}
         setError={setPasswordError}
         pattern={PASSWORD_REGEX}
@@ -76,19 +76,29 @@ const SignUpForm = () => {
         name='accountname'
         text='계정 ID'
         type='text'
+        initialValue=''
         error={accountNameError}
         setError={setAccountNameError}
+        pattern={ACCOUNTNAME_REGEX}
         required={true}
       />
       <SignInput
         name='username'
         text='사용자 이름'
         type='text'
+        initialValue=''
         error={userNameError}
         setError={setUserNameError}
-        pattern={USERNAME_REGEX}
+        required={true}
       />
-      <SignInput name='intro' text='소개 [선택]' type='text' error={introError} setError={setIntroError} />
+      <SignInput
+        name='intro'
+        text='소개 [선택]'
+        type='text'
+        initialValue=''
+        error={introError}
+        setError={setIntroError}
+      />
       {btnFlag ? (
         <MediumButton onClickEvent={handleSignUpRequest}>회원가입</MediumButton>
       ) : (
