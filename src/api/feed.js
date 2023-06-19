@@ -20,12 +20,22 @@ export const getFeedListAPI = async () => {
   }
 }
 
-export const getNextFeedAPI = async () => {
+export const getNextFeedAPI = async num => {
   try {
-    const res = await instance.get('/post/?limit=10&skip=20')
+    const res = await instance.get(`/post/?limit=10&skip=${num}`)
     return res
   } catch (e) {
     console.error(e)
     throw e
+  }
+}
+
+export const reportFeedAPI = async id => {
+  try {
+    const res = await instance.delete(`/post/${id}/report`)
+    return res
+  } catch (e) {
+    console.error(e)
+    return e
   }
 }
