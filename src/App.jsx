@@ -35,10 +35,10 @@ const App = () => {
         <Route element={<PrivateRoutes />}>
           <Route path='/' element={<Home />} />
           <Route path='/product' element={<ProductList />} />
-          <Route path='/product/edit' element={<ProductCreate />} />
+          <Route path='/product/create' element={<ProductCreate />} />
           <Route path='/product/detail/:id' element={<ProductDetail />} />
           <Route path='/feed' element={<FeedList />} />
-          <Route path='/feed/edit' element={<FeedCreate />} />
+          <Route path='/feed/create' element={<FeedCreate />} />
           <Route path='/feed/detail/:id' element={<FeedDetail />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/profile/edit' element={<ProfileEdit />} />

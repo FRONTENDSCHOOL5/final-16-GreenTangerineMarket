@@ -11,7 +11,7 @@ const ProductHeader = () => {
   const navigate = useNavigate()
 
   const goCreater = () => {
-    navigate('/product/edit')
+    navigate('/product/create')
   }
 
   return (

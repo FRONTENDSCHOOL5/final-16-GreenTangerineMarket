@@ -11,7 +11,7 @@ const ListHeader = () => {
   const navigate = useNavigate()
 
   const goCreater = () => {
-    navigate('/feed/edit')
+    navigate('/feed/create')
   }
 
   return (
