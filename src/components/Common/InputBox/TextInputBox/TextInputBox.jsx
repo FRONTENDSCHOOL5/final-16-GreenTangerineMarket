@@ -1,9 +1,12 @@
-import useInput from 'hooks/useInput'
+import useFormInput from 'hooks/useFormInput'
 
 import s from './TextInputBox.module.scss'
+import useCheckValidation from 'hooks/useCheckValidation'
 
-const TextInputBox = ({ name, type, text, error }) => {
-  const [value, handleChangeValue] = useInput('')
+const TextInputBox = ({ initialValue, name, type, text, required, pattern, error, setError }) => {
+  const [value, handleChangeValue] = useFormInput(initialValue, name, setError)
+  const { isError, errorMessage } = error
+  const handleOnBlurEvent = useCheckValidation().handleOnBlurEvent
 
   return (
     <div className={s.container}>
@@ -12,14 +15,15 @@ const TextInputBox = ({ name, type, text, error }) => {
         <input
           name={name}
           type={type}
-          className={s.input}
+          className={errorMessage ? `${s.input} ${s.error}` : `${s.input}`}
           value={value}
           onChange={handleChangeValue}
-          data-value={value}
-          required
+          onBlur={() => handleOnBlurEvent({ value, name, setError })}
+          pattern={pattern}
+          required={required}
         />
       </label>
-      {error && error.isError && <strong className={s.errorMesaage}>{error.errorMessage}</strong>}
+      <strong className={s.errorMessage}>{isError && errorMessage}</strong>
     </div>
   )
 }

@@ -4,13 +4,13 @@ import { useRecoilState, useSetRecoilState } from 'recoil'
 
 import s from './SignInForm.module.scss'
 
-import { loginAPI } from 'api/user'
-import { PASSWORD_REGEX } from 'constants/REGEX'
-import { setLoginCookie } from 'utils/loginCookie'
+import TextInputBox from 'components/Common/InputBox/TextInputBox/TextInputBox'
 import { MediumButton, MediumButtonDisabled } from 'components/Common/Button/Medium/MediumButton'
-import SignInput from 'components/Sign/common/SignInput/SignInput'
-import { signInEmailErroAtom, signInPassWordErroAtom } from 'recoil/atom/signin'
 import { myInfoAtom } from 'recoil/atom/user'
+import { signInEmailErroAtom, signInPassWordErroAtom } from 'recoil/atom/signin'
+import { PASSWORD_REGEX } from 'constants/REGEX'
+import { loginAPI } from 'api/user'
+import { setLoginCookie } from 'utils/loginCookie'
 
 const SignInForm = () => {
   const navigate = useNavigate()
@@ -42,7 +42,7 @@ const SignInForm = () => {
 
   return (
     <form className={s.form} ref={formRef}>
-      <SignInput
+      <TextInputBox
         name='email'
         text='이메일'
         type='email'
@@ -51,7 +51,7 @@ const SignInForm = () => {
         setError={setEmailError}
         required={true}
       />
-      <SignInput
+      <TextInputBox
         name='password'
         text='비밀번호'
         type='password'

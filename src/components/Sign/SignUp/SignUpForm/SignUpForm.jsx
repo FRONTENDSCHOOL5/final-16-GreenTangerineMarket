@@ -12,8 +12,8 @@ import {
   signUpUserNameErroAtom,
 } from 'recoil/atom/signup'
 import { MediumButton, MediumButtonDisabled } from 'components/Common/Button/Medium/MediumButton'
-import SignInput from 'components/Sign/common/SignInput/SignInput'
 import ProfileImageInputBox from 'components/Common/InputBox/ProfileImageInputBox/ProfileImageInputBox'
+import TextInputBox from 'components/Common/InputBox/TextInputBox/TextInputBox'
 import { PASSWORD_REGEX, ACCOUNTNAME_REGEX } from 'constants/REGEX'
 import basicProfileImg from 'assets/img/basic-profile-img.svg'
 import { signUpAPI } from 'api/user'
@@ -53,7 +53,7 @@ const SignUpForm = () => {
   return (
     <form className={s.form} ref={formRef}>
       <ProfileImageInputBox image={profileImage} setImage={setProfileImage} />
-      <SignInput
+      <TextInputBox
         name='email'
         text='이메일'
         type='email'
@@ -62,7 +62,7 @@ const SignUpForm = () => {
         setError={setEmailError}
         required={true}
       />
-      <SignInput
+      <TextInputBox
         name='password'
         text='비밀번호'
         type='password'
@@ -72,7 +72,7 @@ const SignUpForm = () => {
         pattern={PASSWORD_REGEX}
         required={true}
       />
-      <SignInput
+      <TextInputBox
         name='accountname'
         text='계정 ID'
         type='text'
@@ -82,7 +82,7 @@ const SignUpForm = () => {
         pattern={ACCOUNTNAME_REGEX}
         required={true}
       />
-      <SignInput
+      <TextInputBox
         name='username'
         text='사용자 이름'
         type='text'
@@ -91,7 +91,7 @@ const SignUpForm = () => {
         setError={setUserNameError}
         required={true}
       />
-      <SignInput
+      <TextInputBox
         name='intro'
         text='소개 [선택]'
         type='text'

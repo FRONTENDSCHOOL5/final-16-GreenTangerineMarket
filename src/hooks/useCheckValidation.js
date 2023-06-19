@@ -54,7 +54,17 @@ const useCheckValidation = () => {
     else setNoneError(setError)
   }
 
-  return { checkEmailValidation, checkPasswordValidation, checkAccountNameValidation, checkUserNameValidation }
+  const handleOnBlurEvent = ({ value, name, setError }) => {
+    if (name !== 'intro') value === '' && setValueIsNullState({ name, setError })
+  }
+
+  return {
+    checkEmailValidation,
+    checkPasswordValidation,
+    checkAccountNameValidation,
+    checkUserNameValidation,
+    handleOnBlurEvent,
+  }
 }
 
 export default useCheckValidation
