@@ -1,3 +1,5 @@
+import s from './Profile.module.scss'
+
 import Footer from 'components/Common/Footer/Footer'
 import Header from 'components/Common/Header/Header'
 import ProfileInfo from 'components/Profile/Info/ProfileInfo'
@@ -7,7 +9,7 @@ const Profile = () => {
   return (
     <>
       <Header />
-      <main>
+      <main class={s.main}>
         <ProfileInfo />
         <ProfileItemList />
       </main>

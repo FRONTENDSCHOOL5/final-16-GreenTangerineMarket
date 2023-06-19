@@ -7,9 +7,10 @@ import s from './ProfileInfo.module.scss'
 
 import { getProfileInfoAPI } from 'api/profile'
 import ProfileImage from 'components/Common/Feed/ProfileImage/ProfileImage'
-import { MsmallButton } from 'components/Common/Button/Msmall/MsmallButton'
 import FollowButton from '../Follow/FollowButton'
 import UnfollowButton from '../Follow/UnfollowButton'
+import ProfileEdit from '../Edit/ProfileEdit'
+import ProfileMenu from '../Menu/ProfileMenu'
 
 const ProfileInfo = () => {
   const [isMyProfile, setIsMyProfile] = useState(false)
@@ -26,7 +27,7 @@ const ProfileInfo = () => {
       console.log(res)
     }
     getProfileData()
-  }, [])
+  }, [accountname])
   const handleProfileEditClick = () => {}
   const updateProfileData = data => {
     setProfileData(data)
@@ -35,23 +36,34 @@ const ProfileInfo = () => {
 
   return (
     <>
-      {profileData ? (
-        <section>
-          <ProfileImage image={profileData.image} name={profileData.accountname} />
-          <p>{profileData.accountname}</p>
-          <p>{profileData.username}</p>
-          <p>{profileData.intro}</p>
-          <p>팔로워 : {profileData.followerCount}</p>
-          <p>팔로우 : {profileData.followingCount}</p>
+      {profileData && (
+        <section className={s.container}>
+          {isMyProfile && <ProfileMenu />}
+          <div className={s.followInfo}>
+            <div className={s.follow}>
+              <p className={s.text}>팔로워</p>
+              <p className={s.count}>{profileData.followerCount}</p>
+              <span className='a11y-hidden'>명</span>
+            </div>
+            <ProfileImage image={profileData.image} name={profileData.accountname} className={s.image} />
+            <div className={s.follow}>
+              <p className={s.text}>팔로우</p>
+              <p className={s.count}>{profileData.followingCount}</p>
+              <span className='a11y-hidden'>명</span>
+            </div>
+          </div>
+          <p className={s.username}>{profileData.username}</p>
+          <p className={s.accountname}>@{profileData.accountname}</p>
+          <p className={s.intro}>{profileData.intro}</p>
           {isMyProfile ? (
-            <MsmallButton onClickEvent={handleProfileEditClick}>프로필 수정</MsmallButton>
+            <ProfileEdit />
           ) : isFollow ? (
             <UnfollowButton accountname={profileData.accountname} updateProfileData={updateProfileData} />
           ) : (
             <FollowButton accountname={profileData.accountname} updateProfileData={updateProfileData} />
           )}
         </section>
-      ) : null}
+      )}
     </>
   )
 }

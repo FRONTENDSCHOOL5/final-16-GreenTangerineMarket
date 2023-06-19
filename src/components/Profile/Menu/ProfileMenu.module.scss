@@ -1,0 +1,39 @@
+@import 'styles/global.scss';
+.menu {
+  width: 4rem;
+  height: 4rem;
+  background: url('/assets/img/icon-more.svg') center/ 3.5rem 3.5rem no-repeat;
+  &:hover {
+    opacity: 0.5;
+  }
+  position: absolute;
+  right: 0;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: #fff;
+  right: 0;
+  top: 4rem;
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  overflow: hidden;
+  z-index: 500;
+  animation: fadeIn 0.5s forwards;
+  transition: opacity 0.1s;
+  li {
+    &:not(:last-child) {
+      border-bottom: 1px solid $color-c4c4c4;
+    }
+  }
+  li > button {
+    width: 10rem;
+    font-size: 1.6rem;
+    padding: 1rem;
+    text-align: center;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+}

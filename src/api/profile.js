@@ -10,6 +10,16 @@ export const getProfileInfoAPI = async accountname => {
   }
 }
 
+export const getMyProfileInfoAPI = async () => {
+  try {
+    const res = await instance.get('/user/myinfo')
+    return res
+  } catch (e) {
+    console.error(e)
+    return e
+  }
+}
+
 export const followProfileAPI = async accountname => {
   try {
     const res = await instance.post(`/profile/${accountname}/follow`)
