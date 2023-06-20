@@ -1,0 +1,18 @@
+@import 'styles/global.scss';
+
+.card {
+  margin: 2rem 0;
+  .title {
+    font-size: 3rem;
+  }
+
+  p {
+    font-size: 2rem;
+  }
+}
+
+.section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}

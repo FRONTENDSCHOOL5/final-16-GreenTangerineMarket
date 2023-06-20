@@ -1,12 +1,19 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
-import s from './Header.module.scss'
+import s from './ProductHeader.module.scss'
 
 import logoImg from 'assets/img/logo_char.svg'
 import user from 'assets/img/icon-user.svg'
 import search from 'assets/img/icon-search.svg'
+import { SmallButton } from '../Button/Small/SmallButton'
 
-const Header = () => {
+const ProductHeader = () => {
+  const navigate = useNavigate()
+
+  const goCreater = () => {
+    navigate('/product/create')
+  }
+
   return (
     <header className={s.header}>
       <div className={s.hContainer}>
@@ -29,6 +36,9 @@ const Header = () => {
                 <p>마이페이지</p>
               </Link>
             </li>
+            <li>
+              <SmallButton onClickEvent={goCreater}>상품등록</SmallButton>
+            </li>
           </ul>
         </nav>
       </div>
@@ -36,4 +46,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default ProductHeader
