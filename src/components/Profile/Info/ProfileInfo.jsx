@@ -12,13 +12,12 @@ import UnfollowButton from '../Follow/UnfollowButton'
 import ProfileEditButton from '../EditButton/ProfileEditButton'
 import ProfileMenu from '../Menu/ProfileMenu'
 
-const ProfileInfo = () => {
+const ProfileInfo = ({ accountname }) => {
   const [isMyProfile, setIsMyProfile] = useState(false)
   const [profileData, setProfileData] = useState(null)
   const [isFollow, setIsFollow] = useState(false)
   const [updateFlag, setUpdateFlag] = useState(false)
   const myInfo = useRecoilValue(myInfoAtom)
-  const { accountname } = useParams()
   useEffect(() => {
     setIsMyProfile(myInfo.accountname === accountname)
     const getProfileData = async () => {

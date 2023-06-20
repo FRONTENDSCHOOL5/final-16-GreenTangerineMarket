@@ -15,7 +15,7 @@
       flex-direction: column;
       align-items: center;
       .text {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
         color: $color-767676;
       }
       .count {
@@ -24,19 +24,19 @@
       }
     }
     .image {
-      width: 20rem;
-      height: 20rem;
+      width: 15rem;
+      height: 15rem;
       border: 1px solid $color-c4c4c4;
       border-radius: 50%;
       margin: 0 5rem;
     }
   }
   .username {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
   }
   .accountname {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     color: $color-767676;
   }
   .intro {
