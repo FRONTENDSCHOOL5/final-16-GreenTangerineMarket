@@ -1,13 +1,16 @@
 import { Link, useNavigate } from 'react-router-dom'
 
 import s from './ProductHeader.module.scss'
+import { useRecoilValue } from 'recoil'
 
 import logoImg from 'assets/img/logo_char.svg'
 import user from 'assets/img/icon-user.svg'
 import search from 'assets/img/icon-search.svg'
 import { SmallButton } from '../Button/Small/SmallButton'
+import { myInfoAtom } from 'recoil/atom/user'
 
 const ProductHeader = () => {
+  const myInfo = useRecoilValue(myInfoAtom)
   const navigate = useNavigate()
 
   const goCreater = () => {
@@ -31,7 +34,7 @@ const ProductHeader = () => {
               </Link>
             </li>
             <li>
-              <Link to='/'>
+              <Link to={`/profile/${myInfo.accountname}`}>
                 <img src={user} alt='마이페이지로 이동하는 검은색 사람 상체 아이콘 입니다.' />
                 <p>마이페이지</p>
               </Link>

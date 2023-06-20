@@ -5,8 +5,11 @@ import s from './Header.module.scss'
 import logoImg from 'assets/img/logo_char.svg'
 import user from 'assets/img/icon-user.svg'
 import search from 'assets/img/icon-search.svg'
+import { useRecoilValue } from 'recoil'
+import { myInfoAtom } from 'recoil/atom/user'
 
 const Header = () => {
+  const myInfo = useRecoilValue(myInfoAtom)
   return (
     <header className={s.header}>
       <div className={s.hContainer}>
@@ -24,7 +27,7 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link to='/'>
+              <Link to={`/profile/${myInfo.accountname}`}>
                 <img src={user} alt='마이페이지로 이동하는 검은색 사람 상체 아이콘 입니다.' />
                 <p>마이페이지</p>
               </Link>
