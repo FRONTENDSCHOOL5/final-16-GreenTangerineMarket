@@ -6,6 +6,11 @@
   color: #fff;
   background: $color-main;
 }
+.smallButtonDisable {
+  @include smallButtonCS;
+  color: #fff;
+  background: $color-c4c4c4;
+}
 .smallWhiteButton {
   @include smallButtonCS;
   color: #767676;
