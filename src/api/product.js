@@ -9,3 +9,13 @@ export const getProductListAPI = async () => {
     return e
   }
 }
+
+export const getNextProductAPI = async num => {
+  try {
+    const res = await instance.get(`/product/?limit=10&skip=${num}`)
+    return res
+  } catch (e) {
+    console.error(e)
+    return e
+  }
+}

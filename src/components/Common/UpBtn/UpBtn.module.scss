@@ -1,0 +1,19 @@
+.upDisplay {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 99;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  .imageUp {
+    position: absolute;
+    top: -1rem;
+    left: -0.8rem;
+  }
+}
+
+.upNonDiplay {
+  display: none;
+}
