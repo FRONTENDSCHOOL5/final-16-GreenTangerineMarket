@@ -26,7 +26,6 @@ export const verifyEmailAPI = async ({ email }) => {
     const res = await instance.post('/user/emailvalid', { user: { email } })
     return res
   } catch (err) {
-    console.error(err)
     return err
   }
 }
