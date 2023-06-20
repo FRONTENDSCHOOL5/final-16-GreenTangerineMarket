@@ -9,7 +9,7 @@ import { getProfileInfoAPI } from 'api/profile'
 import ProfileImage from 'components/Common/Feed/ProfileImage/ProfileImage'
 import FollowButton from '../Follow/FollowButton'
 import UnfollowButton from '../Follow/UnfollowButton'
-import ProfileEdit from '../Edit/ProfileEdit'
+import ProfileEditButton from '../EditButton/ProfileEditButton'
 import ProfileMenu from '../Menu/ProfileMenu'
 
 const ProfileInfo = () => {
@@ -58,7 +58,7 @@ const ProfileInfo = () => {
           <p className={s.accountname}>@{profileData.accountname}</p>
           <p className={s.intro}>{profileData.intro}</p>
           {isMyProfile ? (
-            <ProfileEdit handleProfileUpdate={updateMyProfile} />
+            <ProfileEditButton handleProfileUpdate={updateMyProfile} />
           ) : isFollow ? (
             <UnfollowButton accountname={profileData.accountname} updateProfileData={updateProfileData} />
           ) : (

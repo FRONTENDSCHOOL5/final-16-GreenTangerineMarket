@@ -4,7 +4,7 @@ import { getMyProfileInfoAPI } from 'api/profile'
 import { MsmallButton } from 'components/Common/Button/Msmall/MsmallButton'
 import ProfileEditModal from '../EditModal/ProfileEditModal'
 
-const ProfileEdit = ({ handleProfileUpdate }) => {
+const ProfileEditButton = ({ handleProfileUpdate }) => {
   const [myInfo, setMyInfo] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
   useEffect(() => {
@@ -35,4 +35,4 @@ const ProfileEdit = ({ handleProfileUpdate }) => {
   )
 }
 
-export default ProfileEdit
+export default ProfileEditButton

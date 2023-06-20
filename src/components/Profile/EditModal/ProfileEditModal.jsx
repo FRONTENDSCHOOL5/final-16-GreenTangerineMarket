@@ -1,21 +1,20 @@
-import { MsmallButton, MsmallButtonDisable, MsmallWhiteButton } from 'components/Common/Button/Msmall/MsmallButton'
-import s from './ProfileEditModal.module.scss'
-
-import ProfileImageInputBox from 'components/Common/InputBox/ProfileImageInputBox/ProfileImageInputBox'
-import TextInputBox from 'components/Common/InputBox/TextInputBox/TextInputBox'
 import { useEffect, useRef, useState } from 'react'
-import { ACCOUNTNAME_REGEX } from 'constants/REGEX'
-import { verifyAccountNameAPI } from 'api/user'
-import { ALREADY_EXSIST_ACCOUNTNAME, UNSPECIFIED_CHAR_ACCOUNTNAME } from 'constants/SIGN_ERROR'
-import { editMyProfileInfoAPI } from 'api/profile'
 import { useSetRecoilState } from 'recoil'
-import { myInfoAtom } from 'recoil/atom/user'
-import getToastStyle from 'utils/getToastStyle'
 import { toast } from 'react-hot-toast'
 import { useNavigate } from 'react-router'
+
+import s from './ProfileEditModal.module.scss'
+
+import { editMyProfileInfoAPI } from 'api/profile'
+import ProfileImageInputBox from 'components/Common/InputBox/ProfileImageInputBox/ProfileImageInputBox'
+import TextInputBox from 'components/Common/InputBox/TextInputBox/TextInputBox'
+import { ACCOUNTNAME_REGEX } from 'constants/REGEX'
+import { myInfoAtom } from 'recoil/atom/user'
+import getToastStyle from 'utils/getToastStyle'
 import { SmallButton, SmallButtonDisable, SmallWhiteButton } from 'components/Common/Button/Small/SmallButton'
 
 const ProfileEditModal = ({ myInfo, closeModal, handleProfileUpdate }) => {
+  const modalRef = useRef()
   const formRef = useRef()
 
   const [profileImage, setProfileImage] = useState(myInfo.image)
@@ -26,7 +25,9 @@ const ProfileEditModal = ({ myInfo, closeModal, handleProfileUpdate }) => {
   const setMyInfoAtom = useSetRecoilState(myInfoAtom)
   const navigate = useNavigate()
 
-  const handleOutsideClick = e => {}
+  const handleOutsideClick = e => {
+    if (e.target === modalRef.current) closeModal()
+  }
   const handleProfileUploadClick = async () => {
     const { accountname, username, intro } = formRef.current.elements
     const res = await editMyProfileInfoAPI({
@@ -44,11 +45,23 @@ const ProfileEditModal = ({ myInfo, closeModal, handleProfileUpdate }) => {
     }
   }
   useEffect(() => {
+    const handleEscapeKeyDown = e => {
+      if (e.keyCode === 27) {
+        closeModal()
+        e.target.blur()
+      }
+    }
+    document.addEventListener('keydown', handleEscapeKeyDown)
+    return () => {
+      document.removeEventListener('keydown', handleEscapeKeyDown)
+    }
+  })
+  useEffect(() => {
     if (!accountNameError.isError && !userNameError.isError) setBtnFlag(true)
     else setBtnFlag(false)
   }, [accountNameError, userNameError])
   return (
-    <div className={s.modal} onClick={handleOutsideClick}>
+    <div className={s.modal} ref={modalRef} onClick={handleOutsideClick}>
       <form ref={formRef} className={s.container}>
         <p className={s.title}>프로필 수정</p>
         <ProfileImageInputBox initialImage={profileImage} setImage={setProfileImage} />
