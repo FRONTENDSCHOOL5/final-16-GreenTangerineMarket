@@ -4,7 +4,7 @@ import { ALREADY_EXSIST_ACCOUNTNAME, ALREADY_EXSIST_EMAIL, SIGN_NAME_ERROR } fro
 import { verifyAccountNameAPI, verifyEmailAPI } from 'api/user'
 
 const useCheckValidation = () => {
-  const location = useLocation()
+  const pathname = useLocation().pathname
 
   const setValueIsNullState = ({ name, setError }) =>
     setError({ isError: true, errorMessage: `${SIGN_NAME_ERROR[name]}을(를) 입력해주세요` })
@@ -17,16 +17,15 @@ const useCheckValidation = () => {
     if (value === '') setValueIsNullState({ name, setError })
     else if (!valid) setOutOfPattern({ name, setError })
     else {
-      const res = await verifyEmailAPI({ email: value })
+      if (pathname === '/signin') setNoneError(setError)
+      else if (pathname === '/signup') {
+        const res = await verifyEmailAPI({ email: value })
 
-      if (res.response) setOutOfPattern({ name, setError })
-      else {
-        if (location.pathname === '/signup')
+        if (res.response) setOutOfPattern({ name, setError })
+        else {
           res.data.message === ALREADY_EXSIST_EMAIL
             ? setError({ isError: true, errorMessage: ALREADY_EXSIST_EMAIL })
             : setNoneError(setError)
-        else if (location.pathname === '/signin') {
-          setNoneError(setError)
         }
       }
     }
@@ -34,8 +33,12 @@ const useCheckValidation = () => {
 
   const checkPasswordValidation = ({ valid, value, name, setError }) => {
     if (value === '') setValueIsNullState({ name, setError })
-    else if (!valid) setOutOfPattern({ name, setError })
-    else setNoneError(setError)
+    else {
+      if (pathname === '/signin') setNoneError(setError)
+      else if (pathname === '/signup') {
+        !valid ? setOutOfPattern({ name, setError }) : setNoneError(setError)
+      }
+    }
   }
 
   const checkAccountNameValidation = async ({ valid, value, name, setError, initialValue }) => {
