@@ -16,6 +16,7 @@ const ProfileInfo = () => {
   const [isMyProfile, setIsMyProfile] = useState(false)
   const [profileData, setProfileData] = useState(null)
   const [isFollow, setIsFollow] = useState(false)
+  const [updateFlag, setUpdateFlag] = useState(false)
   const myInfo = useRecoilValue(myInfoAtom)
   const { accountname } = useParams()
   useEffect(() => {
@@ -24,14 +25,15 @@ const ProfileInfo = () => {
       const res = await getProfileInfoAPI(accountname)
       setProfileData(res)
       setIsFollow(res.isfollow)
-      console.log(res)
     }
     getProfileData()
-  }, [accountname])
-  const handleProfileEditClick = () => {}
+  }, [accountname, updateFlag])
   const updateProfileData = data => {
     setProfileData(data)
     setIsFollow(!isFollow)
+  }
+  const updateMyProfile = () => {
+    setUpdateFlag(!updateFlag)
   }
 
   return (
@@ -56,7 +58,7 @@ const ProfileInfo = () => {
           <p className={s.accountname}>@{profileData.accountname}</p>
           <p className={s.intro}>{profileData.intro}</p>
           {isMyProfile ? (
-            <ProfileEdit />
+            <ProfileEdit handleProfileUpdate={updateMyProfile} />
           ) : isFollow ? (
             <UnfollowButton accountname={profileData.accountname} updateProfileData={updateProfileData} />
           ) : (

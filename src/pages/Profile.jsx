@@ -9,7 +9,7 @@ const Profile = () => {
   return (
     <>
       <Header />
-      <main class={s.main}>
+      <main className={s.main}>
         <ProfileInfo />
         <ProfileItemList />
       </main>
