@@ -9,11 +9,11 @@ import { Link } from 'react-router-dom'
 const HomeProduct = () => {
   const [products, setProducts] = useState([])
   useEffect(() => {
-    const getPorductList = async () => {
+    const getProductList = async () => {
       const res = await getProductListAPI()
       setProducts(res.data.product)
     }
-    getPorductList()
+    getProductList()
   }, [])
   return (
     <section>
