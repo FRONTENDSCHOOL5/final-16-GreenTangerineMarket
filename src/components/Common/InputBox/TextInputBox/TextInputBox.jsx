@@ -1,6 +1,7 @@
 import useFormInput from 'hooks/useFormInput'
 
 import s from './TextInputBox.module.scss'
+
 import useCheckValidation from 'hooks/useCheckValidation'
 
 const TextInputBox = ({ initialValue = '', name, type, text, required, pattern, error, setError }) => {
@@ -21,6 +22,7 @@ const TextInputBox = ({ initialValue = '', name, type, text, required, pattern, 
           onBlur={() => handleOnBlurEvent({ value, name, setError })}
           pattern={pattern}
           required={required}
+          autoComplete='off'
         />
       </label>
       <strong className={s.errorMessage}>{isError && errorMessage}</strong>
