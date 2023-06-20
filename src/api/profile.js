@@ -20,6 +20,15 @@ export const getMyProfileInfoAPI = async () => {
   }
 }
 
+export const editMyProfileInfoAPI = async ({ username, accountname, intro, image }) => {
+  try {
+    const res = await instance.put('/user', { user: { username, accountname, intro, image } })
+    return res
+  } catch (e) {
+    console.error(e)
+    return e
+  }
+}
 export const followProfileAPI = async accountname => {
   try {
     const res = await instance.post(`/profile/${accountname}/follow`)
