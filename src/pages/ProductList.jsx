@@ -1,19 +1,11 @@
-import s from './ProductList.module.scss'
-
-import Footer from 'components/Common/Footer/Footer'
-import ProductItemList from 'components/Common/Product/ProductItemeList/ProductItemList'
-import ProductHeader from 'components/Common/Header/ProductHeader'
+import ProductItemList from 'components/ProductList/ProductItemList/ProductItemList'
+import MainLayout from 'components/Common/Layout/Main/MainLayout'
 
 const ProductList = () => {
   return (
-    <>
-      <ProductHeader />
-      <main className={s.main}>
-        <ProductItemList />
-      </main>
-
-      <Footer />
-    </>
+    <MainLayout>
+      <ProductItemList />
+    </MainLayout>
   )
 }
 

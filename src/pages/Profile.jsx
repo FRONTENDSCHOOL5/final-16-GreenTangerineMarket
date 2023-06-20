@@ -1,20 +1,16 @@
-import s from './Profile.module.scss'
+import { useParams } from 'react-router'
 
-import Footer from 'components/Common/Footer/Footer'
-import Header from 'components/Common/Header/Header'
+import MainLayout from 'components/Common/Layout/Main/MainLayout'
 import ProfileInfo from 'components/Profile/Info/ProfileInfo'
 import ProfileItemList from 'components/Profile/ItemList/ProfileItemList'
 
 const Profile = () => {
+  const { accountname } = useParams()
   return (
-    <>
-      <Header />
-      <main className={s.main}>
-        <ProfileInfo />
-        <ProfileItemList />
-      </main>
-      <Footer />
-    </>
+    <MainLayout>
+      <ProfileInfo accountname={accountname} />
+      <ProfileItemList accountname={accountname} />
+    </MainLayout>
   )
 }
 
