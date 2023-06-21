@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
+import { useRecoilValue } from 'recoil'
 
 import s from './ProfileProductList.module.scss'
 
 import { getUserProductList } from 'api/product'
 import InfiniteScroll from 'components/Common/InfiniteScroll/InfiniteScroll'
 import ProductCard from 'components/Common/Product/Card/ProductCard'
-import { useRecoilValue } from 'recoil'
 import { myInfoAtom } from 'recoil/atom/user'
 import ProfileNoItem from '../NoItem/ProfileNoItem'
 

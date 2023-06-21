@@ -1,7 +1,9 @@
-import { LargeButton } from 'components/Common/Button/Large/LargeButton'
+import { useNavigate } from 'react-router-dom'
+
 import s from './NotFoundPage.module.scss'
+
+import { LargeButton } from 'components/Common/Button/Large/LargeButton'
 import img from 'assets/img/icon-404.png'
-import { useNavigate } from 'react-router-dom/dist'
 
 const NotFoundPage = () => {
   const navigate = useNavigate()

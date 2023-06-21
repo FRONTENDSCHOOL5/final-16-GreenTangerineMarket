@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 import s from './HomeProduct.module.scss'
 
 import { getProductListAPI } from 'api/product'
 import ProductCard from 'components/Common/Product/Card/ProductCard'
-import { Link } from 'react-router-dom'
 
 const HomeProduct = () => {
   const [products, setProducts] = useState([])

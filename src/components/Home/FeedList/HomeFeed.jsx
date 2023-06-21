@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import s from './HomeFeed.module.scss'
 
 import FeedCard from 'components/Common/Feed/Card/FeedCard'
 import { getFeedListAPI } from 'api/feed'
-import { Link } from 'react-router-dom'
 
 const HomeFeed = () => {
   const [feeds, setFeeds] = useState([])

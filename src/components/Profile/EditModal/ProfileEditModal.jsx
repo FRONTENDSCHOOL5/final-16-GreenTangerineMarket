@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useSetRecoilState } from 'recoil'
 import { toast } from 'react-hot-toast'
-import { useNavigate } from 'react-router'
+import { useNavigate } from 'react-router-dom'
 
 import s from './ProfileEditModal.module.scss'
 

@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
+import { useRecoilValue } from 'recoil'
+
 import s from './ProfileFeedList.module.scss'
+
 import { getUserFeedList } from 'api/feed'
 import InfiniteScroll from 'components/Common/InfiniteScroll/InfiniteScroll'
 import FeedCard from 'components/Common/Feed/Card/FeedCard'
-import { useRecoilValue } from 'recoil'
 import { myInfoAtom } from 'recoil/atom/user'
 import ProfileNoItem from '../NoItem/ProfileNoItem'
 
