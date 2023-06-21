@@ -1,16 +1,16 @@
 import { useParams } from 'react-router'
 
-import MainLayout from 'components/Common/Layout/Main/MainLayout'
 import ProfileInfo from 'components/Profile/Info/ProfileInfo'
 import ProfileItemList from 'components/Profile/ItemList/ProfileItemList'
+import ListLayout from 'components/Common/Layout/List/ListLayout'
 
 const Profile = () => {
   const { accountname } = useParams()
   return (
-    <MainLayout>
+    <ListLayout name=''>
       <ProfileInfo accountname={accountname} />
       <ProfileItemList accountname={accountname} />
-    </MainLayout>
+    </ListLayout>
   )
 }
 

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import s from './ProfileFeedList.module.scss'
 import { getUserFeedList } from 'api/feed'
 import InfiniteScroll from 'components/Common/InfiniteScroll/InfiniteScroll'
@@ -16,21 +16,27 @@ const ProfileFeedList = ({ accountname }) => {
       }
     }
   }
+  useEffect(() => {
+    setUserFeeds([])
+    setIsMoreData(true)
+  }, [accountname])
   return (
     <InfiniteScroll loadData={loadUserFeeds}>
       {userFeeds.length ? (
-        userFeeds.map(feed => {
-          return (
-            <FeedCard
-              key={feed.id}
-              id={feed.id}
-              author={feed.author}
-              content={feed.content}
-              image={feed.image}
-              time={feed.createdAt}
-            />
-          )
-        })
+        <div className={s.container}>
+          {userFeeds.map(feed => {
+            return (
+              <FeedCard
+                key={feed.id}
+                id={feed.id}
+                author={feed.author}
+                content={feed.content}
+                image={feed.image}
+                time={feed.createdAt}
+              />
+            )
+          })}
+        </div>
       ) : (
         <div>게시글을 등록하세요</div>
       )}

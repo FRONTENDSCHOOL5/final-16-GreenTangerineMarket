@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import s from './ProfileProductList.module.scss'
 
@@ -17,21 +17,27 @@ const ProfileProductList = ({ accountname }) => {
       }
     }
   }
+  useEffect(() => {
+    setUserProducts([])
+    setIsMoreData(true)
+  }, [accountname])
   return (
     <InfiniteScroll loadData={loadUserProducts}>
       {userProducts.length ? (
-        userProducts.map(product => {
-          return (
-            <ProductCard
-              key={product.id}
-              id={product.id}
-              image={product.itemImage}
-              name={product.itemName}
-              price={product.price}
-              time={product.createdAt}
-            />
-          )
-        })
+        <div className={s.container}>
+          {userProducts.map(product => {
+            return (
+              <ProductCard
+                key={product.id}
+                id={product.id}
+                image={product.itemImage}
+                name={product.itemName}
+                price={product.price}
+                time={product.createdAt}
+              />
+            )
+          })}
+        </div>
       ) : (
         <div>게시글을 등록하세요</div>
       )}
