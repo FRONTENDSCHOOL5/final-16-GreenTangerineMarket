@@ -12,6 +12,7 @@ import { ACCOUNTNAME_REGEX } from 'constants/REGEX'
 import { myInfoAtom } from 'recoil/atom/user'
 import getToastStyle from 'utils/getToastStyle'
 import { SmallButton, SmallButtonDisable, SmallWhiteButton } from 'components/Common/Button/Small/SmallButton'
+import { handleUploadImageAPI } from 'utils/handleUploadImage'
 
 const ProfileEditModal = ({ myInfo, closeModal, handleProfileUpdate }) => {
   const modalRef = useRef()
@@ -28,13 +29,14 @@ const ProfileEditModal = ({ myInfo, closeModal, handleProfileUpdate }) => {
   const handleOutsideClick = e => {
     if (e.target === modalRef.current) closeModal()
   }
-  const handleProfileUploadClick = async () => {
+  const handleEdit = async data => {
     const { accountname, username, intro } = formRef.current.elements
+    setProfileImage(data)
     const res = await editMyProfileInfoAPI({
       username: username.value,
       accountname: accountname.value,
       intro: intro.value,
-      image: profileImage,
+      image: data,
     })
     if (res.status === 200) {
       setMyInfoAtom({ accountname: accountname.value })
@@ -42,6 +44,13 @@ const ProfileEditModal = ({ myInfo, closeModal, handleProfileUpdate }) => {
       closeModal()
       handleProfileUpdate()
       toast('프로필이 수정되었습니다', { style: getToastStyle() })
+    }
+  }
+  const handleProfileUploadClick = async () => {
+    const { image } = formRef.current.elements
+    if (image.files.length !== 0) await handleUploadImageAPI({ images: image.files, setImageFile: handleEdit })
+    else {
+      handleEdit(profileImage)
     }
   }
   useEffect(() => {
@@ -64,7 +73,7 @@ const ProfileEditModal = ({ myInfo, closeModal, handleProfileUpdate }) => {
     <div className={s.modal} ref={modalRef} onClick={handleOutsideClick}>
       <form ref={formRef} className={s.container}>
         <p className={s.title}>프로필 수정</p>
-        <ProfileImageInputBox initialImage={profileImage} setImage={setProfileImage} />
+        <ProfileImageInputBox initialImage={profileImage} />
         <TextInputBox
           initialValue={myInfo.accountname}
           name='accountname'
