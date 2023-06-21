@@ -1,7 +1,7 @@
 @import 'styles/global.scss';
 
 .card {
-  margin: 2rem 0;
+  margin-bottom: 3rem;
   .title {
     font-size: 3rem;
   }
@@ -13,6 +13,6 @@
 
 .section {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(36rem, 1fr));
   gap: 1rem;
 }

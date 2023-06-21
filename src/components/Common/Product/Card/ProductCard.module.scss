@@ -1,9 +1,9 @@
 @import 'styles/global.scss';
 
 .card {
-  width: 38rem;
-  min-width: 38rem;
-  height: 49rem;
+  width: 32rem;
+  min-width: 32rem;
+  height: 42rem;
   background-color: #fff;
   .link {
     display: inline-block;
@@ -23,7 +23,7 @@
     }
     .wrapper {
       width: 100%;
-      height: 38rem;
+      height: 32rem;
       margin-bottom: 1rem;
       border-radius: 1rem;
       border: 1px solid $color-c4c4c4;
