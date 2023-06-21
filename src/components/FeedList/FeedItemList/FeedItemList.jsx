@@ -22,7 +22,6 @@ const FeedItemList = () => {
       <div>
         <section className={s.section}>
           {feeds.map(feed => {
-            console.log(feed)
             return (
               <FeedCard
                 key={feed._id}

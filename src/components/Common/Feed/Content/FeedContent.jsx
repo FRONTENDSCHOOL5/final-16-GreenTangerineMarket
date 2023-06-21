@@ -15,7 +15,7 @@ const FeedContent = ({ id, image, content }) => {
   }
 
   return (
-    <Link to={`/FeedDetail/${id}`} className={s.link}>
+    <Link to={`/Feed/detail/${id}`} className={s.link}>
       <div className={s.wrapper}>
         {
           <img
