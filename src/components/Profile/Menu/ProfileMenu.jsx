@@ -15,8 +15,8 @@ const ProfileMenu = () => {
     navigate('/feed/create')
   }
 
-  const handleRegisterProduct = () => {
-    navigate('/product/register')
+  const handleCreateProduct = () => {
+    navigate('/product/create')
   }
   const handleLogout = () => {
     localStorage.removeItem('recoil-persist')
@@ -52,7 +52,7 @@ const ProfileMenu = () => {
             <button onClick={handleCreateFeed}>피드작성</button>
           </li>
           <li>
-            <button onClick={handleRegisterProduct}>상품등록</button>
+            <button onClick={handleCreateProduct}>상품등록</button>
           </li>
           <li>
             <button onClick={handleLogout}>로그아웃</button>
