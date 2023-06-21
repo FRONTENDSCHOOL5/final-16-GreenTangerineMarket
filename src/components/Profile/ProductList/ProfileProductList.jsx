@@ -5,8 +5,13 @@ import s from './ProfileProductList.module.scss'
 import { getUserProductList } from 'api/product'
 import InfiniteScroll from 'components/Common/InfiniteScroll/InfiniteScroll'
 import ProductCard from 'components/Common/Product/Card/ProductCard'
+import { useRecoilValue } from 'recoil'
+import { myInfoAtom } from 'recoil/atom/user'
+import ProfileNoItem from '../NoItem/ProfileNoItem'
 
 const ProfileProductList = ({ accountname }) => {
+  const myInfo = useRecoilValue(myInfoAtom)
+  const [isMyProfile, setIsMyProfile] = useState(myInfo.accountname === accountname)
   const [userProducts, setUserProducts] = useState([])
   const [isMoreData, setIsMoreData] = useState(true)
   const loadUserProducts = async page => {
@@ -20,15 +25,16 @@ const ProfileProductList = ({ accountname }) => {
   useEffect(() => {
     setUserProducts([])
     setIsMoreData(true)
+    setIsMyProfile(myInfo.accountname === accountname)
   }, [accountname])
   return (
     <InfiniteScroll loadData={loadUserProducts}>
       {userProducts.length ? (
         <div className={s.container}>
-          {userProducts.map(product => {
+          {userProducts.map((product, index) => {
             return (
               <ProductCard
-                key={product.id}
+                key={product.id + index}
                 id={product.id}
                 image={product.itemImage}
                 name={product.itemName}
@@ -38,8 +44,10 @@ const ProfileProductList = ({ accountname }) => {
             )
           })}
         </div>
+      ) : isMyProfile ? (
+        <ProfileNoItem item='product' action='add' />
       ) : (
-        <div>게시글을 등록하세요</div>
+        <ProfileNoItem item='product' />
       )}
     </InfiniteScroll>
   )

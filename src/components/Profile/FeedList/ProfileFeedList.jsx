@@ -3,8 +3,13 @@ import s from './ProfileFeedList.module.scss'
 import { getUserFeedList } from 'api/feed'
 import InfiniteScroll from 'components/Common/InfiniteScroll/InfiniteScroll'
 import FeedCard from 'components/Common/Feed/Card/FeedCard'
+import { useRecoilValue } from 'recoil'
+import { myInfoAtom } from 'recoil/atom/user'
+import ProfileNoItem from '../NoItem/ProfileNoItem'
 
 const ProfileFeedList = ({ accountname }) => {
+  const myInfo = useRecoilValue(myInfoAtom)
+  const [isMyProfile, setIsMyProfile] = useState(accountname === myInfo.accountname)
   const [userFeeds, setUserFeeds] = useState([])
   const [isMoreData, setIsMoreData] = useState(true)
   const loadUserFeeds = async page => {
@@ -22,6 +27,7 @@ const ProfileFeedList = ({ accountname }) => {
   useEffect(() => {
     setUserFeeds([])
     setIsMoreData(true)
+    setIsMyProfile(accountname === myInfo.accountname)
   }, [accountname])
   return (
     <InfiniteScroll loadData={loadUserFeeds} change={accountname}>
@@ -40,8 +46,10 @@ const ProfileFeedList = ({ accountname }) => {
             )
           })}
         </div>
+      ) : isMyProfile ? (
+        <ProfileNoItem item='feed' action='add' />
       ) : (
-        <div>게시글을 등록하세요</div>
+        <ProfileNoItem item='feed' />
       )}
     </InfiniteScroll>
   )
