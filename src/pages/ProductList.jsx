@@ -1,11 +1,11 @@
+import ListLayout from 'components/Common/Layout/List/ListLayout'
 import ProductItemList from 'components/ProductList/ProductItemList/ProductItemList'
-import MainLayout from 'components/Common/Layout/Main/MainLayout'
 
 const ProductList = () => {
   return (
-    <MainLayout>
+    <ListLayout link='/product/create' name='상품등록'>
       <ProductItemList />
-    </MainLayout>
+    </ListLayout>
   )
 }
 

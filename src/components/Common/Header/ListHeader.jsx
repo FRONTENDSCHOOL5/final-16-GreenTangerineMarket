@@ -9,12 +9,12 @@ import search from 'assets/img/icon-search.svg'
 import { SmallButton } from '../Button/Small/SmallButton'
 import { myInfoAtom } from 'recoil/atom/user'
 
-const ListHeader = () => {
+const ListHeader = ({ link, name }) => {
   const myInfo = useRecoilValue(myInfoAtom)
   const navigate = useNavigate()
 
   const goCreater = () => {
-    navigate('/feed/create')
+    navigate(link)
   }
 
   return (
@@ -39,9 +39,11 @@ const ListHeader = () => {
                 <p>마이페이지</p>
               </Link>
             </li>
-            <li>
-              <SmallButton onClickEvent={goCreater}>글쓰기</SmallButton>
-            </li>
+            {name && (
+              <li>
+                <SmallButton onClickEvent={goCreater}>{name}</SmallButton>
+              </li>
+            )}
           </ul>
         </nav>
       </div>
