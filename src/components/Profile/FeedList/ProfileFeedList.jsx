@@ -11,7 +11,11 @@ const ProfileFeedList = ({ accountname }) => {
     if (isMoreData) {
       const res = await getUserFeedList({ num: page * 10, accountname: accountname })
       if (res.status === 200) {
-        !res.data.post.length ? setIsMoreData(false) : setUserFeeds([...userFeeds, ...res.data.post])
+        !res.data.post.length
+          ? setIsMoreData(false)
+          : page === 0
+          ? setUserFeeds([...res.data.post])
+          : setUserFeeds([...userFeeds, ...res.data.post])
       }
     }
   }
@@ -20,13 +24,13 @@ const ProfileFeedList = ({ accountname }) => {
     setIsMoreData(true)
   }, [accountname])
   return (
-    <InfiniteScroll loadData={loadUserFeeds}>
+    <InfiniteScroll loadData={loadUserFeeds} change={accountname}>
       {userFeeds.length ? (
         <div className={s.container}>
-          {userFeeds.map(feed => {
+          {userFeeds.map((feed, index) => {
             return (
               <FeedCard
-                key={feed.id}
+                key={feed.id + index}
                 id={feed.id}
                 author={feed.author}
                 content={feed.content}

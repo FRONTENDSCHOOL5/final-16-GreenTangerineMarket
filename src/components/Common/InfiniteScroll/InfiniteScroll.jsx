@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import _ from 'lodash'
 
 import UpBtn from '../UpBtn/UpBtn'
 
-const InfiniteScroll = ({ children, loadData }) => {
+const InfiniteScroll = ({ children, loadData, change = '' }) => {
   const [page, setPage] = useState(0)
 
   const handleLoadItem = () => {
@@ -17,7 +17,7 @@ const InfiniteScroll = ({ children, loadData }) => {
     }
   }, 1000)
 
-  const handleScrollEvent = React.useCallback(handleScroll)
+  const handleScrollEvent = useCallback(handleScroll)
   useEffect(() => {
     window.addEventListener('scroll', handleScrollEvent)
     return () => {
@@ -28,6 +28,10 @@ const InfiniteScroll = ({ children, loadData }) => {
   useEffect(() => {
     handleLoadItem()
   }, [page])
+  useEffect(() => {
+    if (page !== 0) setPage(0)
+    else handleLoadItem()
+  }, [change])
   return (
     <>
       {children}
