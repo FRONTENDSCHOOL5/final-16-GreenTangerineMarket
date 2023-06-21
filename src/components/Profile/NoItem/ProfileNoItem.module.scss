@@ -17,4 +17,9 @@
     justify-content: center;
     gap: 2rem;
   }
+  > button {
+    &:hover {
+      opacity: 0.5;
+    }
+  }
 }
