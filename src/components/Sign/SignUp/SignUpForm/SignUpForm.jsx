@@ -17,31 +17,41 @@ import TextInputBox from 'components/Common/InputBox/TextInputBox/TextInputBox'
 import { PASSWORD_REGEX, ACCOUNTNAME_REGEX } from 'constants/REGEX'
 import { signUpAPI } from 'api/user'
 import { handlePressEnterKey } from 'utils/handlePressEnterKey'
+import { handleUploadImageAPI } from 'utils/handleUploadImage'
 
 const SignUpForm = () => {
+  const navigate = useNavigate()
+
   const formRef = useRef()
-  const [image, setImage] = useState('')
+  const [imageFile, setImageFile] = useState('')
   const [emailError, setEmailError] = useRecoilState(signUpEmailErroAtom)
   const [passwordError, setPasswordError] = useRecoilState(signUpPassWordErroAtom)
   const [accountNameError, setAccountNameError] = useRecoilState(signUpAccountNameErroAtom)
   const [userNameError, setUserNameError] = useRecoilState(signUpUserNameErroAtom)
   const [introError, setIntroError] = useRecoilState(signUpIntroErroAtom)
-  const [btnFlag, setBtnFlag] = useState(false)
 
-  const navigate = useNavigate()
+  const [btnFlag, setBtnFlag] = useState(true)
+  const [progressingSignUp, setProgressingSignUp] = useState(false)
 
   const handleSignUpRequest = async () => {
-    const { email, password, username, accountname, intro } = formRef.current.elements
-    const res = await signUpAPI({
+    const { email, password, username, accountname, intro, image } = formRef.current.elements
+    setProgressingSignUp(true)
+
+    await handleUploadImageAPI({ images: image.files, setImageFile })
+    const resSignUpAPI = await signUpAPI({
       username: username.value,
       email: email.value,
       password: password.value,
       accountname: accountname.value,
       intro: intro.value,
-      image: image,
+      image: imageFile,
     })
 
-    if (res.status === 200) navigate('/signin')
+    if (resSignUpAPI.status === 200) {
+      setProgressingSignUp(false)
+      setBtnFlag(false)
+      navigate('/signin')
+    }
   }
 
   useEffect(() => {
@@ -52,7 +62,7 @@ const SignUpForm = () => {
 
   return (
     <form className={s.form} ref={formRef} onKeyDown={e => btnFlag && handlePressEnterKey(e, handleSignUpRequest)}>
-      <ProfileImageInputBox setImage={setImage} />
+      <ProfileImageInputBox />
       <TextInputBox
         name='email'
         text='이메일'
@@ -88,10 +98,10 @@ const SignUpForm = () => {
         required={true}
       />
       <TextInputBox name='intro' text='소개 [선택]' type='text' error={introError} setError={setIntroError} />
-      {btnFlag ? (
+      {btnFlag && !progressingSignUp ? (
         <MediumButton onClickEvent={handleSignUpRequest}>회원가입</MediumButton>
       ) : (
-        <MediumButtonDisabled>회원가입</MediumButtonDisabled>
+        <MediumButtonDisabled>{!progressingSignUp ? '회원가입' : '회원가입 진행 중'}</MediumButtonDisabled>
       )}
       <Link to='/signin' className={s.link}>
         로그인 하러가기
