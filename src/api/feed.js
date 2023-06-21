@@ -40,9 +40,14 @@ export const reportFeedAPI = async id => {
   }
 }
 
-export const postFeedAPI = async () => {
+export const postFeedAPI = async ({ content, image }) => {
   try {
-    const res = await instance.post(`/post`)
+    const res = await instance.post('/post', {
+      post: {
+        content,
+        image,
+      },
+    })
     return res
   } catch (e) {
     console.error(e)
