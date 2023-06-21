@@ -1,13 +1,13 @@
 @mixin gridFeed {
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(auto-fit, minmax(36rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(36rem, 1fr));
   gap: 2rem;
 }
 
 @mixin gridProduct {
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(32rem, 1fr));
   gap: 2rem;
 }
