@@ -10,7 +10,6 @@ const ProfileFeedList = ({ accountname }) => {
   const loadUserFeeds = async page => {
     if (isMoreData) {
       const res = await getUserFeedList({ num: page * 10, accountname: accountname })
-      console.log(res)
       if (res.status === 200) {
         !res.data.post.length ? setIsMoreData(false) : setUserFeeds([...userFeeds, ...res.data.post])
       }

@@ -1,4 +1,5 @@
 @import 'styles/global.scss';
+@import 'styles/mixin.scss';
 
 .card {
   margin-bottom: 3rem;
@@ -12,7 +13,5 @@
 }
 
 .section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(36rem, 1fr));
-  gap: 1rem;
+  @include gridFeed;
 }

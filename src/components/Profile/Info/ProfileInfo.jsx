@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useRecoilValue } from 'recoil'
 import { myInfoAtom } from 'recoil/atom/user'
-import { useParams } from 'react-router'
 
 import s from './ProfileInfo.module.scss'
 
