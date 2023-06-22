@@ -1,5 +1,11 @@
+import FeedDetailPage from 'components/FeedDetail/FeedDetail'
+
 const FeedDetail = () => {
-  return <div></div>
+  return (
+    <div>
+      <FeedDetailPage />
+    </div>
+  )
 }
 
 export default FeedDetail

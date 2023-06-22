@@ -1,0 +1,61 @@
+@import 'styles/global.scss';
+
+.feedImg {
+  display: block;
+  margin: 0rem auto;
+  padding: 1rem;
+  width: 25rem;
+  height: 25rem;
+}
+.container {
+  width: 115rem;
+  height: auto;
+  border: 0.1rem solid $color-c4c4c4;
+  border-radius: 1rem;
+  margin: 0 auto;
+  margin-top: 2rem;
+
+  .line {
+    border: 0;
+    width: 110rem;
+    background-color: $color-c4c4c4;
+    border-top: 1px solid $color-c4c4c4;
+  }
+
+  .detailContent {
+    margin: 3rem;
+    height: 50rem;
+  }
+  .comment {
+    display: flex;
+  }
+  .commentTitle {
+    font-size: 2rem;
+    margin: 3rem;
+  }
+  .feedAction {
+    margin: 3rem;
+    margin-left: auto;
+  }
+
+  .commentInput {
+    display: block;
+    width: 110rem;
+    height: 8rem;
+    margin: 0rem auto;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    border: 0.1rem solid $color-c4c4c4;
+    border-radius: 1.5rem;
+  }
+
+  .commentBox {
+    width: 110rem;
+    height: 20rem;
+    margin: 0rem auto;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    border: 0.1rem solid $color-c4c4c4;
+    border-radius: 1.5rem;
+  }
+}

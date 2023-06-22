@@ -49,3 +49,36 @@ export const postFeedAPI = async () => {
     return e
   }
 }
+
+export const getCommentsInFeedAPI = async post_id => {
+  try {
+    const res = await instance.get(`/post/${post_id}/comments`)
+    return res
+  } catch (e) {
+    return e
+  }
+}
+
+export const postCommentsAPI = async ({ id, content }) => {
+  try {
+    console.log(content)
+    const res = await instance.post(`/post/${id}/comments`, {
+      comment: {
+        content,
+      },
+    })
+    return res
+  } catch (e) {
+    return e
+  }
+}
+
+export const deletePostAPI = async ({ post_id }) => {
+  try {
+    const res = await instance.delete(`/post/${post_id}`)
+    return res
+  } catch (e) {
+    return e
+  }
+}
+// deletePostAPI({post_id: FeedDetail.post_id})
