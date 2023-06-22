@@ -17,7 +17,6 @@ import { handleUploadImageAPI } from 'utils/handleUploadImage'
 const ProfileEditModal = ({ myInfo, closeModal, handleProfileUpdate }) => {
   const modalRef = useRef()
   const formRef = useRef()
-
   const [profileImage, setProfileImage] = useState(myInfo.image)
   const [accountNameError, setAccountNameError] = useState('')
   const [userNameError, setUserNameError] = useState('')
@@ -29,6 +28,7 @@ const ProfileEditModal = ({ myInfo, closeModal, handleProfileUpdate }) => {
   const handleOutsideClick = e => {
     if (e.target === modalRef.current) closeModal()
   }
+
   const handleEdit = async data => {
     const { accountname, username, intro } = formRef.current.elements
     setProfileImage(data)
@@ -46,6 +46,7 @@ const ProfileEditModal = ({ myInfo, closeModal, handleProfileUpdate }) => {
       toast('프로필이 수정되었습니다', { style: getToastStyle() })
     }
   }
+
   const handleProfileUploadClick = async () => {
     const { image } = formRef.current.elements
     if (image.files.length !== 0) await handleUploadImageAPI({ images: image.files, setImageFile: handleEdit })
@@ -53,9 +54,10 @@ const ProfileEditModal = ({ myInfo, closeModal, handleProfileUpdate }) => {
       handleEdit(profileImage)
     }
   }
+
   useEffect(() => {
     const handleEscapeKeyDown = e => {
-      if (e.keyCode === 27) {
+      if (e.key === 'Escape') {
         closeModal()
         e.target.blur()
       }
@@ -65,10 +67,12 @@ const ProfileEditModal = ({ myInfo, closeModal, handleProfileUpdate }) => {
       document.removeEventListener('keydown', handleEscapeKeyDown)
     }
   })
+
   useEffect(() => {
     if (!accountNameError.isError && !userNameError.isError) setBtnFlag(true)
     else setBtnFlag(false)
   }, [accountNameError, userNameError])
+
   return (
     <div className={s.modal} ref={modalRef} onClick={handleOutsideClick}>
       <form ref={formRef} className={s.container}>

@@ -5,9 +5,8 @@ import defaultProfile from 'assets/img/default-profile.svg'
 const ProfileImage = ({ image, name, className }) => {
   const [profileImageError, setProfileImageError] = useState(false)
 
-  const handleProfileImageError = e => {
-    setProfileImageError(true)
-  }
+  const handleProfileImageError = () => setProfileImageError(true)
+
   return (
     <img
       src={image && !profileImageError ? image : defaultProfile}

@@ -7,23 +7,21 @@ import ProfileEditModal from '../EditModal/ProfileEditModal'
 const ProfileEditButton = ({ handleProfileUpdate }) => {
   const [myInfo, setMyInfo] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
-  useEffect(() => {
-    const getMyProfileInfo = async () => {
-      const res = await getMyProfileInfoAPI()
-      if (res.status === 200) {
-        setMyInfo(res.data.user)
-      }
+
+  const getMyProfileInfo = async () => {
+    const res = await getMyProfileInfoAPI()
+    if (res.status === 200) {
+      setMyInfo(res.data.user)
     }
+  }
+
+  const handleProfileEditClick = () => setIsModalOpen(true)
+
+  const closeModal = () => setIsModalOpen(false)
+
+  useEffect(() => {
     getMyProfileInfo()
   }, [myInfo])
-
-  const handleProfileEditClick = () => {
-    setIsModalOpen(true)
-  }
-
-  const closeModal = () => {
-    setIsModalOpen(false)
-  }
 
   return (
     <>

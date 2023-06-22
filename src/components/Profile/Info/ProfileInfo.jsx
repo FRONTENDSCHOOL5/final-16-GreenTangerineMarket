@@ -17,15 +17,13 @@ const ProfileInfo = ({ accountname }) => {
   const [isFollow, setIsFollow] = useState(false)
   const [updateFlag, setUpdateFlag] = useState(false)
   const myInfo = useRecoilValue(myInfoAtom)
-  useEffect(() => {
-    setIsMyProfile(myInfo.accountname === accountname)
-    const getProfileData = async () => {
-      const res = await getProfileInfoAPI(accountname)
-      setProfileData(res)
-      setIsFollow(res.isfollow)
-    }
-    getProfileData()
-  }, [accountname, updateFlag])
+
+  const getProfileData = async () => {
+    const res = await getProfileInfoAPI(accountname)
+    setProfileData(res)
+    setIsFollow(res.isfollow)
+  }
+
   const updateProfileData = data => {
     setProfileData(data)
     setIsFollow(!isFollow)
@@ -33,6 +31,11 @@ const ProfileInfo = ({ accountname }) => {
   const updateMyProfile = () => {
     setUpdateFlag(!updateFlag)
   }
+
+  useEffect(() => {
+    setIsMyProfile(myInfo.accountname === accountname)
+    getProfileData()
+  }, [accountname, updateFlag])
 
   return (
     <>

@@ -8,6 +8,7 @@ import FeedMoreButton from '../MoreButton/FeedMoreButton'
 
 const FeedCard = ({ id, author, content, image, time }) => {
   const createTime = formatCreateTime(time)
+
   return (
     <article className={s.card}>
       <header>

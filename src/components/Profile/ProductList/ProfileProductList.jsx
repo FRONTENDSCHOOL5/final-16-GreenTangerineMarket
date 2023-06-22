@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react'
 import { useRecoilValue } from 'recoil'
 
-import s from './ProfileProductList.module.scss'
-
 import { getUserProductList } from 'api/product'
 import InfiniteScroll from 'components/Common/InfiniteScroll/InfiniteScroll'
 import ProductCard from 'components/Common/Product/Card/ProductCard'
+import GridLayout from 'components/Common/Layout/Grid/GridLayout'
 import { myInfoAtom } from 'recoil/atom/user'
 import ProfileNoItem from '../NoItem/ProfileNoItem'
 
@@ -14,6 +13,7 @@ const ProfileProductList = ({ accountname }) => {
   const [isMyProfile, setIsMyProfile] = useState(myInfo.accountname === accountname)
   const [userProducts, setUserProducts] = useState([])
   const [isMoreData, setIsMoreData] = useState(true)
+
   const loadUserProducts = async page => {
     if (isMoreData) {
       const res = await getUserProductList({ num: page * 10, accountname: accountname })
@@ -22,15 +22,17 @@ const ProfileProductList = ({ accountname }) => {
       }
     }
   }
+
   useEffect(() => {
     setUserProducts([])
     setIsMoreData(true)
     setIsMyProfile(myInfo.accountname === accountname)
   }, [accountname])
+
   return (
     <InfiniteScroll loadData={loadUserProducts}>
       {userProducts.length ? (
-        <div className={s.container}>
+        <GridLayout item='product'>
           {userProducts.map((product, index) => {
             return (
               <ProductCard
@@ -43,7 +45,7 @@ const ProfileProductList = ({ accountname }) => {
               />
             )
           })}
-        </div>
+        </GridLayout>
       ) : isMyProfile ? (
         <ProfileNoItem item='product' action='add' />
       ) : (

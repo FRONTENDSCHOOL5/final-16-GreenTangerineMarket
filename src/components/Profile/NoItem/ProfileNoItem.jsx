@@ -7,6 +7,7 @@ import imageAddItem from 'assets/img/add-item.svg'
 
 const ProfileNoItem = ({ item, action = '' }) => {
   const navigate = useNavigate()
+
   const handleAddItemClick = () => {
     navigate(`/${item}/create`)
   }
@@ -15,7 +16,8 @@ const ProfileNoItem = ({ item, action = '' }) => {
       {action ? (
         <button type='button' onClick={handleAddItemClick} className={s.info}>
           <img src={imageAddItem} alt='청귤' />
-          <span>{item === 'feed' ? '피드를' : '상품을'} 등록해보세요</span>
+          <span>등록된 {item === 'feed' ? '피드가' : '상품이'} 없습니다</span>
+          <span className={s.add}>첫 {item === 'feed' ? '피드' : '상품'} 등록하기</span>
         </button>
       ) : (
         <div className={s.info}>

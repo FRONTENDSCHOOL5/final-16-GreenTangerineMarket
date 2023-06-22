@@ -29,7 +29,7 @@ const ProfileMenu = () => {
       else if (showMenu && listRef.current && !listRef.current.contains(e.target)) setShowMenu(false)
     }
     const handleEscapeKeyDown = e => {
-      if (e.keyCode === 27) {
+      if (e.key === 'Escape') {
         setShowMenu(false)
         menuRef.current.blur()
       }

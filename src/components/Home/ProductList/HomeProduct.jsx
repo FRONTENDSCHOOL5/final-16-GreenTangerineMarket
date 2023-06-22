@@ -8,6 +8,7 @@ import ProductCard from 'components/Common/Product/Card/ProductCard'
 
 const HomeProduct = () => {
   const [products, setProducts] = useState([])
+
   useEffect(() => {
     const getProductList = async () => {
       const res = await getProductListAPI()
@@ -15,6 +16,7 @@ const HomeProduct = () => {
     }
     getProductList()
   }, [])
+
   return (
     <section>
       <div className={s.card}>

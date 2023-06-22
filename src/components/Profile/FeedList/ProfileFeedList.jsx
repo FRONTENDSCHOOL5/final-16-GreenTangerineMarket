@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react'
 import { useRecoilValue } from 'recoil'
 
-import s from './ProfileFeedList.module.scss'
-
 import { getUserFeedList } from 'api/feed'
 import InfiniteScroll from 'components/Common/InfiniteScroll/InfiniteScroll'
 import FeedCard from 'components/Common/Feed/Card/FeedCard'
+import GridLayout from 'components/Common/Layout/Grid/GridLayout'
 import { myInfoAtom } from 'recoil/atom/user'
 import ProfileNoItem from '../NoItem/ProfileNoItem'
 
@@ -14,6 +13,7 @@ const ProfileFeedList = ({ accountname }) => {
   const [isMyProfile, setIsMyProfile] = useState(accountname === myInfo.accountname)
   const [userFeeds, setUserFeeds] = useState([])
   const [isMoreData, setIsMoreData] = useState(true)
+
   const loadUserFeeds = async page => {
     if (isMoreData) {
       const res = await getUserFeedList({ num: page * 10, accountname: accountname })
@@ -26,15 +26,17 @@ const ProfileFeedList = ({ accountname }) => {
       }
     }
   }
+
   useEffect(() => {
     setUserFeeds([])
     setIsMoreData(true)
     setIsMyProfile(accountname === myInfo.accountname)
   }, [accountname])
+
   return (
     <InfiniteScroll loadData={loadUserFeeds} change={accountname}>
       {userFeeds.length ? (
-        <div className={s.container}>
+        <GridLayout item='feed'>
           {userFeeds.map((feed, index) => {
             return (
               <FeedCard
@@ -47,7 +49,7 @@ const ProfileFeedList = ({ accountname }) => {
               />
             )
           })}
-        </div>
+        </GridLayout>
       ) : isMyProfile ? (
         <ProfileNoItem item='feed' action='add' />
       ) : (

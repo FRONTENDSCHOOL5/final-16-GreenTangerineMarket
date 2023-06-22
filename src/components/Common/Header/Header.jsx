@@ -10,6 +10,7 @@ import { myInfoAtom } from 'recoil/atom/user'
 
 const Header = () => {
   const myInfo = useRecoilValue(myInfoAtom)
+
   return (
     <header className={s.header}>
       <div className={s.hContainer}>

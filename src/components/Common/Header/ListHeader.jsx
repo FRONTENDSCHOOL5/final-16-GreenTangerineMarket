@@ -13,9 +13,7 @@ const ListHeader = ({ link, name }) => {
   const myInfo = useRecoilValue(myInfoAtom)
   const navigate = useNavigate()
 
-  const goCreater = () => {
-    navigate(link)
-  }
+  const goCreater = () => navigate(link)
 
   return (
     <header className={s.header}>

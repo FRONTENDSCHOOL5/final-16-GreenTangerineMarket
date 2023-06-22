@@ -1,5 +1,4 @@
 @import 'styles/global.scss';
-@import 'styles/mixin.scss';
 
 .card {
   margin-bottom: 3rem;
@@ -10,8 +9,4 @@
   p {
     font-size: 2rem;
   }
-}
-
-.section {
-  @include gridFeed;
 }

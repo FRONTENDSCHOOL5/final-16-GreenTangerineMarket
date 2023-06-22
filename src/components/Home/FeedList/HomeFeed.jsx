@@ -8,6 +8,7 @@ import { getFeedListAPI } from 'api/feed'
 
 const HomeFeed = () => {
   const [feeds, setFeeds] = useState([])
+
   useEffect(() => {
     const getFeedList = async () => {
       const res = await getFeedListAPI()
@@ -15,6 +16,7 @@ const HomeFeed = () => {
     }
     getFeedList()
   }, [])
+
   return (
     <section>
       <div className={s.card}>

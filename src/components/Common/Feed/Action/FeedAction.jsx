@@ -13,11 +13,13 @@ const FeedAction = ({ id }) => {
   const [isLike, setIsLike] = useState(false)
   const [likeCount, setLikeCount] = useState(0)
   const [commentCount, setCommentCount] = useState(0)
-  const handleClick = async e => {
+
+  const handleClick = async () => {
     const res = isLike ? await dislikeAPI(id) : await likeAPI(id)
     setLikeCount(res)
     setIsLike(!isLike)
   }
+
   useEffect(() => {
     const getFeedInfo = async () => {
       const res = await getFeedInfoAPI(id)

@@ -10,9 +10,8 @@ const FeedContent = ({ id, image, content }) => {
   const mainImage = image ? image.split(',', 1) : noImage
   const isMultiImage = image ? image.indexOf(',') !== -1 : false
   const [imageError, setImageError] = useState(false)
-  const handleImageError = e => {
-    setImageError(true)
-  }
+
+  const handleImageError = () => setImageError(true)
 
   return (
     <Link to={`/feed/detail/${id}`} className={s.link}>

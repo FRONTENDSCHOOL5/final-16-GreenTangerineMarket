@@ -6,9 +6,7 @@ import UpBtn from '../UpBtn/UpBtn'
 const InfiniteScroll = ({ children, loadData, change = '' }) => {
   const [page, setPage] = useState(0)
 
-  const handleLoadItem = () => {
-    loadData(page)
-  }
+  const handleLoadItem = () => loadData(page)
 
   const handleScroll = _.throttle(() => {
     const { scrollTop, scrollHeight } = document.documentElement
@@ -18,6 +16,7 @@ const InfiniteScroll = ({ children, loadData, change = '' }) => {
   }, 1000)
 
   const handleScrollEvent = useCallback(handleScroll)
+
   useEffect(() => {
     window.addEventListener('scroll', handleScrollEvent)
     return () => {
@@ -32,6 +31,7 @@ const InfiniteScroll = ({ children, loadData, change = '' }) => {
     if (page !== 0) setPage(0)
     else handleLoadItem()
   }, [change])
+
   return (
     <>
       {children}
