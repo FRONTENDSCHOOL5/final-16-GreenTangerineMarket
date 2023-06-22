@@ -15,7 +15,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
+    .text {
+      margin-top: 2rem;
+    }
   }
   > button {
     &:hover {

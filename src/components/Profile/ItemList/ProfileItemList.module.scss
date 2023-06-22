@@ -13,11 +13,19 @@
       padding: 1rem 3rem;
       font-size: 1.6rem;
       color: $color-c4c4c4;
+      &:hover {
+        border-top: 3px solid $color-767676;
+        color: $color-767676;
+        opacity: 0.5;
+      }
     }
     .show {
       border-top: 3px solid $color-767676;
       color: $color-767676;
       font-weight: 900;
+      &:hover {
+        opacity: 1;
+      }
     }
   }
 }
