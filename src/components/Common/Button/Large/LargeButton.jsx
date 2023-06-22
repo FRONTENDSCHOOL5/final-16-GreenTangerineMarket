@@ -8,6 +8,14 @@ const LargeButton = ({ children, onClickEvent }) => {
   )
 }
 
+const LargeWhiteButton = ({ children, onClickEvent }) => {
+  return (
+    <button type='button' className={s.largeWhiteButton} onClick={onClickEvent}>
+      {children}
+    </button>
+  )
+}
+
 const LargeButtonDisabled = ({ children, onClickEvent }) => {
   return (
     <button type='button' className={s.largeButtonDisabled} onClick={onClickEvent} disabled>
@@ -16,4 +24,4 @@ const LargeButtonDisabled = ({ children, onClickEvent }) => {
   )
 }
 
-export { LargeButton, LargeButtonDisabled }
+export { LargeButton, LargeWhiteButton, LargeButtonDisabled }
