@@ -10,7 +10,6 @@ const ProfileNoItem = ({ item, action = '' }) => {
   const handleAddItemClick = () => {
     navigate(`/${item}/create`)
   }
-  console.log(action)
   return (
     <div className={s.container}>
       {action ? (
