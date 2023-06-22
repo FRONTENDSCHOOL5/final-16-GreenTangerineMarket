@@ -1,5 +1,15 @@
+import Footer from 'components/Common/Footer/Footer'
+import Header from 'components/Common/Header/Header'
+import FeedCreateComponent from 'components/FeedList/FeedCreate/FeedCreateComponent'
+
 const FeedCreate = () => {
-  return <div>피드 생성하는 페이지입니다!</div>
+  return (
+    <>
+      <Header />
+      <FeedCreateComponent />
+      <Footer />
+    </>
+  )
 }
 
 export default FeedCreate

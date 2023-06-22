@@ -1,0 +1,98 @@
+@import 'styles/global.scss';
+
+.section {
+  padding: 2rem 32rem;
+
+  .contentBox {
+    border-radius: 1rem;
+    border: 0.1rem solid $color-main;
+    padding: 1rem;
+
+    font-size: 3rem;
+    > section {
+      margin-bottom: 2rem;
+
+      > h2 {
+        margin-bottom: 1rem;
+      }
+    }
+
+    .title {
+      font-size: 4rem;
+      font-weight: bold;
+    }
+
+    .subTitle {
+      margin-bottom: 2rem;
+    }
+
+    .imageContainer {
+      margin-top: 2rem;
+
+      .imageInput {
+        display: block;
+        border: 0.1rem solid $color-main;
+        border-radius: 1rem;
+        width: 35%;
+        padding: 0.5rem;
+        color: #999999;
+      }
+
+      .imagePreviewContainer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        background-color: #f0f0f0;
+        margin-top: 1rem;
+        border-radius: 1rem;
+
+        .imagePreview {
+          border-radius: 1rem;
+          width: 30rem;
+          height: 30rem;
+          object-fit: cover;
+          margin: 1rem 0;
+        }
+      }
+    }
+
+    .content {
+      width: 90%;
+      display: block;
+      box-sizing: border-box;
+      margin: auto;
+      padding: 1rem;
+      background-color: #f0f0f0;
+      border: none;
+      border-radius: 1rem;
+      resize: none;
+      font-size: 3rem;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .counter {
+      width: 90%;
+      display: block;
+      margin: auto;
+      font-size: 2rem;
+    }
+
+    .a11yHidden {
+      overflow: hidden;
+      position: absolute;
+      clip: rect(0, 0, 0, 0);
+      clip-path: circle(0);
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      border: 0;
+      padding: 0;
+      white-space: nowrap;
+    }
+  }
+}
