@@ -1,48 +1,27 @@
-import React, { useState, useEffect } from 'react'
+import { useState } from 'react'
 import _ from 'lodash'
 
 import s from './ProductItemList.module.scss'
 
 import { getNextProductAPI } from 'api/product'
 import ProductCard from 'components/Common/Product/Card/ProductCard'
-import UpBtn from 'components/Common/UpBtn/UpBtn'
+import InfiniteScroll from 'components/Common/InfiniteScroll/InfiniteScroll'
+import GridLayout from 'components/Common/Layout/Grid/GridLayout'
 
 const ProductItemList = () => {
   const [products, setProducts] = useState([])
 
-  const [page, setPage] = useState(0)
-
-  const handleGetNextProduct = async () => {
+  const loadProduct = async page => {
     const res = await getNextProductAPI(page * 10)
-    setProducts([...products, ...res.data.product])
+    if (res.status === 200) setProducts([...products, ...res.data.product])
   }
-
-  const handleScroll = _.throttle(() => {
-    const { scrollTop, scrollHeight } = document.documentElement
-    if (scrollHeight - window.innerHeight - scrollTop < 200) {
-      setPage(prevPage => prevPage + 1)
-    }
-  }, 1000)
-
-  const handleScrollEvent = React.useCallback(handleScroll)
-  useEffect(() => {
-    window.addEventListener('scroll', handleScrollEvent)
-    return () => {
-      window.removeEventListener('scroll', handleScrollEvent)
-    }
-  }, [])
-
-  useEffect(() => {
-    handleGetNextProduct()
-  }, [page])
-
   return (
-    <>
+    <InfiniteScroll loadData={loadProduct}>
       <div className={s.card}>
         <h2 className={s.title}>최신 상품</h2>
         <p>매일 자정! 새로운 특가!</p>
       </div>
-      <section className={s.section}>
+      <GridLayout item='product'>
         {products.map(product => {
           return (
             <ProductCard
@@ -55,10 +34,8 @@ const ProductItemList = () => {
             />
           )
         })}
-      </section>
-      <UpBtn />
-    </>
+      </GridLayout>
+    </InfiniteScroll>
   )
 }
-
 export default ProductItemList
