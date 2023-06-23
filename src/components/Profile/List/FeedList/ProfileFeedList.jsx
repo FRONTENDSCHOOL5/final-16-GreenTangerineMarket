@@ -15,14 +15,18 @@ const ProfileFeedList = ({ accountname }) => {
   const [isMoreData, setIsMoreData] = useState(true)
 
   const loadUserFeeds = async page => {
+    console.log(userFeeds)
     if (isMoreData) {
       const res = await getUserFeedList({ num: page * 10, accountname: accountname })
       if (res.status === 200) {
-        !res.data.post.length
-          ? setIsMoreData(false)
-          : page === 0
-          ? setUserFeeds([...res.data.post])
-          : setUserFeeds([...userFeeds, ...res.data.post])
+        if (res.data.post.length === 0) setIsMoreData(false)
+        else {
+          if (page === 0) {
+            setUserFeeds(prevUserFeeds => [...res.data.post])
+          } else {
+            setUserFeeds(prevUserFeeds => [...prevUserFeeds, ...res.data.post])
+          }
+        }
       }
     }
   }
