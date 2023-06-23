@@ -3,7 +3,6 @@ import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom
 import FeedList from 'pages/FeedList'
 import FeedDetail from 'pages/FeedDetail'
 import Profile from 'pages/Profile'
-import ProfileEdit from 'pages/ProfileEdit'
 import SignIn from 'pages/SignIn'
 import SignUp from 'pages/SignUp'
 import NotFound from 'pages/NotFound'
@@ -40,8 +39,7 @@ const App = () => {
           <Route path='/feed' element={<FeedList />} />
           <Route path='/feed/create' element={<FeedCreate />} />
           <Route path='/feed/detail/:id' element={<FeedDetail />} />
-          <Route path='/profile' element={<Profile />} />
-          <Route path='/profile/edit' element={<ProfileEdit />} />
+          <Route path='/profile/:accountname' element={<Profile />} />
         </Route>
       </Routes>
     </BrowserRouter>

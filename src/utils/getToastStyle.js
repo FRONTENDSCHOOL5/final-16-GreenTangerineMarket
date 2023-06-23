@@ -6,6 +6,7 @@ const getToastStyle = () => {
     fontSize: '2rem',
     padding: '1rem',
     marginBottom: '2rem',
+    textAlign: 'center',
   }
 }
 

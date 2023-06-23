@@ -1,0 +1,31 @@
+@import 'styles/global.scss';
+.container {
+  margin-top: 5em;
+  .tab {
+    width: 100%;
+    border-top: 1px solid $color-c4c4c4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+    margin-bottom: 5rem;
+    button {
+      padding: 1rem 3rem;
+      font-size: 1.6rem;
+      color: $color-c4c4c4;
+      &:hover {
+        border-top: 3px solid $color-767676;
+        color: $color-767676;
+        opacity: 0.5;
+      }
+    }
+    .show {
+      border-top: 3px solid $color-767676;
+      color: $color-767676;
+      font-weight: 900;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
