@@ -6,8 +6,7 @@ import s from './ProfileFollowListModal.module.scss'
 import { getFollowListAPI } from 'api/profile'
 import Modal from 'components/Common/Modal/Modal'
 import UserListItem from 'components/Common/UserListItem/UserListItem'
-import { SmallButton, SmallWhiteButton } from 'components/Common/Button/Small/SmallButton'
-import { MsmallButton, MsmallWhiteButton } from 'components/Common/Button/Msmall/MsmallButton'
+import { SmallWhiteButton } from 'components/Common/Button/Small/SmallButton'
 
 const ProfileFollowListModal = ({ item, closeModal, accountname }) => {
   const listRef = useRef()
@@ -51,19 +50,21 @@ const ProfileFollowListModal = ({ item, closeModal, accountname }) => {
       <div className={s.container}>
         <p className={s.title}>{item === 'following' ? '팔로우' : '팔로워'} 리스트</p>
         <ul className={s.list} ref={listRef}>
-          {followList.length
-            ? followList.map(follow => {
-                return (
-                  <UserListItem
-                    key={follow._id}
-                    id={follow._id}
-                    image={follow.image}
-                    username={follow.username}
-                    accountname={follow.accountname}
-                  />
-                )
-              })
-            : null}
+          {followList.length ? (
+            followList.map(follow => {
+              return (
+                <UserListItem
+                  key={follow._id}
+                  id={follow._id}
+                  image={follow.image}
+                  username={follow.username}
+                  accountname={follow.accountname}
+                />
+              )
+            })
+          ) : (
+            <p className={s.noUser}>{item === 'following' ? '팔로우하고 있는 유저가 없습니다' : '팔로워가 없습니다'}</p>
+          )}
         </ul>
         <SmallWhiteButton onClickEvent={closeModal}>닫기</SmallWhiteButton>
       </div>
