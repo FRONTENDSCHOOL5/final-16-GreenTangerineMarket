@@ -1,15 +1,5 @@
-import Footer from 'components/Common/Footer/Footer'
-import Header from 'components/Common/Header/Header'
-import ProductCreateComponent from 'components/ProductCreate/ProductCreateComponent'
-
 const ProuctCreate = () => {
-  return (
-    <>
-      <Header />
-      <ProductCreateComponent />
-      <Footer />
-    </>
-  )
+  return <div>상품 올리는 페이지입니다!</div>
 }
 
 export default ProuctCreate

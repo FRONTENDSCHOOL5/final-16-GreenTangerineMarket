@@ -8,6 +8,14 @@ const SmallButton = ({ children, onClickEvent }) => {
   )
 }
 
+const SmallButtonDisable = ({ children }) => {
+  return (
+    <button type='button' className={s.smallButtonDisable} disabled>
+      {children}
+    </button>
+  )
+}
+
 const SmallWhiteButton = ({ children, onClickEvent }) => {
   return (
     <button type='button' className={s.smallWhiteButton} onClick={onClickEvent}>
@@ -16,12 +24,4 @@ const SmallWhiteButton = ({ children, onClickEvent }) => {
   )
 }
 
-const SmallWhiteButtonHover = ({ children, onClickEvent }) => {
-  return (
-    <button type='button' className={s.smallWhiteButtonHover} onClick={onClickEvent}>
-      {children}
-    </button>
-  )
-}
-
-export { SmallButton, SmallWhiteButton, SmallWhiteButtonHover }
+export { SmallButton, SmallButtonDisable, SmallWhiteButton }
