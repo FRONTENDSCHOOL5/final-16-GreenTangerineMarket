@@ -1,5 +1,12 @@
+import ListLayout from 'components/Common/Layout/List/ListLayout'
+import FeedCreateComponent from 'components/FeedCreate/FeedCreateComponent'
+
 const FeedCreate = () => {
-  return <div>피드 생성하는 페이지입니다!</div>
+  return (
+    <ListLayout>
+      <FeedCreateComponent />
+    </ListLayout>
+  )
 }
 
 export default FeedCreate
