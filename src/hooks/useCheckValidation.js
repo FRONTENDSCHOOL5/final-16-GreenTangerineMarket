@@ -41,16 +41,14 @@ const useCheckValidation = () => {
     }
   }
 
-  const checkAccountNameValidation = async ({ valid, value, name, setError, initialValue }) => {
+  const checkAccountNameValidation = async ({ valid, value, name, setError }) => {
     if (value === '') setValueIsNullState({ name, setError })
     else if (!valid) setOutOfPattern({ name, setError })
     else {
-      if (value !== initialValue) {
-        const res = await verifyAccountNameAPI({ accountname: value })
-        if (res.data.message === ALREADY_EXSIST_ACCOUNTNAME)
-          setError({ isError: true, errorMessage: ALREADY_EXSIST_ACCOUNTNAME })
-        else setNoneError(setError)
-      } else setNoneError(setError)
+      const res = await verifyAccountNameAPI({ accountname: value })
+      if (res.data.message === ALREADY_EXSIST_ACCOUNTNAME)
+        setError({ isError: true, errorMessage: ALREADY_EXSIST_ACCOUNTNAME })
+      else setNoneError(setError)
     }
   }
 

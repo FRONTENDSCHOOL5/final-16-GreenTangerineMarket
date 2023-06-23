@@ -1,5 +1,5 @@
 @import 'styles/global.scss';
-@import 'styles/mixin.scss';
+@import '../ButtonMixin.scss';
 
 .msmallButton {
   @include msmallButtonCS;
@@ -10,5 +10,12 @@
   @include msmallButtonCS;
   color: $color-767676;
   border: 1px solid $color-c4c4c4;
+  background: #fff;
+}
+
+.msmallWhiteButtonHover {
+  @include msmallButtonCS;
+  color: #000;
+  border: 1px solid $color-767676;
   background: #fff;
 }

@@ -13,13 +13,11 @@ const FeedAction = ({ id }) => {
   const [isLike, setIsLike] = useState(false)
   const [likeCount, setLikeCount] = useState(0)
   const [commentCount, setCommentCount] = useState(0)
-
-  const handleClick = async () => {
+  const handleClick = async e => {
     const res = isLike ? await dislikeAPI(id) : await likeAPI(id)
     setLikeCount(res)
     setIsLike(!isLike)
   }
-
   useEffect(() => {
     const getFeedInfo = async () => {
       const res = await getFeedInfoAPI(id)
@@ -39,7 +37,7 @@ const FeedAction = ({ id }) => {
         <span className={s.text}>{likeCount}</span>
         <span className='a11y-hidden'>개</span>
       </button>
-      <Link to={`/feed/detail/${id}`} className={s.button}>
+      <Link to={`/feedDetail/${id}`} className={s.button}>
         <img src={commentImg} alt='댓글 수' className={s.image}></img>
         <span className={s.text}>{commentCount}</span>
         <span className='a11y-hidden'>개</span>

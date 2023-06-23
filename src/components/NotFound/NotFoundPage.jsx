@@ -1,9 +1,7 @@
-import { useNavigate } from 'react-router-dom'
-
+import { LargeButton } from 'components/Common/Button/Large/LargeButton'
 import s from './NotFoundPage.module.scss'
-
-import { LargeButton, LargeWhiteButton } from 'components/Common/Button/Large/LargeButton'
 import img from 'assets/img/icon-404.png'
+import { useNavigate } from 'react-router-dom/dist'
 
 const NotFoundPage = () => {
   const navigate = useNavigate()
@@ -25,7 +23,7 @@ const NotFoundPage = () => {
         </p>
         <div className={s.mainButton}>
           <LargeButton onClickEvent={clickMainHome}>메인으로</LargeButton>
-          <LargeWhiteButton onClickEvent={clickBackPage}>이전페이지</LargeWhiteButton>
+          <LargeButton onClickEvent={clickBackPage}>이전페이지</LargeButton>
         </div>
       </section>
     </main>

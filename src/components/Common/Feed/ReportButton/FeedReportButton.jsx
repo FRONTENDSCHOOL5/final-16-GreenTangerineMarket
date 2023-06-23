@@ -9,21 +9,19 @@ import getToastStyle from 'utils/getToastStyle'
 
 const FeedReportButton = ({ id, closeMenu }) => {
   const modalRef = useRef()
-
-  const handleReportClick = () => modalRef.current.showModal()
-
+  const handleReportClick = e => {
+    modalRef.current.showModal()
+  }
   const cancelReport = () => {
     modalRef.current.close()
     closeMenu()
   }
-
   const clickModal = e => {
     if (e.target.nodeName === 'DIALOG') {
       modalRef.current.close()
       closeMenu()
     }
   }
-
   const reportFeed = async () => {
     const res = await reportFeedAPI(id)
     if (res.status === 200) {
@@ -34,7 +32,6 @@ const FeedReportButton = ({ id, closeMenu }) => {
     modalRef.current.close()
     closeMenu()
   }
-
   return (
     <>
       <button type='button' onClick={handleReportClick}>

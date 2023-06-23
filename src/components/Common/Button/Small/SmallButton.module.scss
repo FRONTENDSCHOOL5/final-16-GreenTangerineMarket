@@ -1,19 +1,21 @@
 @import 'styles/global.scss';
-@import 'styles/mixin.scss';
+@import '../ButtonMixin.scss';
 
 .smallButton {
   @include smallButtonCS;
   color: #fff;
   background: $color-main;
 }
-.smallButtonDisable {
-  @include smallButtonCS;
-  color: #fff;
-  background: $color-c4c4c4;
-}
 .smallWhiteButton {
   @include smallButtonCS;
-  color: $color-767676;
+  color: #767676;
   border: 0.1rem solid $color-c4c4c4;
+  background: #fff;
+}
+
+.smallWhiteButtonHover {
+  @include smallButtonCS;
+  color: #000;
+  border: 0.1rem solid $color-767676;
   background: #fff;
 }

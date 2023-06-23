@@ -20,9 +20,16 @@ export const getNextProductAPI = async num => {
   }
 }
 
-export const getUserProductList = async ({ num, accountname }) => {
+export const postProductAPI = async ({ link, itemName, price, itemImage }) => {
   try {
-    const res = await instance.get(`/product/${accountname}/?limit=10&skip=${num}`)
+    const res = await instance.post('/product', {
+      product: {
+        itemName,
+        price,
+        link,
+        itemImage,
+      },
+    })
     return res
   } catch (e) {
     console.error(e)

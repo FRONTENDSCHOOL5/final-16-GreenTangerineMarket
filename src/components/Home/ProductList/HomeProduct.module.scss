@@ -1,7 +1,7 @@
 @import 'styles/global.scss';
 
 .card {
-  padding: 1rem 0;
+  padding: 1rem 32rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -19,7 +19,7 @@
 .productBox {
   display: flex;
   gap: 3rem;
-  margin: 1rem 0rem;
+  margin: 1rem 32rem;
   overflow-x: auto;
 
   &::-webkit-scrollbar {

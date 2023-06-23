@@ -1,11 +1,18 @@
+import s from './FeedList.module.scss'
+
+import Footer from 'components/Common/Footer/Footer'
 import FeedItemList from 'components/FeedList/FeedItemList/FeedItemList'
-import ListLayout from 'components/Common/Layout/List/ListLayout'
+import ListHeader from 'components/Common/Header/ListHeader'
 
 const FeedList = () => {
   return (
-    <ListLayout link='/feed/create' name='피드추가'>
-      <FeedItemList />
-    </ListLayout>
+    <>
+      <ListHeader />
+      <main className={s.main}>
+        <FeedItemList />
+      </main>
+      <Footer />
+    </>
   )
 }
 

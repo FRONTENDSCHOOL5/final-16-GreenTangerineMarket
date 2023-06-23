@@ -20,7 +20,7 @@ const useFormInput = (initialValue, name, setError) => {
 
       if (name === 'email') checkEmailValidation({ valid, value, name, setError })
       else if (name === 'password') checkPasswordValidation({ valid, value, name, setError })
-      else if (name === 'accountname') checkAccountNameValidation({ valid, value, name, setError, initialValue })
+      else if (name === 'accountname') checkAccountNameValidation({ valid, value, name, setError })
       else if (name === 'username') checkUserNameValidation({ valid, value, name, setError })
     }, 300),
     [],

@@ -1,11 +1,19 @@
-import ListLayout from 'components/Common/Layout/List/ListLayout'
-import ProductItemList from 'components/ProductList/ProductItemList/ProductItemList'
+import s from './ProductList.module.scss'
+
+import Footer from 'components/Common/Footer/Footer'
+import ProductItemList from 'components/Common/Product/ProductItemeList/ProductItemList'
+import ProductHeader from 'components/Common/Header/ProductHeader'
 
 const ProductList = () => {
   return (
-    <ListLayout link='/product/create' name='상품등록'>
-      <ProductItemList />
-    </ListLayout>
+    <>
+      <ProductHeader />
+      <main className={s.main}>
+        <ProductItemList />
+      </main>
+
+      <Footer />
+    </>
   )
 }
 

@@ -10,11 +10,12 @@ const FeedContent = ({ id, image, content }) => {
   const mainImage = image ? image.split(',', 1) : noImage
   const isMultiImage = image ? image.indexOf(',') !== -1 : false
   const [imageError, setImageError] = useState(false)
-
-  const handleImageError = () => setImageError(true)
+  const handleImageError = e => {
+    setImageError(true)
+  }
 
   return (
-    <Link to={`/feed/detail/${id}`} className={s.link}>
+    <Link to={`/FeedDetail/${id}`} className={s.link}>
       <div className={s.wrapper}>
         {
           <img

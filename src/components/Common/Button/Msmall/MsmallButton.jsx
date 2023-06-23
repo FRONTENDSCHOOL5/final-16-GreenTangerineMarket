@@ -16,4 +16,12 @@ const MsmallWhiteButton = ({ children, onClickEvent }) => {
   )
 }
 
-export { MsmallButton, MsmallWhiteButton }
+const MsmallWhiteButtonHover = ({ children, onClickEvent }) => {
+  return (
+    <button type='button' className={s.msmallWhiteButtonHover} onClick={onClickEvent}>
+      {children}
+    </button>
+  )
+}
+
+export { MsmallButton, MsmallWhiteButton, MsmallWhiteButtonHover }

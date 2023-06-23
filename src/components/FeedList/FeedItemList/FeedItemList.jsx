@@ -1,28 +1,49 @@
-import { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import _ from 'lodash'
 
 import s from './FeedItemList.module.scss'
 
 import FeedCard from 'components/Common/Feed/Card/FeedCard'
 import { getNextFeedAPI } from 'api/feed'
-import InfiniteScroll from 'components/Common/InfiniteScroll/InfiniteScroll'
-import GridLayout from 'components/Common/Layout/Grid/GridLayout'
+import UpBtn from 'components/Common/UpBtn/UpBtn'
 
 const FeedItemList = () => {
   const [feeds, setFeeds] = useState([])
 
-  const loadFeedList = async page => {
+  const [page, setPage] = useState(0)
+
+  const handleScroll = _.throttle(() => {
+    const { scrollTop, scrollHeight } = document.documentElement
+    if (scrollHeight - window.innerHeight - scrollTop < 200) {
+      setPage(prevPage => prevPage + 1)
+    }
+  }, 1000)
+
+  const _handleScroll = React.useCallback(handleScroll)
+  useEffect(() => {
+    window.addEventListener('scroll', _handleScroll)
+    return () => {
+      window.removeEventListener('scroll', _handleScroll)
+    }
+  }, [])
+
+  const handleGetNextFeed = async () => {
     const res = await getNextFeedAPI(page * 10)
-    if (res.status === 200) setFeeds([...feeds, ...res.data.posts])
+    setFeeds([...feeds, ...res.data.posts])
   }
+
+  useEffect(() => {
+    handleGetNextFeed()
+  }, [page])
+
   return (
-    <InfiniteScroll loadData={loadFeedList}>
+    <>
       <div className={s.card}>
         <h2 className={s.title}>최신 피드</h2>
         <p>여러분들의 일상을 공유해보세요!!</p>
       </div>
       <div>
-        <GridLayout item='feed'>
+        <section className={s.section}>
           {feeds.map(feed => {
             return (
               <FeedCard
@@ -35,9 +56,10 @@ const FeedItemList = () => {
               />
             )
           })}
-        </GridLayout>
+        </section>
+        <UpBtn />
       </div>
-    </InfiniteScroll>
+    </>
   )
 }
 

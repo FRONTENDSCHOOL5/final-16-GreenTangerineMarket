@@ -12,8 +12,9 @@ const ProductCard = ({ id, image, name, price, time }) => {
   const createTime = formatCreateTime(time)
   const [imageError, setImageError] = useState(false)
 
-  const handleError = () => setImageError(true)
-
+  const handleError = e => {
+    setImageError(true)
+  }
   return (
     <article className={s.card}>
       <Link to={`/product/detail/${id}`} className={s.link}>

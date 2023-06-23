@@ -13,8 +13,9 @@ const FeedMoreButton = ({ id, author }) => {
   const moreButtonRef = useRef(null)
   const myInfo = useRecoilValue(myInfoAtom)
   const isMyFeed = author.accountname === myInfo.accountname
-
-  const handleMenuClick = () => setShowMenu(false)
+  const handleMenuClick = () => {
+    setShowMenu(false)
+  }
 
   useEffect(() => {
     const handleOutsideClick = e => {
@@ -22,7 +23,7 @@ const FeedMoreButton = ({ id, author }) => {
       else if (showMenu && menuRef.current && !menuRef.current.contains(e.target)) setShowMenu(false)
     }
     const handleEscapeKeyDown = e => {
-      if (e.key === 'Escape') {
+      if (e.keyCode === 27) {
         setShowMenu(false)
         moreButtonRef.current.blur()
       }
