@@ -38,12 +38,14 @@ const FeedReportButton = ({ id, closeMenu }) => {
       </button>
       {isModalOpen && (
         <Modal closeModal={closeModal}>
-          <p className={s.announce}>
-            해당 피드를 <strong>신고</strong>하시겠습니까?
-          </p>
-          <div className={s.button}>
-            <MsmallWhiteButton onClickEvent={cancelReport}>취소</MsmallWhiteButton>
-            <MsmallButton onClickEvent={reportFeed}>확인</MsmallButton>
+          <div className={s.container}>
+            <p className={s.announce}>
+              해당 피드를 <strong>신고</strong>하시겠습니까?
+            </p>
+            <div className={s.button}>
+              <MsmallWhiteButton onClickEvent={cancelReport}>취소</MsmallWhiteButton>
+              <MsmallButton onClickEvent={reportFeed}>확인</MsmallButton>
+            </div>
           </div>
         </Modal>
       )}

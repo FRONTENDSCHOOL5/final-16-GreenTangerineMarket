@@ -42,7 +42,7 @@ const Modal = ({ children, closeModal }) => {
 
   return (
     <dialog className={s.modal} onClick={handleOutsideClick}>
-      <div className={s.container}>{children}</div>
+      {children}
     </dialog>
   )
 }
