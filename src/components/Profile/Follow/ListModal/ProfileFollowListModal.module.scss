@@ -1,0 +1,17 @@
+@import 'styles/global.scss';
+@import 'styles/mixin.scss';
+
+.container {
+  @include modalContainer;
+  width: 50rem;
+  max-height: 50rem;
+  .title {
+    font-size: 1.8rem;
+    font-weight: 900;
+  }
+  .list {
+    overflow-y: auto;
+    width: 100%;
+    padding: 1rem;
+  }
+}
