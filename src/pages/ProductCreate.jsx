@@ -1,5 +1,15 @@
+import Footer from 'components/Common/Footer/Footer'
+import Header from 'components/Common/Header/Header'
+import ListLayout from 'components/Common/Layout/List/ListLayout'
+import MainLayout from 'components/Common/Layout/Main/MainLayout'
+import ProductCreateComponent from 'components/ProductCreate/ProductCreateComponent'
+
 const ProuctCreate = () => {
-  return <div>상품 올리는 페이지입니다!</div>
+  return (
+    <ListLayout>
+      <ProductCreateComponent />
+    </ListLayout>
+  )
 }
 
 export default ProuctCreate
