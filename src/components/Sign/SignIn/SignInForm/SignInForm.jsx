@@ -12,6 +12,7 @@ import { myInfoAtom } from 'recoil/atom/user'
 import { signInEmailErroAtom, signInPassWordErroAtom } from 'recoil/atom/signin'
 import { setLoginCookie } from 'utils/loginCookie'
 import { handlePressEnterKey } from 'utils/handlePressEnterKey'
+import { handleSetAuthorizationInHeader } from 'utils/handleSetAuthorizationInHeader'
 
 const SignInForm = () => {
   const navigate = useNavigate()
@@ -32,6 +33,7 @@ const SignInForm = () => {
       const { _id, email, username, accountname, intro, token, refreshToken, image } = res.data.user
       setMyInfoAtom({ _id, accountname })
       setLoginCookie(token, { path: '/' })
+      handleSetAuthorizationInHeader()
       navigate('/')
     }
   }

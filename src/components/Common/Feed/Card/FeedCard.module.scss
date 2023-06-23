@@ -1,11 +1,12 @@
 @import 'styles/global.scss';
 
 .card {
-  width: 48rem;
-  min-width: 48rem;
-  height: 52rem;
+  width: 36rem;
+  min-width: 36rem;
+  height: 48rem;
   background-color: #fff;
   overflow: hidden;
+  place-self: center;
   header {
     display: flex;
     align-items: center;

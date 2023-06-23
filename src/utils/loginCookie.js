@@ -10,6 +10,6 @@ export const getLoginCookie = () => {
   return cookie.get('LOGIN_COOKIE')
 }
 
-export const removeLoginCookie = () => {
-  return cookie.remove('LOGIN_COOKIE')
+export const removeLoginCookie = options => {
+  return cookie.remove('LOGIN_COOKIE', { ...options })
 }

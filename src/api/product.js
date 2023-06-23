@@ -19,3 +19,13 @@ export const getNextProductAPI = async num => {
     return e
   }
 }
+
+export const getUserProductList = async ({ num, accountname }) => {
+  try {
+    const res = await instance.get(`/product/${accountname}/?limit=10&skip=${num}`)
+    return res
+  } catch (e) {
+    console.error(e)
+    return e
+  }
+}
