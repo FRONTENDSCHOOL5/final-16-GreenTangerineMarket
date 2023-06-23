@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 
 import s from './ProfileItemList.module.scss'
 
-import ProfileFeedList from '../../FeedList/ProfileFeedList'
-import ProfileProductList from '../../ProductList/ProfileProductList'
+import ProfileFeedList from '../FeedList/ProfileFeedList'
+import ProfileProductList from '../ProductList/ProfileProductList'
 
 const ProfileItemList = ({ accountname }) => {
   const [showFeed, setShowFeed] = useState(true)
