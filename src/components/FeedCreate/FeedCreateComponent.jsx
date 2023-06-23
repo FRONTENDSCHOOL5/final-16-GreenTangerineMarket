@@ -1,27 +1,21 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import s from './FeedCreateComponent.module.scss'
 
 import { postFeedAPI } from 'api/feed'
 import { uploadImages } from 'api/image'
-import { SmallButton } from 'components/Common/Button/Small/SmallButton'
+import { SmallButton, SmallButtonDisable } from 'components/Common/Button/Small/SmallButton'
 
 const FeedCreateComponent = () => {
   const [contents, setContents] = useState('')
-  const [selectedImage, setSelectedImage] = useState(null)
   const [imageUrl, setImageUrl] = useState('')
-  const [selectedImages, setSelectedImages] = useState([])
   const [imagePreviews, setImagePreviews] = useState([])
-
+  const [onBtn, setOnBtn] = useState(false)
   const navigate = useNavigate()
 
   const handleSend = async () => {
-    if (contents === '' && imageUrl === '') {
-      window.alert('이미지나 피드 글을 작성해주세요!!')
-      return
-    }
-    const res = await postFeedAPI({ content: contents, image: imageUrl })
+    await postFeedAPI({ content: contents, image: imageUrl })
     navigate(-1)
   }
 
@@ -38,13 +32,10 @@ const FeedCreateComponent = () => {
 
     if (fileArray.length > 3) {
       window.alert('사진은 최대 3장까지 업로드할 수 있습니다!')
-      setSelectedImages([])
       setImagePreviews([])
       event.target.value = null
       return
     }
-
-    setSelectedImages(fileArray)
 
     const imagePreviewsArray = await Promise.all(
       fileArray.map(file => {
@@ -74,8 +65,15 @@ const FeedCreateComponent = () => {
       }
     }
     setImageUrl(answer)
-    setSelectedImage(files)
   }
+
+  useEffect(() => {
+    if (imageUrl !== '' || contents !== '') {
+      setOnBtn(true)
+    } else {
+      setOnBtn(false)
+    }
+  }, [imageUrl, contents])
 
   return (
     <>
@@ -120,7 +118,11 @@ const FeedCreateComponent = () => {
             <div className={s.counter}>글자 수: {contents.length}/300</div>
           </section>
 
-          <SmallButton onClickEvent={handleSend}>등록</SmallButton>
+          {onBtn === true ? (
+            <SmallButton onClickEvent={handleSend}>등록</SmallButton>
+          ) : (
+            <SmallButtonDisable>등록</SmallButtonDisable>
+          )}
         </form>
       </section>
     </>

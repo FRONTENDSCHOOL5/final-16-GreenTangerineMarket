@@ -7,14 +7,11 @@ import { uploadImages } from 'api/image'
 import { postProductAPI } from 'api/product'
 import { SmallButton, SmallButtonDisable } from 'components/Common/Button/Small/SmallButton'
 import formatNumberWithComma from 'utils/formatNumberWithComma'
-import { isNumber } from 'lodash'
 
 const ProductCreateComponent = () => {
   const [name, setname] = useState('')
   const [prices, setPrices] = useState('')
-  const [selectedImage, setSelectedImage] = useState(null)
   const [imageUrl, setImageUrl] = useState('')
-  const [selectedImages, setSelectedImages] = useState([])
   const [imagePreviews, setImagePreviews] = useState([])
   const [onBtn, setOnBtn] = useState(false)
 
@@ -56,8 +53,6 @@ const ProductCreateComponent = () => {
     const files = event.target.files
     const fileArray = Array.from(files)
 
-    setSelectedImages(fileArray)
-
     const imagePreviewsArray = await Promise.all(
       fileArray.map(file => {
         return new Promise((resolve, reject) => {
@@ -77,11 +72,9 @@ const ProductCreateComponent = () => {
     }
     const res = await uploadImages(formData)
     setImageUrl(`https://api.mandarin.weniv.co.kr/${res.data[0].filename}`)
-    setSelectedImage(files)
   }
 
   useEffect(() => {
-    console.log(imageUrl, name, prices)
     if (imageUrl !== '' && name !== '' && prices !== '') {
       setOnBtn(true)
     } else {
