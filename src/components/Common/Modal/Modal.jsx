@@ -23,13 +23,14 @@ const Modal = ({ children, closeModal }) => {
     window.scrollTo(0, prevScroll)
   }
 
-  useEffect(() => {
-    const handleEscapeKeyDown = e => {
-      if (e.key === 'Escape') {
-        closeModal()
-        e.target.blur()
-      }
+  const handleEscapeKeyDown = e => {
+    if (e.key === 'Escape') {
+      closeModal()
+      e.target.blur()
     }
+  }
+
+  useEffect(() => {
     const prevScroll = preventScroll()
     document.addEventListener('keydown', handleEscapeKeyDown)
     return () => {

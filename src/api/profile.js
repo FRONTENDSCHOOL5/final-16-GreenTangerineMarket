@@ -51,7 +51,6 @@ export const unfollowProfileAPI = async accountname => {
 
 export const getFollowListAPI = async ({ accountname, item, page }) => {
   try {
-    console.log(accountname, item)
     const res = await instance.get(`/profile/${accountname}/${item}?limit=10&skip=${page}`)
     return res
   } catch (e) {
