@@ -12,6 +12,7 @@ import ProductList from 'pages/ProductList'
 import ProductCreate from 'pages/ProductCreate'
 import ProductDetail from 'pages/ProductDetail'
 import FeedCreate from 'pages/FeedCreate'
+import FeedEdit from 'pages/FeedEdit'
 
 const App = () => {
   const PublicRoutes = () => {
@@ -39,6 +40,8 @@ const App = () => {
           <Route path='/feed' element={<FeedList />} />
           <Route path='/feed/create' element={<FeedCreate />} />
           <Route path='/feed/detail/:id' element={<FeedDetail />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/feed/detail/edit' element={<FeedEdit />} />
           <Route path='/profile/:accountname' element={<Profile />} />
         </Route>
       </Routes>
