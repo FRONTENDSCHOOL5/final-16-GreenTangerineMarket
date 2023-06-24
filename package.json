@@ -15,9 +15,11 @@
     "react-hot-toast": "^2.4.1",
     "react-router-dom": "^6.11.2",
     "react-scripts": "5.0.1",
+    "react-slick": "^0.29.0",
     "recoil": "^0.7.7",
     "recoil-persist": "^4.2.0",
     "sass": "^1.62.1",
+    "slick-carousel": "^1.8.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
