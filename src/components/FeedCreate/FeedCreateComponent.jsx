@@ -12,11 +12,20 @@ const FeedCreateComponent = () => {
   const [imageUrl, setImageUrl] = useState('')
   const [imagePreviews, setImagePreviews] = useState([])
   const [onBtn, setOnBtn] = useState(false)
+
+  const [btnFlag, setBtnFlag] = useState(true)
+  const [progressingSignUp, setProgressingSignUp] = useState(false)
   const navigate = useNavigate()
 
   const handleSend = async () => {
-    await postFeedAPI({ content: contents, image: imageUrl })
-    navigate(-1)
+    setProgressingSignUp(true)
+    const resFeedAPI = await postFeedAPI({ content: contents, image: imageUrl })
+
+    if (resFeedAPI.status === 200) {
+      setProgressingSignUp(false)
+      setBtnFlag(false)
+      navigate(-1)
+    }
   }
 
   const handleInputChange = event => {
@@ -119,7 +128,11 @@ const FeedCreateComponent = () => {
           </section>
 
           {onBtn === true ? (
-            <SmallButton onClickEvent={handleSend}>등록</SmallButton>
+            btnFlag && !progressingSignUp ? (
+              <SmallButton onClickEvent={handleSend}>등록</SmallButton>
+            ) : (
+              <SmallButtonDisable>{!progressingSignUp ? '등록' : '진행 중'}</SmallButtonDisable>
+            )
           ) : (
             <SmallButtonDisable>등록</SmallButtonDisable>
           )}

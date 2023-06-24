@@ -15,19 +15,28 @@ const ProductCreateComponent = () => {
   const [imagePreviews, setImagePreviews] = useState([])
   const [onBtn, setOnBtn] = useState(false)
 
+  const [btnFlag, setBtnFlag] = useState(true)
+  const [progressingSignUp, setProgressingSignUp] = useState(false)
+
   const navigate = useNavigate()
 
   const link = '/'
 
   const handleSend = async () => {
-    await postProductAPI({
+    setProgressingSignUp(true)
+
+    const resProductAPI = await postProductAPI({
       link: link,
       itemName: name,
       price: parseInt(prices.replace(',', '')),
       itemImage: imageUrl,
     })
-    console.log(parseInt(prices.replace(',', '')))
-    navigate(-1)
+
+    if (resProductAPI.status === 200) {
+      setProgressingSignUp(false)
+      setBtnFlag(false)
+      navigate(-1)
+    }
   }
 
   const handleInputChange = event => {
@@ -38,16 +47,31 @@ const ProductCreateComponent = () => {
   }
 
   const handlePriceChange = event => {
+    const regex = /^[0-9]+$/
     const inputPrice = event.target.value
 
     if (inputPrice[0] === '0') {
       return
-    } else if (!parseInt(inputPrice.replace(',', '')) && parseInt(inputPrice.replace(',', '')).length >= 1) {
-      return
+    } else if (inputPrice.length === 0) {
+      setPrices('')
     } else if (inputPrice.length <= 20) {
-      setPrices(inputPrice)
+      if (regex.test(inputPrice.slice(-1))) {
+        setPrices(inputPrice)
+      }
     }
   }
+
+  // const handlePriceChange = event => {
+  //   const regex = /^[0-9]+$/
+  //   const inputPrice = event.target.value
+
+  //   if (inputPrice[0] === '0') {
+  //     return
+  //   }
+  //   if ((regex.test(inputPrice) && inputPrice.length <= 20) || inputPrice === '') {
+  //     setPrices(inputPrice)
+  //   }
+  // }
 
   const handleProductUpload = async event => {
     const files = event.target.files
@@ -134,12 +158,16 @@ const ProductCreateComponent = () => {
               className={s.price}
               onChange={handlePriceChange}
               value={formatNumberWithComma(prices)}
-              placeholder='1원이상 기입해주세요.'
+              placeholder='0원'
             />
           </section>
 
           {onBtn === true ? (
-            <SmallButton onClickEvent={handleSend}>등록</SmallButton>
+            btnFlag && !progressingSignUp ? (
+              <SmallButton onClickEvent={handleSend}>등록</SmallButton>
+            ) : (
+              <SmallButtonDisable>{!progressingSignUp ? '등록' : '진행 중'}</SmallButtonDisable>
+            )
           ) : (
             <SmallButtonDisable>등록</SmallButtonDisable>
           )}
