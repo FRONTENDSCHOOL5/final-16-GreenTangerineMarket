@@ -1,11 +1,11 @@
-import ListLayout from 'components/Common/Layout/List/ListLayout'
 import FeedCreateComponent from 'components/FeedCreate/FeedCreateComponent'
+import MainLayout from 'components/Common/Layout/Main/MainLayout'
 
 const FeedCreate = () => {
   return (
-    <ListLayout>
+    <MainLayout>
       <FeedCreateComponent />
-    </ListLayout>
+    </MainLayout>
   )
 }
 

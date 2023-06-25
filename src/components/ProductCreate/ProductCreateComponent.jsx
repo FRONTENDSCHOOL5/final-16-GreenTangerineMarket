@@ -27,7 +27,7 @@ const ProductCreateComponent = () => {
     const res = await postProductAPI({
       link: link,
       itemName: name,
-      price: parseInt(prices.replace(',', '')),
+      price: parseInt(prices),
       itemImage: imageUrl,
     })
 

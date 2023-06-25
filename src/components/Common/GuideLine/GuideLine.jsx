@@ -1,23 +1,21 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 import s from './GuideLine.module.scss'
 
 const GuideLine = ({ name, about, limit, only, photo, text }) => {
   const [showList, setShowList] = useState(true)
 
-  const handleButtonClick = () => {
-    setShowList(!showList)
-  }
+  const handleButtonClick = () => setShowList(!showList)
 
   return (
     <section className={s.section}>
       {showList ? (
         <button onClick={handleButtonClick} className={s.opendBox}>
-          {name} 등록 가이드 보기 <span className={s.sub}>원할한 {name} 발행을 위해 꼭 읽어주세요!</span>
+          {name} 등록 가이드 보기 <span className={s.sub}>원활한 {name} 발행을 위해 꼭 읽어주세요!</span>
         </button>
       ) : (
         <button onClick={handleButtonClick} className={s.closedBox}>
-          {name} 등록 가이드 보기 <span className={s.sub}>원할한 {name} 발행을 위해 꼭 읽어주세요!</span>
+          {name} 등록 가이드 보기 <span className={s.sub}>원활한 {name} 발행을 위해 꼭 읽어주세요!</span>
         </button>
       )}
 
