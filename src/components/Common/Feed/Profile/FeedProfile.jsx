@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 import s from './FeedProfile.module.scss'
 
-import ProfileImage from '../ProfileImage/ProfileImage'
+import ProfileImage from '../../ProfileImage/ProfileImage'
 
 const FeedProfile = ({ author }) => {
   return (

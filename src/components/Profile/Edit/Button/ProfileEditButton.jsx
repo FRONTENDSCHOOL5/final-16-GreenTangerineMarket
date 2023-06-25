@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 import { getMyProfileInfoAPI } from 'api/profile'
 import { MsmallButton } from 'components/Common/Button/Msmall/MsmallButton'
-import ProfileEditModal from '../EditModal/ProfileEditModal'
+import ProfileEditModal from '../Modal/ProfileEditModal'
 
 const ProfileEditButton = ({ handleProfileUpdate }) => {
   const [myInfo, setMyInfo] = useState(null)

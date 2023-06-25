@@ -13,9 +13,9 @@ import { myInfoAtom } from 'recoil/atom/user'
 import getToastStyle from 'utils/getToastStyle'
 import { SmallButton, SmallButtonDisable, SmallWhiteButton } from 'components/Common/Button/Small/SmallButton'
 import { handleUploadImageAPI } from 'utils/handleUploadImage'
+import Modal from 'components/Common/Modal/Modal'
 
 const ProfileEditModal = ({ myInfo, closeModal, handleProfileUpdate }) => {
-  const modalRef = useRef()
   const formRef = useRef()
   const [profileImage, setProfileImage] = useState(myInfo.image)
   const [accountNameError, setAccountNameError] = useState('')
@@ -24,10 +24,6 @@ const ProfileEditModal = ({ myInfo, closeModal, handleProfileUpdate }) => {
   const [btnFlag, setBtnFlag] = useState(true)
   const setMyInfoAtom = useSetRecoilState(myInfoAtom)
   const navigate = useNavigate()
-
-  const handleOutsideClick = e => {
-    if (e.target === modalRef.current) closeModal()
-  }
 
   const handleEdit = async data => {
     const { accountname, username, intro } = formRef.current.elements
@@ -56,25 +52,12 @@ const ProfileEditModal = ({ myInfo, closeModal, handleProfileUpdate }) => {
   }
 
   useEffect(() => {
-    const handleEscapeKeyDown = e => {
-      if (e.key === 'Escape') {
-        closeModal()
-        e.target.blur()
-      }
-    }
-    document.addEventListener('keydown', handleEscapeKeyDown)
-    return () => {
-      document.removeEventListener('keydown', handleEscapeKeyDown)
-    }
-  })
-
-  useEffect(() => {
     if (!accountNameError.isError && !userNameError.isError) setBtnFlag(true)
     else setBtnFlag(false)
   }, [accountNameError, userNameError])
 
   return (
-    <div className={s.modal} ref={modalRef} onClick={handleOutsideClick}>
+    <Modal closeModal={closeModal}>
       <form ref={formRef} className={s.container}>
         <p className={s.title}>프로필 수정</p>
         <ProfileImageInputBox initialImage={profileImage} />
@@ -114,7 +97,7 @@ const ProfileEditModal = ({ myInfo, closeModal, handleProfileUpdate }) => {
           )}
         </div>
       </form>
-    </div>
+    </Modal>
   )
 }
 

@@ -1,21 +1,18 @@
 @import 'styles/global.scss';
 
-.profile {
+.item {
   display: flex;
   align-items: center;
-  &:hover {
-    opacity: 0.5;
-  }
+  padding: 1rem;
   .image {
-    width: 4rem;
-    height: 4rem;
+    width: 5rem;
+    height: 5rem;
     margin-right: 1rem;
     border-radius: 50%;
     border: 1px solid $color-c4c4c4;
     object-fit: cover;
   }
-  .author {
-    max-width: 30rem;
+  .name {
     .user {
       font-size: 1.6rem;
       font-weight: 700;
