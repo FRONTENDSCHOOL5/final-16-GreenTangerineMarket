@@ -6,6 +6,7 @@ import s from './FeedCreateComponent.module.scss'
 import { postFeedAPI } from 'api/feed'
 import { uploadImages } from 'api/image'
 import { SmallButton, SmallButtonDisable } from 'components/Common/Button/Small/SmallButton'
+import GuideLine from 'components/Common/GuideLine/GuideLine'
 
 const FeedCreateComponent = () => {
   const [contents, setContents] = useState('')
@@ -13,17 +14,15 @@ const FeedCreateComponent = () => {
   const [imagePreviews, setImagePreviews] = useState([])
   const [onBtn, setOnBtn] = useState(false)
 
-  const [btnFlag, setBtnFlag] = useState(true)
-  const [progressingSignUp, setProgressingSignUp] = useState(false)
+  const [progressingCreate, setProgressingCreate] = useState(false)
   const navigate = useNavigate()
 
   const handleSend = async () => {
-    setProgressingSignUp(true)
-    const resFeedAPI = await postFeedAPI({ content: contents, image: imageUrl })
+    setProgressingCreate(true)
+    const res = await postFeedAPI({ content: contents, image: imageUrl })
 
-    if (resFeedAPI.status === 200) {
-      setProgressingSignUp(false)
-      setBtnFlag(false)
+    if (res.status === 200) {
+      setProgressingCreate(false)
       navigate(-1)
     }
   }
@@ -87,9 +86,15 @@ const FeedCreateComponent = () => {
   return (
     <>
       <section className={s.section}>
+        <GuideLine
+          name={'피드'}
+          about={'소중한 일상을 들려주세요!'}
+          limit={'사진 또는 텍스트 둘 중 한개는'}
+          only={'사진이나 텍스트가 비어 있으면 비어있는 상태로 등록이 됩니다.'}
+          photo={'최대 3장'}
+          text={'300'}
+        />
         <form className={s.contentBox}>
-          <h2 className={s.title}>피드 작성페이지</h2>
-          <p className={s.subTitle}>-여러분의 이야기를 들려주세요!-</p>
           <section className={s.imageContainer}>
             <h2>사진 파일 올리기</h2>
             <label htmlFor='imageUpload' className='a11y-hidden'>
@@ -128,10 +133,10 @@ const FeedCreateComponent = () => {
           </section>
 
           {onBtn === true ? (
-            btnFlag && !progressingSignUp ? (
+            !progressingCreate ? (
               <SmallButton onClickEvent={handleSend}>등록</SmallButton>
             ) : (
-              <SmallButtonDisable>{!progressingSignUp ? '등록' : '진행 중'}</SmallButtonDisable>
+              <SmallButtonDisable>{!progressingCreate ? '등록' : '진행 중'}</SmallButtonDisable>
             )
           ) : (
             <SmallButtonDisable>등록</SmallButtonDisable>

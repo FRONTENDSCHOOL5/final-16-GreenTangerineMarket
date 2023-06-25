@@ -6,7 +6,7 @@ import s from './ProductCreateComponent.module.scss'
 import { uploadImages } from 'api/image'
 import { postProductAPI } from 'api/product'
 import { SmallButton, SmallButtonDisable } from 'components/Common/Button/Small/SmallButton'
-import formatNumberWithComma from 'utils/formatNumberWithComma'
+import GuideLine from 'components/Common/GuideLine/GuideLine'
 
 const ProductCreateComponent = () => {
   const [name, setname] = useState('')
@@ -15,26 +15,24 @@ const ProductCreateComponent = () => {
   const [imagePreviews, setImagePreviews] = useState([])
   const [onBtn, setOnBtn] = useState(false)
 
-  const [btnFlag, setBtnFlag] = useState(true)
-  const [progressingSignUp, setProgressingSignUp] = useState(false)
+  const [progressingCreate, setProgressingCreate] = useState(false)
 
   const navigate = useNavigate()
 
   const link = '/'
 
   const handleSend = async () => {
-    setProgressingSignUp(true)
+    setProgressingCreate(true)
 
-    const resProductAPI = await postProductAPI({
+    const res = await postProductAPI({
       link: link,
       itemName: name,
       price: parseInt(prices.replace(',', '')),
       itemImage: imageUrl,
     })
 
-    if (resProductAPI.status === 200) {
-      setProgressingSignUp(false)
-      setBtnFlag(false)
+    if (res.status === 200) {
+      setProgressingCreate(false)
       navigate(-1)
     }
   }
@@ -52,26 +50,11 @@ const ProductCreateComponent = () => {
 
     if (inputPrice[0] === '0') {
       return
-    } else if (inputPrice.length === 0) {
-      setPrices('')
-    } else if (inputPrice.length <= 20) {
-      if (regex.test(inputPrice.slice(-1))) {
-        setPrices(inputPrice)
-      }
+    }
+    if ((regex.test(inputPrice) && inputPrice.length <= 20) || inputPrice === '') {
+      setPrices(inputPrice)
     }
   }
-
-  // const handlePriceChange = event => {
-  //   const regex = /^[0-9]+$/
-  //   const inputPrice = event.target.value
-
-  //   if (inputPrice[0] === '0') {
-  //     return
-  //   }
-  //   if ((regex.test(inputPrice) && inputPrice.length <= 20) || inputPrice === '') {
-  //     setPrices(inputPrice)
-  //   }
-  // }
 
   const handleProductUpload = async event => {
     const files = event.target.files
@@ -108,9 +91,15 @@ const ProductCreateComponent = () => {
   return (
     <>
       <section className={s.section}>
+        <GuideLine
+          name={'상품'}
+          about={'물건을 소개해주세요!'}
+          limit={'사진, 상품명, 가격 모두'}
+          only={'가격은 1원 이상부터 입력이 가능합니다.'}
+          photo={'오직 1장'}
+          text={'30'}
+        />
         <form className={s.contentBox}>
-          <h2 className={s.title}>상품 등록페이지</h2>
-          <p className={s.subtitle}>-여러분의 상품을 보여주세요!-</p>
           <section className={s.imageContainer}>
             <h2>Step1. 상품 이미지 등록</h2>
             <label htmlFor='productImg' className='a11y-hidden'>
@@ -157,16 +146,16 @@ const ProductCreateComponent = () => {
               type='text'
               className={s.price}
               onChange={handlePriceChange}
-              value={formatNumberWithComma(prices)}
+              value={prices}
               placeholder='0원'
             />
           </section>
 
           {onBtn === true ? (
-            btnFlag && !progressingSignUp ? (
+            !progressingCreate ? (
               <SmallButton onClickEvent={handleSend}>등록</SmallButton>
             ) : (
-              <SmallButtonDisable>{!progressingSignUp ? '등록' : '진행 중'}</SmallButtonDisable>
+              <SmallButtonDisable>{!progressingCreate ? '등록' : '진행 중'}</SmallButtonDisable>
             )
           ) : (
             <SmallButtonDisable>등록</SmallButtonDisable>
