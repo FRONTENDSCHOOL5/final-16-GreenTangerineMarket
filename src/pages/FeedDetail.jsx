@@ -1,5 +1,12 @@
+import MainLayout from 'components/Common/Layout/Main/MainLayout'
+import FeedDetailPage from 'components/FeedDetail/FeedDetail'
+
 const FeedDetail = () => {
-  return <div></div>
+  return (
+    <MainLayout>
+      <FeedDetailPage />
+    </MainLayout>
+  )
 }
 
 export default FeedDetail
