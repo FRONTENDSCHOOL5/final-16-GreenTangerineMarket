@@ -15,6 +15,7 @@
   margin: 0 auto;
   margin-top: 2rem;
   margin-bottom: 5rem;
+  padding: 1rem;
 
   .line {
     border: 0;
@@ -32,9 +33,11 @@
   }
   .commentTitle {
     font-size: 2rem;
-    margin: 3rem;
+    margin: 2rem;
+    margin-top: 3.5rem;
   }
   .feedAction {
+    display: flex;
     margin: 3rem;
     margin-left: auto;
   }
@@ -49,7 +52,11 @@
     border: 0.1rem solid $color-c4c4c4;
     border-radius: 1.5rem;
   }
-
+  .commentButton {
+    display: flex;
+    justify-content: end;
+    margin: 2.5rem;
+  }
   .commentBox {
     width: 110rem;
     height: 20rem;
@@ -83,7 +90,20 @@
 
     .liList {
       display: flex;
+      padding: 2rem;
       list-style: none;
+      font-size: 2rem;
+    }
+
+    .commentImage {
+      width: 10rem;
+      height: 10rem;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .commentListBox {
+      margin: 2rem;
+      margin-top: 6rem;
     }
   }
 }

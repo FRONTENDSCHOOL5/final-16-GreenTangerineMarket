@@ -10,6 +10,7 @@ import AuthorButtonList from './AuthorButtonList/AuthorButtonList'
 import MainLayout from 'components/Common/Layout/Main/MainLayout'
 import { SmallButton } from 'components/Common/Button/Small/SmallButton'
 import img from 'assets/img/basic-profile-img.png'
+import ProfileImage from 'components/Common/Feed/ProfileImage/ProfileImage'
 
 const FeedDetailPage = () => {
   const params = useParams()
@@ -49,9 +50,17 @@ const FeedDetailPage = () => {
       {feedDetail && (
         <section className={s.container}>
           <img className={s.feedImg} src={feedDetail.image} alt='강아지사진' />
-          <FeedDetailHeader username={feedDetail.author.username} commentCount={feedDetail.commentCount} />
+          <FeedDetailHeader author={feedDetail.author} commentCount={feedDetail.commentCount} />
           <hr className={s.line} />
           <section className={s.detailContent}>안녕하세요{feedDetail.author.content}</section>
+          {feedDetail.author.accountname === myInfo.accountname && (
+            <AuthorButtonList
+              feedDetail={feedDetail}
+              myInfo={myInfo}
+              setInputValue={setInputValue}
+              inputValue={inputValue}
+            />
+          )}
           <hr className={s.line} />
           <div className={s.comment}>
             <p className={s.commentTitle}>댓글</p>
@@ -66,14 +75,6 @@ const FeedDetailPage = () => {
             value={inputValue}
             placeholder='댓글을 작성해주세요.'
           ></input>
-          {feedDetail.author.accountname === myInfo.accountname && (
-            <AuthorButtonList
-              feedDetail={feedDetail}
-              myInfo={myInfo}
-              setInputValue={setInputValue}
-              inputValue={inputValue}
-            />
-          )}
           <div className={s.commentButton}>
             <SmallButton onClickEvent={handlePostComments}>작성</SmallButton>
           </div>
@@ -82,9 +83,20 @@ const FeedDetailPage = () => {
               {comments?.map(comment => {
                 return (
                   <li className={s.liList}>
-                    <img className={s.profileImg} src={img} alt='프로필사진'></img>
-                    <div>{feedDetail.author.accountname}</div>
-                    <div>{comment.content}</div>
+                    <ProfileImage
+                      image={feedDetail.author.image}
+                      username={feedDetail.author.username}
+                      className={s.commentImage}
+                    />
+
+                    {/* <img className={s.profileImg} src={img} alt='프로필사진'></img> */}
+                    <div className={s.commentListBox}>
+                      <div>{feedDetail.author.accountname}</div>
+                      <div className={s.commentContent}>
+                        <br />
+                        {comment.content}
+                      </div>
+                    </div>
                   </li>
                 )
               })}
