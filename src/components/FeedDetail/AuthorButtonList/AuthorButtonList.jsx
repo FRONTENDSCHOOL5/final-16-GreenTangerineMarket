@@ -1,7 +1,6 @@
 import { deletePostAPI, postCommentsAPI } from 'api/feed'
 import s from './AuthorButtonList.module.scss'
 import { SmallButton } from 'components/Common/Button/Small/SmallButton'
-import { useParams } from 'react-router-dom'
 
 const AuthorButtonList = ({ feedDetail }) => {
   const handleDeletePost = async () => {

@@ -1,16 +1,18 @@
-import s from './FeedDetail.module.scss'
-import FeedAction from 'components/Common/Feed/Action/FeedAction'
-import { useEffect, useState } from 'react'
-import { getCommentsInFeedAPI, getFeedInfoAPI, postCommentsAPI } from 'api/feed'
 import { useRecoilValue } from 'recoil'
-import { myInfoAtom } from 'recoil/atom/user'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+
+import s from './FeedDetail.module.scss'
+
+import FeedAction from 'components/Common/Feed/Action/FeedAction'
+import { myInfoAtom } from 'recoil/atom/user'
 import FeedDetailHeader from './FeedDetailHeader/FeedDetailHeader'
 import AuthorButtonList from './AuthorButtonList/AuthorButtonList'
 import MainLayout from 'components/Common/Layout/Main/MainLayout'
 import { SmallButton } from 'components/Common/Button/Small/SmallButton'
-import img from 'assets/img/basic-profile-img.png'
-import ProfileImage from 'components/Common/Feed/ProfileImage/ProfileImage'
+import { getFeedInfoAPI } from 'api/feed'
+import { getCommentsInFeedAPI, postCommentsAPI } from 'api/comment'
+import CommentList from './CommentList/CommentList'
 
 const FeedDetailPage = () => {
   const params = useParams()
@@ -18,54 +20,45 @@ const FeedDetailPage = () => {
   const [comments, setComments] = useState([])
   const [inputValue, setInputValue] = useState('')
   const myInfo = useRecoilValue(myInfoAtom)
-  console.log(feedDetail)
 
-  const handleGetFeedInfo = async () => {
+  const getFeedInfo = async () => {
     const res = await getFeedInfoAPI(params.id)
     setFeedDetail(res.data.post)
-    console.log(res)
   }
   const handlePostComments = async () => {
     const res = await postCommentsAPI({ id: feedDetail.id, content: inputValue })
-    await handleGetCommentsInFeed()
+    await getCommentsInFeed()
     setInputValue('')
-    console.log(res)
   }
   const handleInput = e => {
     setInputValue(e.target.value)
   }
 
-  const handleGetCommentsInFeed = async () => {
+  const getCommentsInFeed = async () => {
     const res = await getCommentsInFeedAPI(params.id)
     setComments(res.data.comments)
-    console.log(res)
   }
+
   useEffect(() => {
-    handleGetFeedInfo()
-    handleGetCommentsInFeed()
+    getFeedInfo()
+    getCommentsInFeed()
   }, [])
 
   return (
-    <MainLayout>
+    <>
       {feedDetail && (
         <section className={s.container}>
-          <img className={s.feedImg} src={feedDetail.image} alt='강아지사진' />
           <FeedDetailHeader author={feedDetail.author} commentCount={feedDetail.commentCount} />
           <hr className={s.line} />
           <section className={s.detailContent}>안녕하세요{feedDetail.author.content}</section>
           {feedDetail.author.accountname === myInfo.accountname && (
-            <AuthorButtonList
-              feedDetail={feedDetail}
-              myInfo={myInfo}
-              setInputValue={setInputValue}
-              inputValue={inputValue}
-            />
+            <AuthorButtonList feedDetail={feedDetail} setInputValue={setInputValue} inputValue={inputValue} />
           )}
           <hr className={s.line} />
           <div className={s.comment}>
             <p className={s.commentTitle}>댓글</p>
             <div className={s.feedAction}>
-              <FeedAction id='64913f08b2cb2056634621bb'></FeedAction>
+              <FeedAction id={params.id}></FeedAction>
             </div>
           </div>
           <input
@@ -82,29 +75,14 @@ const FeedDetailPage = () => {
             <div className={s.scrollBox}>
               {comments?.map(comment => {
                 return (
-                  <li className={s.liList}>
-                    <ProfileImage
-                      image={feedDetail.author.image}
-                      username={feedDetail.author.username}
-                      className={s.commentImage}
-                    />
-
-                    {/* <img className={s.profileImg} src={img} alt='프로필사진'></img> */}
-                    <div className={s.commentListBox}>
-                      <div>{feedDetail.author.accountname}</div>
-                      <div className={s.commentContent}>
-                        <br />
-                        {comment.content}
-                      </div>
-                    </div>
-                  </li>
+                  <CommentList key={comment.id} comment={comment} feedId={params.id} getComment={getCommentsInFeed} />
                 )
               })}
             </div>
           </section>
         </section>
       )}
-    </MainLayout>
+    </>
   )
 }
 

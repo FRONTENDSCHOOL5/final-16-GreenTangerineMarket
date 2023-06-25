@@ -31,7 +31,7 @@ const SignInForm = () => {
       setPasswordError({ isError: true, errorMessage: '이메일 또는 비밀번호가 일치하지 않습니다.' })
     } else {
       const { _id, email, username, accountname, intro, token, refreshToken, image } = res.data.user
-      setMyInfoAtom({ _id, accountname })
+      setMyInfoAtom({ accountname })
       setLoginCookie(token, { path: '/' })
       handleSetAuthorizationInHeader()
       navigate('/')
