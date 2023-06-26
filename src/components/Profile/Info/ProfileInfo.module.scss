@@ -14,6 +14,9 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      &:hover {
+        opacity: 0.5;
+      }
       .text {
         font-size: 1.4rem;
         color: $color-767676;

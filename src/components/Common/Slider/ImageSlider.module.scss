@@ -1,0 +1,24 @@
+@import 'styles/global.scss';
+
+.container {
+  border: 0.1rem solid lightgray;
+  margin: 0 auto;
+}
+.sliderContainer {
+  width: 30rem;
+  height: 30rem;
+  button {
+    &::before {
+      color: $color-main;
+    }
+  }
+  > div {
+    height: 100%;
+    > div {
+      height: 100%;
+      > div > div {
+        height: 100%;
+      }
+    }
+  }
+}

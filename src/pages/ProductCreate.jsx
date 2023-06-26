@@ -1,5 +1,12 @@
+import MainLayout from 'components/Common/Layout/Main/MainLayout'
+import ProductCreateComponent from 'components/ProductCreate/ProductCreateComponent'
+
 const ProuctCreate = () => {
-  return <div>상품 올리는 페이지입니다!</div>
+  return (
+    <MainLayout>
+      <ProductCreateComponent />
+    </MainLayout>
+  )
 }
 
 export default ProuctCreate

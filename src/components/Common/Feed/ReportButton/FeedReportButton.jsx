@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useState } from 'react'
 import { toast } from 'react-hot-toast'
 
 import s from './FeedReportButton.module.scss'
@@ -6,22 +6,18 @@ import s from './FeedReportButton.module.scss'
 import { MsmallButton, MsmallWhiteButton } from 'components/Common/Button/Msmall/MsmallButton'
 import { reportFeedAPI } from 'api/feed'
 import getToastStyle from 'utils/getToastStyle'
+import Modal from 'components/Common/Modal/Modal'
 
 const FeedReportButton = ({ id, closeMenu }) => {
-  const modalRef = useRef()
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const handleReportClick = () => modalRef.current.showModal()
+  const handleReportClick = () => setIsModalOpen(true)
+
+  const closeModal = () => setIsModalOpen(false)
 
   const cancelReport = () => {
-    modalRef.current.close()
+    closeModal()
     closeMenu()
-  }
-
-  const clickModal = e => {
-    if (e.target.nodeName === 'DIALOG') {
-      modalRef.current.close()
-      closeMenu()
-    }
   }
 
   const reportFeed = async () => {
@@ -31,7 +27,7 @@ const FeedReportButton = ({ id, closeMenu }) => {
         style: getToastStyle(),
       })
     }
-    modalRef.current.close()
+    closeModal()
     closeMenu()
   }
 
@@ -40,17 +36,19 @@ const FeedReportButton = ({ id, closeMenu }) => {
       <button type='button' onClick={handleReportClick}>
         신고
       </button>
-      <dialog ref={modalRef} className={s.modal} onClick={clickModal}>
-        <div className={s.container}>
-          <p>
-            해당 피드를 <strong>신고</strong>하시겠습니까?
-          </p>
-          <div className={s.button}>
-            <MsmallWhiteButton onClickEvent={cancelReport}>취소</MsmallWhiteButton>
-            <MsmallButton onClickEvent={reportFeed}>확인</MsmallButton>
+      {isModalOpen && (
+        <Modal closeModal={closeModal}>
+          <div className={s.container}>
+            <p className={s.announce}>
+              해당 피드를 <strong>신고</strong>하시겠습니까?
+            </p>
+            <div className={s.button}>
+              <MsmallWhiteButton onClickEvent={cancelReport}>취소</MsmallWhiteButton>
+              <MsmallButton onClickEvent={reportFeed}>확인</MsmallButton>
+            </div>
           </div>
-        </div>
-      </dialog>
+        </Modal>
+      )}
     </>
   )
 }
