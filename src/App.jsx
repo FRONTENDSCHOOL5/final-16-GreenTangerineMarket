@@ -12,7 +12,6 @@ import ProductList from 'pages/ProductList'
 import ProductCreate from 'pages/ProductCreate'
 import ProductDetail from 'pages/ProductDetail'
 import FeedCreate from 'pages/FeedCreate'
-import FeedEdit from 'pages/FeedEdit'
 
 const App = () => {
   const PublicRoutes = () => {
