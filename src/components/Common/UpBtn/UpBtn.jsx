@@ -24,7 +24,7 @@ const UpBtn = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
   return (
-    <button type='button' onClick={handleClick} className={showButton ? s.upDisplay : s.upNonDiplay}>
+    <button type='button' onClick={handleClick} className={showButton ? s.upDisplay : s.upNonDisplay}>
       <span className='a11y-hidden'>위로가기</span>
     </button>
   )

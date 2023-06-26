@@ -60,7 +60,7 @@ const ProductDetailItem = () => {
               <p className={s.name}>{product.itemName}</p>
               <p className={s.price}>{formatNumberWithComma(product.price)}원</p>
               <p className={s.seller}>판매자 정보</p>
-              <Link to={`/profile/${product.author}`} className={s.author}>
+              <Link to={`/profile/${product.author.accountname}`} className={s.author}>
                 <ProfileImage image={product.author.image} name={product.author.username} className={s.profile} />
                 <div>
                   <p className={s.user}>{product.author.username}</p>
