@@ -1,9 +1,9 @@
-import s from './UserListItem.module.scss'
+import ProfileImage from 'components/Common/ProfileImage/ProfileImage'
+import s from './ProfileUserListItem.module.scss'
 
-import ProfileImage from '../ProfileImage/ProfileImage'
 import { Link } from 'react-router-dom'
 
-const UserListItem = ({ image, accountname, username }) => {
+const ProfileUserListItem = ({ image, accountname, username }) => {
   return (
     <li>
       <Link to={`/profile/${accountname}`} className={s.item}>
@@ -17,4 +17,4 @@ const UserListItem = ({ image, accountname, username }) => {
   )
 }
 
-export default UserListItem
+export default ProfileUserListItem

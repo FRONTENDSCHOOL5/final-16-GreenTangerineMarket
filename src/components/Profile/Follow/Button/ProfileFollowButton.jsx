@@ -4,7 +4,7 @@ import { followProfileAPI } from 'api/profile'
 import { MsmallButton } from 'components/Common/Button/Msmall/MsmallButton'
 import getToastStyle from 'utils/getToastStyle'
 
-const FollowButton = ({ accountname, updateProfileData }) => {
+const ProfileFollowButton = ({ accountname, updateProfileData }) => {
   const handleFollowClick = async () => {
     const res = await followProfileAPI(accountname)
     if (res.status === 200) {
@@ -17,4 +17,4 @@ const FollowButton = ({ accountname, updateProfileData }) => {
   return <MsmallButton onClickEvent={handleFollowClick}>팔로우</MsmallButton>
 }
 
-export default FollowButton
+export default ProfileFollowButton

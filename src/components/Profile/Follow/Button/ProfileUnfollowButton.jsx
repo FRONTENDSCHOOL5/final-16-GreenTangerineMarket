@@ -4,7 +4,7 @@ import { unfollowProfileAPI } from 'api/profile'
 import { MsmallWhiteButton } from 'components/Common/Button/Msmall/MsmallButton'
 import getToastStyle from 'utils/getToastStyle'
 
-const UnfollowButton = ({ accountname, updateProfileData }) => {
+const ProfileUnfollowButton = ({ accountname, updateProfileData }) => {
   const handleUnfollowClick = async () => {
     const res = await unfollowProfileAPI(accountname)
     if (res.status === 200) {
@@ -18,4 +18,4 @@ const UnfollowButton = ({ accountname, updateProfileData }) => {
   return <MsmallWhiteButton onClickEvent={handleUnfollowClick}>팔로우 취소</MsmallWhiteButton>
 }
 
-export default UnfollowButton
+export default ProfileUnfollowButton
