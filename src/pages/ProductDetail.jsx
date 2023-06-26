@@ -1,7 +1,12 @@
-import React from 'react'
+import MainLayout from 'components/Common/Layout/Main/MainLayout'
+import ProductDetailItem from 'components/ProductDetail/Item/ProductDetailItem'
 
 const ProductDetail = () => {
-  return <div></div>
+  return (
+    <MainLayout>
+      <ProductDetailItem />
+    </MainLayout>
+  )
 }
 
 export default ProductDetail

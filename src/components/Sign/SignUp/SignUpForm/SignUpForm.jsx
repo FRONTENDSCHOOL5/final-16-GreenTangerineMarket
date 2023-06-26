@@ -44,7 +44,7 @@ const SignUpForm = () => {
       password: password.value,
       accountname: accountname.value,
       intro: intro.value,
-      image: imageFile,
+      image: imageURL,
     })
 
     if (resSignUpAPI.status === 200) {
