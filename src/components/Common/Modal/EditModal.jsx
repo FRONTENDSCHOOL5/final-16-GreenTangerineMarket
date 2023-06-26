@@ -33,7 +33,7 @@ const EditModal = ({ type, ...props }) => {
   const handleEditInfo = async () => {
     const { feedImage, feedContent } = formRef.current.elements
     const imageURL = await handleUploadImageAPI({ files: feedImage.files, inputFileElement: feedImage })
-    const res = await editFeedAPI({ post_id: props.info.id, image: imageURL, content: feedContent.value })
+    await editFeedAPI({ post_id: props.info.id, image: imageURL, content: feedContent.value })
 
     setShowEditModal(false)
     window.location.reload()
