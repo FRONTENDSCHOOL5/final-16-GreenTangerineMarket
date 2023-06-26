@@ -1,4 +1,5 @@
 import { instance } from 'api'
+import { async } from 'q'
 
 export const getProductListAPI = async () => {
   try {
@@ -50,6 +51,16 @@ export const postProductAPI = async ({ link, itemName, price, itemImage }) => {
 export const getProductDetailAPI = async id => {
   try {
     const res = await instance.get(`/product/detail/${id}`)
+    return res
+  } catch (e) {
+    console.error(e)
+    return e
+  }
+}
+
+export const deleteProductAPI = async id => {
+  try {
+    const res = await instance.delete(`/product/${id}`)
     return res
   } catch (e) {
     console.error(e)

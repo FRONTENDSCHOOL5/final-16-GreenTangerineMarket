@@ -1,23 +1,29 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router'
-import { useRecoilValue } from 'recoil'
+import { useNavigate, useParams } from 'react-router'
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import { Link } from 'react-router-dom'
 
 import s from './ProductDetailItem.module.scss'
 
-import { getProductDetailAPI } from 'api/product'
+import { deleteProductAPI, getProductDetailAPI } from 'api/product'
 import ProfileImage from 'components/Common/ProfileImage/ProfileImage'
 import formatCreateTime from 'utils/formatCreateTime'
 import formatNumberWithComma from 'utils/formatNumberWithComma'
 import { myInfoAtom } from 'recoil/atom/user'
 import { SmallButton, SmallWhiteButton } from 'components/Common/Button/Small/SmallButton'
 import defaultImage from 'assets/img/no-image.png'
+import { showEditModalAtom } from 'recoil/atom/showFlag'
+import { async } from 'q'
+import { toast } from 'react-hot-toast'
+import getToastStyle from 'utils/getToastStyle'
 
 const ProductDetailItem = () => {
   const params = useParams()
   const [imageError, setImageError] = useState(false)
   const [product, setProduct] = useState(null)
   const myInfo = useRecoilValue(myInfoAtom)
+  const navigate = useNavigate()
+  const setShowEditModal = useSetRecoilState(showEditModalAtom)
 
   const getProductDetail = async () => {
     const res = await getProductDetailAPI(params.id)
@@ -27,6 +33,14 @@ const ProductDetailItem = () => {
   }
 
   const handleImageError = () => setImageError(true)
+
+  const handleDeleteProduct = async () => {
+    const res = await deleteProductAPI(params.id)
+    if (res.status === 200) {
+      toast('상품을 삭제했습니다', { style: getToastStyle() })
+      navigate(-1)
+    }
+  }
 
   useEffect(() => {
     getProductDetail()
@@ -58,8 +72,8 @@ const ProductDetailItem = () => {
           </section>
           {myInfo.accountname === product.author.accountname && (
             <div className={s.button}>
-              <SmallButton>수정</SmallButton>
-              <SmallWhiteButton>삭제</SmallWhiteButton>
+              <SmallButton onClickEvent={() => setShowEditModal(true)}>수정</SmallButton>
+              <SmallWhiteButton onClickEvent={handleDeleteProduct}>삭제</SmallWhiteButton>
             </div>
           )}
         </>
