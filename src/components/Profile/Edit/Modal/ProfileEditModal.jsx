@@ -26,15 +26,15 @@ const ProfileEditModal = ({ myInfo, closeModal, handleProfileUpdate }) => {
   const setMyInfoAtom = useSetRecoilState(myInfoAtom)
   const navigate = useNavigate()
 
-  const handleEdit = async data => {
+  const handleEdit = async image => {
     const { accountname, username, intro } = formRef.current.elements
-    setProfileImage(data)
+    setProfileImage(image)
     setProgressingProfileEdit(true)
     const res = await editMyProfileInfoAPI({
       username: username.value,
       accountname: accountname.value,
       intro: intro.value,
-      image: data,
+      image: image,
     })
     if (res.status === 200) {
       setMyInfoAtom({ accountname: accountname.value })
@@ -51,10 +51,8 @@ const ProfileEditModal = ({ myInfo, closeModal, handleProfileUpdate }) => {
 
   const handleProfileUploadClick = async () => {
     const { image } = formRef.current.elements
-    if (image.files.length !== 0) await handleUploadImageAPI({ images: image.files, setImageFile: handleEdit })
-    else {
-      handleEdit(profileImage)
-    }
+    const imageURL = await handleUploadImageAPI({ files: image.files, inputFileElement: image })
+    await handleEdit(imageURL)
   }
 
   useEffect(() => {
