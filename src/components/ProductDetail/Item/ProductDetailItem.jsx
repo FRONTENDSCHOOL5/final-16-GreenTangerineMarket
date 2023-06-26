@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router'
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { Link } from 'react-router-dom'
 
 import s from './ProductDetailItem.module.scss'
@@ -13,7 +13,6 @@ import { myInfoAtom } from 'recoil/atom/user'
 import { SmallButton, SmallWhiteButton } from 'components/Common/Button/Small/SmallButton'
 import defaultImage from 'assets/img/no-image.png'
 import { showEditModalAtom } from 'recoil/atom/showFlag'
-import { async } from 'q'
 import { toast } from 'react-hot-toast'
 import getToastStyle from 'utils/getToastStyle'
 

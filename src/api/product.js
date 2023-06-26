@@ -1,5 +1,4 @@
 import { instance } from 'api'
-import { async } from 'q'
 
 export const getProductListAPI = async () => {
   try {
