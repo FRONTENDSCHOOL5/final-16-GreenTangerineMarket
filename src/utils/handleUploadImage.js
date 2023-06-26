@@ -1,4 +1,5 @@
 import { uploadImage } from 'api/image'
+import { BASE_URL } from 'constants/BASE_URL'
 
 export const handleUploadImageAPI = async ({ files, inputFileElement }) => {
   if (files.length === 0) return
@@ -6,13 +7,12 @@ export const handleUploadImageAPI = async ({ files, inputFileElement }) => {
   else {
     const resArray = []
     let size = 0
-    console.log(files)
 
     for (let i = 0; i < files.length; i++) {
       size += files[i].size
       const formData = new FormData()
       formData.append('image', files[i])
-      resArray.push(uploadImage(formData).then(res => res.data.filename))
+      resArray.push(uploadImage(formData).then(res => BASE_URL + '/' + res.data.filename))
     }
 
     if (size >= 10000000) {
