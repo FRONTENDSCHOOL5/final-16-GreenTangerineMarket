@@ -19,7 +19,8 @@ const SearchInput = () => {
     if (!inputValue) {
       navigate('/search')
     } else {
-      navigate(`/search/?keyword=${inputValue}`)
+      if (/[#+&]/.test(inputValue)) navigate(`/search/?keyword=${encodeURIComponent(inputValue)}`)
+      else navigate(`/search/?keyword=${inputValue}`)
     }
   }
 

@@ -1,9 +1,9 @@
 import s from './SearchHighLightText.module.scss'
 
-const SearchHighLightText = ({ text, keyword, className }) => {
+const SearchHighLightText = ({ text, keyword }) => {
   const partText = text.split(keyword)
   return (
-    <p className={className}>
+    <>
       {partText.map((part, index) => {
         if (index > 0)
           return (
@@ -16,7 +16,7 @@ const SearchHighLightText = ({ text, keyword, className }) => {
           )
         return part
       })}
-    </p>
+    </>
   )
 }
 

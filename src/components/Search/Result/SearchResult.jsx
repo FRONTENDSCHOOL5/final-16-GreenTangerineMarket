@@ -9,7 +9,8 @@ const SearchResult = ({ keyword }) => {
   const [searchResult, setSearchResult] = useState([])
 
   const loadSearchUserData = async () => {
-    const res = await getSearchUserAPI(keyword)
+    const searchKeyword = encodeURIComponent(keyword.replace(/[^a-zA-Z0-9가-힣_#&]/g, '\\$&'))
+    const res = await getSearchUserAPI(searchKeyword)
     if (res.status === 200) {
       setSearchResult(res.data)
     }
