@@ -12,9 +12,11 @@ import SearchHighLightText from '../HighLightText/SearchHighLightText'
 
 const SearchUserListItem = ({ image, accountname, username, follow, keyword }) => {
   const [isFollow, setIsFollow] = useState(follow)
+  const [progressingFollow, setProgressingFollow] = useState(false)
 
   const handleFollowClick = async e => {
     e.preventDefault()
+    setProgressingFollow(true)
     const res = await followProfileAPI(accountname)
     if (res.status === 200) {
       toast('팔로우했습니다', {
@@ -22,10 +24,12 @@ const SearchUserListItem = ({ image, accountname, username, follow, keyword }) =
       })
       setIsFollow(true)
     }
+    setProgressingFollow(false)
   }
 
   const handleUnfollowClick = async e => {
     e.preventDefault()
+    setProgressingFollow(true)
     const res = await unfollowProfileAPI(accountname)
     if (res.status === 200) {
       toast('팔로우취소했습니다', {
@@ -33,6 +37,7 @@ const SearchUserListItem = ({ image, accountname, username, follow, keyword }) =
       })
       setIsFollow(false)
     }
+    setProgressingFollow(false)
   }
 
   return (
@@ -44,9 +49,15 @@ const SearchUserListItem = ({ image, accountname, username, follow, keyword }) =
           <SearchHighLightText className={s.account} text={'@' + accountname} keyword={keyword} />
         </div>
         {isFollow ? (
-          <SmallWhiteButton onClickEvent={handleUnfollowClick}>언팔로우</SmallWhiteButton>
-        ) : (
+          !progressingFollow ? (
+            <SmallWhiteButton onClickEvent={handleUnfollowClick}>언팔로우</SmallWhiteButton>
+          ) : (
+            <SmallWhiteButton onClickEvent={e => e.preventDefault()}>언팔로우</SmallWhiteButton>
+          )
+        ) : !progressingFollow ? (
           <SmallButton onClickEvent={handleFollowClick}>팔로우</SmallButton>
+        ) : (
+          <SmallButton onClickEvent={e => e.preventDefault()}>팔로우</SmallButton>
         )}
       </Link>
     </li>
