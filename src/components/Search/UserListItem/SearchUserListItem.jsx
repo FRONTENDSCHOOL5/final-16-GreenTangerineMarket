@@ -9,10 +9,13 @@ import getToastStyle from 'utils/getToastStyle'
 import { followProfileAPI, unfollowProfileAPI } from 'api/profile'
 import ProfileImage from 'components/Common/ProfileImage/ProfileImage'
 import SearchHighLightText from '../HighLightText/SearchHighLightText'
+import { useRecoilValue } from 'recoil'
+import { myInfoAtom } from 'recoil/atom/user'
 
 const SearchUserListItem = ({ image, accountname, username, follow, keyword }) => {
   const [isFollow, setIsFollow] = useState(follow)
   const [progressingFollow, setProgressingFollow] = useState(false)
+  const myInfo = useRecoilValue(myInfoAtom)
 
   const handleFollowClick = async e => {
     e.preventDefault()
@@ -48,17 +51,18 @@ const SearchUserListItem = ({ image, accountname, username, follow, keyword }) =
           <SearchHighLightText className={s.user} text={username} keyword={keyword} />
           <SearchHighLightText className={s.account} text={'@' + accountname} keyword={keyword} />
         </div>
-        {isFollow ? (
-          !progressingFollow ? (
-            <SmallWhiteButton onClickEvent={handleUnfollowClick}>언팔로우</SmallWhiteButton>
+        {accountname !== myInfo.accountname &&
+          (isFollow ? (
+            !progressingFollow ? (
+              <SmallWhiteButton onClickEvent={handleUnfollowClick}>언팔로우</SmallWhiteButton>
+            ) : (
+              <SmallWhiteButton onClickEvent={e => e.preventDefault()}>언팔로우</SmallWhiteButton>
+            )
+          ) : !progressingFollow ? (
+            <SmallButton onClickEvent={handleFollowClick}>팔로우</SmallButton>
           ) : (
-            <SmallWhiteButton onClickEvent={e => e.preventDefault()}>언팔로우</SmallWhiteButton>
-          )
-        ) : !progressingFollow ? (
-          <SmallButton onClickEvent={handleFollowClick}>팔로우</SmallButton>
-        ) : (
-          <SmallButton onClickEvent={e => e.preventDefault()}>팔로우</SmallButton>
-        )}
+            <SmallButton onClickEvent={e => e.preventDefault()}>팔로우</SmallButton>
+          ))}
       </Link>
     </li>
   )
