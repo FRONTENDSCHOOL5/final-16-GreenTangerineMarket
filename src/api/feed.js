@@ -40,9 +40,14 @@ export const reportFeedAPI = async id => {
   }
 }
 
-export const postFeedAPI = async () => {
+export const postFeedAPI = async ({ content, image }) => {
   try {
-    const res = await instance.post(`/post`)
+    const res = await instance.post(`/post`, {
+      post: {
+        content,
+        image,
+      },
+    })
     return res
   } catch (e) {
     console.error(e)
@@ -66,5 +71,19 @@ export const getUserFeedList = async ({ num, accountname }) => {
   } catch (e) {
     console.error(e)
     return e
+  }
+}
+
+export const editFeedAPI = async ({ post_id, image, content }) => {
+  try {
+    const res = await instance.put(`/post/${post_id}`, {
+      post: {
+        image,
+        content,
+      },
+    })
+  } catch (err) {
+    console.error(err)
+    return err
   }
 }
