@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import s from './UpBtn.module.scss'
-
-import { SmallButton } from '../Button/Small/SmallButton'
-import imgUp from 'assets/img/icon-up.svg'
 
 const UpBtn = () => {
   const [showButton, setShowButton] = useState(false)
@@ -27,11 +24,9 @@ const UpBtn = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
   return (
-    <section onClick={handleClick} className={showButton ? s.upDisplay : s.upNonDiplay}>
-      <SmallButton>
-        <img className={s.imageUp} src={imgUp} alt='맨위로가기' />
-      </SmallButton>
-    </section>
+    <button type='button' onClick={handleClick} className={showButton ? s.upDisplay : s.upNonDisplay}>
+      <span className='a11y-hidden'>위로가기</span>
+    </button>
   )
 }
 
