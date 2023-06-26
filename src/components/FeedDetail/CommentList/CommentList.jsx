@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-import s from './CommentList.module.scss'
-=======
->>>>>>> b95a577945e8afd3b58f8be388585fe01bea98c6
 import { useRecoilValue } from 'recoil'
 import { toast } from 'react-hot-toast'
 
