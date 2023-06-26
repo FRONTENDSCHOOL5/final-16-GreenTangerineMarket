@@ -1,4 +1,4 @@
-import ProfileImage from 'components/Common/Feed/ProfileImage/ProfileImage'
+import ProfileImage from 'components/Common/ProfileImage/ProfileImage'
 import s from './FeedDetailHeader.module.scss'
 
 const FeedDetailHeader = ({ author, commentCount }) => {

@@ -15,6 +15,8 @@ const ListHeader = ({ link, name }) => {
 
   const goCreater = () => navigate(link)
 
+  const handleClick = () => window.scrollTo({ top: 0 })
+
   return (
     <header className={s.header}>
       <div className={s.hContainer}>
@@ -26,13 +28,13 @@ const ListHeader = ({ link, name }) => {
         <nav>
           <ul className={s.container}>
             <li>
-              <Link to='/'>
+              <Link to='/search'>
                 <img className={s.search} src={search} alt='계정탐색 페이지로 이동하는 검은색 돋보기 아이콘입니다.' />
                 <p>계정검색</p>
               </Link>
             </li>
             <li>
-              <Link to={`/profile/${myInfo.accountname}`}>
+              <Link to={`/profile/${myInfo.accountname}`} onClick={handleClick}>
                 <img src={user} alt='마이페이지로 이동하는 검은색 사람 상체 아이콘 입니다.' />
                 <p>마이페이지</p>
               </Link>

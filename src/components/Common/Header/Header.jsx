@@ -22,7 +22,7 @@ const Header = () => {
         <nav>
           <ul className={s.container}>
             <li>
-              <Link to='/'>
+              <Link to='/search'>
                 <img className={s.search} src={search} alt='계정탐색 페이지로 이동하는 검은색 돋보기 아이콘입니다.' />
                 <p>계정검색</p>
               </Link>
