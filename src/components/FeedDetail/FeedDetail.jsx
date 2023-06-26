@@ -8,7 +8,6 @@ import FeedAction from 'components/Common/Feed/Action/FeedAction'
 import { myInfoAtom } from 'recoil/atom/user'
 import FeedDetailHeader from './FeedDetailHeader/FeedDetailHeader'
 import AuthorButtonList from './AuthorButtonList/AuthorButtonList'
-import MainLayout from 'components/Common/Layout/Main/MainLayout'
 import { SmallButton } from 'components/Common/Button/Small/SmallButton'
 import { getFeedInfoAPI } from 'api/feed'
 import { getCommentsInFeedAPI, postCommentsAPI } from 'api/comment'
@@ -50,7 +49,7 @@ const FeedDetailPage = () => {
         <section className={s.container}>
           <FeedDetailHeader author={feedDetail.author} commentCount={feedDetail.commentCount} />
           <hr className={s.line} />
-          <section className={s.detailContent}>안녕하세요{feedDetail.author.content}</section>
+          <section className={s.detailContent}>{feedDetail.content}</section>
           {feedDetail.author.accountname === myInfo.accountname && (
             <AuthorButtonList feedDetail={feedDetail} setInputValue={setInputValue} inputValue={inputValue} />
           )}

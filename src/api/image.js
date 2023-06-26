@@ -1,4 +1,4 @@
-import { imageInstance } from 'api'
+import { imageInstance, instance } from 'api'
 
 export const uploadImage = async formData => {
   try {
