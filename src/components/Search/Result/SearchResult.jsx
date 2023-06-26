@@ -34,6 +34,7 @@ const SearchResult = ({ keyword }) => {
                   accountname={user.accountname}
                   username={user.username}
                   follow={user.isfollow}
+                  keyword={keyword}
                 />
               )
             })}

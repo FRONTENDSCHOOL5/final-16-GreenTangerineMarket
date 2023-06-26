@@ -8,8 +8,9 @@ import { SmallButton, SmallWhiteButton } from 'components/Common/Button/Small/Sm
 import getToastStyle from 'utils/getToastStyle'
 import { followProfileAPI, unfollowProfileAPI } from 'api/profile'
 import ProfileImage from 'components/Common/ProfileImage/ProfileImage'
+import SearchHighLightText from '../HighLightText/SearchHighLightText'
 
-const SearchUserListItem = ({ image, accountname, username, follow }) => {
+const SearchUserListItem = ({ image, accountname, username, follow, keyword }) => {
   const [isFollow, setIsFollow] = useState(follow)
 
   const handleFollowClick = async e => {
@@ -39,8 +40,8 @@ const SearchUserListItem = ({ image, accountname, username, follow }) => {
       <Link to={`/profile/${accountname}`} className={s.item}>
         <ProfileImage image={image} className={s.image} />
         <div className={s.name}>
-          <p className={s.user}>{username}</p>
-          <p className={s.account}>@{accountname}</p>
+          <SearchHighLightText className={s.user} text={username} keyword={keyword} />
+          <SearchHighLightText className={s.account} text={'@' + accountname} keyword={keyword} />
         </div>
         {isFollow ? (
           <SmallWhiteButton onClickEvent={handleUnfollowClick}>언팔로우</SmallWhiteButton>
