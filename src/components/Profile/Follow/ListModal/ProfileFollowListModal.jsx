@@ -5,8 +5,8 @@ import s from './ProfileFollowListModal.module.scss'
 
 import { getFollowListAPI } from 'api/profile'
 import Modal from 'components/Common/Modal/Modal'
-import UserListItem from 'components/Common/UserListItem/UserListItem'
 import { SmallWhiteButton } from 'components/Common/Button/Small/SmallButton'
+import ProfileUserListItem from '../UserListItem/ProfileUserListItem'
 
 const ProfileFollowListModal = ({ item, closeModal, accountname }) => {
   const listRef = useRef()
@@ -53,7 +53,7 @@ const ProfileFollowListModal = ({ item, closeModal, accountname }) => {
           {followList.length ? (
             followList.map(follow => {
               return (
-                <UserListItem
+                <ProfileUserListItem
                   key={follow._id}
                   id={follow._id}
                   image={follow.image}

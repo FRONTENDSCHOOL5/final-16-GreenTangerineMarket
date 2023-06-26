@@ -11,11 +11,7 @@ export const uploadImage = async formData => {
 
 export const uploadImages = async formData => {
   try {
-    const res = await instance.post('/image/uploadfiles', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    })
+    const res = await imageInstance.post('/image/uploadfiles', formData)
     return res
   } catch (err) {
     return err

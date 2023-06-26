@@ -12,20 +12,23 @@ import { SmallButton } from 'components/Common/Button/Small/SmallButton'
 import { getFeedInfoAPI } from 'api/feed'
 import { getCommentsInFeedAPI, postCommentsAPI } from 'api/comment'
 import CommentList from './CommentList/CommentList'
+import EditModal from 'components/Common/Modal/EditModal'
+import { showEditModalAtom } from 'recoil/atom/showFlag'
 
 const FeedDetailPage = () => {
   const params = useParams()
+  const myInfo = useRecoilValue(myInfoAtom)
   const [feedDetail, setFeedDetail] = useState(undefined)
   const [comments, setComments] = useState([])
   const [inputValue, setInputValue] = useState('')
-  const myInfo = useRecoilValue(myInfoAtom)
+  const showEditModal = useRecoilValue(showEditModalAtom)
 
   const getFeedInfo = async () => {
     const res = await getFeedInfoAPI(params.id)
     setFeedDetail(res.data.post)
   }
   const handlePostComments = async () => {
-    const res = await postCommentsAPI({ id: feedDetail.id, content: inputValue })
+    await postCommentsAPI({ id: feedDetail.id, content: inputValue })
     await getCommentsInFeed()
     setInputValue('')
   }
@@ -46,40 +49,43 @@ const FeedDetailPage = () => {
   return (
     <>
       {feedDetail && (
-        <section className={s.container}>
-          <FeedDetailHeader author={feedDetail.author} commentCount={feedDetail.commentCount} />
-          <hr className={s.line} />
-          <section className={s.detailContent}>{feedDetail.content}</section>
-          {feedDetail.author.accountname === myInfo.accountname && (
-            <AuthorButtonList feedDetail={feedDetail} setInputValue={setInputValue} inputValue={inputValue} />
-          )}
-          <hr className={s.line} />
-          <div className={s.comment}>
-            <p className={s.commentTitle}>댓글</p>
-            <div className={s.feedAction}>
-              <FeedAction id={params.id}></FeedAction>
+        <>
+          <section className={s.container}>
+            <FeedDetailHeader author={feedDetail.author} commentCount={feedDetail.commentCount} />
+            <hr className={s.line} />
+            <section className={s.detailContent}>{feedDetail.content}</section>
+            {feedDetail.author.accountname === myInfo.accountname && (
+              <AuthorButtonList feedDetail={feedDetail} setInputValue={setInputValue} inputValue={inputValue} />
+            )}
+            <hr className={s.line} />
+            <div className={s.comment}>
+              <p className={s.commentTitle}>댓글</p>
+              <div className={s.feedAction}>
+                <FeedAction id={params.id}></FeedAction>
+              </div>
             </div>
-          </div>
-          <input
-            className={s.commentInput}
-            type='text'
-            onChange={handleInput}
-            value={inputValue}
-            placeholder='댓글을 작성해주세요.'
-          ></input>
-          <div className={s.commentButton}>
-            <SmallButton onClickEvent={handlePostComments}>작성</SmallButton>
-          </div>
-          <section className={s.commentBox}>
-            <div className={s.scrollBox}>
-              {comments?.map(comment => {
-                return (
-                  <CommentList key={comment.id} comment={comment} feedId={params.id} getComment={getCommentsInFeed} />
-                )
-              })}
+            <input
+              className={s.commentInput}
+              type='text'
+              onChange={handleInput}
+              value={inputValue}
+              placeholder='댓글을 작성해주세요.'
+            ></input>
+            <div className={s.commentButton}>
+              <SmallButton onClickEvent={handlePostComments}>작성</SmallButton>
             </div>
+            <section className={s.commentBox}>
+              <div className={s.scrollBox}>
+                {comments?.map(comment => {
+                  return (
+                    <CommentList key={comment.id} comment={comment} feedId={params.id} getComment={getCommentsInFeed} />
+                  )
+                })}
+              </div>
+            </section>
           </section>
-        </section>
+          {showEditModal && <EditModal type='feed' info={feedDetail} />}
+        </>
       )}
     </>
   )
