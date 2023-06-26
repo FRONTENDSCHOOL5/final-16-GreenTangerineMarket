@@ -3,7 +3,7 @@
 .modal {
   border: 0.2rem solid $color-main;
   border-radius: 1rem;
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -12,7 +12,6 @@
   margin: 0;
   padding: 1rem;
   width: 60rem;
-  // height: 80rem;
   .title {
     text-align: center;
     font-size: 3rem;
