@@ -26,15 +26,17 @@ const CommentList = ({ comment, feedId, getComment }) => {
       <ProfileImage image={comment.author.image} username={comment.author.username} className={s.commentImage} />
       <div className={s.commentListBox}>
         <p>{comment.author.accountname}</p>
-
-        {comment.author.accountname === myInfo.accountname ? (
-          <button onClick={handleDeletePostComments}>삭제</button>
-        ) : (
-          <button onClick={handleReportPostComments}>신고</button>
-        )}
-        <div className={s.commentContent}>
-          <br />
-          {comment.content}
+        <div className={s.commentContent}>{comment.content}</div>
+        <div className={s.deletButton}>
+          {comment.author.accountname === myInfo.accountname ? (
+            <button type='button' onClick={handleDeletePostComments}>
+              삭제
+            </button>
+          ) : (
+            <button type='button' onClick={handleReportPostComments}>
+              신고
+            </button>
+          )}
         </div>
       </div>
     </li>

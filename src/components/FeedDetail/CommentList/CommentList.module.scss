@@ -1,17 +1,30 @@
+@import 'styles/global.scss';
+
 .liList {
   display: flex;
-  padding: 2rem;
+  padding: 1rem;
   list-style: none;
   font-size: 2rem;
-}
 
-.commentImage {
-  width: 10rem;
-  height: 10rem;
-  border-radius: 50%;
-  object-fit: cover;
-}
-.commentListBox {
-  margin: 2rem;
-  margin-top: 5rem;
+  .commentImage {
+    margin: 1rem;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .commentListBox {
+    margin: 2rem;
+  }
+
+  .commentContent {
+    margin-top: 1rem;
+  }
+
+  .deletButton {
+    margin-top: 1rem;
+    margin-left: -0.5rem;
+    display: flex;
+  }
 }
