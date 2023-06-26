@@ -58,8 +58,13 @@
 }
 
 // product
-.itemInput {
-  border: 1px solid lightgray;
-  padding: 1rem;
-  font-size: 1.2rem;
+.inputLabel {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.6rem;
+  .itemInput {
+    border: 1px solid lightgray;
+    padding: 1rem;
+    font-size: 1.2rem;
+  }
 }
