@@ -1,0 +1,36 @@
+@import 'styles/global.scss';
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding: 1rem 0;
+  width: 100%;
+  border-bottom: 1px solid $color-c4c4c4;
+  .image {
+    width: 6rem;
+    height: 6rem;
+    margin-right: 1rem;
+    border-radius: 50%;
+    border: 1px solid $color-c4c4c4;
+    object-fit: cover;
+  }
+  .name {
+    margin-right: auto;
+    max-width: 75%;
+    .user {
+      font-size: 2rem;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .account {
+      font-size: 1.6rem;
+      color: $color-767676;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
