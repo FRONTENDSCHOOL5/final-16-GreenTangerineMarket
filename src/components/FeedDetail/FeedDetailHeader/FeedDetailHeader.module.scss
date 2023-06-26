@@ -1,0 +1,28 @@
+.header {
+  display: flex;
+  margin: 3rem;
+  margin-left: 5rem;
+
+  .profileImg {
+    display: block;
+    width: 15rem;
+    height: 15rem;
+  }
+
+  .profileId {
+    font-size: 2rem;
+    margin-top: auto;
+  }
+
+  .commentNumber {
+    display: flex;
+    align-items: end;
+    margin-left: auto;
+  }
+  .image {
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
