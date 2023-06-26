@@ -1,0 +1,21 @@
+@import 'styles/global.scss';
+
+.result {
+  width: 70%;
+  margin: 0 auto;
+  .count {
+    color: $color-main;
+    font-size: 1.6rem;
+    font-weight: 900;
+    margin-bottom: 2rem;
+  }
+  .notice {
+    font-size: 1.6rem;
+    text-align: center;
+    strong {
+      color: $color-main;
+      font-weight: 700;
+      font-size: 2rem;
+    }
+  }
+}

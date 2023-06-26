@@ -6,11 +6,11 @@ import s from './ProfileInfo.module.scss'
 
 import { getProfileInfoAPI } from 'api/profile'
 import ProfileImage from 'components/Common/ProfileImage/ProfileImage'
-import FollowButton from '../Follow/Button/FollowButton'
-import UnfollowButton from '../Follow/Button/UnfollowButton'
 import ProfileEditButton from '../Edit/Button/ProfileEditButton'
 import ProfileMenu from '../Menu/ProfileMenu'
 import ProfileFollowListModal from '../Follow/ListModal/ProfileFollowListModal'
+import ProfileUnfollowButton from '../Follow/Button/ProfileUnfollowButton'
+import ProfileFollowButton from '../Follow/Button/ProfileFollowButton'
 
 const ProfileInfo = ({ accountname }) => {
   const [isMyProfile, setIsMyProfile] = useState(false)
@@ -68,9 +68,9 @@ const ProfileInfo = ({ accountname }) => {
           {isMyProfile ? (
             <ProfileEditButton handleProfileUpdate={updateMyProfile} />
           ) : isFollow ? (
-            <UnfollowButton accountname={profileData.accountname} updateProfileData={updateProfileData} />
+            <ProfileUnfollowButton accountname={profileData.accountname} updateProfileData={updateProfileData} />
           ) : (
-            <FollowButton accountname={profileData.accountname} updateProfileData={updateProfileData} />
+            <ProfileFollowButton accountname={profileData.accountname} updateProfileData={updateProfileData} />
           )}
         </section>
       )}

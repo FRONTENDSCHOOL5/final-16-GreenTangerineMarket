@@ -7,6 +7,7 @@ import { postFeedAPI } from 'api/feed'
 import { uploadImages } from 'api/image'
 import { SmallButton, SmallButtonDisable } from 'components/Common/Button/Small/SmallButton'
 import GuideLine from 'components/Common/GuideLine/GuideLine'
+import { BASE_URL } from 'constants/BASE_URL'
 
 const FeedCreateComponent = () => {
   const [contents, setContents] = useState('')
@@ -67,9 +68,9 @@ const FeedCreateComponent = () => {
     let answer = ''
     for (let i = 0; i < res.data.length; i++) {
       if (i !== res.data.length - 1) {
-        answer += `https://api.mandarin.weniv.co.kr/${res.data[i].filename},`
+        answer += `${BASE_URL}/${res.data[i].filename},`
       } else {
-        answer += `https://api.mandarin.weniv.co.kr/${res.data[i].filename}`
+        answer += `${BASE_URL}/${res.data[i].filename}`
       }
     }
     setImageUrl(answer)
