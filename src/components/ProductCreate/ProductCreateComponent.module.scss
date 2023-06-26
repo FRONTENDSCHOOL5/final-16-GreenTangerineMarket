@@ -42,7 +42,6 @@
         width: 90%;
         display: block;
         box-sizing: border-box;
-        margin: auto;
         padding: 1rem;
         background-color: #f0f0f0;
         border: none;
@@ -52,18 +51,21 @@
       .counter {
         width: 90%;
         display: block;
-        margin: auto;
+        text-align: end;
         font-size: 2rem;
       }
     }
 
     .price {
       width: 90%;
-      display: block;
-      margin: auto;
+      display: inline-block;
       padding: 1rem;
       border-radius: 1rem;
       background-color: #f0f0f0;
+      text-align: end;
+    }
+    .won {
+      margin: 1rem;
     }
   }
 }

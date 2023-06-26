@@ -147,8 +147,9 @@ const ProductCreateComponent = () => {
               className={s.price}
               onChange={handlePriceChange}
               value={prices}
-              placeholder='0원'
+              placeholder='0'
             />
+            <span className={s.won}>원</span>
           </section>
 
           {onBtn === true ? (
