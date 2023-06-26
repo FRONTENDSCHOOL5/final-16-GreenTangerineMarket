@@ -68,3 +68,17 @@ export const getUserFeedList = async ({ num, accountname }) => {
     return e
   }
 }
+
+export const editFeedAPI = async ({ post_id, image, content }) => {
+  try {
+    const res = await instance.put(`/post/${post_id}`, {
+      post: {
+        image,
+        content,
+      },
+    })
+  } catch (err) {
+    console.error(err)
+    return err
+  }
+}
