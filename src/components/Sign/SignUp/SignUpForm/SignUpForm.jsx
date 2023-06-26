@@ -37,7 +37,7 @@ const SignUpForm = () => {
     const { email, password, username, accountname, intro, image } = formRef.current.elements
     setProgressingSignUp(true)
 
-    await handleUploadImageAPI({ images: image.files, setImageFile })
+    const imageURL = await handleUploadImageAPI({ files: image.files, inputFileElement: image })
     const resSignUpAPI = await signUpAPI({
       username: username.value,
       email: email.value,

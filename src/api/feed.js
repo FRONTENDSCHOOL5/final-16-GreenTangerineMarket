@@ -78,10 +78,11 @@ export const editFeedAPI = async ({ post_id, image, content }) => {
   try {
     const res = await instance.put(`/post/${post_id}`, {
       post: {
-        image,
         content,
+        image,
       },
     })
+    return res
   } catch (err) {
     console.error(err)
     return err

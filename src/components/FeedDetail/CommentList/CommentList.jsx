@@ -1,8 +1,10 @@
-import s from './CommentList.module.scss'
 import { useRecoilValue } from 'recoil'
+import { toast } from 'react-hot-toast'
+
+import s from './CommentList.module.scss'
+
 import { myInfoAtom } from 'recoil/atom/user'
 import { deletePostCommentsAPI, reportPostCommentsAPI } from 'api/comment'
-import { toast } from 'react-hot-toast'
 import getToastStyle from 'utils/getToastStyle'
 import ProfileImage from 'components/Common/ProfileImage/ProfileImage'
 
