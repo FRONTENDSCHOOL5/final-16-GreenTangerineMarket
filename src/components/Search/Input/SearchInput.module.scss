@@ -1,0 +1,25 @@
+@import 'styles/global.scss';
+
+.container {
+  margin: 0 auto 5rem auto;
+  width: 70%;
+  border: 3px solid $color-main;
+  border-radius: 3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0rem 2rem;
+  .search {
+    width: 100%;
+    font-size: 2rem;
+    .input {
+      width: 100%;
+      padding: 1rem;
+    }
+  }
+  .button {
+    width: 4rem;
+    height: 4rem;
+    background: url('/assets/img/icon-search-green.svg') no-repeat center;
+  }
+}

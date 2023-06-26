@@ -22,12 +22,14 @@ const ProfileEditModal = ({ myInfo, closeModal, handleProfileUpdate }) => {
   const [userNameError, setUserNameError] = useState('')
   const [introError, setIntroError] = useState('')
   const [btnFlag, setBtnFlag] = useState(true)
+  const [progressingProfileEdit, setProgressingProfileEdit] = useState(false)
   const setMyInfoAtom = useSetRecoilState(myInfoAtom)
   const navigate = useNavigate()
 
   const handleEdit = async data => {
     const { accountname, username, intro } = formRef.current.elements
     setProfileImage(data)
+    setProgressingProfileEdit(true)
     const res = await editMyProfileInfoAPI({
       username: username.value,
       accountname: accountname.value,
@@ -40,6 +42,10 @@ const ProfileEditModal = ({ myInfo, closeModal, handleProfileUpdate }) => {
       closeModal()
       handleProfileUpdate()
       toast('프로필이 수정되었습니다', { style: getToastStyle() })
+      setProgressingProfileEdit(false)
+    } else {
+      toast('프로필 수정에 실패했습니다', { style: getToastStyle() })
+      setProgressingProfileEdit(false)
     }
   }
 
@@ -90,7 +96,7 @@ const ProfileEditModal = ({ myInfo, closeModal, handleProfileUpdate }) => {
         />
         <div className={s.buttonContainer}>
           <SmallWhiteButton onClickEvent={closeModal}>취소</SmallWhiteButton>
-          {btnFlag ? (
+          {btnFlag && !progressingProfileEdit ? (
             <SmallButton onClickEvent={handleProfileUploadClick}>수정</SmallButton>
           ) : (
             <SmallButtonDisable>수정</SmallButtonDisable>

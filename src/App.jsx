@@ -12,6 +12,7 @@ import ProductList from 'pages/ProductList'
 import ProductCreate from 'pages/ProductCreate'
 import ProductDetail from 'pages/ProductDetail'
 import FeedCreate from 'pages/FeedCreate'
+import Search from 'pages/Search'
 
 const App = () => {
   const PublicRoutes = () => {
@@ -40,6 +41,7 @@ const App = () => {
           <Route path='/feed/create' element={<FeedCreate />} />
           <Route path='/feed/detail/:id' element={<FeedDetail />} />
           <Route path='/profile/:accountname' element={<Profile />} />
+          <Route path='/search/?keyword=:keyword?' element={<Search />} />
         </Route>
       </Routes>
     </BrowserRouter>

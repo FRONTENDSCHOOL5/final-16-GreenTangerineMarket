@@ -1,9 +1,9 @@
 const getToastStyle = () => {
   return {
-    borderRadius: '10px',
+    borderRadius: '1rem',
     background: '#333',
     color: '#fff',
-    fontSize: '2rem',
+    fontSize: '1.6rem',
     padding: '1rem',
     marginBottom: '2rem',
     textAlign: 'center',
