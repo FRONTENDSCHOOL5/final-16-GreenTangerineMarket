@@ -81,6 +81,8 @@ const ProductCreateComponent = () => {
     setImageUrl(`https://api.mandarin.weniv.co.kr/${res.data[0].filename}`)
   }
 
+  const handleReset = () => setPrices('')
+
   useEffect(() => {
     if (imageUrl !== '' && name !== '' && prices !== '') {
       setOnBtn(true)
@@ -137,7 +139,15 @@ const ProductCreateComponent = () => {
           </section>
 
           <section className={s.priceContainer}>
-            <h2>Step3. 상품 가격 등록</h2>
+            <div className={s.priceTitle}>
+              <h2>Step3. 상품 가격 등록</h2>
+              {prices !== '' ? (
+                <SmallButton onClickEvent={handleReset}>AC</SmallButton>
+              ) : (
+                <SmallButtonDisable>AC</SmallButtonDisable>
+              )}
+            </div>
+
             <label htmlFor='productPrice' className='a11y-hidden'>
               가격
             </label>
@@ -152,15 +162,17 @@ const ProductCreateComponent = () => {
             <span className={s.won}>원</span>
           </section>
 
-          {onBtn === true ? (
-            !progressingCreate ? (
-              <SmallButton onClickEvent={handleSend}>등록</SmallButton>
+          <section className={s.btn}>
+            {onBtn === true ? (
+              !progressingCreate ? (
+                <SmallButton onClickEvent={handleSend}>등록</SmallButton>
+              ) : (
+                <SmallButtonDisable>{!progressingCreate ? '등록' : '진행 중'}</SmallButtonDisable>
+              )
             ) : (
-              <SmallButtonDisable>{!progressingCreate ? '등록' : '진행 중'}</SmallButtonDisable>
-            )
-          ) : (
-            <SmallButtonDisable>등록</SmallButtonDisable>
-          )}
+              <SmallButtonDisable>등록</SmallButtonDisable>
+            )}
+          </section>
         </form>
       </section>
     </>
