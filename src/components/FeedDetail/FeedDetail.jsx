@@ -59,7 +59,6 @@ const FeedDetailPage = () => {
                   console.log(i)
                   return <ImageList src={image} alt={`${i}번째`} key={image + 'key' + i} />
                 })}
-                <li className={s.list}></li>
               </ImageSlider>
             )}
             <FeedDetailHeader author={feedDetail.author} commentCount={feedDetail.commentCount} />
