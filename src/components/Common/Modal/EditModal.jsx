@@ -49,6 +49,10 @@ const EditModal = ({ type, ...props }) => {
     }
   }, [])
 
+  const handleClickOutSideModal = e => {
+    if (e.target.nodeName === 'DIALOG') setShowEditModal(false)
+  }
+
   const handleEditInfo = async () => {
     if (type === 'feed') {
       const { imageElement, feedContent } = formRef.current.elements
@@ -73,9 +77,9 @@ const EditModal = ({ type, ...props }) => {
   return (
     <>
       {type === 'feed' && (
-        <dialog className={s.modal} open>
-          <h2 className={s.title}>게시글 수정하기</h2>
+        <dialog className={s.modal} open onClick={handleClickOutSideModal}>
           <form ref={formRef}>
+            <h2 className={s.title}>게시글 수정하기</h2>
             <ImageSlider>
               {typeof images === 'string'
                 ? images.split(',').map((image, i) => {
@@ -87,7 +91,13 @@ const EditModal = ({ type, ...props }) => {
             </ImageSlider>
             <label className={s.inputFile}>
               사진 업로드
-              <input name='imageElement' type='file' multiple onChange={e => handleSetImage({ e, setImages })} />
+              <input
+                name='imageElement'
+                type='file'
+                multiple
+                onChange={e => handleSetImage({ e, setImages })}
+                accept='image/jpg, image/gif, image/png, image/bmp, image/tif, image/heic'
+              />
             </label>
 
             <textarea className={s.content} name='feedContent' value={content} onChange={handleChangeContent} />
@@ -101,7 +111,7 @@ const EditModal = ({ type, ...props }) => {
       )}
 
       {type === 'product' && (
-        <dialog className={s.modal} open>
+        <dialog className={s.modal} open onClick={handleClickOutSideModal}>
           <h2 className={s.title}>게시글 수정하기</h2>
           <form ref={formRef}>
             <ImageSlider>
@@ -115,7 +125,13 @@ const EditModal = ({ type, ...props }) => {
             </ImageSlider>
             <label className={s.inputFile}>
               사진 업로드
-              <input name='imageElement' type='file' multiple onChange={e => handleSetImage({ e, setImages })} />
+              <input
+                name='imageElement'
+                type='file'
+                multiple
+                onChange={e => handleSetImage({ e, setImages })}
+                accept='image/jpg, image/gif, image/png, image/bmp, image/tif, image/heic'
+              />
             </label>
             <label className={s.inputLabel}>
               상품 이름
