@@ -66,3 +66,20 @@ export const deleteProductAPI = async id => {
     return e
   }
 }
+
+export const editProductAPI = async ({ product_id, image, itemName, price }) => {
+  try {
+    const res = await instance.put(`/product/${product_id}`, {
+      product: {
+        itemImage: image,
+        itemName,
+        price,
+      },
+    })
+    console.log(res)
+    return res
+  } catch (err) {
+    console.error(err)
+    return err
+  }
+}
