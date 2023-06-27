@@ -3,7 +3,7 @@ import { BASE_URL } from 'constants/BASE_URL'
 
 export const handleUploadImageAPI = async ({ files, inputFileElement }) => {
   if (files.length === 0) return
-  else if (files.length > 3) return
+  else if (files.length > 3) return alert('이미지는 최대 3개까지 업로드 가능합니다')
   else {
     const resArray = []
     let size = 0

@@ -8,6 +8,9 @@
   height: 25rem;
 }
 .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 115rem;
   height: auto;
   border: 0.1rem solid $color-c4c4c4;
