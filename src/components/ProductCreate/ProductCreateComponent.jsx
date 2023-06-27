@@ -84,11 +84,8 @@ const ProductCreateComponent = () => {
   const handleReset = () => setPrices('')
 
   useEffect(() => {
-    if (imageUrl !== '' && name !== '' && prices !== '') {
-      setOnBtn(true)
-    } else {
-      setOnBtn(false)
-    }
+    if (imageUrl !== '' && name !== '' && prices !== '') setOnBtn(true)
+    else setOnBtn(false)
   }, [imageUrl, name, prices])
   return (
     <>
@@ -135,7 +132,7 @@ const ProductCreateComponent = () => {
               onChange={handleInputChange}
               maxLength={30}
             />
-            <div className={s.counter}>{name.length}/30</div>
+            <p className={s.counter}>{name.length}/30</p>
           </section>
 
           <section className={s.priceContainer}>
@@ -163,14 +160,10 @@ const ProductCreateComponent = () => {
           </section>
 
           <section className={s.btn}>
-            {onBtn === true ? (
-              !progressingCreate ? (
-                <SmallButton onClickEvent={handleSend}>등록</SmallButton>
-              ) : (
-                <SmallButtonDisable>{!progressingCreate ? '등록' : '진행 중'}</SmallButtonDisable>
-              )
+            {onBtn && !progressingCreate ? (
+              <SmallButton onClickEvent={handleSend}>등록</SmallButton>
             ) : (
-              <SmallButtonDisable>등록</SmallButtonDisable>
+              <SmallButtonDisable>{progressingCreate ? `진행중` : `등록`}</SmallButtonDisable>
             )}
           </section>
         </form>

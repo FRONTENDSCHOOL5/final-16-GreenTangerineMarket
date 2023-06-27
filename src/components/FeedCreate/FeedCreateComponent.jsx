@@ -8,6 +8,8 @@ import { uploadImages } from 'api/image'
 import { SmallButton, SmallButtonDisable } from 'components/Common/Button/Small/SmallButton'
 import GuideLine from 'components/Common/GuideLine/GuideLine'
 import { BASE_URL } from 'constants/BASE_URL'
+import ImageSlider from 'components/Common/Slider/ImageSlider'
+import ImageList from 'components/Common/List/ImageList'
 
 const FeedCreateComponent = () => {
   const [contents, setContents] = useState('')
@@ -78,11 +80,8 @@ const FeedCreateComponent = () => {
   const handleReset = () => setContents('')
 
   useEffect(() => {
-    if (imageUrl !== '' || contents !== '') {
-      setOnBtn(true)
-    } else {
-      setOnBtn(false)
-    }
+    if (imageUrl !== '' || contents !== '') setOnBtn(true)
+    else setOnBtn(false)
   }, [imageUrl, contents])
 
   return (
@@ -111,9 +110,15 @@ const FeedCreateComponent = () => {
               className={s.imageInput}
             />
             <div className={s.imagePreviewContainer}>
-              {imagePreviews.map((preview, index) => (
-                <img key={index} src={preview} alt={`${index + 1}번째 이미지 미리보기`} className={s.imagePreview} />
-              ))}
+              <ImageSlider>
+                {typeof imagePreviews === 'string'
+                  ? imagePreviews.split(',').map((image, i) => {
+                      return <ImageList key={image + 'key'} src={image} alt={`${i}번째 이미지`} />
+                    })
+                  : imagePreviews.map((image, i) => {
+                      return <ImageList key={image + 'key'} src={image} alt={`${i}번째 이미지`} />
+                    })}
+              </ImageSlider>
             </div>
           </section>
 
@@ -138,18 +143,14 @@ const FeedCreateComponent = () => {
               onChange={handleInputChange}
               maxLength={300}
             />
-            <div className={s.counter}>글자 수: {contents.length}/300</div>
+            <p className={s.counter}>글자 수: {contents.length}/300</p>
           </section>
 
           <section className={s.btn}>
-            {onBtn === true ? (
-              !progressingCreate ? (
-                <SmallButton onClickEvent={handleSend}>등록</SmallButton>
-              ) : (
-                <SmallButtonDisable>{!progressingCreate ? '등록' : '진행 중'}</SmallButtonDisable>
-              )
+            {onBtn && !progressingCreate ? (
+              <SmallButton onClickEvent={handleSend}>등록</SmallButton>
             ) : (
-              <SmallButtonDisable>등록</SmallButtonDisable>
+              <SmallButtonDisable>{progressingCreate ? `진행중` : `등록`}</SmallButtonDisable>
             )}
           </section>
         </form>
