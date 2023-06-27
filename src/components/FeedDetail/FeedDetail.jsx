@@ -56,7 +56,6 @@ const FeedDetailPage = () => {
             {feedDetail.image && (
               <ImageSlider>
                 {feedDetail.image.split(',').map((image, i) => {
-                  console.log(i)
                   return <ImageList src={image} alt={`${i}번째`} key={image + 'key' + i} />
                 })}
               </ImageSlider>
