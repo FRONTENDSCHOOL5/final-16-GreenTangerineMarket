@@ -14,7 +14,6 @@ import { editFeedAPI } from 'api/feed'
 import { editProductAPI } from 'api/product'
 import getToastStyle from 'utils/getToastStyle'
 import { handleUploadImageAPI } from 'utils/handleUploadImage'
-import { useNavigate } from 'react-router-dom'
 
 const EditModal = ({ type, ...props }) => {
   const formRef = useRef()
