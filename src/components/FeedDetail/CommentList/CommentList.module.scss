@@ -1,30 +1,32 @@
 @import 'styles/global.scss';
 
-.liList {
+.list {
   display: flex;
-  padding: 1rem;
-  list-style: none;
+  flex-direction: column;
   font-size: 2rem;
+  margin: 1rem;
 
-  .commentImage {
-    margin: 1rem;
-    width: 10rem;
-    height: 10rem;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-
-  .commentListBox {
-    margin: 2rem;
-  }
-
-  .commentContent {
-    margin-top: 1rem;
-  }
-
-  .deletButton {
-    margin-top: 1rem;
-    margin-left: -0.5rem;
+  .profile {
     display: flex;
+    align-items: center;
+
+    .commentImage {
+      border: 1px solid $color-c4c4c4;
+      width: 7rem;
+      height: 7rem;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 1rem;
+    }
+  }
+  .commentContent {
+    margin: 1rem 0;
+  }
+  .container {
+    display: flex;
+
+    .font {
+      color: $color-767676;
+    }
   }
 }

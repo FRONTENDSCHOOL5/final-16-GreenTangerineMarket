@@ -14,6 +14,8 @@ import { getCommentsInFeedAPI, postCommentsAPI } from 'api/comment'
 import CommentList from './CommentList/CommentList'
 import EditModal from 'components/Common/Modal/EditModal'
 import { showEditModalAtom } from 'recoil/atom/showFlag'
+import ImageSlider from 'components/Common/Slider/ImageSlider'
+import ImageList from 'components/Common/List/ImageList'
 
 const FeedDetailPage = () => {
   const params = useParams()
@@ -51,6 +53,15 @@ const FeedDetailPage = () => {
       {feedDetail && (
         <>
           <section className={s.container}>
+            {feedDetail.image && (
+              <ImageSlider>
+                {feedDetail.image.split(',').map((image, i) => {
+                  console.log(i)
+                  return <ImageList src={image} alt={`${i}번째`} key={image + 'key' + i} />
+                })}
+                <li className={s.list}></li>
+              </ImageSlider>
+            )}
             <FeedDetailHeader author={feedDetail.author} commentCount={feedDetail.commentCount} />
             <hr className={s.line} />
             <section className={s.detailContent}>{feedDetail.content}</section>
