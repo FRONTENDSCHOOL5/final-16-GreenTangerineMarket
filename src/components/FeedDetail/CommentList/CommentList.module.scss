@@ -1,17 +1,32 @@
-.liList {
-  display: flex;
-  padding: 2rem;
-  list-style: none;
-  font-size: 2rem;
-}
+@import 'styles/global.scss';
 
-.commentImage {
-  width: 10rem;
-  height: 10rem;
-  border-radius: 50%;
-  object-fit: cover;
-}
-.commentListBox {
-  margin: 2rem;
-  margin-top: 5rem;
+.list {
+  display: flex;
+  flex-direction: column;
+  font-size: 2rem;
+  margin: 1rem;
+
+  .profile {
+    display: flex;
+    align-items: center;
+
+    .commentImage {
+      border: 1px solid $color-c4c4c4;
+      width: 7rem;
+      height: 7rem;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 1rem;
+    }
+  }
+  .commentContent {
+    margin: 1rem 0;
+  }
+  .container {
+    display: flex;
+
+    .font {
+      color: $color-767676;
+    }
+  }
 }
