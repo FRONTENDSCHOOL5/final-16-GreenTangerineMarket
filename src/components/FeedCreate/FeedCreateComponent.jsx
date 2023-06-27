@@ -14,7 +14,6 @@ const FeedCreateComponent = () => {
   const [imageUrl, setImageUrl] = useState('')
   const [imagePreviews, setImagePreviews] = useState([])
   const [onBtn, setOnBtn] = useState(false)
-
   const [progressingCreate, setProgressingCreate] = useState(false)
   const navigate = useNavigate()
 
@@ -76,6 +75,8 @@ const FeedCreateComponent = () => {
     setImageUrl(answer)
   }
 
+  const handleReset = () => setContents('')
+
   useEffect(() => {
     if (imageUrl !== '' || contents !== '') {
       setOnBtn(true)
@@ -90,7 +91,7 @@ const FeedCreateComponent = () => {
         <GuideLine
           name={'피드'}
           about={'소중한 일상을 들려주세요!'}
-          limit={'사진 또는 텍스트 둘 중 한개는'}
+          limit={'사진 또는 텍스트 둘 중 한 개는'}
           only={'사진이나 텍스트가 비어 있으면 비어있는 상태로 등록이 됩니다.'}
           photo={'최대 3장'}
           text={'300'}
@@ -117,7 +118,14 @@ const FeedCreateComponent = () => {
           </section>
 
           <section className={s.contentContainer}>
-            <h2>피드 내용 작성</h2>
+            <div className={s.textTitle}>
+              <h2>피드 내용 작성</h2>
+              {contents !== '' ? (
+                <SmallButton onClickEvent={handleReset}>글 비우기</SmallButton>
+              ) : (
+                <SmallButtonDisable>글 비우기</SmallButtonDisable>
+              )}
+            </div>
             <label htmlFor='content' className='a11y-hidden'>
               텍스트 작성
             </label>
@@ -133,15 +141,17 @@ const FeedCreateComponent = () => {
             <div className={s.counter}>글자 수: {contents.length}/300</div>
           </section>
 
-          {onBtn === true ? (
-            !progressingCreate ? (
-              <SmallButton onClickEvent={handleSend}>등록</SmallButton>
+          <section className={s.btn}>
+            {onBtn === true ? (
+              !progressingCreate ? (
+                <SmallButton onClickEvent={handleSend}>등록</SmallButton>
+              ) : (
+                <SmallButtonDisable>{!progressingCreate ? '등록' : '진행 중'}</SmallButtonDisable>
+              )
             ) : (
-              <SmallButtonDisable>{!progressingCreate ? '등록' : '진행 중'}</SmallButtonDisable>
-            )
-          ) : (
-            <SmallButtonDisable>등록</SmallButtonDisable>
-          )}
+              <SmallButtonDisable>등록</SmallButtonDisable>
+            )}
+          </section>
         </form>
       </section>
     </>

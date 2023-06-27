@@ -4,8 +4,8 @@
   .contentBox {
     border-radius: 1rem;
     border: 0.1rem solid $color-main;
-    padding: 1rem;
-
+    padding: 5rem;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
     font-size: 3rem;
     > section {
       margin-bottom: 2rem;
@@ -48,10 +48,10 @@
     }
 
     .content {
-      width: 90%;
+      width: 100%;
       display: block;
       box-sizing: border-box;
-      margin: auto;
+
       padding: 1rem;
       background-color: #f0f0f0;
       border: none;
@@ -63,12 +63,19 @@
         outline: none;
       }
     }
+    .textTitle {
+      display: flex;
+    }
 
     .counter {
-      width: 90%;
+      width: 100%;
       display: block;
-      margin: auto;
+      text-align: end;
       font-size: 2rem;
+    }
+
+    .btn {
+      text-align: end;
     }
   }
 }
