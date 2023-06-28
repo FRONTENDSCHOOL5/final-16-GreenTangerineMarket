@@ -84,7 +84,7 @@ const ProductCreateComponent = () => {
   const handleReset = () => setPrices('')
 
   useEffect(() => {
-    if (imageUrl !== '' && name !== '' && prices !== '') setOnBtn(true)
+    if (!imageUrl && !name && !prices) setOnBtn(true)
     else setOnBtn(false)
   }, [imageUrl, name, prices])
   return (
@@ -138,7 +138,7 @@ const ProductCreateComponent = () => {
           <section className={s.priceContainer}>
             <div className={s.priceTitle}>
               <h2>Step3. 상품 가격 등록</h2>
-              {prices !== '' ? (
+              {!prices ? (
                 <SmallButton onClickEvent={handleReset}>AC</SmallButton>
               ) : (
                 <SmallButtonDisable>AC</SmallButtonDisable>
