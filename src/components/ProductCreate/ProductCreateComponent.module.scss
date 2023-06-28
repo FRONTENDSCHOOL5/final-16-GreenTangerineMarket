@@ -4,7 +4,7 @@
   .contentBox {
     border-radius: 1rem;
     border: 0.1rem solid $color-main;
-    padding: 1rem;
+    padding: 5rem;
 
     font-size: 3rem;
     > section {
@@ -39,10 +39,9 @@
 
     .nameContainer {
       .name {
-        width: 90%;
+        width: 95%;
         display: block;
         box-sizing: border-box;
-        margin: auto;
         padding: 1rem;
         background-color: #f0f0f0;
         border: none;
@@ -50,20 +49,33 @@
       }
 
       .counter {
-        width: 90%;
+        width: 95%;
         display: block;
-        margin: auto;
+        text-align: end;
         font-size: 2rem;
       }
     }
 
+    .priceTitle {
+      display: flex;
+      gap: 1rem;
+    }
+
     .price {
       width: 90%;
-      display: block;
-      margin: auto;
+      display: inline-block;
       padding: 1rem;
       border-radius: 1rem;
       background-color: #f0f0f0;
+      text-align: end;
+    }
+    .won {
+      margin: 1rem;
+    }
+
+    .btn {
+      margin-right: 2.5rem;
+      text-align: end;
     }
   }
 }
