@@ -33,21 +33,12 @@ const EditModal = ({ type, ...props }) => {
   const handleChangeItemPrice = e => {
     const inputValue = e.target.value.replaceAll(',', '')
     const numericRegex = /^[0-9\b]+$/
-    if (!numericRegex.test(inputValue)) return
-    else setItemPrice(inputValue)
-  }
 
-  useEffect(() => {
-    if (type === 'feed') {
-      setImages(props.info.image)
-      setContent(props.info.content)
-    } //
-    else if (type === 'product') {
-      setImages(props.info.itemImage)
-      setItemName(props.info.itemName)
-      setItemPrice(props.info.price)
-    }
-  }, [])
+    if (inputValue === '') setItemPrice(inputValue)
+    else if (!numericRegex.test(inputValue)) return
+
+    setItemPrice(inputValue)
+  }
 
   const handleClickOutSideModal = e => {
     if (e.target.nodeName === 'DIALOG') setShowEditModal(false)
@@ -73,6 +64,25 @@ const EditModal = ({ type, ...props }) => {
       })
     }
   }
+
+  useEffect(() => {
+    if (type === 'feed') {
+      setImages(props.info.image)
+      setContent(props.info.content)
+    } //
+    else if (type === 'product') {
+      setImages(props.info.itemImage)
+      setItemName(props.info.itemName)
+      setItemPrice(props.info.price)
+    }
+  }, [])
+
+  // 페이지 이동 시 모달 atom을 false로 변경
+  const handlePopStateCloseModal = () => setShowEditModal(false)
+  useEffect(() => {
+    window.addEventListener('popstate', handlePopStateCloseModal)
+    return () => window.removeEventListener('popstate', handlePopStateCloseModal)
+  }, [])
 
   return (
     <>
@@ -112,8 +122,8 @@ const EditModal = ({ type, ...props }) => {
 
       {type === 'product' && (
         <dialog className={s.modal} open onClick={handleClickOutSideModal}>
-          <h2 className={s.title}>게시글 수정하기</h2>
           <form ref={formRef}>
+            <h2 className={s.title}>게시글 수정하기</h2>
             <ImageSlider>
               {typeof images === 'string'
                 ? images.split(',').map((image, i) => {
