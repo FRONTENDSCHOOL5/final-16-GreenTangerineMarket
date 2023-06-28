@@ -6,6 +6,8 @@
   display: flex;
   justify-content: center;
   border: 1px solid $color-c4c4c4;
+  border-radius: 1rem;
+  overflow: hidden;
   .image {
     width: 50rem;
     height: 50rem;
@@ -19,6 +21,7 @@
     .name {
       font-size: 3rem;
       font-weight: 700;
+      word-break: break-all;
     }
     .price {
       font-size: 2rem;
