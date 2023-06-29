@@ -80,6 +80,7 @@ const EditModal = ({ type, ...props }) => {
   // 페이지 이동 시 모달 atom을 false로 변경
   const handlePopStateCloseModal = () => setShowEditModal(false)
   useEffect(() => {
+    window.history.pushState(null, '', window.location.href)
     window.addEventListener('popstate', handlePopStateCloseModal)
     return () => window.removeEventListener('popstate', handlePopStateCloseModal)
   }, [])
