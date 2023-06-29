@@ -1,6 +1,13 @@
+$desktop: 1920px;
 $tablet: 1024px;
 $mobile: 768px;
 $mobile-font-size: 1.4rem;
+
+@mixin desktop {
+  @media (max-width: #{$desktop}) {
+    @content;
+  }
+}
 
 @mixin tablet {
   @media (max-width: #{$tablet}) {
