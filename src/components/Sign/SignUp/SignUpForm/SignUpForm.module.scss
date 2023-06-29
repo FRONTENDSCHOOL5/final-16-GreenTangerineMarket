@@ -1,4 +1,5 @@
 @import 'styles/global.scss';
+@import 'styles/mixin.scss';
 
 .form {
   border: 0.1rem solid $color-c4c4c4;
@@ -18,5 +19,26 @@
     font-weight: 400;
     color: $color-767676;
     text-align: center;
+    .login {
+      color: $color-main;
+      font-weight: 700;
+      text-decoration: underline;
+    }
+  }
+}
+
+@include tablet {
+  .form {
+    margin-top: 3rem;
+  }
+}
+@include mobile {
+  .form {
+    width: 100%;
+    border: none;
+    margin-top: 0rem;
+    .link {
+      font-size: $mobile-font-size;
+    }
   }
 }

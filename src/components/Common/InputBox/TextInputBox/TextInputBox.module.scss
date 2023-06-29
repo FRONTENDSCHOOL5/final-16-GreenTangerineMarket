@@ -1,8 +1,10 @@
 @import 'styles/global.scss';
+@import 'styles/mixin.scss';
 
 .container {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1rem;
   .label {
     display: flex;
@@ -21,5 +23,27 @@
     font-weight: 400;
     color: #eb5757;
     height: 1.2rem;
+  }
+}
+
+@include tablet {
+  .container {
+    .label {
+      width: 45rem;
+      font-size: $mobile-font-size;
+      .input {
+      }
+    }
+  }
+}
+@include mobile {
+  .container {
+    width: 100%;
+    .label {
+      width: 90%;
+      .input {
+        font-size: 1.4rem;
+      }
+    }
   }
 }

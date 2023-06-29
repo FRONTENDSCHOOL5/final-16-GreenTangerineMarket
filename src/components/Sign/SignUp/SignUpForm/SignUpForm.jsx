@@ -23,7 +23,6 @@ const SignUpForm = () => {
   const navigate = useNavigate()
 
   const formRef = useRef()
-  const [imageFile, setImageFile] = useState('')
   const [emailError, setEmailError] = useRecoilState(signUpEmailErroAtom)
   const [passwordError, setPasswordError] = useRecoilState(signUpPassWordErroAtom)
   const [accountNameError, setAccountNameError] = useRecoilState(signUpAccountNameErroAtom)
@@ -104,7 +103,7 @@ const SignUpForm = () => {
         <MediumButtonDisabled>{!progressingSignUp ? '회원가입' : '회원가입 진행 중'}</MediumButtonDisabled>
       )}
       <Link to='/signin' className={s.link}>
-        로그인 하러가기
+        <strong className={s.login}>로그인</strong> 하러가기
       </Link>
     </form>
   )

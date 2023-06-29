@@ -1,3 +1,19 @@
+$tablet: 1024px;
+$mobile: 768px;
+$mobile-font-size: 1.4rem;
+
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: #{$mobile}) {
+    @content;
+  }
+}
+
 @mixin gridFeed {
   display: grid;
   width: 100%;
@@ -33,6 +49,14 @@
   align-items: center;
   &:hover:not(:disabled) {
     opacity: 0.5;
+  }
+  @include tablet {
+    width: 45rem;
+  }
+  @include mobile {
+    width: 90%;
+    height: 5rem;
+    font-size: $mobile-font-size;
   }
 }
 

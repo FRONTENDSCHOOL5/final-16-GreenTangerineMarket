@@ -71,7 +71,7 @@ const SignInForm = () => {
         <MediumButtonDisabled>로그인</MediumButtonDisabled>
       )}
       <Link to='/signup' className={s.link}>
-        회원가입 하러가기
+        <strong className={s.signup}>회원가입</strong> 하러가기
       </Link>
     </form>
   )
