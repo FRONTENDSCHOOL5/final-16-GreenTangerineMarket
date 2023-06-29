@@ -1,5 +1,27 @@
+@import 'styles/mixin.scss';
+
 .container {
   margin: 8rem 0;
   padding: 0 32rem;
   min-height: calc(100% - 50rem);
+}
+
+@include desktop {
+  .container {
+    margin: 6rem 0;
+    padding: 0 15rem;
+  }
+}
+
+@include tablet {
+  .container {
+    margin: 5rem 0;
+    padding: 0 10rem;
+  }
+}
+@include mobile {
+  .container {
+    margin: 3rem 0;
+    padding: 0 3rem;
+  }
 }
