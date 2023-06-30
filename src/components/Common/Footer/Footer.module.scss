@@ -1,6 +1,9 @@
 @import 'styles/global.scss';
 
 .footer {
+  display: flex;
+  align-items: center;
+  gap: 8rem;
   background-color: #f2f2f2;
   font-size: 14px;
   width: 100%;
@@ -61,5 +64,25 @@
     padding: 3rem 0;
     line-height: 2.4rem;
     color: $color-767676;
+    flex-grow: 1;
+    .contact {
+      display: block;
+      padding: 1rem;
+      border-radius: 1rem;
+      border: 0.1rem solid black;
+    }
+  }
+
+  .gitHub {
+    display: inline-block;
+    width: 10rem;
+    height: 5rem;
+    padding: 0;
+    > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 1rem;
+    }
   }
 }
