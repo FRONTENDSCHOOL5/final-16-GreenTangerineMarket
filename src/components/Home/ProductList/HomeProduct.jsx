@@ -25,7 +25,7 @@ const HomeProduct = () => {
           더보기
         </Link>
       </div>
-      <div className={s.productBox}>
+      <div className={s.box}>
         {products.map(product => {
           return (
             <ProductCard
