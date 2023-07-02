@@ -51,6 +51,9 @@
       height: 3rem;
       right: 3rem;
       background: url('/assets/img/icon-close.svg') center/ 3rem 3rem no-repeat;
+      &:hover {
+        opacity: 0.5;
+      }
     }
   }
 }

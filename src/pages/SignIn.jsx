@@ -16,11 +16,14 @@ const SignIn = () => {
 
   return (
     <>
-      {showSplash && <Splash />}
-      <SignLayout>
-        <SignMainLogo />
-        <SignInForm />
-      </SignLayout>
+      {showSplash ? (
+        <Splash />
+      ) : (
+        <SignLayout>
+          <SignMainLogo />
+          <SignInForm />
+        </SignLayout>
+      )}
     </>
   )
 }
