@@ -14,8 +14,6 @@ const FeedMoreButton = ({ id, author }) => {
   const myInfo = useRecoilValue(myInfoAtom)
   const isMyFeed = author.accountname === myInfo.accountname
 
-  const handleMenuClick = () => setShowMenu(false)
-
   useEffect(() => {
     const handleOutsideClick = e => {
       if (!menuRef.current && moreButtonRef.current.contains(e.target)) setShowMenu(true)
@@ -49,7 +47,7 @@ const FeedMoreButton = ({ id, author }) => {
         ) : (
           <ul className={s.menu} ref={menuRef}>
             <li>
-              <FeedReportButton id={id} closeMenu={handleMenuClick} />
+              <FeedReportButton id={id} closeMenu={() => setShowMenu(false)} />
             </li>
           </ul>
         ))}
