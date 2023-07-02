@@ -31,13 +31,13 @@ const Footer = () => {
             <div className={s.container}>
               <ul className={s.listBtn}>
                 <li>
-                  <Link>장예지의 깃헙</Link>
+                  <Link to='https://github.com/ho-ji'>장예지의 깃헙</Link>
                 </li>
                 <li>
-                  <Link>임준혁의 깃헙</Link>
+                  <Link to='https://github.com/Limttugi'>임준혁의 깃헙</Link>
                 </li>
                 <li>
-                  <Link>이슬아의 깃헙</Link>
+                  <Link to='https://github.com/tmfdk0213'>이슬아의 깃헙</Link>
                 </li>
                 <li>
                   <Link to='https://github.com/Seunggyu-Jung'>정승규의 깃헙</Link>
