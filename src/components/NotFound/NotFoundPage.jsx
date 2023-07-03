@@ -14,7 +14,7 @@ const NotFoundPage = () => {
     navigate(-1)
   }
   return (
-    <main className={s.wrapper}>
+    <main className={s.container}>
       <img className={s.img} src={img} alt='페이지를 찾을 수 없습니다' />
       <section className={s.text}>
         <h1 className={s.header}>페이지를 찾을 수 없습니다</h1>

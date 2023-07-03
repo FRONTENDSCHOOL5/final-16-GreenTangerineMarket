@@ -68,6 +68,17 @@ $mobile: 768px;
   &:hover:not(:disabled) {
     opacity: 0.5;
   }
+  @include tablet {
+    width: 20rem;
+    padding: 1.2rem;
+    font-size: 2.2rem;
+  }
+  @include mobile {
+    width: 15rem;
+    height: 6rem;
+    padding: 1rem;
+    font-size: 2rem;
+  }
 }
 
 @mixin mediumButtonCS {
