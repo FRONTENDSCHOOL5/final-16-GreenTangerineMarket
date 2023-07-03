@@ -1,4 +1,6 @@
 @import 'styles/global.scss';
+@import 'styles/mixin.scss';
+
 .container {
   display: flex;
   position: relative;
@@ -20,6 +22,16 @@
     }
     &:not(:last-child) {
       margin-right: 0.5rem;
+    }
+  }
+}
+@include mobile {
+  .container {
+    .button {
+      .image {
+        width: 2rem;
+        height: 2rem;
+      }
     }
   }
 }

@@ -1,4 +1,5 @@
 @import 'styles/global.scss';
+@import 'styles/mixin.scss';
 
 .link {
   display: inline-block;
@@ -17,7 +18,7 @@
   }
   .wrapper {
     width: 100%;
-    height: 30rem;
+    aspect-ratio: 1.2/1;
     border: 1px solid $color-c4c4c4;
     border-radius: 1rem;
     margin-bottom: 1.5rem;
@@ -39,12 +40,49 @@
   }
   .content {
     font-size: 1.6rem;
-    line-height: 1.5;
     word-break: break-all;
     text-overflow: ellipsis;
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
+  }
+}
+
+@include desktop {
+  .link {
+    .wrapper {
+      margin-bottom: 1.2rem;
+    }
+  }
+}
+@include tablet {
+  .link {
+    margin-bottom: 0.8rem;
+    .wrapper {
+      margin-bottom: 0.8rem;
+    }
+    .layers {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+    .content {
+      font-size: 1.4rem;
+    }
+  }
+}
+@include mobile {
+  .link {
+    margin-bottom: 0.5rem;
+    .wrapper {
+      margin-bottom: 0.5rem;
+    }
+    .layers {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+    .content {
+      font-size: $mobile-font-size;
+    }
   }
 }

@@ -1,4 +1,6 @@
 @import 'styles/global.scss';
+@import 'styles/mixin.scss';
+
 .more {
   width: 3.2rem;
   height: 3.2rem;
@@ -41,5 +43,17 @@
   }
   100% {
     opacity: 1;
+  }
+}
+
+@include desktop {
+}
+@include tablet {
+}
+@include mobile {
+  .more {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-size: 2rem 2rem;
   }
 }

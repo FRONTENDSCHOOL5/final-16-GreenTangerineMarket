@@ -1,4 +1,5 @@
 @import 'styles/global.scss';
+@import 'styles/mixin.scss';
 
 .card {
   width: 36rem;
@@ -6,7 +7,7 @@
   height: 48rem;
   background-color: #fff;
   overflow: hidden;
-  place-self: center;
+  justify-self: center;
   header {
     display: flex;
     align-items: center;
@@ -25,6 +26,47 @@
       font-size: 1.4rem;
       color: $color-767676;
       cursor: default;
+    }
+  }
+}
+
+@include desktop {
+  .card {
+    width: 28rem;
+    min-width: 28rem;
+    height: 42rem;
+    header {
+      margin-bottom: 1.2rem;
+    }
+  }
+}
+@include tablet {
+  .card {
+    width: 24rem;
+    min-width: 24rem;
+    height: 35rem;
+    header {
+      margin-bottom: 1rem;
+    }
+    footer {
+      .time {
+        font-size: 1.3rem;
+      }
+    }
+  }
+}
+@include mobile {
+  .card {
+    width: calc(50% - 1rem);
+    min-width: calc(50% - 1rem);
+    height: fit-content;
+    header {
+      margin-bottom: 1rem;
+    }
+    footer {
+      .time {
+        font-size: 1.2rem;
+      }
     }
   }
 }
