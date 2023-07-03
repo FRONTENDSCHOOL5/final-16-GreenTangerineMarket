@@ -46,14 +46,15 @@
   }
 }
 
-@include desktop {
-}
-@include tablet {
-}
 @include mobile {
   .more {
     width: 2.5rem;
     height: 2.5rem;
     background-size: 2rem 2rem;
+  }
+  .menu {
+    li > button {
+      width: 8rem;
+    }
   }
 }

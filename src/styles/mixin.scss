@@ -1,7 +1,6 @@
 $desktop: 1920px;
 $tablet: 1024px;
 $mobile: 768px;
-$mobile-font-size: 1.4rem;
 
 @mixin desktop {
   @media (max-width: #{$desktop}) {
@@ -26,6 +25,18 @@ $mobile-font-size: 1.4rem;
   width: 100%;
   grid-template-columns: repeat(auto-fill, minmax(36rem, 1fr));
   gap: 2rem;
+  @include desktop {
+    grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+    gap: 1.6rem;
+  }
+  @include tablet {
+    grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));
+    gap: 1.2rem;
+  }
+  @include mobile {
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    gap: 1rem;
+  }
 }
 
 @mixin gridProduct {
@@ -33,6 +44,18 @@ $mobile-font-size: 1.4rem;
   width: 100%;
   grid-template-columns: repeat(auto-fill, minmax(32rem, 1fr));
   gap: 2rem;
+  @include desktop {
+    grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr));
+    gap: 1.6rem;
+  }
+  @include tablet {
+    grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+    gap: 1.2rem;
+  }
+  @include mobile {
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    gap: 1rem;
+  }
 }
 
 @mixin largeButtonCS {
@@ -63,7 +86,7 @@ $mobile-font-size: 1.4rem;
   @include mobile {
     width: 90%;
     height: 5rem;
-    font-size: $mobile-font-size;
+    font-size: 1.4rem;
   }
 }
 

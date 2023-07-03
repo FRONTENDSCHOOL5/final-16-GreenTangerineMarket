@@ -11,7 +11,7 @@ const ListLayout = ({ children, link, name }) => {
   return (
     <>
       {isMobile ? <MobileHeader link={link} name={name} /> : <ListHeader link={link} name={name} />}
-      <main className={s.main}>{children}</main>
+      <main className={s.container}>{children}</main>
       <Footer />
     </>
   )
