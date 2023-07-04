@@ -23,6 +23,10 @@
   margin: 3rem 0;
   padding-bottom: 3rem;
   overflow-x: scroll;
+  > article {
+    width: 32rem;
+    min-width: 32rem;
+  }
 
   &::-webkit-scrollbar {
     width: 1rem;
@@ -53,6 +57,10 @@
   }
   .box {
     gap: 2.5rem;
+    > article {
+      width: 28rem;
+      min-width: 28rem;
+    }
   }
 }
 @include tablet {
@@ -67,6 +75,10 @@
   }
   .box {
     gap: 2rem;
+    > article {
+      width: 22rem;
+      min-width: 22rem;
+    }
   }
 }
 @include mobile {
@@ -80,7 +92,11 @@
     }
   }
   .box {
-    gap: 1rem;
+    gap: 1.5rem;
     margin-top: 2rem;
+    > article {
+      width: 18rem;
+      min-width: 18rem;
+    }
   }
 }

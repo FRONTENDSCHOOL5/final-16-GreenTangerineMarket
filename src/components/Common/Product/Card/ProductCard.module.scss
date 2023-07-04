@@ -2,8 +2,6 @@
 @import 'styles/mixin.scss';
 
 .card {
-  width: 32rem;
-  min-width: 32rem;
   height: fit-content;
   background-color: #fff;
   justify-self: center;
@@ -64,8 +62,6 @@
 
 @include desktop {
   .card {
-    width: 28rem;
-    min-width: 28rem;
     .link {
       .wrapper {
         margin-bottom: 0.8rem;
@@ -89,8 +85,6 @@
 }
 @include tablet {
   .card {
-    width: 22rem;
-    min-width: 22rem;
     .link {
       .wrapper {
         margin-bottom: 0.5rem;
@@ -110,11 +104,5 @@
         font-size: 1.2rem;
       }
     }
-  }
-}
-@include mobile {
-  .card {
-    width: 18rem;
-    min-width: 18rem;
   }
 }
