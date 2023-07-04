@@ -1,4 +1,5 @@
 @import 'styles/global.scss';
+@import 'styles/mixin.scss';
 
 .result {
   width: 70%;
@@ -16,6 +17,32 @@
       color: $color-main;
       font-weight: 700;
       font-size: 2rem;
+    }
+  }
+}
+
+@include desktop {
+  .result {
+    width: 80%;
+  }
+}
+@include tablet {
+  .result {
+    width: 100%;
+  }
+}
+@include mobile {
+  .result {
+    width: 100%;
+    .count {
+      color: $color-main;
+      font-size: 1.4rem;
+    }
+    .notice {
+      font-size: 1.4rem;
+      strong {
+        font-size: 1.6rem;
+      }
     }
   }
 }

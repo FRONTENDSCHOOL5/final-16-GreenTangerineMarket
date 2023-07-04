@@ -123,6 +123,15 @@ $mobile: 768px;
   &:hover:not(:disabled) {
     opacity: 0.5;
   }
+  @include tablet {
+    width: 8rem;
+    font-size: 1.5rem;
+  }
+  @include mobile {
+    width: 7rem;
+    font-size: 1.4rem;
+    padding: 0.5rem;
+  }
 }
 
 @mixin modalContainer {
