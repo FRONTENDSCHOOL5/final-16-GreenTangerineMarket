@@ -12,7 +12,7 @@ const AuthorButtonList = ({ feedDetail }) => {
   const navigate = useNavigate()
 
   const handleDeletePost = async () => {
-    const res = await deletePostAPI({ post_id: feedDetail.id })
+    const res = await deletePostAPI(feedDetail.id)
     navigate(-1)
   }
 

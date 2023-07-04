@@ -14,17 +14,19 @@ const FeedMoreButton = ({ id, author }) => {
   const myInfo = useRecoilValue(myInfoAtom)
   const isMyFeed = author.accountname === myInfo.accountname
 
+  const handleOutsideClick = e => {
+    if (!menuRef.current && moreButtonRef.current.contains(e.target)) setShowMenu(true)
+    else if (showMenu && menuRef.current && !menuRef.current.contains(e.target)) setShowMenu(false)
+  }
+
+  const handleEscapeKeyDown = e => {
+    if (e.key === 'Escape') {
+      setShowMenu(false)
+      moreButtonRef.current.blur()
+    }
+  }
+
   useEffect(() => {
-    const handleOutsideClick = e => {
-      if (!menuRef.current && moreButtonRef.current.contains(e.target)) setShowMenu(true)
-      else if (showMenu && menuRef.current && !menuRef.current.contains(e.target)) setShowMenu(false)
-    }
-    const handleEscapeKeyDown = e => {
-      if (e.key === 'Escape') {
-        setShowMenu(false)
-        moreButtonRef.current.blur()
-      }
-    }
     document.addEventListener('keydown', handleEscapeKeyDown)
     document.addEventListener('click', handleOutsideClick)
     return () => {

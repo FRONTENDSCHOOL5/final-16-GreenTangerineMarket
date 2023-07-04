@@ -55,7 +55,7 @@ export const postFeedAPI = async ({ content, image }) => {
   }
 }
 
-export const deletePostAPI = async ({ post_id }) => {
+export const deletePostAPI = async post_id => {
   try {
     const res = await instance.delete(`/post/${post_id}`)
     return res
