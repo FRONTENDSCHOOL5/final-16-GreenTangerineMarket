@@ -107,9 +107,21 @@ $mobile: 768px;
   font-size: 1.6rem;
   align-items: center;
   border-radius: 1rem;
-  padding: 0.7rem;
   &:hover:not(:disabled) {
     opacity: 0.5;
+  }
+  @include desktop {
+    width: 15rem;
+    height: 5rem;
+  }
+  @include tablet {
+    width: 14rem;
+    height: 4.7rem;
+  }
+  @include mobile {
+    width: 12rem;
+    height: 4.5rem;
+    font-size: 1.4rem;
   }
 }
 
@@ -146,4 +158,8 @@ $mobile: 768px;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
+  @include mobile {
+    padding: 2rem;
+    gap: 1rem;
+  }
 }

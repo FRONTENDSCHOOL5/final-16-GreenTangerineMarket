@@ -20,3 +20,17 @@
     text-align: center;
   }
 }
+
+@include tablet {
+  .container {
+    width: 70%;
+  }
+}
+@include mobile {
+  .container {
+    width: 80%;
+    .title {
+      font-size: 1.6rem;
+    }
+  }
+}

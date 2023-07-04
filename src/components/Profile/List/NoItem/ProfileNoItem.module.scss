@@ -1,4 +1,5 @@
 @import 'styles/global.scss';
+@import 'styles/mixin.scss';
 
 .container {
   height: 40rem;
@@ -15,6 +16,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    > img {
+      width: 12rem;
+      aspect-ratio: 4/5;
+    }
     .text {
       margin-top: 2rem;
     }
@@ -26,6 +31,39 @@
     .add {
       color: $color-main;
       font-weight: 900;
+    }
+  }
+}
+
+@include desktop {
+  .container {
+    height: 35rem;
+  }
+}
+@include tablet {
+  .container {
+    height: 30rem;
+    .info {
+      > img {
+        width: 10rem;
+      }
+      .text {
+        margin-top: 1.5rem;
+      }
+    }
+  }
+}
+@include mobile {
+  .container {
+    height: 25rem;
+    font-size: 1.6rem;
+    .info {
+      > img {
+        width: 8rem;
+      }
+      .text {
+        margin-top: 1rem;
+      }
     }
   }
 }

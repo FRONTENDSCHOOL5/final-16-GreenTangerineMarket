@@ -14,3 +14,15 @@
     justify-content: space-between;
   }
 }
+
+@include mobile {
+  .container {
+    width: 70%;
+    .title {
+      font-size: 1.8rem;
+    }
+    .buttonContainer {
+      margin-top: 1rem;
+    }
+  }
+}
