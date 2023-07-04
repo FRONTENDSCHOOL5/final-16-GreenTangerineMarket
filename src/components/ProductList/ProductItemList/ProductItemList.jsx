@@ -12,7 +12,7 @@ const ProductItemList = () => {
   const [products, setProducts] = useState([])
 
   const loadProduct = async page => {
-    const res = await getNextProductAPI(page * 10)
+    const res = await getNextProductAPI(page * 20)
     if (res.status === 200) setProducts([...products, ...res.data.product])
   }
   return (
