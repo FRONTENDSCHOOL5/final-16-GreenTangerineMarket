@@ -1,0 +1,41 @@
+@import 'styles/global.scss';
+@import 'styles/mixin.scss';
+
+.spinner {
+  margin: 3rem 0;
+  .loading {
+    width: 5rem;
+    height: 5rem;
+    border: 3px solid $color-767676;
+    border-top: 3px solid $color-c4c4c4;
+    border-radius: 50%;
+    margin: 0 auto 1rem auto;
+    animation: spin 1s linear infinite;
+  }
+  p {
+    text-align: center;
+    font-size: 1.6rem;
+    color: $color-767676;
+  }
+}
+
+@include mobile {
+  .spinner {
+    .loading {
+      width: 3rem;
+      height: 3rem;
+    }
+    p {
+      font-size: 1.4rem;
+    }
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

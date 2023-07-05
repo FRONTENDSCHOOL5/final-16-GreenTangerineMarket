@@ -1,16 +1,23 @@
 import { useCallback, useEffect, useState } from 'react'
 import _ from 'lodash'
 
+import s from './InfiniteScroll.module.scss'
+
 import UpBtn from '../UpBtn/UpBtn'
 
 const InfiniteScroll = ({ children, loadData, change = '' }) => {
   const [page, setPage] = useState(0)
+  const [isLoading, setIsLoading] = useState(false)
 
-  const handleLoadItem = async () => await loadData(page)
+  const handleLoadItem = async () => {
+    await loadData(page)
+    setIsLoading(false)
+  }
 
   const handleScroll = _.throttle(() => {
     const { scrollTop, scrollHeight } = document.documentElement
     if (scrollHeight - window.innerHeight - scrollTop < 200) {
+      setIsLoading(true)
       setPage(prevPage => prevPage + 1)
     }
   }, 1000)
@@ -26,14 +33,22 @@ const InfiniteScroll = ({ children, loadData, change = '' }) => {
   useEffect(() => {
     handleLoadItem()
   }, [page])
+
   useEffect(() => {
     if (page !== 0) setPage(0)
     else handleLoadItem()
   }, [change])
+
   return (
     <>
       {children}
       <UpBtn />
+      {isLoading && (
+        <div className={s.spinner}>
+          <div className={s.loading} />
+          <p>Loading</p>
+        </div>
+      )}
     </>
   )
 }
