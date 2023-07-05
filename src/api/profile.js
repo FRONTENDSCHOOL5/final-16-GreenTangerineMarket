@@ -3,9 +3,8 @@ import { instance } from 'api'
 export const getProfileInfoAPI = async accountname => {
   try {
     const res = await instance.get(`/profile/${accountname}`)
-    return res.data.profile
+    return res
   } catch (e) {
-    console.error(e)
     return e
   }
 }

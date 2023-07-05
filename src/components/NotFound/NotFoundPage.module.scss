@@ -2,10 +2,10 @@
 @import 'styles/mixin.scss';
 
 .container {
+  padding: 10rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   gap: 5rem;
   .img {
     display: block;
@@ -32,6 +32,7 @@
 
 @include desktop {
   .container {
+    padding: 8rem 0;
     .img {
       width: 22rem;
     }
@@ -50,6 +51,7 @@
 }
 @include tablet {
   .container {
+    padding: 6rem 0;
     flex-direction: column;
     gap: 3rem;
     .img {
@@ -72,6 +74,7 @@
 }
 @include mobile {
   .container {
+    padding: 3rem 0;
     .img {
       width: 16rem;
     }
