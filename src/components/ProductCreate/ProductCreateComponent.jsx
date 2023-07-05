@@ -81,12 +81,11 @@ const ProductCreateComponent = () => {
     setImageUrl(`https://api.mandarin.weniv.co.kr/${res.data[0].filename}`)
   }
 
+  const handleReset = () => setPrices('')
+
   useEffect(() => {
-    if (imageUrl !== '' && name !== '' && prices !== '') {
-      setOnBtn(true)
-    } else {
-      setOnBtn(false)
-    }
+    if (!imageUrl && !name && !prices) setOnBtn(true)
+    else setOnBtn(false)
   }, [imageUrl, name, prices])
   return (
     <>
@@ -133,11 +132,19 @@ const ProductCreateComponent = () => {
               onChange={handleInputChange}
               maxLength={30}
             />
-            <div className={s.counter}>{name.length}/30</div>
+            <p className={s.counter}>{name.length}/30</p>
           </section>
 
           <section className={s.priceContainer}>
-            <h2>Step3. 상품 가격 등록</h2>
+            <div className={s.priceTitle}>
+              <h2>Step3. 상품 가격 등록</h2>
+              {!prices ? (
+                <SmallButton onClickEvent={handleReset}>AC</SmallButton>
+              ) : (
+                <SmallButtonDisable>AC</SmallButtonDisable>
+              )}
+            </div>
+
             <label htmlFor='productPrice' className='a11y-hidden'>
               가격
             </label>
@@ -147,19 +154,18 @@ const ProductCreateComponent = () => {
               className={s.price}
               onChange={handlePriceChange}
               value={prices}
-              placeholder='0원'
+              placeholder='0'
             />
+            <span className={s.won}>원</span>
           </section>
 
-          {onBtn === true ? (
-            !progressingCreate ? (
+          <section className={s.btn}>
+            {onBtn && !progressingCreate ? (
               <SmallButton onClickEvent={handleSend}>등록</SmallButton>
             ) : (
-              <SmallButtonDisable>{!progressingCreate ? '등록' : '진행 중'}</SmallButtonDisable>
-            )
-          ) : (
-            <SmallButtonDisable>등록</SmallButtonDisable>
-          )}
+              <SmallButtonDisable>{progressingCreate ? `진행중` : `등록`}</SmallButtonDisable>
+            )}
+          </section>
         </form>
       </section>
     </>
