@@ -5,6 +5,7 @@ export const getProfileInfoAPI = async accountname => {
     const res = await instance.get(`/profile/${accountname}`)
     return res
   } catch (e) {
+    console.error(e)
     return e
   }
 }
