@@ -1,6 +1,6 @@
 import s from './Footer.module.scss'
 
-import logoImg from 'assets/img/logo_char.svg'
+import logoImg from 'assets/img/logo_char_gray.svg'
 import gitHub from 'assets/img/icon-github.svg'
 import { useState } from 'react'
 import Modal from '../Modal/Modal'
@@ -29,18 +29,19 @@ const Footer = () => {
         {isModalOpen && (
           <Modal closeModal={closeModal}>
             <div className={s.container}>
+              <p>contect us</p>
               <ul className={s.listBtn}>
                 <li>
-                  <Link to='https://github.com/ho-ji'>장예지의 깃헙</Link>
+                  <Link to='https://github.com/ho-ji'>장예지의 깃헙 바로가기</Link>
                 </li>
                 <li>
-                  <Link to='https://github.com/Limttugi'>임준혁의 깃헙</Link>
+                  <Link to='https://github.com/Limttugi'>임준혁의 깃헙 바로가기</Link>
                 </li>
                 <li>
-                  <Link to='https://github.com/tmfdk0213'>이슬아의 깃헙</Link>
+                  <Link to='https://github.com/tmfdk0213'>이슬아의 깃헙 바로가기</Link>
                 </li>
                 <li>
-                  <Link to='https://github.com/Seunggyu-Jung'>정승규의 깃헙</Link>
+                  <Link to='https://github.com/Seunggyu-Jung'>정승규의 깃헙 바로가기</Link>
                 </li>
               </ul>
             </div>
