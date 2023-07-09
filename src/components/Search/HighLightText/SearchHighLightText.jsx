@@ -8,9 +8,9 @@ const SearchHighLightText = ({ text, keyword }) => {
         if (index > 0)
           return (
             <>
-              <span key={index + part.toString()} className={s.highlight}>
+              <strong key={index + part.toString()} className={s.highlight}>
                 {keyword}
-              </span>
+              </strong>
               {part}
             </>
           )
