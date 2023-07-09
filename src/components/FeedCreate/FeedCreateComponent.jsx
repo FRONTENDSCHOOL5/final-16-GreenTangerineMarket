@@ -80,8 +80,8 @@ const FeedCreateComponent = () => {
   const handleReset = () => setContents('')
 
   useEffect(() => {
-    if (!imageUrl || !contents) setOnBtn(true)
-    else setOnBtn(false)
+    if (!imageUrl && !contents) setOnBtn(false)
+    else setOnBtn(true)
   }, [imageUrl, contents])
 
   return (
@@ -126,9 +126,9 @@ const FeedCreateComponent = () => {
             <div className={s.textTitle}>
               <h2>피드 내용 작성</h2>
               {!contents ? (
-                <SmallButton onClickEvent={handleReset}>글 비우기</SmallButton>
-              ) : (
                 <SmallButtonDisable>글 비우기</SmallButtonDisable>
+              ) : (
+                <SmallButton onClickEvent={handleReset}>글 비우기</SmallButton>
               )}
             </div>
             <label htmlFor='content' className='a11y-hidden'>
