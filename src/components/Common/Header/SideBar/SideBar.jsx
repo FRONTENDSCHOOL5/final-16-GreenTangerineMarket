@@ -31,18 +31,18 @@ const SideBar = ({ link, name, closeMenu }) => {
         <p className={s.title}>메뉴</p>
         <ul>
           <li>
-            <Link to='/search'>
+            <Link to='/search' onClick={() => closeMenu()}>
               <p>계정검색</p>
             </Link>
           </li>
           <li>
-            <Link to={`/profile/${myInfo.accountname}`}>
+            <Link to={`/profile/${myInfo.accountname}`} onClick={() => closeMenu()}>
               <p>마이페이지</p>
             </Link>
           </li>
           {link && (
             <li>
-              <Link to={link}>
+              <Link to={link} onClick={() => closeMenu()}>
                 <p>{name}</p>
               </Link>
             </li>
