@@ -40,6 +40,7 @@ const FeedDetailPage = () => {
 
   useEffect(() => {
     getFeedInfo()
+    window.scrollTo({ top: 0 })
   }, [])
 
   return (

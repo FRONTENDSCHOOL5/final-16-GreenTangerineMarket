@@ -48,6 +48,7 @@ const ProductDetailItem = () => {
 
   useEffect(() => {
     getProductDetail()
+    window.scrollTo({ top: 0 })
   }, [])
   return (
     <>
