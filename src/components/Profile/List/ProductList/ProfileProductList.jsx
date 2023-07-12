@@ -46,11 +46,13 @@ const ProfileProductList = ({ accountname }) => {
             )
           })}
         </GridLayout>
-      ) : isMyProfile ? (
-        <ProfileNoItem item='product' action='add' />
-      ) : (
-        <ProfileNoItem item='product' />
-      )}
+      ) : !isMoreData ? (
+        isMyProfile ? (
+          <ProfileNoItem item='product' action='add' />
+        ) : (
+          <ProfileNoItem item='product' />
+        )
+      ) : null}
     </InfiniteScroll>
   )
 }

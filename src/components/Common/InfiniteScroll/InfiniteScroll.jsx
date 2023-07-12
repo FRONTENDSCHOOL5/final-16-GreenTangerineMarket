@@ -17,7 +17,6 @@ const InfiniteScroll = ({ children, loadData, change = '' }) => {
   const handleScroll = _.throttle(() => {
     const { scrollTop, scrollHeight } = document.documentElement
     if (scrollHeight - window.innerHeight - scrollTop < 200) {
-      setIsLoading(true)
       setPage(prevPage => prevPage + 1)
     }
   }, 1000)
@@ -32,6 +31,7 @@ const InfiniteScroll = ({ children, loadData, change = '' }) => {
 
   useEffect(() => {
     handleLoadItem()
+    setIsLoading(true)
   }, [page])
 
   useEffect(() => {

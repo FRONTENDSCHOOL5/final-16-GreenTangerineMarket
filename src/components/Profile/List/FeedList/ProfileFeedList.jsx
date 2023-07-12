@@ -53,11 +53,13 @@ const ProfileFeedList = ({ accountname }) => {
             )
           })}
         </GridLayout>
-      ) : isMyProfile ? (
-        <ProfileNoItem item='feed' action='add' />
-      ) : (
-        <ProfileNoItem item='feed' />
-      )}
+      ) : !isMoreData ? (
+        isMyProfile ? (
+          <ProfileNoItem item='feed' action='add' />
+        ) : (
+          <ProfileNoItem item='feed' />
+        )
+      ) : null}
     </InfiniteScroll>
   )
 }
