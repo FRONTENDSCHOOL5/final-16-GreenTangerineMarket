@@ -4,14 +4,20 @@ import s from './ImageSlider.module.scss'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
+const CustomPrevArrow = props => <button {...props} className={s.prev} type='button'></button>
+
+const CustomNextArrow = props => <button {...props} className={s.next} type='button'></button>
+
 const ImageSlider = ({ imageType, children }) => {
   const settings = {
-    dots: false,
+    dots: true,
+    dotsClass: s.dots,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    arrow: true,
+    prevArrow: <CustomPrevArrow />,
+    nextArrow: <CustomNextArrow />,
   }
 
   return (
