@@ -12,7 +12,7 @@ const ListLayout = ({ children, link, name }) => {
     <>
       {isMobile ? <MobileHeader link={link} name={name} /> : <ListHeader link={link} name={name} />}
       <main className={s.container}>{children}</main>
-      <Footer />
+      <Footer list={true} />
     </>
   )
 }
