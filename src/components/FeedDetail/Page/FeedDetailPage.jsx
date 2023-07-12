@@ -12,6 +12,7 @@ import formatCreateTime from 'utils/formatCreateTime'
 import heartImg from 'assets/img/icon-heart.svg'
 import fillHeartImg from 'assets/img/icon-heart-fill.svg'
 import { dislikeAPI, likeAPI } from 'api/like'
+import CommentList from '../Comment/List/CommentList'
 
 const FeedDetailPage = () => {
   const params = useParams()
@@ -66,6 +67,7 @@ const FeedDetailPage = () => {
               <p className={s.time}>{formatCreateTime(feedDetail.createdAt)}</p>
             </div>
             <hr className={s.line} />
+            <CommentList id={params.id} />
           </section>
         )
       ) : (

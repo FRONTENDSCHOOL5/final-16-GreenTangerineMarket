@@ -1,0 +1,43 @@
+@import 'styles/global.scss';
+
+.list {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.6rem;
+  padding: 1rem 1rem 1rem 0rem;
+  border-bottom: 1px solid #e9ecef;
+
+  .profile {
+    display: flex;
+    align-items: center;
+    .commentImage {
+      border: 1px solid $color-c4c4c4;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 0.5rem;
+    }
+    p {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  .commentContent {
+    margin: 1rem 0 2rem 0;
+    word-break: break-all;
+  }
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    color: $color-767676;
+    font-size: 1.4rem;
+    button {
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+  }
+}
