@@ -1,0 +1,54 @@
+@import 'styles/global.scss';
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  .profile {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    .image {
+      width: 6rem;
+      height: 6rem;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 1rem;
+    }
+    .name {
+      max-width: 40rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      .user {
+        font-size: 1.8rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .account {
+        font-size: 1.6rem;
+        color: $color-767676;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+  .unfollow {
+    font-size: 1.6rem;
+    color: $color-767676;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+  .follow {
+    font-size: 1.6rem;
+    color: $color-main;
+    font-weight: 700;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+}
