@@ -27,22 +27,7 @@
     width: 32rem;
     min-width: 32rem;
   }
-
-  &::-webkit-scrollbar {
-    width: 1rem;
-    height: 1.5rem;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: $color-main;
-    border-radius: 1rem;
-  }
-
-  &::-webkit-scrollbar-track {
-    background-color: $color-c4c4c4;
-    border-radius: 1rem;
-    box-shadow: inset 0rem 0rem 0.5rem white;
-  }
+  @include customScroll;
 }
 
 @include desktop {

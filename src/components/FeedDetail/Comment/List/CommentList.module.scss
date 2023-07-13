@@ -1,4 +1,5 @@
 @import 'styles/global.scss';
+@import 'styles/mixin.scss';
 
 .container {
   margin-top: 4rem;
@@ -26,20 +27,6 @@
   .scrollBox {
     max-height: 50rem;
     overflow-y: auto;
-
-    &::-webkit-scrollbar {
-      width: 1rem;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background-color: $color-main;
-      border-radius: 1rem;
-    }
-
-    &::-webkit-scrollbar-track {
-      background-color: $color-c4c4c4;
-      border-radius: 2rem;
-      box-shadow: inset 0rem 0rem 0.5rem white;
-    }
+    @include customScroll;
   }
 }
