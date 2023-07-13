@@ -1,7 +1,7 @@
 import { useRecoilValue } from 'recoil'
 import { toast } from 'react-hot-toast'
-
 import { Link } from 'react-router-dom'
+
 import s from './CommentListItem.module.scss'
 
 import { myInfoAtom } from 'recoil/atom/user'

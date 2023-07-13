@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom'
+import { useRecoilValue } from 'recoil'
+import { useState } from 'react'
+import { toast } from 'react-hot-toast'
+
 import s from './FeedDetailAuthor.module.scss'
 
 import ProfileImage from 'components/Common/ProfileImage/ProfileImage'
 import AuthorButtonList from '../AuthorButtonList/AuthorButtonList'
-import { useRecoilValue } from 'recoil'
 import { myInfoAtom } from 'recoil/atom/user'
-import { useState } from 'react'
 import { followProfileAPI, unfollowProfileAPI } from 'api/profile'
-import { toast } from 'react-hot-toast'
 import getToastStyle from 'utils/getToastStyle'
 
 const FeedDetailAuthor = ({ feedDetail }) => {

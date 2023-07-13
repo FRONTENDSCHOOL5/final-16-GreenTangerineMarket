@@ -1,4 +1,5 @@
 @import 'styles/global.scss';
+@import 'styles/mixin.scss';
 
 .container {
   display: flex;
@@ -41,6 +42,52 @@
       }
       .text {
         margin-left: 0.4rem;
+      }
+    }
+  }
+}
+
+@include tablet {
+  .container {
+    width: 90%;
+    .line {
+      margin: 1.5rem 0;
+    }
+    .content {
+      font-size: 1.6rem;
+      line-height: 1.8;
+    }
+    .info {
+      font-size: 1.4rem;
+      margin-top: 2rem;
+      .like {
+        .image {
+          width: 1.5rem;
+          height: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+@include mobile {
+  .container {
+    width: 100%;
+    .line {
+      margin: 1.5rem 0;
+    }
+    .content {
+      font-size: 1.6rem;
+      line-height: 1.8;
+    }
+    .info {
+      font-size: 1.4rem;
+      margin-top: 2rem;
+      .like {
+        .image {
+          width: 1.5rem;
+          height: 1.5rem;
+        }
       }
     }
   }

@@ -1,6 +1,22 @@
-.commentChangeButton {
+@import 'styles/global.scss';
+@import 'styles/mixin.scss';
+
+.container {
   display: flex;
-  justify-content: end;
-  margin: 2.5rem;
-  gap: 0.5rem;
+  font-size: 1.4rem;
+  color: $color-767676;
+  > button {
+    padding: 1rem;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+}
+
+@include mobile {
+  .container {
+    > button {
+      padding: 0.5rem;
+    }
+  }
 }
