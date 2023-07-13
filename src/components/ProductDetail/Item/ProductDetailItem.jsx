@@ -68,7 +68,7 @@ const ProductDetailItem = () => {
                 <p className={s.seller}>판매자 정보</p>
                 <Link to={`/profile/${product.author.accountname}`} className={s.author}>
                   <ProfileImage image={product.author.image} name={product.author.username} className={s.profile} />
-                  <div>
+                  <div className={s.authorName}>
                     <p className={s.user}>{product.author.username}</p>
                     <p className={s.account}>@{product.author.accountname}</p>
                   </div>

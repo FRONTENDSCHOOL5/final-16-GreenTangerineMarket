@@ -1,4 +1,5 @@
 @import 'styles/global.scss';
+@import 'styles/mixin.scss';
 
 .container {
   width: fit-content;
@@ -10,8 +11,9 @@
   overflow: hidden;
   .image {
     width: 50rem;
-    height: 50rem;
-    outline: 1px solid $color-c4c4c4;
+    aspect-ratio: 1/1;
+    border-right: 1px solid $color-c4c4c4;
+    object-fit: cover;
   }
   .info {
     display: flex;
@@ -47,13 +49,22 @@
         object-fit: cover;
         margin-right: 1rem;
       }
-      .user {
-        font-size: 1.6rem;
-        font-weight: 700;
-      }
-      .account {
-        font-size: 1.2rem;
-        color: $color-767676;
+      .authorName {
+        max-width: 38rem;
+        .user {
+          font-size: 1.6rem;
+          font-weight: 700;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .account {
+          font-size: 1.2rem;
+          color: $color-767676;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
       }
     }
     .time {
@@ -68,4 +79,96 @@
   gap: 3rem;
   margin-top: 3rem;
   justify-content: center;
+}
+
+@include desktop {
+  .container {
+    width: fit-content;
+    .image {
+      width: 35rem;
+    }
+    .info {
+      width: 35rem;
+      padding: 2rem;
+      .name {
+        font-size: 2.5rem;
+      }
+      .author {
+        .profile {
+          width: 5em;
+          height: 5rem;
+          border-radius: 50%;
+          object-fit: cover;
+          margin-right: 1rem;
+        }
+        .authorName {
+          max-width: 22rem;
+        }
+      }
+    }
+  }
+}
+@include tablet {
+  .container {
+    width: fit-content;
+    .image {
+      width: 28rem;
+    }
+    .info {
+      width: 28rem;
+      padding: 2rem;
+      .name {
+        font-size: 2rem;
+      }
+      .price {
+        font-size: 1.8rem;
+        margin: 1rem;
+      }
+      .author {
+        .profile {
+          width: 4em;
+          height: 4rem;
+        }
+        .authorName {
+          max-width: 18rem;
+        }
+      }
+    }
+  }
+}
+@include mobile {
+  .container {
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    .image {
+      width: 100%;
+      border-bottom: 1px solid $color-c4c4c4;
+      border-right: none;
+    }
+    .info {
+      width: 100%;
+      padding: 1rem;
+      .name {
+        font-size: 2rem;
+      }
+      .price {
+        font-size: 1.8rem;
+        margin: 1rem 0;
+      }
+      .seller {
+        font-size: 1.4rem;
+        margin-top: 3rem;
+      }
+      .author {
+        .profile {
+          width: 4em;
+          height: 4rem;
+        }
+        .authorName {
+          max-width: 70%;
+        }
+      }
+    }
+  }
 }
