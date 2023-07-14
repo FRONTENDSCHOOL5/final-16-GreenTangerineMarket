@@ -13,7 +13,6 @@ const CommentList = ({ id }) => {
   const getCommentsInFeed = async () => {
     const res = await getCommentsInFeedAPI(id)
     if (res.status === 200) setComments(res.data.comments)
-    console.log(res)
   }
 
   const handleInput = e => {
