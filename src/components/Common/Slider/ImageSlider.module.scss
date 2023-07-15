@@ -54,10 +54,10 @@
           border-radius: 50%;
           padding: 0;
         }
-      }
-      :global li.slick-active {
-        button {
-          background-color: $color-main;
+        &:global(.slick-active) {
+          button {
+            background-color: $color-main;
+          }
         }
       }
     }
