@@ -9,11 +9,11 @@
   border-radius: 1rem;
   margin: 0 auto;
   padding: 3rem;
+  gap: 2rem;
   .line {
     border: 0;
     width: 100%;
     border-top: 1px solid #e9ecef;
-    margin: 2rem 0;
   }
   .content {
     font-size: 1.8rem;
@@ -25,7 +25,6 @@
     justify-content: space-between;
     align-items: center;
     font-size: 1.4rem;
-    margin-top: 3rem;
     color: $color-767676;
     .like {
       display: flex;
@@ -50,16 +49,12 @@
 @include tablet {
   .container {
     width: 90%;
-    .line {
-      margin: 1.5rem 0;
-    }
     .content {
       font-size: 1.6rem;
       line-height: 1.8;
     }
     .info {
       font-size: 1.4rem;
-      margin-top: 2rem;
       .like {
         .image {
           width: 1.5rem;
@@ -73,16 +68,12 @@
 @include mobile {
   .container {
     width: 100%;
-    .line {
-      margin: 1.5rem 0;
-    }
     .content {
       font-size: 1.6rem;
       line-height: 1.8;
     }
     .info {
       font-size: 1.4rem;
-      margin-top: 2rem;
       .like {
         .image {
           width: 1.5rem;
