@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
-import { myInfoAtom } from 'recoil/atom/user'
+import { useRecoilValue } from 'recoil'
+import { useEffect } from 'react'
 
 import s from './SideBar.module.scss'
 
-import { useRecoilValue } from 'recoil'
-import { useEffect } from 'react'
+import { myInfoAtom } from 'recoil/atom/user'
 import { allowScroll, preventScroll } from 'utils/scroll'
 
 const SideBar = ({ link, name, closeMenu }) => {
