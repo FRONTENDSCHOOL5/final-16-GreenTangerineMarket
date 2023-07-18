@@ -1,81 +1,189 @@
 @import 'styles/global.scss';
+@import 'styles/mixin.scss';
 
-.section {
-  .contentBox {
-    border-radius: 1rem;
-    border: 0.1rem solid $color-main;
-    padding: 5rem;
+.form {
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+  padding: 2rem;
+  border: 1px solid $color-c4c4c4;
+  font-size: 1.6rem;
+  gap: 3rem;
+  h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
 
-    font-size: 3rem;
-    > section {
-      margin-bottom: 2rem;
-      > h2 {
-        margin-bottom: 1rem;
+  .imageContainer {
+    .imageTitle {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .imageInput {
+      color: $color-main;
+      font-weight: 700;
+      padding-left: 2.2rem;
+      position: relative;
+      cursor: pointer;
+      > img {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-45%);
+        width: 2rem;
+        height: 2rem;
       }
+      > input {
+        display: none;
+      }
+    }
+    .image {
+      width: 100%;
+      text-align: center;
+      margin: 3rem 0;
+      .imagePreview {
+        width: 50%;
+        max-width: 50rem;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        border-radius: 1rem;
+      }
+    }
+    .noimage {
+      width: 100%;
+      padding: 2rem;
+      text-align: center;
+      object-fit: cover;
+      border-radius: 1rem;
+      background-color: $color-f0f0f0;
+      color: $color-c4c4c4;
+      font-weight: 700;
+    }
+  }
+
+  .nameContainer {
+    display: flex;
+    align-items: start;
+    gap: 5rem;
+    .title {
+      position: relative;
+      > button {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translate(3rem, -45%);
+        width: 2.5rem;
+        height: 2.5rem;
+        background: url('/assets/img/icon-refresh.svg') no-repeat center/2.5rem 2.5rem;
+      }
+    }
+    .nameInput {
+      width: 50%;
+      .name {
+        width: 100%;
+        padding: 1rem;
+        border-radius: 1rem;
+        border: 1px solid $color-c4c4c4;
+      }
+      .counter {
+        text-align: end;
+        color: $color-c4c4c4;
+        font-size: 1.6rem;
+      }
+    }
+  }
+
+  .priceContainer {
+    display: flex;
+    align-items: start;
+    .title {
+      position: relative;
+      margin-right: 5rem;
+      > button {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translate(3rem, -45%);
+        width: 2.5rem;
+        height: 2.5rem;
+        background: url('/assets/img/icon-refresh.svg') no-repeat center/2.5rem 2.5rem;
+      }
+    }
+    .price {
+      width: 50%;
+      border: 1px solid $color-c4c4c4;
+      display: inline-block;
+      padding: 1rem;
+      border-radius: 1rem;
+      text-align: end;
+    }
+    .won {
+      align-self: center;
+      margin-left: 1rem;
+    }
+  }
+
+  > button {
+    margin-top: 2rem;
+    align-self: end;
+  }
+}
+
+@include mobile {
+  .form {
+    padding: 0;
+    border: none;
+    font-size: 1.4rem;
+    h3 {
+      font-size: 1.6rem;
     }
 
     .imageContainer {
-      margin-top: 2rem;
-      .imageInput {
-        display: block;
-        border: 0.1rem solid $color-main;
-        border-radius: 1rem;
-        width: 35%;
-        padding: 0.5rem;
-        color: #999999;
+      .image {
+        margin: 2rem 0;
       }
-
-      .imagePreviewContainer {
-        text-align: center;
-        .imagePreview {
-          border-radius: 1rem;
-          width: 30rem;
-          height: 30rem;
-          object-fit: cover;
-          margin: 1rem 0;
+    }
+    .nameContainer {
+      gap: 3rem;
+      .title {
+        position: relative;
+        > button {
+          transform: translate(2.5rem, -45%);
+        }
+      }
+      .nameInput {
+        flex: 1;
+        width: 100%;
+        .name {
+          width: 100%;
+        }
+        .counter {
+          font-size: 1.4rem;
         }
       }
     }
 
-    .nameContainer {
-      .name {
-        width: 95%;
-        display: block;
-        box-sizing: border-box;
-        padding: 1rem;
-        background-color: #f0f0f0;
-        border: none;
-        border-radius: 1rem;
+    .priceContainer {
+      .title {
+        margin-right: 3rem;
+        > button {
+          transform: translate(2.5rem, -45%);
+        }
       }
-
-      .counter {
-        width: 95%;
-        display: block;
-        text-align: end;
-        font-size: 2rem;
+      .price {
+        flex: 1;
+        width: 100%;
+      }
+      .won {
+        margin-left: 0.5rem;
       }
     }
 
-    .priceTitle {
-      display: flex;
-      gap: 1rem;
-    }
-
-    .price {
-      width: 90%;
-      display: inline-block;
-      padding: 1rem;
-      border-radius: 1rem;
-      background-color: #f0f0f0;
-      text-align: end;
-    }
-    .won {
-      margin: 1rem;
-    }
-
-    .btn {
-      margin-right: 2.5rem;
-      text-align: end;
+    > button {
+      margin-top: 1rem;
+      align-self: end;
     }
   }
 }

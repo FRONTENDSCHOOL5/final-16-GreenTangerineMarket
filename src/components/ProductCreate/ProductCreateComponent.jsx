@@ -1,34 +1,34 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import s from './ProductCreateComponent.module.scss'
 
-import { uploadImages } from 'api/image'
 import { postProductAPI } from 'api/product'
 import { SmallButton, SmallButtonDisable } from 'components/Common/Button/Small/SmallButton'
 import GuideLine from 'components/Common/GuideLine/GuideLine'
+import { handleSetImage } from 'utils/handleSetImage'
+import { handleUploadImageAPI } from 'utils/handleUploadImage'
+import cameraImg from 'assets/img/icon-camera.svg'
+import noImg from 'assets/img/icon-image.svg'
 
 const ProductCreateComponent = () => {
-  const [name, setname] = useState('')
-  const [prices, setPrices] = useState('')
-  const [imageUrl, setImageUrl] = useState('')
-  const [imagePreviews, setImagePreviews] = useState([])
+  const formRef = useRef()
+  const [name, setName] = useState('')
+  const [price, setPrice] = useState('')
+  const [imagePreviews, setImagePreviews] = useState('')
   const [onBtn, setOnBtn] = useState(false)
-
   const [progressingCreate, setProgressingCreate] = useState(false)
-
   const navigate = useNavigate()
-
-  const link = '/'
 
   const handleSend = async () => {
     setProgressingCreate(true)
-
+    const { imageElement } = formRef.current.elements
+    const imageURL = await handleUploadImageAPI({ files: imageElement.files, inputFileElement: imageElement })
     const res = await postProductAPI({
-      link: link,
+      link: '',
       itemName: name,
-      price: parseInt(prices),
-      itemImage: imageUrl,
+      price: parseInt(price),
+      itemImage: imageURL,
     })
 
     if (res.status === 200) {
@@ -40,7 +40,7 @@ const ProductCreateComponent = () => {
   const handleInputChange = event => {
     const inputText = event.target.value
     if (inputText.length <= 30) {
-      setname(inputText)
+      setName(inputText)
     }
   }
 
@@ -52,77 +52,63 @@ const ProductCreateComponent = () => {
       return
     }
     if ((regex.test(inputPrice) && inputPrice.length <= 20) || inputPrice === '') {
-      setPrices(inputPrice)
+      setPrice(inputPrice)
     }
   }
-
-  const handleProductUpload = async event => {
-    const files = event.target.files
-    const fileArray = Array.from(files)
-
-    const imagePreviewsArray = await Promise.all(
-      fileArray.map(file => {
-        return new Promise((resolve, reject) => {
-          const reader = new FileReader()
-          reader.onload = () => resolve(reader.result)
-          reader.onerror = error => reject(error)
-          reader.readAsDataURL(file)
-        })
-      }),
-    )
-
-    setImagePreviews(imagePreviewsArray)
-
-    const formData = new FormData()
-    for (let i = 0; i < files.length; i++) {
-      formData.append('image', files[i])
-    }
-    const res = await uploadImages(formData)
-    setImageUrl(`https://api.mandarin.weniv.co.kr/${res.data[0].filename}`)
-  }
-
-  const handleReset = () => setPrices('')
 
   useEffect(() => {
-    if (imageUrl && name && prices) setOnBtn(true)
+    if (name && price) setOnBtn(true)
     else setOnBtn(false)
-  }, [imageUrl, name, prices])
+  }, [name, price])
   return (
     <>
-      <section className={s.section}>
-        <GuideLine
-          name={'상품'}
-          about={'물건을 소개해주세요!'}
-          limit={'사진, 상품명, 가격 모두'}
-          only={'가격은 1원 이상부터 입력이 가능합니다.'}
-          photo={'오직 1장'}
-          text={'30'}
-        />
-        <form className={s.contentBox}>
-          <section className={s.imageContainer}>
-            <h2>Step1. 상품 이미지 등록</h2>
-            <label htmlFor='productImg' className='a11y-hidden'>
-              상품 이미지 업로드
+      <h2 className='a11y-hidden'>상품 등록 페이지</h2>
+      <GuideLine
+        name={'상품'}
+        about={'물건을 소개해주세요!'}
+        limit={'사진, 상품명, 가격 모두'}
+        only={'가격은 1원 이상부터 입력이 가능합니다.'}
+        photo={'오직 1장'}
+        text={'30'}
+      />
+      <form className={s.form} ref={formRef}>
+        <section className={s.imageContainer}>
+          <div className={s.imageTitle}>
+            <h3>이미지 파일</h3>
+            <label htmlFor='productImg' className={s.imageInput}>
+              <img src={cameraImg} alt='' />
+              업로드
+              <input
+                id='productImg'
+                name='imageElement'
+                type='file'
+                accept='image/jpg, image/gif, image/png, image/bmp, image/tif, image/heic'
+                onChange={e => handleSetImage({ e, setImages: setImagePreviews })}
+              />
             </label>
-            <input
-              id='productImg'
-              type='file'
-              accept='image/*'
-              onChange={handleProductUpload}
-              className={s.imageInput}
-            />
-            <div className={s.imagePreviewContainer}>
-              {imagePreviews.map((preview, index) => (
-                <img key={index} src={preview} alt={`${index + 1}번째 이미지 미리보기`} className={s.imagePreview} />
-              ))}
+          </div>
+          {imagePreviews && imagePreviews.length ? (
+            <div className={s.image}>
+              <img src={imagePreviews} alt='상품 이미지 미리보기' className={s.imagePreview} />
             </div>
-          </section>
-
-          <section className={s.nameContainer}>
-            <h2>Step2. 상품명 등록</h2>
-            <label htmlFor='productName' className='a11y-hidden'>
-              상품명 입력
-            </label>
+          ) : (
+            <div className={s.noimage}>
+              <img src={noImg} alt='' />
+              <p>등록된 사진이 없습니다</p>
+            </div>
+          )}
+        </section>
+        <section className={s.nameContainer}>
+          <div className={s.title}>
+            <h3>상품명</h3>
+            {name && (
+              <button type='button' onClick={() => setName('')}>
+                <span className='a11y-hidden'>내용 초기화</span>
+              </button>
+            )}
+          </div>
+          <div className={s.nameInput}>
+            <label className='a11y-hidden'>상품명 입력</label>
             <input
               id='productName'
               type='text'
@@ -133,41 +119,38 @@ const ProductCreateComponent = () => {
               maxLength={30}
             />
             <p className={s.counter}>{name.length}/30</p>
-          </section>
+          </div>
+        </section>
 
-          <section className={s.priceContainer}>
-            <div className={s.priceTitle}>
-              <h2>Step3. 상품 가격 등록</h2>
-              {!prices ? (
-                <SmallButtonDisable>AC</SmallButtonDisable>
-              ) : (
-                <SmallButton onClickEvent={handleReset}>AC</SmallButton>
-              )}
-            </div>
-
-            <label htmlFor='productPrice' className='a11y-hidden'>
-              가격
-            </label>
-            <input
-              id='productPrice'
-              type='text'
-              className={s.price}
-              onChange={handlePriceChange}
-              value={prices}
-              placeholder='0'
-            />
-            <span className={s.won}>원</span>
-          </section>
-
-          <section className={s.btn}>
-            {onBtn && !progressingCreate ? (
-              <SmallButton onClickEvent={handleSend}>등록</SmallButton>
-            ) : (
-              <SmallButtonDisable>{progressingCreate ? `진행중` : `등록`}</SmallButtonDisable>
+        <section className={s.priceContainer}>
+          <div className={s.title}>
+            <h3>판매가</h3>
+            {price && (
+              <button type='button' onClick={() => setPrice('')}>
+                <span className='a11y-hidden'>내용 초기화</span>
+              </button>
             )}
-          </section>
-        </form>
-      </section>
+          </div>
+          <label htmlFor='productPrice' className='a11y-hidden'>
+            가격
+          </label>
+          <input
+            id='productPrice'
+            type='text'
+            className={s.price}
+            onChange={handlePriceChange}
+            value={price}
+            placeholder='0'
+          />
+          <span className={s.won}>원</span>
+        </section>
+
+        {onBtn && !progressingCreate ? (
+          <SmallButton onClickEvent={handleSend}>등록</SmallButton>
+        ) : (
+          <SmallButtonDisable>{progressingCreate ? `진행중` : `등록`}</SmallButtonDisable>
+        )}
+      </form>
     </>
   )
 }

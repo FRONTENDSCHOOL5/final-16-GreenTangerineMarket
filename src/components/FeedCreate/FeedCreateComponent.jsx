@@ -58,7 +58,7 @@ const FeedCreateComponent = () => {
       />
       <form className={s.form} ref={formRef}>
         <div className={s.imageTitle}>
-          <h3>사진 파일</h3>
+          <h3>이미지 파일</h3>
           <label className={s.imageInput}>
             <img src={cameraImg} alt='' />
             업로드
