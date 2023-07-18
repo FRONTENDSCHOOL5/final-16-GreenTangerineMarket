@@ -1,6 +1,7 @@
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useRecoilValue } from 'recoil'
 import { toast } from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom'
 
 import s from './ProductDetailAuthorButton.module.scss'
 
@@ -9,7 +10,6 @@ import { SmallButton, SmallWhiteButton } from 'components/Common/Button/Small/Sm
 import Modal from 'components/Common/Modal/Modal'
 import { deleteProductAPI, editProductAPI } from 'api/product'
 import getToastStyle from 'utils/getToastStyle'
-import { useNavigate } from 'react-router-dom'
 import { handleUploadImageAPI } from 'utils/handleUploadImage'
 import { handleSetImage } from 'utils/handleSetImage'
 import formatNumberWithComma from 'utils/formatNumberWithComma'
@@ -56,6 +56,19 @@ const ProductDetailAuthorButton = ({ product, id }) => {
     })
   }
 
+  const closeModal = () => {
+    setShowEditModal(false)
+    setImage(product.itemImage)
+    setItemName(product.itemName)
+    setItemPrice(product.price)
+  }
+
+  useEffect(() => {
+    setImage(product.itemImage)
+    setItemName(product.itemName)
+    setItemPrice(product.price)
+  }, [])
+
   return (
     <>
       {product && myInfo.accountname === product.author.accountname && (
@@ -65,7 +78,7 @@ const ProductDetailAuthorButton = ({ product, id }) => {
         </div>
       )}
       {showEditModal && (
-        <Modal closeModal={() => setShowEditModal(false)}>
+        <Modal closeModal={closeModal}>
           <form ref={formRef} className={s.modal}>
             <h3 className={s.title}>상품 수정하기</h3>
             {image && image.length ? (
@@ -108,7 +121,7 @@ const ProductDetailAuthorButton = ({ product, id }) => {
               />
             </label>
             <div className={s.buttonContainer}>
-              <SmallWhiteButton onClickEvent={() => setShowEditModal(false)}>취소</SmallWhiteButton>
+              <SmallWhiteButton onClickEvent={closeModal}>취소</SmallWhiteButton>
               <SmallButton onClickEvent={handleEditProduct}>수정</SmallButton>
             </div>
           </form>

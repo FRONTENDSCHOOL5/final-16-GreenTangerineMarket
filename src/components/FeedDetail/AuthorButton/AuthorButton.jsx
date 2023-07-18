@@ -37,6 +37,12 @@ const AuthorButton = ({ feedDetail }) => {
     })
   }
 
+  const closeModal = () => {
+    setShowEditModal(false)
+    setImages(feedDetail.image)
+    setContent(feedDetail.content)
+  }
+
   useEffect(() => {
     setImages(feedDetail.image)
     setContent(feedDetail.content)
@@ -53,7 +59,7 @@ const AuthorButton = ({ feedDetail }) => {
         </button>
       </div>
       {showEditModal && (
-        <Modal closeModal={() => setShowEditModal(false)}>
+        <Modal closeModal={closeModal}>
           <form ref={formRef} className={s.modal}>
             <h3 className={s.title}>게시글 수정하기</h3>
             <ImageSlider imageType={'피드'}>
@@ -80,7 +86,7 @@ const AuthorButton = ({ feedDetail }) => {
               <textarea className={s.content} name='feedContent' value={content} onChange={handleChangeContent} />
             </div>
             <div className={s.buttonContainer}>
-              <SmallWhiteButton onClickEvent={() => setShowEditModal(false)}>취소</SmallWhiteButton>
+              <SmallWhiteButton onClickEvent={closeModal}>취소</SmallWhiteButton>
               <SmallButton onClickEvent={handleEditInfo}>수정</SmallButton>
             </div>
           </form>
