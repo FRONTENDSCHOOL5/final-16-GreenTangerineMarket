@@ -38,6 +38,7 @@ const ProductDetailPage = () => {
       {!isNoProduct ? (
         product && (
           <>
+            <h2 className='a11y-hidden'>{product.author.username}의 상품 페이지</h2>
             <section className={s.container}>
               <img
                 className={s.image}

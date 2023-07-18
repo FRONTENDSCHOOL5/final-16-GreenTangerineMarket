@@ -67,7 +67,7 @@ const ProductDetailAuthorButton = ({ product, id }) => {
       {showEditModal && (
         <Modal closeModal={() => setShowEditModal(false)}>
           <form ref={formRef} className={s.modal}>
-            <h2 className={s.title}>상품 수정하기</h2>
+            <h3 className={s.title}>상품 수정하기</h3>
             {image && image.length ? (
               <div className={s.image}>
                 <img src={image} alt='상품 이미지 미리보기' className={s.imagePreview} />

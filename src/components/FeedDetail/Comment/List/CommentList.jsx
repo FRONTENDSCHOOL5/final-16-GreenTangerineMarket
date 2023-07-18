@@ -31,10 +31,10 @@ const CommentList = ({ id }) => {
   }, [])
   return (
     <section className={s.container}>
-      <h3 className={s.commentTitle}>
+      <p className={s.commentTitle}>
         <span>댓글 </span>
         <span className={s.count}>{comments.length}</span>
-      </h3>
+      </p>
       <form className={s.inputContainer} onSubmit={handlePostComments}>
         <input
           className={s.input}

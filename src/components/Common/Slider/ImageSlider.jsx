@@ -12,7 +12,7 @@ const CustomNextArrow = ({ currentSlide, slideCount, ...props }) => (
   <button {...props} className={s.next} type='button'></button>
 )
 
-const ImageSlider = ({ imageType, children }) => {
+const ImageSlider = ({ children }) => {
   const settings = {
     dots: true,
     dotsClass: s.dots,
@@ -26,7 +26,6 @@ const ImageSlider = ({ imageType, children }) => {
 
   return (
     <ul className={s.container}>
-      <h2 className='a11y-hidden'>{`${imageType}이미지 슬라이더`}</h2>
       <Slider className={s.sliderContainer} {...settings}>
         {children}
       </Slider>

@@ -60,6 +60,7 @@ const ProfileInfo = () => {
       {!isNoUser ? (
         profileData && (
           <>
+            <h2 className='a11y-hidden'>{profileData.username}의 프로필페이지</h2>
             <section className={s.container}>
               {isMyProfile && <ProfileMenu />}
               <div className={s.followInfo}>

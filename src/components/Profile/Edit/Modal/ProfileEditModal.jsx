@@ -63,7 +63,7 @@ const ProfileEditModal = ({ myInfo, closeModal, handleProfileUpdate }) => {
   return (
     <Modal closeModal={closeModal}>
       <form ref={formRef} className={s.container}>
-        <p className={s.title}>프로필 수정</p>
+        <h3 className={s.title}>프로필 수정</h3>
         <ProfileImageInputBox initialImage={profileImage} />
         <TextInputBox
           initialValue={myInfo.accountname}

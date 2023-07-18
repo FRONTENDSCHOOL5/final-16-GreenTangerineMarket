@@ -22,7 +22,7 @@ const ListHeader = ({ link, name }) => {
       <div className={s.container}>
         <Link to='/'>
           <h1>
-            <img className={s.logoImg} src={logoImg} alt='초록색의 청귤마켓 로고 이미지입니다.' />
+            <img className={s.logoImg} src={logoImg} alt=' 청귤마켓 로고' />
           </h1>
         </Link>
         <nav>

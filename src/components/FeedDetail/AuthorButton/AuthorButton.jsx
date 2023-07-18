@@ -55,7 +55,7 @@ const AuthorButton = ({ feedDetail }) => {
       {showEditModal && (
         <Modal closeModal={() => setShowEditModal(false)}>
           <form ref={formRef} className={s.modal}>
-            <h2 className={s.title}>게시글 수정하기</h2>
+            <h3 className={s.title}>게시글 수정하기</h3>
             <ImageSlider imageType={'피드'}>
               {typeof images === 'string'
                 ? images.split(',').map((image, i) => {

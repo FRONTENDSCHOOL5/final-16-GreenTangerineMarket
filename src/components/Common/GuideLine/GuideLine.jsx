@@ -11,6 +11,7 @@ const GuideLine = ({ name, about, limit, only, photo, text }) => {
 
   return (
     <section className={s.section}>
+      <h3 className='a11y-hidden'>등록 가이드</h3>
       <div className={s.title}>
         <button type='button' onClick={handleButtonClick} className={s.box}>
           <img src={foldImg} className={showList ? s.unfold : s.fold} alt='' />
