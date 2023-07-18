@@ -1,40 +1,44 @@
 @import 'styles/global.scss';
+@import 'styles/mixin.scss';
 
 .section {
   margin-bottom: 2rem;
-  font-size: 2rem;
-
-  .opendBox,
-  .closedBox {
-    width: 100%;
-    border: 0.1rem solid $color-main;
-    border-radius: 1rem;
-    padding: 1rem;
-    text-align: start;
-
+  font-size: 1.8rem;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  background-color: $color-f0f0f0;
+  .title {
+    display: flex;
+    align-items: end;
+    gap: 1rem;
+    .box {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0;
+      .unfold {
+        transform: rotate(-180deg);
+        transition: all 0.5s;
+      }
+      .fold {
+        transition: all 0.5s;
+      }
+    }
     .sub {
-      vertical-align: middle;
-      font-size: 1rem;
+      font-size: 1.4rem;
       color: $color-c4c4c4;
     }
   }
-
-  .opendBox {
-    border-bottom: none;
-    border-radius: 1rem 1rem 0 0;
-  }
-
   .listBox {
-    border: 0.1rem solid $color-main;
-    border-top: none;
-    border-radius: 0 0 1rem 1rem;
-    padding: 1rem;
-
+    margin-top: 1rem;
+    transition: all 0.5s;
     > li {
       margin-bottom: 1rem;
       position: relative;
       padding-left: 1.5rem;
-
+      font-size: 1.6rem;
+      color: $color-767676;
       &::before {
         content: '';
         position: absolute;
@@ -43,8 +47,25 @@
         left: 0;
         width: 0.5rem;
         height: 0.5rem;
-        background-color: black;
+        background-color: $color-767676;
         border-radius: 50%;
+      }
+    }
+  }
+}
+
+@include mobile {
+  .section {
+    font-size: 1.6rem;
+    padding: 1rem;
+    .title {
+      flex-direction: column;
+      align-items: start;
+      gap: 0rem;
+    }
+    .listBox {
+      > li {
+        font-size: 1.4rem;
       }
     }
   }

@@ -2,6 +2,8 @@ import { useState } from 'react'
 
 import s from './GuideLine.module.scss'
 
+import foldImg from 'assets/img/icon-fold.svg'
+
 const GuideLine = ({ name, about, limit, only, photo, text }) => {
   const [showList, setShowList] = useState(true)
 
@@ -9,15 +11,15 @@ const GuideLine = ({ name, about, limit, only, photo, text }) => {
 
   return (
     <section className={s.section}>
-      {showList ? (
-        <button onClick={handleButtonClick} className={s.opendBox}>
-          {name} 등록 가이드 보기 <span className={s.sub}>원활한 {name} 발행을 위해 꼭 읽어주세요!</span>
+      <div className={s.title}>
+        <button type='button' onClick={handleButtonClick} className={s.box}>
+          <img src={foldImg} className={showList ? s.unfold : s.fold} alt='' />
+          <span>
+            {name} 등록 가이드 {showList ? '닫기' : '보기'}
+          </span>
         </button>
-      ) : (
-        <button onClick={handleButtonClick} className={s.closedBox}>
-          {name} 등록 가이드 보기 <span className={s.sub}>원활한 {name} 발행을 위해 꼭 읽어주세요!</span>
-        </button>
-      )}
+        <p className={s.sub}>* 원활한 {name} 발행을 위해 꼭 읽어주세요!</p>
+      </div>
 
       {showList && (
         <ul className={s.listBox}>
