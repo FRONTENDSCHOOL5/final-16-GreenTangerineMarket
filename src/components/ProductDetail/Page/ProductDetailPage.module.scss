@@ -74,12 +74,6 @@
     }
   }
 }
-.button {
-  display: flex;
-  gap: 3rem;
-  margin-top: 3rem;
-  justify-content: center;
-}
 
 @include desktop {
   .container {

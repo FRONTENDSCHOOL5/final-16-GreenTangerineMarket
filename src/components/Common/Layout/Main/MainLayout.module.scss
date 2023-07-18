@@ -1,9 +1,10 @@
 @import 'styles/mixin.scss';
 
 .container {
-  margin: 8rem 0;
+  margin: 8rem auto;
   padding: 0 32rem;
   min-height: calc(100% - 36rem);
+  max-width: 162rem;
 }
 
 @include desktop {
