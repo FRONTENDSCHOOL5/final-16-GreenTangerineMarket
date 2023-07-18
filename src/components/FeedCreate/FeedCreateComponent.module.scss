@@ -1,73 +1,124 @@
 @import 'styles/global.scss';
+@import 'styles/mixin.scss';
 
-.section {
-  .contentBox {
+.form {
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+  padding: 2rem;
+  font-size: 1.6rem;
+  border: 1px solid $color-c4c4c4;
+  h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+  .imageTitle {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+    .imageInput {
+      color: $color-main;
+      font-weight: 700;
+      padding-left: 2rem;
+      position: relative;
+      cursor: pointer;
+      > img {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-45%);
+        width: 2rem;
+        height: 2rem;
+        margin-right: 0.2rem;
+      }
+      > input {
+        display: none;
+      }
+    }
+  }
+  .image {
+    width: 80%;
+    max-width: 70rem;
+    margin: 0 auto;
+  }
+  .noimage {
+    width: 100%;
+    padding: 2rem;
+    text-align: center;
+    object-fit: cover;
     border-radius: 1rem;
-    border: 0.1rem solid $color-main;
-    padding: 5rem;
-    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
-    font-size: 3rem;
-    > section {
-      margin-bottom: 2rem;
-
-      > h2 {
-        margin-bottom: 1rem;
-      }
-    }
-
-    .imageContainer {
-      margin-top: 2rem;
-
-      .imageInput {
-        display: block;
-        border: 0.1rem solid $color-main;
-        border-radius: 1rem;
-        width: 35%;
-        padding: 0.5rem;
-        color: #999999;
-      }
-
-      .imagePreviewContainer {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        > ul {
-          border-radius: 1rem;
-        }
-      }
-    }
-
-    .content {
-      width: 100%;
-      display: block;
-      box-sizing: border-box;
-
-      padding: 1rem;
-      background-color: #f0f0f0;
-      border: none;
-      border-radius: 1rem;
-      resize: none;
-      font-size: 3rem;
-
-      &:focus {
-        outline: none;
-      }
-    }
-    .textTitle {
+    background-color: $color-f0f0f0;
+    color: $color-c4c4c4;
+    font-weight: 700;
+  }
+  .contentContainer {
+    margin-top: 3rem;
+    .contentTitle {
       display: flex;
-      gap: 1rem;
+      margin-bottom: 1rem;
+      align-items: center;
+      gap: 0.5rem;
+      > button {
+        width: 2.5rem;
+        height: 2.5rem;
+        background: url('/assets/img/icon-refresh.svg') no-repeat center/2.5rem 2.5rem;
+      }
+    }
+    .contentWrapper {
+      width: 100%;
+      border: 1px solid $color-767676;
+      border-radius: 1rem;
+      font-size: 1.8rem;
+      overflow: hidden;
+      height: 20rem;
+      .content {
+        width: 100%;
+        line-height: 2;
+        resize: none;
+        padding: 1rem;
+        outline: none;
+        min-height: 20rem;
+      }
     }
 
     .counter {
-      width: 100%;
-      display: block;
       text-align: end;
-      font-size: 2rem;
+      font-size: 1.6rem;
+      color: $color-767676;
     }
+  }
+  > button {
+    margin-top: 2rem;
+    align-self: end;
+  }
+}
 
-    .btn {
-      text-align: end;
+@include mobile {
+  .form {
+    font-size: 1.4rem;
+    border: none;
+    padding: 0;
+    h3 {
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+    .contentContainer {
+      margin-top: 2rem;
+      .contentWrapper {
+        font-size: 1.6rem;
+        height: 15rem;
+        .content {
+          line-height: 1.6;
+          min-height: 15rem;
+        }
+      }
+      .counter {
+        font-size: 1.4rem;
+      }
+    }
+    > button {
+      margin-top: 1rem;
     }
   }
 }
