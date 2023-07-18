@@ -41,7 +41,7 @@ const SearchInput = () => {
             onChange={handleInput}
           />
         </label>
-        <button type='submit' className={s.button}>
+        <button className={s.button}>
           <span className='a11y-hidden'>검색</span>
         </button>
       </form>

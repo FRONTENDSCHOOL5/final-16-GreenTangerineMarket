@@ -49,13 +49,19 @@ const ProfileMenu = () => {
       {showMenu && (
         <ul className={s.list} ref={listRef}>
           <li>
-            <button onClick={handleCreateFeed}>피드작성</button>
+            <button type='button' onClick={handleCreateFeed}>
+              피드작성
+            </button>
           </li>
           <li>
-            <button onClick={handleCreateProduct}>상품등록</button>
+            <button type='button' onClick={handleCreateProduct}>
+              상품등록
+            </button>
           </li>
           <li>
-            <button onClick={handleLogout}>로그아웃</button>
+            <button type='button' onClick={handleLogout}>
+              로그아웃
+            </button>
           </li>
         </ul>
       )}
