@@ -1,10 +1,10 @@
 import MainLayout from 'components/Common/Layout/Main/MainLayout'
-import ProductDetailItem from 'components/ProductDetail/Item/ProductDetailItem'
+import ProductDetailPage from 'components/ProductDetail/Page/ProductDetailPage'
 
 const ProductDetail = () => {
   return (
     <MainLayout>
-      <ProductDetailItem />
+      <ProductDetailPage />
     </MainLayout>
   )
 }

@@ -1,31 +1,22 @@
 import { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router'
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
+import { useParams } from 'react-router'
 import { Link } from 'react-router-dom'
 
-import s from './ProductDetailItem.module.scss'
+import s from './ProductDetailPage.module.scss'
 
-import { deleteProductAPI, getProductDetailAPI } from 'api/product'
+import { getProductDetailAPI } from 'api/product'
 import ProfileImage from 'components/Common/ProfileImage/ProfileImage'
 import formatCreateTime from 'utils/formatCreateTime'
 import formatNumberWithComma from 'utils/formatNumberWithComma'
-import { myInfoAtom } from 'recoil/atom/user'
-import { SmallButton, SmallWhiteButton } from 'components/Common/Button/Small/SmallButton'
 import defaultImage from 'assets/img/no-image.png'
-import { showEditModalAtom } from 'recoil/atom/showFlag'
-import { toast } from 'react-hot-toast'
-import getToastStyle from 'utils/getToastStyle'
-import EditModal from 'components/Common/Modal/EditModal'
 import NotFoundPage from 'components/NotFound/NotFoundPage'
+import ProductDetailAuthorButton from '../AuthorButton/ProductDetailAuthorButton'
 
-const ProductDetailItem = () => {
+const ProductDetailPage = () => {
   const params = useParams()
   const [imageError, setImageError] = useState(false)
   const [product, setProduct] = useState(null)
   const [isNoProduct, setIsNoProduct] = useState(false)
-  const myInfo = useRecoilValue(myInfoAtom)
-  const navigate = useNavigate()
-  const [showEditModal, setShowEditModal] = useRecoilState(showEditModalAtom)
 
   const getProductDetail = async () => {
     const res = await getProductDetailAPI(params.id)
@@ -37,14 +28,6 @@ const ProductDetailItem = () => {
   }
 
   const handleImageError = () => setImageError(true)
-
-  const handleDeleteProduct = async () => {
-    const res = await deleteProductAPI(params.id)
-    if (res.status === 200) {
-      toast('상품을 삭제했습니다', { style: getToastStyle() })
-      navigate(-1)
-    }
-  }
 
   useEffect(() => {
     getProductDetail()
@@ -76,13 +59,7 @@ const ProductDetailItem = () => {
                 <p className={s.time}>{formatCreateTime(product.createdAt)}</p>
               </div>
             </section>
-            {myInfo.accountname === product.author.accountname && (
-              <div className={s.button}>
-                <SmallButton onClickEvent={() => setShowEditModal(true)}>수정</SmallButton>
-                <SmallWhiteButton onClickEvent={handleDeleteProduct}>삭제</SmallWhiteButton>
-              </div>
-            )}
-            {showEditModal && <EditModal type='product' info={product} />}
+            <ProductDetailAuthorButton product={product} id={params.id} />
           </>
         )
       ) : (
@@ -92,4 +69,4 @@ const ProductDetailItem = () => {
   )
 }
 
-export default ProductDetailItem
+export default ProductDetailPage
