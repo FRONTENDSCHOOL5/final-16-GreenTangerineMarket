@@ -6,6 +6,9 @@ import s from './FeedMoreButton.module.scss'
 import { myInfoAtom } from 'recoil/atom/user'
 import FeedReportButton from '../ReportButton/FeedReportButton'
 import FeedEditButton from '../EditButton/FeedEditButton'
+import { deletePostAPI } from 'api/feed'
+import { toast } from 'react-hot-toast'
+import getToastStyle from 'utils/getToastStyle'
 
 const FeedMoreButton = ({ id, author }) => {
   const [showMenu, setShowMenu] = useState(false)
@@ -26,6 +29,16 @@ const FeedMoreButton = ({ id, author }) => {
     }
   }
 
+  const handleDelete = async () => {
+    const res = await deletePostAPI(id)
+    if (res.status === 200) {
+      window.location.reload()
+      toast('해당 피드가 삭제되었습니다.', {
+        style: getToastStyle(),
+      })
+    }
+  }
+
   useEffect(() => {
     document.addEventListener('keydown', handleEscapeKeyDown)
     document.addEventListener('click', handleOutsideClick)
@@ -34,6 +47,7 @@ const FeedMoreButton = ({ id, author }) => {
       document.removeEventListener('keydown', handleEscapeKeyDown)
     }
   })
+
   return (
     <>
       <button type='button' className={s.more} ref={moreButtonRef}>
@@ -44,6 +58,11 @@ const FeedMoreButton = ({ id, author }) => {
           <ul className={s.menu} ref={menuRef}>
             <li>
               <FeedEditButton id={id} />
+            </li>
+            <li>
+              <button type='button' onClick={handleDelete}>
+                삭제
+              </button>
             </li>
           </ul>
         ) : (
