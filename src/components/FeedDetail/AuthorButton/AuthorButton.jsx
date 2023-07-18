@@ -10,8 +10,10 @@ import ImageList from 'components/Common/List/ImageList'
 import { handleSetImage } from 'utils/handleSetImage'
 import { handleUploadImageAPI } from 'utils/handleUploadImage'
 import { SmallButton, SmallWhiteButton } from 'components/Common/Button/Small/SmallButton'
+import { useSearchParams } from 'react-router-dom'
 
 const AuthorButton = ({ feedDetail }) => {
+  const [isEdit, setIsEdit] = useSearchParams()
   const formRef = useRef()
   const [images, setImages] = useState([])
   const [content, setContent] = useState(null)
@@ -46,6 +48,9 @@ const AuthorButton = ({ feedDetail }) => {
   useEffect(() => {
     setImages(feedDetail.image)
     setContent(feedDetail.content)
+    if (isEdit.get('edit')) {
+      setShowEditModal(true)
+    }
   }, [])
 
   return (
