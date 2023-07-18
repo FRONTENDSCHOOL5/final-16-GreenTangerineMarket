@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router'
 
-import s from './AuthorButtonList.module.scss'
+import s from './AuthorButton.module.scss'
 
 import { deletePostAPI, editFeedAPI } from 'api/feed'
 import Modal from 'components/Common/Modal/Modal'
@@ -11,7 +11,7 @@ import { handleSetImage } from 'utils/handleSetImage'
 import { handleUploadImageAPI } from 'utils/handleUploadImage'
 import { SmallButton, SmallWhiteButton } from 'components/Common/Button/Small/SmallButton'
 
-const AuthorButtonList = ({ feedDetail }) => {
+const AuthorButton = ({ feedDetail }) => {
   const formRef = useRef()
   const [images, setImages] = useState([])
   const [content, setContent] = useState(null)
@@ -90,4 +90,4 @@ const AuthorButtonList = ({ feedDetail }) => {
   )
 }
 
-export default AuthorButtonList
+export default AuthorButton

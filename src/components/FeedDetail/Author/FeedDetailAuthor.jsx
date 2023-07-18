@@ -6,7 +6,7 @@ import { toast } from 'react-hot-toast'
 import s from './FeedDetailAuthor.module.scss'
 
 import ProfileImage from 'components/Common/ProfileImage/ProfileImage'
-import AuthorButtonList from '../AuthorButtonList/AuthorButtonList'
+import AuthorButton from '../AuthorButton/AuthorButton'
 import { myInfoAtom } from 'recoil/atom/user'
 import { followProfileAPI, unfollowProfileAPI } from 'api/profile'
 import getToastStyle from 'utils/getToastStyle'
@@ -50,7 +50,7 @@ const FeedDetailAuthor = ({ feedDetail }) => {
             </div>
           </Link>
           {feedDetail.author.accountname === myInfo.accountname ? (
-            <AuthorButtonList feedDetail={feedDetail} />
+            <AuthorButton feedDetail={feedDetail} />
           ) : isFollow ? (
             <button type='button' onClick={handleUnfollow} className={s.unfollow}>
               언팔로우

@@ -8,12 +8,3 @@ export const uploadImage = async formData => {
     return err
   }
 }
-
-export const uploadImages = async formData => {
-  try {
-    const res = await imageInstance.post('/image/uploadfiles', formData)
-    return res
-  } catch (err) {
-    return err
-  }
-}
