@@ -1,0 +1,43 @@
+{
+  "files": {
+    "main.css": "/final-16-GreenTangerineMarket/static/css/main.2c3298b4.css",
+    "main.js": "/final-16-GreenTangerineMarket/static/js/main.5fd6183a.js",
+    "static/media/default-profile.svg": "/final-16-GreenTangerineMarket/static/media/default-profile.939e974aabe8d051459a9db54ef655ac.svg",
+    "static/media/logo_char.svg": "/final-16-GreenTangerineMarket/static/media/logo_char.0f7affea55dd4f6351a47269aa772854.svg",
+    "static/media/icon-github.svg": "/final-16-GreenTangerineMarket/static/media/icon-github.ced7404675a1d12938815a8daa825113.svg",
+    "static/media/basic-profile-img.svg": "/final-16-GreenTangerineMarket/static/media/basic-profile-img.aa9491a398c660b95c965af7b1a9445a.svg",
+    "static/media/no-item.svg": "/final-16-GreenTangerineMarket/static/media/no-item.0eb2ffd524b4828179a870aa31c4b9a2.svg",
+    "static/media/add-item.svg": "/final-16-GreenTangerineMarket/static/media/add-item.3d451700e27a3eda159672a9e573a611.svg",
+    "static/media/logo.svg": "/final-16-GreenTangerineMarket/static/media/logo.b569598f4e3b5c9bae7da775034b3eda.svg",
+    "static/media/icon-img-layers.svg": "/final-16-GreenTangerineMarket/static/media/icon-img-layers.78f631dfaa52bceea48ee63eb8549828.svg",
+    "static/media/slick.svg": "/final-16-GreenTangerineMarket/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/final-16-GreenTangerineMarket/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/final-16-GreenTangerineMarket/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/final-16-GreenTangerineMarket/static/media/slick.295183786cd8a1389865.woff",
+    "static/media/upload.svg": "/final-16-GreenTangerineMarket/static/media/upload.1f72a52bd6505a07f548d39a2fdc256e.svg",
+    "static/media/icon-more.svg": "/final-16-GreenTangerineMarket/static/media/icon-more.192724076f49702aee1c.svg",
+    "static/media/icon-heart-fill.svg": "/final-16-GreenTangerineMarket/static/media/icon-heart-fill.4d6ba61882856512bfd841e8c075764a.svg",
+    "static/media/icon-heart.svg": "/final-16-GreenTangerineMarket/static/media/icon-heart.40d7f095b64c6fd3b02f7d3190ebd5e7.svg",
+    "static/media/icon-user.svg": "/final-16-GreenTangerineMarket/static/media/icon-user.592c12f91ec326fe4c938c17c904c301.svg",
+    "static/media/icon-message-circle.svg": "/final-16-GreenTangerineMarket/static/media/icon-message-circle.7d205687550267d5bef5fb340912e028.svg",
+    "index.html": "/final-16-GreenTangerineMarket/index.html",
+    "static/media/icon-refresh.svg": "/final-16-GreenTangerineMarket/static/media/icon-refresh.695096218eb27ebe0796.svg",
+    "static/media/icon-camera.svg": "/final-16-GreenTangerineMarket/static/media/icon-camera.a88ef84d10afa7e158cb394bfd46ce5a.svg",
+    "static/media/icon-search-green.svg": "/final-16-GreenTangerineMarket/static/media/icon-search-green.6e52563d460c80c3148b.svg",
+    "static/media/icon-search.svg": "/final-16-GreenTangerineMarket/static/media/icon-search.ddaa45431ee850eeed68d8680642cbd2.svg",
+    "static/media/icon-image.svg": "/final-16-GreenTangerineMarket/static/media/icon-image.91a6d01449a876491d2bbeaaa383e541.svg",
+    "static/media/icon-up.svg": "/final-16-GreenTangerineMarket/static/media/icon-up.e28ffeb512a3dfd4afa9.svg",
+    "static/media/icon-fold.svg": "/final-16-GreenTangerineMarket/static/media/icon-fold.f825abb920ccade414ccc1f184e9a454.svg",
+    "static/media/icon-prev.svg": "/final-16-GreenTangerineMarket/static/media/icon-prev.c052925a631459264288.svg",
+    "static/media/icon-next.svg": "/final-16-GreenTangerineMarket/static/media/icon-next.3ad7e2fcffe955be732a.svg",
+    "static/media/icon-right-arrow.svg": "/final-16-GreenTangerineMarket/static/media/icon-right-arrow.db8c442d621bbc302683.svg",
+    "static/media/icon-close.svg": "/final-16-GreenTangerineMarket/static/media/icon-close.f9e1fd884e38ced99e02.svg",
+    "static/media/icon-menu.svg": "/final-16-GreenTangerineMarket/static/media/icon-menu.e13b9d456b4d8025314c.svg",
+    "main.2c3298b4.css.map": "/final-16-GreenTangerineMarket/static/css/main.2c3298b4.css.map",
+    "main.5fd6183a.js.map": "/final-16-GreenTangerineMarket/static/js/main.5fd6183a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2c3298b4.css",
+    "static/js/main.5fd6183a.js"
+  ]
+}
