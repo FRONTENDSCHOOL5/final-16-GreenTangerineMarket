@@ -12,7 +12,7 @@ const FeedItemList = () => {
   const [feeds, setFeeds] = useState([])
 
   const loadFeedList = async page => {
-    const res = await getNextFeedAPI(page * 10)
+    const res = await getNextFeedAPI(page * 20)
     if (res.status === 200) setFeeds([...feeds, ...res.data.posts])
   }
   return (

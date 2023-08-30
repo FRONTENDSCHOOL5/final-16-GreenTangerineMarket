@@ -1,0 +1,32 @@
+@import 'styles/global.scss';
+@import 'styles/mixin.scss';
+
+.container {
+  margin-top: 4rem;
+  .commentTitle {
+    font-size: 1.6rem;
+    .count {
+      color: $color-main;
+      font-weight: 700;
+    }
+  }
+  .inputContainer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    .input {
+      width: 100%;
+      border: 0.1rem solid $color-c4c4c4;
+      border-radius: 1rem;
+      padding: 0.7rem 1rem;
+      font-size: 1.6rem;
+    }
+  }
+
+  .scrollBox {
+    max-height: 50rem;
+    overflow-y: auto;
+    @include customScroll;
+  }
+}

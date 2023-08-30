@@ -5,7 +5,6 @@ import logo from 'assets/img/logo_char.svg'
 const SignMainLogo = () => {
   return (
     <h1 className={s.title}>
-      <div className='a11y-hidden'>청귤마켓 로고</div>
       <img src={logo} alt='청귤마켓 로고' />
     </h1>
   )

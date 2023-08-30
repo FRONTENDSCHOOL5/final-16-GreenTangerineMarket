@@ -6,6 +6,9 @@ import s from './FeedMoreButton.module.scss'
 import { myInfoAtom } from 'recoil/atom/user'
 import FeedReportButton from '../ReportButton/FeedReportButton'
 import FeedEditButton from '../EditButton/FeedEditButton'
+import { deletePostAPI } from 'api/feed'
+import { toast } from 'react-hot-toast'
+import getToastStyle from 'utils/getToastStyle'
 
 const FeedMoreButton = ({ id, author }) => {
   const [showMenu, setShowMenu] = useState(false)
@@ -14,19 +17,29 @@ const FeedMoreButton = ({ id, author }) => {
   const myInfo = useRecoilValue(myInfoAtom)
   const isMyFeed = author.accountname === myInfo.accountname
 
-  const handleMenuClick = () => setShowMenu(false)
+  const handleOutsideClick = e => {
+    if (!menuRef.current && moreButtonRef.current.contains(e.target)) setShowMenu(true)
+    else if (showMenu && menuRef.current && !menuRef.current.contains(e.target)) setShowMenu(false)
+  }
+
+  const handleEscapeKeyDown = e => {
+    if (e.key === 'Escape') {
+      setShowMenu(false)
+      moreButtonRef.current.blur()
+    }
+  }
+
+  const handleDelete = async () => {
+    const res = await deletePostAPI(id)
+    if (res.status === 200) {
+      window.location.reload()
+      toast('해당 피드가 삭제되었습니다.', {
+        style: getToastStyle(),
+      })
+    }
+  }
 
   useEffect(() => {
-    const handleOutsideClick = e => {
-      if (!menuRef.current && moreButtonRef.current.contains(e.target)) setShowMenu(true)
-      else if (showMenu && menuRef.current && !menuRef.current.contains(e.target)) setShowMenu(false)
-    }
-    const handleEscapeKeyDown = e => {
-      if (e.key === 'Escape') {
-        setShowMenu(false)
-        moreButtonRef.current.blur()
-      }
-    }
     document.addEventListener('keydown', handleEscapeKeyDown)
     document.addEventListener('click', handleOutsideClick)
     return () => {
@@ -34,6 +47,7 @@ const FeedMoreButton = ({ id, author }) => {
       document.removeEventListener('keydown', handleEscapeKeyDown)
     }
   })
+
   return (
     <>
       <button type='button' className={s.more} ref={moreButtonRef}>
@@ -45,11 +59,16 @@ const FeedMoreButton = ({ id, author }) => {
             <li>
               <FeedEditButton id={id} />
             </li>
+            <li>
+              <button type='button' onClick={handleDelete}>
+                삭제
+              </button>
+            </li>
           </ul>
         ) : (
           <ul className={s.menu} ref={menuRef}>
             <li>
-              <FeedReportButton id={id} closeMenu={handleMenuClick} />
+              <FeedReportButton id={id} closeMenu={() => setShowMenu(false)} />
             </li>
           </ul>
         ))}

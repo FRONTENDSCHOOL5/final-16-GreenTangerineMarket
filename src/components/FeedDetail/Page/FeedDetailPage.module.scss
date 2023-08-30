@@ -1,0 +1,85 @@
+@import 'styles/global.scss';
+@import 'styles/mixin.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 70rem;
+  border-radius: 1rem;
+  margin: 0 auto;
+  padding: 3rem;
+  gap: 2rem;
+  .line {
+    border: 0;
+    width: 100%;
+    border-top: 1px solid #e9ecef;
+  }
+  .content {
+    font-size: 1.8rem;
+    word-break: break-all;
+    line-height: 2;
+  }
+  .info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.4rem;
+    color: $color-767676;
+    .like {
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      border: 1px solid $color-c4c4c4;
+      border-radius: 2rem;
+      &:hover {
+        opacity: 0.5;
+      }
+      .image {
+        width: 2rem;
+        height: 2rem;
+      }
+      .text {
+        margin-left: 0.4rem;
+      }
+    }
+  }
+}
+
+@include tablet {
+  .container {
+    width: 90%;
+    .content {
+      font-size: 1.6rem;
+      line-height: 1.8;
+    }
+    .info {
+      font-size: 1.4rem;
+      .like {
+        .image {
+          width: 1.5rem;
+          height: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+@include mobile {
+  .container {
+    width: 100%;
+    .content {
+      font-size: 1.6rem;
+      line-height: 1.8;
+    }
+    .info {
+      font-size: 1.4rem;
+      .like {
+        .image {
+          width: 1.5rem;
+          height: 1.5rem;
+        }
+      }
+    }
+  }
+}

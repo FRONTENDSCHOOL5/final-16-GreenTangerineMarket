@@ -30,7 +30,7 @@ const SignInForm = () => {
     if (res.data.status === 422) {
       setPasswordError({ isError: true, errorMessage: '이메일 또는 비밀번호가 일치하지 않습니다.' })
     } else {
-      const { _id, email, username, accountname, intro, token, refreshToken, image } = res.data.user
+      const { accountname, token } = res.data.user
       setMyInfoAtom({ accountname })
       setLoginCookie(token, { path: '/' })
       handleSetAuthorizationInHeader()
@@ -71,7 +71,7 @@ const SignInForm = () => {
         <MediumButtonDisabled>로그인</MediumButtonDisabled>
       )}
       <Link to='/signup' className={s.link}>
-        회원가입 하러가기
+        <strong className={s.signup}>회원가입</strong> 하러가기
       </Link>
     </form>
   )

@@ -1,4 +1,5 @@
 @import 'styles/global.scss';
+@import 'styles/mixin.scss';
 
 .container {
   display: flex;
@@ -17,11 +18,11 @@
     gap: 1rem;
     .logo {
       width: 5rem;
-      height: 5.4rem;
+      aspect-ratio: 5/5.4;
     }
     .charLogo {
       width: 18rem;
-      height: 5.5rem;
+      aspect-ratio: 18/5.5;
     }
   }
   .explain {
@@ -42,5 +43,39 @@
   }
   100% {
     opacity: 0;
+  }
+}
+
+@include tablet {
+  .container {
+    .logoWrapper {
+      .logo {
+        width: 4rem;
+      }
+      .charLogo {
+        width: 14rem;
+      }
+    }
+    .explain {
+      margin-top: 1.5rem;
+      font-size: 1.6rem;
+    }
+  }
+}
+
+@include mobile {
+  .container {
+    .logoWrapper {
+      .logo {
+        width: 3rem;
+      }
+      .charLogo {
+        width: 10rem;
+      }
+    }
+    .explain {
+      margin: 1rem auto 0 auto;
+      font-size: 1.2rem;
+    }
   }
 }

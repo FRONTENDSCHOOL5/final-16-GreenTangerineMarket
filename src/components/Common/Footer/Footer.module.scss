@@ -3,107 +3,86 @@
 
 .footer {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
   background-color: #f2f2f2;
-  font-size: 14px;
   width: 100%;
-  // height: 25rem;
-  padding: 2rem 32rem;
-
-  .case {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 0.1rem solid $color-c4c4c4;
-    padding-bottom: 2.2rem;
-    color: black;
-    line-height: 1.7rem;
-  }
-
-  .link {
-    display: flex;
-    align-items: center;
-
-    li {
-      &:nth-child(3) {
-        font-weight: 700;
-        &:after {
-          font-weight: 400;
-        }
-      }
-    }
-
-    li {
-      &:not(:last-child)::after {
-        content: '|';
-        margin: 0 1.4rem;
-        font-size: 1.4rem;
-        line-height: 1.7rem;
-      }
-    }
-  }
-
-  .sns {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-
-    a {
-      display: inline-block;
-      width: 3.2rem;
-      height: 3.2rem;
-      cursor: pointer;
-
-      img {
-        height: 100%;
-      }
-    }
-  }
+  padding: 5rem 32rem;
 
   .text {
-    margin-left: 8rem; // 반응형 작업시 해당 부분만 수정제거하면 될 듯함
-    padding: 3rem 0;
-    line-height: 2.4rem;
     color: $color-767676;
-    flex-grow: 1;
-    .contact {
-      display: block;
-      padding: 1rem;
-      border-radius: 1rem;
-      border: 0.1rem solid black;
+    font-size: 1.4rem;
+    word-break: break-all;
+    :first-child {
+      font-weight: 700;
     }
-
-    .container {
-      @include modalContainer;
-
-      .listBtn {
-        > li {
-          border: 0.1rem solid black;
-          border-radius: 1rem;
-          padding: 1rem;
-          margin-bottom: 1rem;
-        }
+  }
+  .gitHub {
+    width: 10rem;
+    aspect-ratio: 2/1;
+    overflow: hidden;
+    border-radius: 1rem;
+    padding: 0;
+    background-color: $color-c4c4c4;
+    > img {
+      width: 90%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+.container {
+  @include modalContainer;
+  .title {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+  .listBtn {
+    > li {
+      border: 1px solid $color-c4c4c4;
+      color: $color-767676;
+      border-radius: 1rem;
+      padding: 1rem 2rem;
+      font-size: 1.4rem;
+      &:not(:last-child) {
+        margin-bottom: 1rem;
+      }
+      &:hover {
+        border: 1px solid $color-767676;
+        color: black;
+        font-weight: 700;
       }
     }
   }
-
-  .gitHub {
-    display: inline-block;
-    width: 10rem;
-    height: 5rem;
-    padding: 0;
-    > a {
-      display: inline-block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      > img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 1rem;
-      }
+}
+.list {
+  @extend .footer;
+  padding: 5rem 20rem;
+}
+@include desktop {
+  .footer {
+    padding: 5rem 15rem;
+  }
+  .list {
+    padding: 5rem 12rem;
+  }
+}
+@include tablet {
+  .footer {
+    padding: 5rem 10rem;
+  }
+  .list {
+    padding: 5rem 8rem;
+  }
+}
+@include mobile {
+  .footer {
+    padding: 3rem 1rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+    .gitHub {
+      width: 8rem;
     }
   }
 }

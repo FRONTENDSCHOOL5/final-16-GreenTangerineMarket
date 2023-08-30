@@ -1,12 +1,11 @@
 @import 'styles/global.scss';
+@import 'styles/mixin.scss';
 
 .card {
-  width: 36rem;
-  min-width: 36rem;
-  height: 48rem;
+  height: fit-content;
   background-color: #fff;
   overflow: hidden;
-  place-self: center;
+  justify-self: center;
   header {
     display: flex;
     align-items: center;
@@ -25,6 +24,38 @@
       font-size: 1.4rem;
       color: $color-767676;
       cursor: default;
+    }
+  }
+}
+
+@include desktop {
+  .card {
+    header {
+      margin-bottom: 1.2rem;
+    }
+  }
+}
+@include tablet {
+  .card {
+    header {
+      margin-bottom: 1rem;
+    }
+    footer {
+      .time {
+        font-size: 1.3rem;
+      }
+    }
+  }
+}
+@include mobile {
+  .card {
+    header {
+      margin-bottom: 1rem;
+    }
+    footer {
+      .time {
+        font-size: 1.2rem;
+      }
     }
   }
 }

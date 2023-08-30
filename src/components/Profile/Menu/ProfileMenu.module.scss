@@ -1,4 +1,6 @@
 @import 'styles/global.scss';
+@import 'styles/mixin.scss';
+
 .menu {
   width: 4rem;
   height: 4rem;
@@ -16,11 +18,11 @@
   position: absolute;
   background-color: #fff;
   right: 0;
-  top: 4rem;
+  top: 3rem;
   border-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   overflow: hidden;
-  z-index: 500;
+  z-index: 50;
   animation: fadeIn 0.5s forwards;
   transition: opacity 0.1s;
   li {
@@ -35,6 +37,36 @@
     text-align: center;
     &:hover {
       opacity: 0.5;
+    }
+  }
+}
+
+@include desktop {
+  .menu {
+    background-size: 3.2rem;
+  }
+  .list {
+    top: 2.5rem;
+  }
+}
+@include tablet {
+  .menu {
+    background-size: 3.2rem;
+  }
+  .list {
+    top: 2rem;
+  }
+}
+@include mobile {
+  .menu {
+    background-size: 3rem;
+  }
+  .list {
+    top: 1.5rem;
+    li > button {
+      width: 8rem;
+      font-size: 1.4rem;
+      padding: 1rem 0;
     }
   }
 }

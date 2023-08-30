@@ -25,7 +25,7 @@ const HomeFeed = () => {
           더보기
         </Link>
       </div>
-      <div className={s.feedBox}>
+      <div className={s.box}>
         {feeds.map(feed => {
           return (
             <FeedCard

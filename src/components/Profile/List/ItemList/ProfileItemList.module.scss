@@ -1,4 +1,6 @@
 @import 'styles/global.scss';
+@import 'styles/mixin.scss';
+
 .container {
   margin-top: 5em;
   .tab {
@@ -25,6 +27,35 @@
       font-weight: 900;
       &:hover {
         opacity: 1;
+      }
+    }
+  }
+}
+
+@include tablet {
+  .container {
+    margin-top: 4em;
+    .tab {
+      gap: 4rem;
+      margin-bottom: 4rem;
+    }
+  }
+}
+@include mobile {
+  .container {
+    margin-top: 3em;
+    .tab {
+      gap: 3rem;
+      margin-bottom: 3rem;
+      button {
+        padding: 1rem 2rem;
+        font-size: 1.4rem;
+        &:hover {
+          border-width: 2px;
+        }
+      }
+      .show {
+        border-width: 2px;
       }
     }
   }

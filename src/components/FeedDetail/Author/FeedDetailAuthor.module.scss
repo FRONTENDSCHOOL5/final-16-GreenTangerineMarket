@@ -1,0 +1,89 @@
+@import 'styles/global.scss';
+@import 'styles/mixin.scss';
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  .profile {
+    display: flex;
+    align-items: center;
+    width: 70%;
+    .image {
+      width: 6rem;
+      height: 6rem;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 1rem;
+    }
+    .name {
+      max-width: 80%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      .user {
+        font-size: 1.8rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .account {
+        font-size: 1.6rem;
+        color: $color-767676;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+  .unfollow {
+    font-size: 1.6rem;
+    color: $color-767676;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+  .follow {
+    font-size: 1.6rem;
+    color: $color-main;
+    font-weight: 700;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+}
+
+@include tablet {
+  .container {
+    .profile {
+      .image {
+        width: 5rem;
+        height: 5rem;
+      }
+      .name {
+        max-width: 70%;
+      }
+    }
+  }
+}
+@include mobile {
+  .container {
+    .profile {
+      .image {
+        width: 4rem;
+        height: 4rem;
+        margin-right: 0.8rem;
+      }
+      .name {
+        max-width: 60%;
+        .user {
+          font-size: 1.6rem;
+        }
+        .account {
+          font-size: 1.4rem;
+        }
+      }
+    }
+  }
+}

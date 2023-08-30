@@ -1,26 +1,12 @@
-import { Children, useEffect } from 'react'
+import { useEffect } from 'react'
+
 import s from './Modal.module.scss'
+
+import { allowScroll, preventScroll } from 'utils/scroll'
 
 const Modal = ({ children, closeModal }) => {
   const handleOutsideClick = e => {
     if (e.target.nodeName === 'DIALOG') closeModal()
-  }
-
-  const preventScroll = () => {
-    const currentScrollY = window.scrollY
-    document.body.style.position = 'fixed'
-    document.body.style.width = '100%'
-    document.body.style.top = `-${currentScrollY}px`
-    document.body.style.overflowY = 'scroll'
-    return currentScrollY
-  }
-
-  const allowScroll = prevScroll => {
-    document.body.style.position = ''
-    document.body.style.width = ''
-    document.body.style.top = ''
-    document.body.style.overflowY = ''
-    window.scrollTo(0, prevScroll)
   }
 
   const handleEscapeKeyDown = e => {
@@ -35,8 +21,6 @@ const Modal = ({ children, closeModal }) => {
     document.addEventListener('keydown', handleEscapeKeyDown)
     return () => {
       document.removeEventListener('keydown', handleEscapeKeyDown)
-      document.body.style.overflow = ''
-
       allowScroll(prevScroll)
     }
   })

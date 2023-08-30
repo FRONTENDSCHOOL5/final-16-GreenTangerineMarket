@@ -1,4 +1,5 @@
 @import 'styles/global.scss';
+@import 'styles/mixin.scss';
 
 .container {
   margin: 0 auto 5rem auto;
@@ -9,6 +10,7 @@
   flex-direction: row;
   align-items: center;
   padding: 0rem 2rem;
+  overflow: hidden;
   .search {
     width: 100%;
     font-size: 2rem;
@@ -21,5 +23,40 @@
     width: 4rem;
     height: 4rem;
     background: url('/assets/img/icon-search-green.svg') no-repeat center;
+  }
+}
+
+@include desktop {
+  .container {
+    width: 80%;
+  }
+}
+@include tablet {
+  .container {
+    margin-bottom: 3.5rem;
+    width: 100%;
+    padding: 0rem 1.5rem;
+    border-width: 2px;
+    .search {
+      font-size: 1.8rem;
+    }
+    .button {
+      background-size: 3rem 3rem;
+    }
+  }
+}
+@include mobile {
+  .container {
+    margin-bottom: 3rem;
+    padding: 0rem 1rem;
+    .search {
+      font-size: 1.6rem;
+      .input {
+        padding: 0.8rem;
+      }
+    }
+    .button {
+      background-size: 2.5rem 2.5rem;
+    }
   }
 }

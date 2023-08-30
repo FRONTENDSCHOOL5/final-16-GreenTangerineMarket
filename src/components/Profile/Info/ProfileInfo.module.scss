@@ -1,16 +1,20 @@
 @import 'styles/global.scss';
+@import 'styles/mixin.scss';
+
 .container {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
+  text-align: center;
   .followInfo {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 2rem;
     .follow {
+      flex-shrink: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -38,13 +42,74 @@
   .username {
     font-size: 2rem;
     font-weight: 700;
+    word-break: break-all;
   }
   .accountname {
     font-size: 1.4rem;
     color: $color-767676;
+    word-break: break-all;
   }
   .intro {
-    margin: 1rem 0 2rem 0;
+    margin: 2rem 0;
     font-size: 1.6rem;
+    word-break: break-all;
+  }
+}
+
+@include desktop {
+  .container {
+    .followInfo {
+      margin-bottom: 1.5rem;
+    }
+    .intro {
+      margin: 1.5rem 0;
+    }
+  }
+}
+@include tablet {
+  .container {
+    .followInfo {
+      margin-bottom: 1.2rem;
+      .follow {
+        .count {
+          font-size: 1.8rem;
+        }
+      }
+      .image {
+        width: 12em;
+        height: 12rem;
+        margin: 0 4rem;
+      }
+    }
+    .username {
+      font-size: 1.8rem;
+    }
+    .intro {
+      margin: 1.2rem 0;
+    }
+  }
+}
+@include mobile {
+  .container {
+    .followInfo {
+      margin-bottom: 1rem;
+      .follow {
+        .count {
+          font-size: 1.6rem;
+        }
+      }
+      .image {
+        width: 10em;
+        height: 10rem;
+        margin: 0 3rem;
+      }
+    }
+    .username {
+      font-size: 1.6rem;
+    }
+    .intro {
+      margin: 1rem 0;
+      font-size: 1.4rem;
+    }
   }
 }

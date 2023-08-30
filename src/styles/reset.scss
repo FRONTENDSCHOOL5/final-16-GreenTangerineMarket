@@ -79,7 +79,8 @@ time,
 mark,
 audio,
 video,
-input {
+input,
+textarea {
   margin: 0;
   padding: 0;
   border: 0;
@@ -153,7 +154,7 @@ button {
   font: inherit;
   color: inherit;
   border: none;
-  background-color: white;
+  background: inherit;
   cursor: pointer;
 }
 

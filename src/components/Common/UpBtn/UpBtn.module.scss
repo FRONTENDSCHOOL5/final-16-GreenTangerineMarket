@@ -1,4 +1,5 @@
 @import 'styles/global.scss';
+@import 'styles/mixin.scss';
 
 .upDisplay {
   position: fixed;
@@ -9,8 +10,28 @@
   height: 7rem;
   background: $color-main url('/assets/img/icon-up.svg') no-repeat center / 12rem;
   border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .upNonDisplay {
   display: none;
+}
+
+@include desktop {
+  .upDisplay {
+    width: 6rem;
+    height: 6rem;
+  }
+}
+@include tablet {
+  .upDisplay {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+}
+@include mobile {
+  .upDisplay {
+    width: 5rem;
+    height: 5rem;
+  }
 }

@@ -1,12 +1,42 @@
 @import 'styles/global.scss';
+@import 'styles/mixin.scss';
 
 .card {
   margin-bottom: 3rem;
   .title {
     font-size: 3rem;
   }
-
   p {
     font-size: 2rem;
+  }
+}
+@include desktop {
+  .card {
+    .title {
+      font-size: 2.8rem;
+    }
+    p {
+      font-size: 1.8rem;
+    }
+  }
+}
+@include tablet {
+  .card {
+    .title {
+      font-size: 2.5rem;
+    }
+    p {
+      font-size: 1.6rem;
+    }
+  }
+}
+@include mobile {
+  .card {
+    .title {
+      font-size: 2.2rem;
+    }
+    p {
+      font-size: 1.6rem;
+    }
   }
 }

@@ -1,30 +1,90 @@
 @import 'styles/global.scss';
+@import 'styles/mixin.scss';
 
-.wrapper {
+.container {
+  padding: 10rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  gap: 5rem;
   .img {
     display: block;
-    width: 27.6rem;
-    height: 23.6rem;
+    width: 27rem;
+    aspect-ratio: 27/23;
   }
-
   .text {
-    margin-left: 5rem;
     color: $color-767676;
+    .header {
+      font-size: 3.6rem;
+      padding-bottom: 2rem;
+    }
+    .check {
+      font-size: 1.6rem;
+      padding-bottom: 3.5rem;
+    }
+    .mainButton {
+      display: flex;
+      justify-content: center;
+      gap: 1.4rem;
+    }
   }
-  .header {
-    font-size: 3.6rem;
-    padding-bottom: 2rem;
+}
+
+@include desktop {
+  .container {
+    padding: 8rem 0;
+    .img {
+      width: 22rem;
+    }
+    .text {
+      .header {
+        font-size: 3.2rem;
+      }
+      .check {
+        padding-bottom: 3.2rem;
+      }
+      .mainButton {
+        gap: 1.4rem;
+      }
+    }
   }
-  .check {
-    font-size: 1.6rem;
-    padding-bottom: 3.5rem;
+}
+@include tablet {
+  .container {
+    padding: 6rem 0;
+    flex-direction: column;
+    gap: 3rem;
+    .img {
+      width: 18rem;
+    }
+    .text {
+      text-align: center;
+      .header {
+        font-size: 3.2rem;
+        padding-bottom: 1.5rem;
+      }
+      .check {
+        padding-bottom: 2rem;
+      }
+      .mainButton {
+        gap: 1.2rem;
+      }
+    }
   }
-  .mainButton {
-    display: flex;
-    gap: 1.4rem;
+}
+@include mobile {
+  .container {
+    padding: 3rem 0;
+    .img {
+      width: 16rem;
+    }
+    .text {
+      .header {
+        font-size: 2.8rem;
+      }
+      .check {
+        font-size: 1.4rem;
+      }
+    }
   }
 }

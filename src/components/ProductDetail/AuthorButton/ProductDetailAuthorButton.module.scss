@@ -1,0 +1,87 @@
+@import 'styles/global.scss';
+@import 'styles/mixin.scss';
+
+.button {
+  display: flex;
+  gap: 3rem;
+  margin-top: 3rem;
+  justify-content: center;
+}
+.modal {
+  @include modalContainer;
+  width: 50rem;
+  max-height: 80%;
+  overflow-y: auto;
+  padding: 3rem 5rem;
+  font-size: 1.6rem;
+  .title {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 700;
+  }
+  .image {
+    width: 100%;
+    text-align: center;
+    margin: 3rem 0;
+    .imagePreview {
+      width: 50%;
+      max-width: 50rem;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      border-radius: 1rem;
+    }
+  }
+  .noimage {
+    width: 100%;
+    padding: 5rem;
+    text-align: center;
+    object-fit: cover;
+    border-radius: 1rem;
+    background-color: $color-f0f0f0;
+    color: $color-c4c4c4;
+    font-weight: 700;
+  }
+  .inputFile {
+    border: 1px solid $color-main;
+    text-align: center;
+    width: 50%;
+    padding: 0.5rem 0;
+    font-size: 1.6rem;
+    border-radius: 1rem;
+    input {
+      display: none;
+    }
+  }
+  .inputLabel {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    .itemInput {
+      flex: 1;
+      width: 100%;
+      border: 1px solid $color-c4c4c4;
+      border-radius: 1rem;
+      padding: 1rem;
+      font-size: 1.4rem;
+    }
+  }
+
+  .buttonContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+  }
+}
+
+@include mobile {
+  .modal {
+    width: 80%;
+    padding: 1rem;
+    font-size: 1.4rem;
+    .title {
+      font-size: 2rem;
+    }
+  }
+}

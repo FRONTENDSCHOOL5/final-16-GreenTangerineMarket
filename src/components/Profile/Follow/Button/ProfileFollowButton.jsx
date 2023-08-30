@@ -2,14 +2,14 @@ import { toast } from 'react-hot-toast'
 import { useState } from 'react'
 
 import { followProfileAPI } from 'api/profile'
-import { MsmallButton, MsmallButtonDisabled } from 'components/Common/Button/Msmall/MsmallButton'
+import { MsmallButton } from 'components/Common/Button/Msmall/MsmallButton'
 import getToastStyle from 'utils/getToastStyle'
 
 const ProfileFollowButton = ({ accountname, updateProfileData }) => {
-  const [progressingFollow, sestProgressingFollow] = useState(false)
+  const [progressingFollow, setProgressingFollow] = useState(false)
 
   const handleFollowClick = async () => {
-    sestProgressingFollow(true)
+    setProgressingFollow(true)
     const res = await followProfileAPI(accountname)
     if (res.status === 200) {
       updateProfileData(res.data.profile)
@@ -17,7 +17,7 @@ const ProfileFollowButton = ({ accountname, updateProfileData }) => {
         style: getToastStyle(),
       })
     }
-    sestProgressingFollow(false)
+    setProgressingFollow(false)
   }
   return !progressingFollow ? (
     <MsmallButton onClickEvent={handleFollowClick}>팔로우</MsmallButton>

@@ -4,10 +4,14 @@ const FeedEditButton = ({ id }) => {
   const navigate = useNavigate()
 
   const handleClick = () => {
-    navigate(`/post/edit/${id}`)
+    navigate(`/feed/detail/${id}?edit=true`)
   }
 
-  return <button onClick={handleClick}>수정</button>
+  return (
+    <button type='button' onClick={handleClick}>
+      수정
+    </button>
+  )
 }
 
 export default FeedEditButton

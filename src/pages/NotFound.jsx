@@ -1,10 +1,11 @@
+import PlainLayout from 'components/Common/Layout/Plain/PlainLayout'
 import NotFoundPage from 'components/NotFound/NotFoundPage'
 
 const NotFound = () => {
   return (
-    <div>
+    <PlainLayout>
       <NotFoundPage />
-    </div>
+    </PlainLayout>
   )
 }
 
